@@ -1,0 +1,29 @@
+# --- Core ---
+numpy
+pyyaml
+tqdm
+pandas
+
+# --- Video / frames ---
+av                      # PyAV, robust video decoding
+opencv-python-headless
+scenedetect[opencv]     # PySceneDetect for shot/scene detection
+Pillow
+
+# --- ASR ---
+faster-whisper          # CTranslate2 Whisper, low-VRAM friendly
+
+# --- Visual embeddings (Phase 1 W2+, listed now for one env) ---
+open_clip_torch
+torch
+torchvision
+
+# --- OCR (optional enrichment) ---
+# easyocr               # uncomment when enabling OCR modality
+
+# --- Vector store / retrieval (W3+) ---
+chromadb
+
+# --- Dataset download helpers ---
+gdown                   # NExT-QA videos/annotations are hosted on Google Drive
+requests

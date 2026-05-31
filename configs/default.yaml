@@ -1,0 +1,44 @@
+# Visual RAG — default config. Override per-run via CLI flags or a copy of this file.
+
+paths:
+  data_root: data
+  videos: data/nextqa/videos          # raw .mp4 videos
+  annotations: data/nextqa/annotations # NExT-QA / NExT-GQA csv/json
+  artifacts: artifacts                 # frames, transcripts, embeddings, index
+  frames: artifacts/frames
+  transcripts: artifacts/transcripts
+  ocr: artifacts/ocr
+  embeddings: artifacts/embeddings
+  chroma: artifacts/chroma
+
+device: auto   # auto | cuda | mps | cpu  (auto-detect, cloud-portable)
+
+frames:
+  # Scene-detection-driven keyframes + uniform fallback.
+  detector: adaptive          # adaptive | content (PySceneDetect)
+  threshold: 3.0
+  min_scene_len: 15           # frames
+  uniform_fps: 0.5            # fallback / supplement: 1 frame per 2s
+  max_frames_per_video: 64
+  resize_long_side: 384       # downscale before saving
+
+transcribe:
+  model: large-v3             # large-v3 on cloud; small/medium for local 6GB dev
+  compute_type: int8          # int8 (low VRAM) | float16 (faster on big GPU)
+  language: null              # null = auto-detect
+  vad_filter: true            # drop silence
+  beam_size: 5
+
+ocr:
+  enabled: false              # optional enrichment; benchmark videos have little on-screen text
+  langs: [en]
+
+embed:
+  backbone: ViT-B-32          # MVP. final/ablation: ViT-L-14, ViT-SO400M-14-SigLIP-384
+  pretrained: laion2b_s34b_b79k
+  batch_size: 32
+
+segment:
+  # Segment = unit indexed in the vector DB (keyframe + overlapping transcript window).
+  window_sec: 8.0
+  stride_sec: 4.0             # overlapping sliding window
