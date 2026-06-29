@@ -4,7 +4,7 @@ MSc summer project. Multi-modal (visual + audio + OCR) retrieval-augmented
 generation over video, with temporal-precise grounding. See
 [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) for the full design.
 
-**Status:** W1 — ingestion skeleton + environment.
+**Status:** W2 — multi-modal embeddings + ChromaDB index (visual / text / late-fusion retrieval working).
 
 ## Architecture (one line)
 
@@ -45,6 +45,10 @@ python scripts/ingest_dataset.py --split val --limit 5 --no-asr
 
 # 3. Full ingest with ASR (run on a GPU; device auto-detected)
 python scripts/ingest_dataset.py --split val
+
+# 4. Embed segments + build the ChromaDB index (visual + text collections)
+python scripts/build_index.py --split val            # caches embeddings to artifacts/embeddings/
+python scripts/query_index.py "a baby on a sofa" --modality fused -k 5   # retrieval smoke test
 ```
 
 Artifacts land under `artifacts/` (frames, transcripts, `segments/<video_id>.jsonl`),
@@ -57,9 +61,9 @@ Primary: **NExT-QA** (causal/temporal multiple-choice QA) + **NExT-GQA**
 
 ## Roadmap
 
-- **W1 (now):** ingest skeleton + env ✅
-- **W2:** batch Whisper + visual embeddings on GPU → ChromaDB
-- **W3:** retrieval baselines (Recall@K / MRR / nDCG), text-only vs multimodal
+- **W1:** ingest skeleton + env ✅
+- **W2:** visual + text embeddings (open_clip) → ChromaDB, late-fusion retrieval ✅
+- **W3 (next):** retrieval baselines (Recall@K / MRR / nDCG) on NExT-GQA grounding, text-only vs multimodal
 - **W4:** MVP vertical slice (query → retrieve → grounded answer)
 - **W5–7:** query decomposition, re-ranking, LangGraph agent
 - **W8–12:** evaluation, ablations, open-source LLM comparison, demo, dissertation

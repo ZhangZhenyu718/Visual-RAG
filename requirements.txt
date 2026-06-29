@@ -7,7 +7,7 @@ pandas
 # --- Video / frames ---
 av                      # PyAV, robust video decoding
 opencv-python-headless
-scenedetect[opencv]     # PySceneDetect for shot/scene detection
+scenedetect             # PySceneDetect for shot/scene detection (uses opencv below)
 Pillow
 
 # --- ASR ---

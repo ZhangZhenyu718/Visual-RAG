@@ -14,9 +14,12 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import glob
+import json
 import os
 import sys
+
+# Allow running as `python scripts/ingest_dataset.py` without `pip install -e .`
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from visualrag.utils.config import load_config, ensure_dirs
 from visualrag.utils.device import resolve_device, describe_device
@@ -24,14 +27,41 @@ from visualrag.ingest.pipeline import ingest_video
 from visualrag.ingest.transcribe import Transcriber
 from visualrag.ingest.ocr import OCRReader
 
+VIDEO_EXTS = (".mp4", ".mkv", ".webm", ".avi", ".mov")
 
-def find_video(videos_dir: str, video_id: str) -> str | None:
-    for ext in (".mp4", ".mkv", ".webm", ".avi"):
-        p = os.path.join(videos_dir, video_id + ext)
-        if os.path.exists(p):
-            return p
-    hits = glob.glob(os.path.join(videos_dir, f"{video_id}.*"))
-    return hits[0] if hits else None
+
+def build_video_index(videos_dir: str) -> dict[str, str]:
+    """Recursively map basename-without-extension -> full path.
+
+    NExT-QA videos live at <videos_dir>/NExTVideo/<group>/<vidorID>.mp4, and the
+    file's basename equals the QA `video_id`, so a one-pass basename index resolves
+    them regardless of the nested group dirs."""
+    index: dict[str, str] = {}
+    for root, _dirs, files in os.walk(videos_dir):
+        for fn in files:
+            stem, ext = os.path.splitext(fn)
+            if ext.lower() in VIDEO_EXTS:
+                index.setdefault(stem, os.path.join(root, fn))
+    return index
+
+
+def load_id_map(annotations_dir: str) -> dict[str, str]:
+    """video_id -> '<group>/<vidorID>' (fallback resolver if basenames differ)."""
+    p = os.path.join(annotations_dir, "map_vid_vidorID.json")
+    if os.path.exists(p):
+        with open(p, encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+
+def resolve_video(video_id: str, index: dict[str, str], id_map: dict[str, str]) -> str | None:
+    if video_id in index:
+        return index[video_id]
+    # Fallback: map to VidOR id, match on its basename.
+    mapped = id_map.get(video_id)
+    if mapped:
+        return index.get(os.path.basename(mapped))
+    return None
 
 
 def main():
@@ -53,6 +83,10 @@ def main():
     videos_dir = cfg.get_path("paths.videos")
     ann_dir = cfg.get_path("paths.annotations")
 
+    video_index = build_video_index(videos_dir)
+    id_map = load_id_map(ann_dir)
+    print(f"[ingest] indexed {len(video_index)} video files on disk")
+
     # Determine which videos to process: those referenced by the split, else all on disk.
     try:
         from visualrag.data.nextqa import list_video_ids
@@ -71,7 +105,7 @@ def main():
 
     done, missing, total_segs = 0, 0, 0
     for i, vid in enumerate(video_ids, 1):
-        vpath = find_video(videos_dir, vid)
+        vpath = resolve_video(vid, video_index, id_map)
         if vpath is None:
             missing += 1
             continue
