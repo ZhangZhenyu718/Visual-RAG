@@ -3,9 +3,9 @@
 
     python scripts/query_index.py "a person opening a present" --modality visual -k 5
     python scripts/query_index.py "someone talking about dogs" --modality text
+    python scripts/query_index.py "a baby on a sofa" --modality fused --alpha 0.5
 
-Late fusion (`--modality fused`) combines visual + text scores per segment.
-A fuller retrieval/re-ranking module lands in W3; this is a thin smoke test.
+Thin CLI over visualrag.retrieve.Retriever (same code path as the eval harness).
 """
 
 from __future__ import annotations
@@ -17,22 +17,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from visualrag.utils.config import load_config
-from visualrag.embed.encoder import CLIPEncoder
-from visualrag.index.chroma_store import ChromaStore
-
-
-def fuse(visual_hits, text_hits, alpha: float):
-    """Late fusion: score = alpha*visual + (1-alpha)*text, summed per segment_id."""
-    scores: dict[str, float] = {}
-    meta: dict[str, dict] = {}
-    for h in visual_hits:
-        scores[h["segment_id"]] = scores.get(h["segment_id"], 0.0) + alpha * h["score"]
-        meta[h["segment_id"]] = h["metadata"]
-    for h in text_hits:
-        scores[h["segment_id"]] = scores.get(h["segment_id"], 0.0) + (1 - alpha) * h["score"]
-        meta.setdefault(h["segment_id"], h["metadata"])
-    ranked = sorted(scores.items(), key=lambda kv: kv[1], reverse=True)
-    return [{"segment_id": sid, "score": sc, "metadata": meta[sid]} for sid, sc in ranked]
+from visualrag.retrieve.retriever import Retriever
 
 
 def main():
@@ -45,15 +30,8 @@ def main():
     args = ap.parse_args()
 
     cfg = load_config(args.config)
-    enc = CLIPEncoder(cfg)
-    store = ChromaStore(cfg)
-    q = enc.encode_query(args.query)
-
-    if args.modality == "fused":
-        hits = fuse(store.query("visual", q, args.k * 2),
-                    store.query("text", q, args.k * 2), args.alpha)[:args.k]
-    else:
-        hits = store.query(args.modality, q, args.k)
+    retriever = Retriever(cfg)
+    hits = retriever.search(args.query, modality=args.modality, k=args.k, alpha=args.alpha)
 
     print(f"\nQuery: {args.query!r}  (modality={args.modality})\n")
     for r in hits:

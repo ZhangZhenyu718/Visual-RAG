@@ -4,7 +4,7 @@ MSc summer project. Multi-modal (visual + audio + OCR) retrieval-augmented
 generation over video, with temporal-precise grounding. See
 [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) for the full design.
 
-**Status:** W2 — multi-modal embeddings + ChromaDB index (visual / text / late-fusion retrieval working).
+**Status:** W3 — retrieval eval harness ready (Recall@K / MRR / nDCG / tIoU, visual vs text vs fused). Awaiting full-val index for real numbers.
 
 ## Architecture (one line)
 
@@ -49,6 +49,9 @@ python scripts/ingest_dataset.py --split val
 # 4. Embed segments + build the ChromaDB index (visual + text collections)
 python scripts/build_index.py --split val            # caches embeddings to artifacts/embeddings/
 python scripts/query_index.py "a baby on a sofa" --modality fused -k 5   # retrieval smoke test
+
+# 5. Evaluate retrieval on NExT-GQA grounding (RQ1/RQ2)
+python scripts/evaluate.py --split val --json artifacts/eval_val.json
 ```
 
 Artifacts land under `artifacts/` (frames, transcripts, `segments/<video_id>.jsonl`),
@@ -63,7 +66,7 @@ Primary: **NExT-QA** (causal/temporal multiple-choice QA) + **NExT-GQA**
 
 - **W1:** ingest skeleton + env ✅
 - **W2:** visual + text embeddings (open_clip) → ChromaDB, late-fusion retrieval ✅
-- **W3 (next):** retrieval baselines (Recall@K / MRR / nDCG) on NExT-GQA grounding, text-only vs multimodal
-- **W4:** MVP vertical slice (query → retrieve → grounded answer)
+- **W3:** retrieval eval harness (Recall@K / MRR / nDCG / tIoU) on NExT-GQA grounding, visual vs text vs fused ✅ (code); run on full-val index for numbers
+- **W4 (next):** MVP vertical slice (query → retrieve → grounded answer via LLM)
 - **W5–7:** query decomposition, re-ranking, LangGraph agent
 - **W8–12:** evaluation, ablations, open-source LLM comparison, demo, dissertation
