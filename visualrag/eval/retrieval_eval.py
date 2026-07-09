@@ -45,7 +45,7 @@ class _SegmentCache:
 
 def run_eval(cfg, split="val", modalities=("visual", "text", "fused"),
              scope="corpus", k=10, alpha=0.5, tau=0.5, limit=0,
-             decompose=False) -> dict:
+             decompose=False, rerank=False) -> dict:
     ann = cfg.get_path("paths.annotations")
     rows = load_qa(ann, split)
     gnd = load_grounding(ann, split)
@@ -85,17 +85,26 @@ def run_eval(cfg, split="val", modalities=("visual", "text", "fused"),
         offsets.append((pos, pos + len(qs)))
         pos += len(qs)
 
+    reranker = None
+    if rerank:
+        from visualrag.retrieve.rerank import make_reranker
+        reranker = make_reranker(cfg)
+
     results: dict[str, dict] = {}
     for mod in modalities:
         per_q = []
         for i, r in enumerate(evaluable):
             where = {"video_id": r["video_id"]} if scope == "video" else None
             lo, hi = offsets[i]
+            # W6: retrieve a wider candidate pool when re-ranking.
+            k_retrieve = reranker.candidates if reranker else max(ks)
             if hi - lo == 1:
-                hits = retriever.search_vec(flat_vecs[lo], mod, k=max(ks), alpha=alpha, where=where)
+                hits = retriever.search_vec(flat_vecs[lo], mod, k=k_retrieve, alpha=alpha, where=where)
             else:
-                hits = retriever.search_vecs_rrf(flat_vecs[lo:hi], mod, k=max(ks),
+                hits = retriever.search_vecs_rrf(flat_vecs[lo:hi], mod, k=k_retrieve,
                                                  alpha=alpha, where=where)
+            if reranker:
+                hits = reranker.rerank(r["question"], hits, k=max(ks), queries=qlists[i])
             g = gnd[grounding_key(r["video_id"], r["qid"])]
             m = evaluate_question(hits, r["video_id"], g["locations"],
                                   seg_cache.intervals(r["video_id"]), ks=ks, tau=tau)
@@ -105,7 +114,7 @@ def run_eval(cfg, split="val", modalities=("visual", "text", "fused"),
 
     return {
         "split": split, "scope": scope, "tau": tau, "alpha": alpha,
-        "decompose": decompose,
+        "decompose": decompose, "rerank": rerank,
         "n_evaluated": len(evaluable), "n_skipped_not_indexed": skipped,
         "n_indexed_videos": len(indexed), "ks": list(ks),
         "results": results,

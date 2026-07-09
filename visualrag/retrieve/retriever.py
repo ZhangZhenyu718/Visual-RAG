@@ -22,29 +22,39 @@ def rrf(hit_lists: list[list[dict]], k_rrf: int = 60) -> list[dict]:
     choice for multi-query retrieval (W5 query decomposition)."""
     scores: dict[str, float] = {}
     meta: dict[str, dict] = {}
+    docs: dict[str, str] = {}
     for hits in hit_lists:
         for rank, h in enumerate(hits):
             sid = h["segment_id"]
             scores[sid] = scores.get(sid, 0.0) + 1.0 / (k_rrf + rank + 1)
             meta.setdefault(sid, h["metadata"])
+            if h.get("document"):
+                docs.setdefault(sid, h["document"])
     ranked = sorted(scores.items(), key=lambda kv: kv[1], reverse=True)
-    return [{"segment_id": sid, "score": sc, "metadata": meta[sid]} for sid, sc in ranked]
+    return [{"segment_id": sid, "score": sc, "metadata": meta[sid],
+             "document": docs.get(sid, "")} for sid, sc in ranked]
 
 
 def fuse(visual_hits: list[dict], text_hits: list[dict], alpha: float) -> list[dict]:
     """Sum weighted per-segment scores across modalities, re-rank descending."""
     scores: dict[str, float] = {}
     meta: dict[str, dict] = {}
+    docs: dict[str, str] = {}
     for h in visual_hits:
         sid = h["segment_id"]
         scores[sid] = scores.get(sid, 0.0) + alpha * h["score"]
         meta[sid] = h["metadata"]
+        if h.get("document"):
+            docs.setdefault(sid, h["document"])
     for h in text_hits:
         sid = h["segment_id"]
         scores[sid] = scores.get(sid, 0.0) + (1 - alpha) * h["score"]
         meta.setdefault(sid, h["metadata"])
+        if h.get("document"):
+            docs.setdefault(sid, h["document"])
     ranked = sorted(scores.items(), key=lambda kv: kv[1], reverse=True)
-    return [{"segment_id": sid, "score": sc, "metadata": meta[sid]} for sid, sc in ranked]
+    return [{"segment_id": sid, "score": sc, "metadata": meta[sid],
+             "document": docs.get(sid, "")} for sid, sc in ranked]
 
 
 class Retriever:

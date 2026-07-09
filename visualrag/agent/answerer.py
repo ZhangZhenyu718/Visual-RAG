@@ -64,13 +64,28 @@ class _SegmentLookup:
         self.seg_dir = os.path.join(cfg.get_path("paths.artifacts", "artifacts"), "segments")
         self._by_video: dict[str, dict[str, dict]] = {}
 
-    def get(self, segment_id: str) -> dict:
-        video_id = segment_id.split("::", 1)[0]
+    def _video(self, video_id: str) -> dict[str, dict]:
         if video_id not in self._by_video:
             path = os.path.join(self.seg_dir, f"{video_id}.jsonl")
             rows = read_jsonl(path) if os.path.exists(path) else []
             self._by_video[video_id] = {r["segment_id"]: r for r in rows}
-        return self._by_video[video_id].get(segment_id, {})
+        return self._by_video[video_id]
+
+    def get(self, segment_id: str) -> dict:
+        return self._video(segment_id.split("::", 1)[0]).get(segment_id, {})
+
+    def around(self, video_id: str, timestamp: float, direction: str = "after",
+               n: int = 4) -> list[dict]:
+        """Segments adjacent to a timestamp — the temporal-reasoning primitive
+        ("what happened after X": anchor X via search, then walk `after`)."""
+        rows = sorted(self._video(video_id).values(), key=lambda r: r["start"])
+        if direction == "after":
+            picked = [r for r in rows if r["start"] >= timestamp - 1e-6]
+        elif direction == "before":
+            picked = [r for r in rows if r["end"] <= timestamp + 1e-6][::-1]
+        else:  # around
+            picked = sorted(rows, key=lambda r: abs((r["start"] + r["end"]) / 2 - timestamp))
+        return picked[:n]
 
 
 def _image_block(path: str) -> Optional[dict]:

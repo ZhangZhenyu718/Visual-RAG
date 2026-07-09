@@ -75,5 +75,21 @@ Primary: **NExT-QA** (causal/temporal multiple-choice QA) + **NExT-GQA**
   `evaluate.py`; cached in `artifacts/decompositions/`). Lifts deep-rank recall —
   corpus R@10 0.111→0.122 (+10% rel), MRR +6% rel; R@1 unchanged → the missing top-1
   precision is W6 re-ranking's job.
-- **W6–7 (next):** cross-encoder re-ranking, temporal reasoning, LangGraph agent
+- **W6:** second-stage re-ranking ✅ (`--rerank`). Text cross-encoder (bge-reranker)
+  *hurts* on NExT-QA — transcripts are chatter, uncorrelated with the visual events
+  questions ask about (kept as ablation, `rerank.method: cross_encoder`). The default
+  **visual reranker** (ViT-L-14 re-scores top-30 candidates, precompute via
+  `scripts/embed_backbone.py`) composes with W5 decomposition: corpus R@10
+  0.111→0.128, MRR 0.047→0.055 (+17% rel), video R@10 crosses 0.5. Full ladder in
+  `artifacts/eval_val_*_{decomp,rerank,decomp_rerank}.json`.
+- **W6b+W7:** temporal tool + LangGraph agent ✅ — `get_segments_around` (anchor an
+  event via search, then walk before/after) + ReAct/self-reflection state machine
+  (`visualrag/agent/graph_agent.py`, `scripts/answer.py --agent graph`). NExT-QA
+  multiple-choice accuracy (150 val questions, `scripts/eval_qa.py`, text-only
+  DeepSeek): simple 0.447 → graph **0.547** (+10pt; causal CW +13pt, TC +18pt).
+  TN stuck at 0.341 for both — temporal-next answers are visual actions the
+  text-only provider cannot see: the measured ceiling that motivates the
+  multimodal (`provider: claude`) path.
+- **W8+ (next):** backbone ablations (ViT-L/SigLIP as index), open-source LLM
+  comparison, tau sensitivity, demo UI
 - **W8–12:** evaluation, ablations, open-source LLM comparison, demo, dissertation

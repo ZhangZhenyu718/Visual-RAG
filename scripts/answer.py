@@ -29,24 +29,33 @@ def main():
     ap.add_argument("--modality", choices=["visual", "text", "fused"], default=None)
     ap.add_argument("-k", type=int, default=None)
     ap.add_argument("--model", default=None, help="override agent.model")
+    ap.add_argument("--agent", choices=["simple", "graph"], default="simple",
+                    help="simple = W4 tool loop; graph = W7 LangGraph ReAct+reflection")
     ap.add_argument("--dry-run", action="store_true",
                     help="print retrieved context and exit (no API key needed)")
     args = ap.parse_args()
 
     cfg = load_config(args.config)
-    qa = VideoQA(cfg)
+    if args.agent == "graph":
+        from visualrag.agent.graph_agent import GraphVideoQA
+        qa = GraphVideoQA(cfg)
+        # tuning flags below apply to the underlying retrieval helper
+        qa_inner = qa.qa
+    else:
+        qa = VideoQA(cfg)
+        qa_inner = qa
     if args.model:
-        qa.model = args.model
+        qa_inner.model = args.model
     if args.modality:
-        qa.modality = args.modality
+        qa_inner.modality = args.modality
     if args.k:
-        qa.k = args.k
+        qa_inner.k = args.k
 
     if args.dry_run:
-        hits = qa.search(args.question, video_id=args.video)
-        print(f"\nRetrieved context for {args.question!r} (modality={qa.modality}):\n")
+        hits = qa_inner.search(args.question, video_id=args.video)
+        print(f"\nRetrieved context for {args.question!r} (modality={qa_inner.modality}):\n")
         n_img = 0
-        for b in qa.hits_to_blocks(hits):
+        for b in qa_inner.hits_to_blocks(hits):
             if b["type"] == "text":
                 print(b["text"])
             else:
@@ -60,12 +69,16 @@ def main():
     print(result["answer"])
     print(f"\n{'-' * 70}")
     for s in result["searches"]:
-        print(f"searched [{s['modality']}]: {s['query']!r}")
-        for h in s["hits"][:5]:
-            m = h["metadata"]
-            print(f"    {h['score']:.3f}  {m.get('video_id')} [{m.get('start')}-{m.get('end')}s]")
+        if "hits" in s:
+            print(f"searched [{s['modality']}]: {s['query']!r}")
+            for h in s["hits"][:5]:
+                m = h["metadata"]
+                print(f"    {h['score']:.3f}  {m.get('video_id')} [{m.get('start')}-{m.get('end')}s]")
+        else:
+            print(f"tool {s['tool']}: {s['args']}")
     u = result["usage"]
-    print(f"tokens: {u['input_tokens']} in / {u['output_tokens']} out")
+    extra = f", rounds={result['rounds']}, reflections={result['reflections']}" if "rounds" in result else ""
+    print(f"tokens: {u['input_tokens']} in / {u['output_tokens']} out{extra}")
 
 
 if __name__ == "__main__":

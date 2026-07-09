@@ -51,6 +51,19 @@ decompose:
   include_original: true      # original question always kept as one of the queries
   workers: 16                 # concurrent LLM calls when batch-decomposing a split
 
+rerank:
+  # W6 second-stage re-ranking of the retrieval candidate pool.
+  method: visual                   # visual (ViT-L second stage) | cross_encoder (text; hurts on NExT-QA — ablation only)
+  candidates: 30                   # retrieval pool fed to the reranker
+  retrieval_weight: 0.5            # weighted RRF: retrieval rank vs reranker rank
+  # visual reranker (requires scripts/embed_backbone.py precompute):
+  visual_backbone: ViT-L-14
+  visual_pretrained: laion2b_s32b_b82k
+  visual_embeddings: artifacts/embeddings_vitl
+  # text cross-encoder ablation:
+  model: BAAI/bge-reranker-v2-m3   # multilingual; BAAI/bge-reranker-base = EN/ZH ablation
+  batch_size: 32
+
 agent:
   # W4 MVP answerer: retrieve top-k segments, answer via LLM with timestamp citations.
   provider: deepseek          # deepseek (text-only, cheap) | claude (multimodal keyframes)
