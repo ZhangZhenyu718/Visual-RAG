@@ -4,7 +4,7 @@ MSc summer project. Multi-modal (visual + audio + OCR) retrieval-augmented
 generation over video, with temporal-precise grounding. See
 [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) for the full design.
 
-**Status:** W3 — retrieval eval harness ready (Recall@K / MRR / nDCG / tIoU, visual vs text vs fused). Awaiting full-val index for real numbers.
+**Status:** W3 ✅ — full val evaluated (567 videos / 5725 segments; frames + Whisper large-v3 int8 on a local RTX 4050, CLIP ViT-B-32). Corpus scope: visual R@10 0.111 / MRR 0.047. Video scope (localization): visual R@5 0.394 / tIoU@1 0.203. Text modality is weak (multilingual transcripts vs English CLIP text encoder) and drags late fusion below visual-only at every alpha — fixing the text pipeline precedes fusion gains. Full numbers: `artifacts/eval_val_{corpus,video}.json`.
 
 ## Architecture (one line)
 
@@ -66,7 +66,7 @@ Primary: **NExT-QA** (causal/temporal multiple-choice QA) + **NExT-GQA**
 
 - **W1:** ingest skeleton + env ✅
 - **W2:** visual + text embeddings (open_clip) → ChromaDB, late-fusion retrieval ✅
-- **W3:** retrieval eval harness (Recall@K / MRR / nDCG / tIoU) on NExT-GQA grounding, visual vs text vs fused ✅ (code); run on full-val index for numbers
+- **W3:** retrieval eval harness (Recall@K / MRR / nDCG / tIoU) on NExT-GQA grounding, visual vs text vs fused ✅ (full-val numbers in Status above; alpha sweep shows naive fusion never beats visual-only)
 - **W4 (next):** MVP vertical slice (query → retrieve → grounded answer via LLM)
 - **W5–7:** query decomposition, re-ranking, LangGraph agent
 - **W8–12:** evaluation, ablations, open-source LLM comparison, demo, dissertation

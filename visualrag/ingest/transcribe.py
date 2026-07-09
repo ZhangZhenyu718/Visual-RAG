@@ -13,6 +13,32 @@ from visualrag.schema import TranscriptChunk
 from visualrag.utils.device import resolve_device
 
 
+def _register_cuda_dlls() -> None:
+    """Windows: make pip-installed cuBLAS/cuDNN DLLs visible to CTranslate2
+    (`pip install nvidia-cublas-cu12 nvidia-cudnn-cu12`)."""
+    if os.name != "nt":
+        return
+    import importlib.util
+    for mod in ("nvidia.cublas", "nvidia.cudnn"):
+        spec = importlib.util.find_spec(mod)
+        if spec and spec.submodule_search_locations:
+            bin_dir = os.path.join(list(spec.submodule_search_locations)[0], "bin")
+            if os.path.isdir(bin_dir):
+                os.add_dll_directory(bin_dir)
+                os.environ["PATH"] = bin_dir + os.pathsep + os.environ.get("PATH", "")
+
+
+def _ct2_cuda_available() -> bool:
+    """faster-whisper runs on CTranslate2, not torch — probe its own CUDA
+    support (torch may be a CPU-only build while the GPU is still usable)."""
+    try:
+        import ctranslate2
+        _register_cuda_dlls()
+        return ctranslate2.get_cuda_device_count() > 0
+    except Exception:
+        return False
+
+
 class Transcriber:
     def __init__(self, cfg):
         self.cfg = cfg
@@ -24,8 +50,10 @@ class Transcriber:
         self._model = None
 
     def _device_args(self) -> tuple[str, str]:
-        dev = resolve_device(self.cfg.get_path("device", "auto"))
-        if dev == "cuda":
+        prefer = self.cfg.get_path("device", "auto")
+        if prefer in ("auto", "cuda") and _ct2_cuda_available():
+            return "cuda", self.compute_type
+        if resolve_device(prefer) == "cuda":
             return "cuda", self.compute_type
         # faster-whisper has no MPS backend -> CPU with int8 is the portable choice.
         return "cpu", "int8"
@@ -39,8 +67,17 @@ class Transcriber:
             self._model = WhisperModel(self.model_size, device=device, compute_type=compute)
         return self._model
 
+    @staticmethod
+    def _has_audio(video_path: str) -> bool:
+        import av
+        with av.open(video_path) as container:
+            return len(container.streams.audio) > 0
+
     def transcribe(self, video_path: str) -> list[TranscriptChunk]:
         video_id = os.path.splitext(os.path.basename(video_path))[0]
+        if not self._has_audio(video_path):
+            print(f"[asr] {video_id}: no audio stream, skipping transcription")
+            return []
         segments, _info = self.model.transcribe(
             video_path,
             language=self.language,

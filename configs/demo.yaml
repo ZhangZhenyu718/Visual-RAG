@@ -1,0 +1,44 @@
+# Demo config: a handful of sample videos (no NExT-QA annotations needed).
+# Ingest falls back to "all videos on disk" because paths.annotations is empty.
+# Kept fully separate from the real benchmark artifacts.
+
+paths:
+  data_root: data
+  videos: data/demo/videos
+  annotations: data/demo/annotations   # intentionally absent -> ingest all videos on disk
+  artifacts: artifacts_demo
+  frames: artifacts_demo/frames
+  transcripts: artifacts_demo/transcripts
+  ocr: artifacts_demo/ocr
+  embeddings: artifacts_demo/embeddings
+  chroma: artifacts_demo/chroma
+
+device: auto
+
+frames:
+  detector: adaptive
+  threshold: 3.0
+  min_scene_len: 15
+  uniform_fps: 0.5
+  max_frames_per_video: 64
+  resize_long_side: 384
+
+transcribe:
+  model: base                 # small download, fast on CPU; fine for clear narration
+  compute_type: int8
+  language: null
+  vad_filter: true
+  beam_size: 5
+
+ocr:
+  enabled: false
+  langs: [en]
+
+embed:
+  backbone: ViT-B-32
+  pretrained: laion2b_s34b_b79k
+  batch_size: 32
+
+segment:
+  window_sec: 8.0
+  stride_sec: 4.0
