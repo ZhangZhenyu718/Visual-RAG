@@ -25,6 +25,17 @@ scripts/
 configs/default.yaml   all knobs (models, paths, windowing)
 ```
 
+## Demo UI
+
+```bash
+streamlit run ui/app.py
+```
+
+Two tabs: **segment search** (modality / W5 decompose / W6 visual-rerank toggles,
+keyframes, click-to-play the source video seeked to the segment start) and
+**agent QA** (W4 simple loop or W7 LangGraph agent, DeepSeek text-only or Claude
+multimodal, with the evidence trail of every tool call).
+
 ## Setup
 
 ```bash
