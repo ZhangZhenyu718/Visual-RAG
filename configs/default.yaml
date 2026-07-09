@@ -42,3 +42,13 @@ segment:
   # Segment = unit indexed in the vector DB (keyframe + overlapping transcript window).
   window_sec: 8.0
   stride_sec: 4.0             # overlapping sliding window
+
+agent:
+  # W4 MVP answerer: retrieve top-k segments, answer via LLM with timestamp citations.
+  provider: deepseek          # deepseek (text-only, cheap) | claude (multimodal keyframes)
+  model: deepseek-chat        # claude-opus-4-8 when provider=claude
+  k: 6
+  modality: visual            # W3 eval: visual-only beats fused at every alpha
+  alpha: 0.8                  # only used when modality=fused
+  max_images: 6               # keyframes attached to the tool result
+  max_tokens: 16000

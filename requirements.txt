@@ -24,6 +24,9 @@ torchvision
 # --- Vector store / retrieval (W3+) ---
 chromadb
 
+# --- Agent / answer synthesis (W4+) ---
+anthropic               # Claude API: retrieval-grounded QA with timestamp citations
+
 # --- Dataset download helpers ---
 gdown                   # NExT-QA videos/annotations are hosted on Google Drive
 requests

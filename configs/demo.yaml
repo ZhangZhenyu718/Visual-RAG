@@ -42,3 +42,12 @@ embed:
 segment:
   window_sec: 8.0
   stride_sec: 4.0
+
+agent:
+  provider: deepseek
+  model: deepseek-chat
+  k: 4
+  modality: fused             # demo corpus is tiny; text modality is clean here
+  alpha: 0.5
+  max_images: 4
+  max_tokens: 16000

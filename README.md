@@ -67,6 +67,9 @@ Primary: **NExT-QA** (causal/temporal multiple-choice QA) + **NExT-GQA**
 - **W1:** ingest skeleton + env ✅
 - **W2:** visual + text embeddings (open_clip) → ChromaDB, late-fusion retrieval ✅
 - **W3:** retrieval eval harness (Recall@K / MRR / nDCG / tIoU) on NExT-GQA grounding, visual vs text vs fused ✅ (full-val numbers in Status above; alpha sweep shows naive fusion never beats visual-only)
-- **W4 (next):** MVP vertical slice (query → retrieve → grounded answer via LLM)
+- **W4:** MVP vertical slice ✅ — `scripts/answer.py`: question → LLM function-calling
+  (`search_video_segments` tool) → grounded answer with `[video_id @ start-end s]`
+  citations. Providers: `deepseek` (text-only, default) / `claude` (multimodal keyframes).
+  Verified on NExT-QA val (answers the benchmark's first causal question correctly).
 - **W5–7:** query decomposition, re-ranking, LangGraph agent
 - **W8–12:** evaluation, ablations, open-source LLM comparison, demo, dissertation
