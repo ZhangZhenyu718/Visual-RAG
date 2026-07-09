@@ -46,15 +46,18 @@ def main():
     ap.add_argument("--alpha", type=float, default=0.5, help="visual weight in fusion")
     ap.add_argument("--tau", type=float, default=0.5, help="tIoU threshold for a hit")
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--decompose", action="store_true",
+                    help="W5: LLM query decomposition + RRF multi-query retrieval")
     ap.add_argument("--json", default=None, help="dump full results to this path")
     args = ap.parse_args()
 
     cfg = load_config(args.config)
     res = run_eval(cfg, split=args.split, modalities=tuple(args.modalities),
-                   scope=args.scope, k=args.k, alpha=args.alpha, tau=args.tau, limit=args.limit)
+                   scope=args.scope, k=args.k, alpha=args.alpha, tau=args.tau,
+                   limit=args.limit, decompose=args.decompose)
 
     print(f"\n=== Retrieval eval | split={res['split']} scope={res['scope']} "
-          f"tIoU>={res['tau']} alpha={res['alpha']} ===")
+          f"tIoU>={res['tau']} alpha={res['alpha']} decompose={res['decompose']} ===")
     print(f"evaluated {res['n_evaluated']} questions over {res['n_indexed_videos']} indexed videos "
           f"({res['n_skipped_not_indexed']} skipped: video not indexed)\n")
 

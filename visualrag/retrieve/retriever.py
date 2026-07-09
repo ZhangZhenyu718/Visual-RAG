@@ -14,6 +14,23 @@ from typing import Optional
 import numpy as np
 
 
+def rrf(hit_lists: list[list[dict]], k_rrf: int = 60) -> list[dict]:
+    """Reciprocal Rank Fusion across several rankings of the same collection.
+
+    score(seg) = sum over lists of 1/(k_rrf + rank). Rank-based, so it is robust
+    to the (incomparable) score scales of different sub-queries — the standard
+    choice for multi-query retrieval (W5 query decomposition)."""
+    scores: dict[str, float] = {}
+    meta: dict[str, dict] = {}
+    for hits in hit_lists:
+        for rank, h in enumerate(hits):
+            sid = h["segment_id"]
+            scores[sid] = scores.get(sid, 0.0) + 1.0 / (k_rrf + rank + 1)
+            meta.setdefault(sid, h["metadata"])
+    ranked = sorted(scores.items(), key=lambda kv: kv[1], reverse=True)
+    return [{"segment_id": sid, "score": sc, "metadata": meta[sid]} for sid, sc in ranked]
+
+
 def fuse(visual_hits: list[dict], text_hits: list[dict], alpha: float) -> list[dict]:
     """Sum weighted per-segment scores across modalities, re-rank descending."""
     scores: dict[str, float] = {}
@@ -59,3 +76,15 @@ class Retriever:
     def search(self, query: str, modality: str = "fused", k: int = 10,
                alpha: float = 0.5, where: Optional[dict] = None) -> list[dict]:
         return self.search_vec(self.encoder.encode_query(query), modality, k, alpha, where)
+
+    def search_vecs_rrf(self, qvecs, modality: str = "visual", k: int = 10,
+                        alpha: float = 0.5, where: Optional[dict] = None) -> list[dict]:
+        """Multi-query retrieval (W5): search each pre-encoded sub-query vector,
+        RRF-fuse the rankings, return top-k."""
+        hit_lists = [self.search_vec(v, modality, k * self.fusion_overfetch, alpha, where)
+                     for v in qvecs]
+        return rrf(hit_lists)[:k]
+
+    def search_multi(self, queries: list[str], modality: str = "visual", k: int = 10,
+                     alpha: float = 0.5, where: Optional[dict] = None) -> list[dict]:
+        return self.search_vecs_rrf(self.encoder.encode_texts(queries), modality, k, alpha, where)

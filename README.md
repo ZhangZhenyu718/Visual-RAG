@@ -71,5 +71,9 @@ Primary: **NExT-QA** (causal/temporal multiple-choice QA) + **NExT-GQA**
   (`search_video_segments` tool) → grounded answer with `[video_id @ start-end s]`
   citations. Providers: `deepseek` (text-only, default) / `claude` (multimodal keyframes).
   Verified on NExT-QA val (answers the benchmark's first causal question correctly).
-- **W5–7:** query decomposition, re-ranking, LangGraph agent
+- **W5:** LLM query decomposition + RRF multi-query retrieval ✅ (`--decompose` on
+  `evaluate.py`; cached in `artifacts/decompositions/`). Lifts deep-rank recall —
+  corpus R@10 0.111→0.122 (+10% rel), MRR +6% rel; R@1 unchanged → the missing top-1
+  precision is W6 re-ranking's job.
+- **W6–7 (next):** cross-encoder re-ranking, temporal reasoning, LangGraph agent
 - **W8–12:** evaluation, ablations, open-source LLM comparison, demo, dissertation

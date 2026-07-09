@@ -44,7 +44,8 @@ class _SegmentCache:
 
 
 def run_eval(cfg, split="val", modalities=("visual", "text", "fused"),
-             scope="corpus", k=10, alpha=0.5, tau=0.5, limit=0) -> dict:
+             scope="corpus", k=10, alpha=0.5, tau=0.5, limit=0,
+             decompose=False) -> dict:
     ann = cfg.get_path("paths.annotations")
     rows = load_qa(ann, split)
     gnd = load_grounding(ann, split)
@@ -61,15 +62,40 @@ def run_eval(cfg, split="val", modalities=("visual", "text", "fused"),
     seg_cache = _SegmentCache(cfg)
     retriever = Retriever(cfg)
 
-    # Batch-encode every question once; reuse the vector across modalities.
-    qvecs = retriever.encoder.encode_texts([r["question"] for r in evaluable])
+    # Per-question query list: [question] baseline, or W5 LLM decomposition
+    # (sub-queries + original, retrieved independently and RRF-fused).
+    if decompose:
+        from visualrag.retrieve.decompose import QueryDecomposer
+        dec = QueryDecomposer(cfg, cache_name=split)
+        sub = dec.decompose_batch([r["question"] for r in evaluable])
+        qlists = []
+        for r in evaluable:
+            qs = list(sub.get(r["question"], []))
+            if dec.include_original or not qs:
+                qs.append(r["question"])
+            qlists.append(qs)
+    else:
+        qlists = [[r["question"]] for r in evaluable]
+
+    # Batch-encode all queries once; reuse vectors across modalities.
+    flat = [q for qs in qlists for q in qs]
+    flat_vecs = retriever.encoder.encode_texts(flat)
+    offsets, pos = [], 0
+    for qs in qlists:
+        offsets.append((pos, pos + len(qs)))
+        pos += len(qs)
 
     results: dict[str, dict] = {}
     for mod in modalities:
         per_q = []
         for i, r in enumerate(evaluable):
             where = {"video_id": r["video_id"]} if scope == "video" else None
-            hits = retriever.search_vec(qvecs[i], mod, k=max(ks), alpha=alpha, where=where)
+            lo, hi = offsets[i]
+            if hi - lo == 1:
+                hits = retriever.search_vec(flat_vecs[lo], mod, k=max(ks), alpha=alpha, where=where)
+            else:
+                hits = retriever.search_vecs_rrf(flat_vecs[lo:hi], mod, k=max(ks),
+                                                 alpha=alpha, where=where)
             g = gnd[grounding_key(r["video_id"], r["qid"])]
             m = evaluate_question(hits, r["video_id"], g["locations"],
                                   seg_cache.intervals(r["video_id"]), ks=ks, tau=tau)
@@ -79,6 +105,7 @@ def run_eval(cfg, split="val", modalities=("visual", "text", "fused"),
 
     return {
         "split": split, "scope": scope, "tau": tau, "alpha": alpha,
+        "decompose": decompose,
         "n_evaluated": len(evaluable), "n_skipped_not_indexed": skipped,
         "n_indexed_videos": len(indexed), "ks": list(ks),
         "results": results,

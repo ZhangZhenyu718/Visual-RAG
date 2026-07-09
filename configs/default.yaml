@@ -43,6 +43,14 @@ segment:
   window_sec: 8.0
   stride_sec: 4.0             # overlapping sliding window
 
+decompose:
+  # W5 query decomposition: question -> CLIP-friendly scene descriptions, RRF-fused.
+  provider: deepseek          # falls back to agent.provider
+  model: deepseek-chat
+  max_queries: 4
+  include_original: true      # original question always kept as one of the queries
+  workers: 16                 # concurrent LLM calls when batch-decomposing a split
+
 agent:
   # W4 MVP answerer: retrieve top-k segments, answer via LLM with timestamp citations.
   provider: deepseek          # deepseek (text-only, cheap) | claude (multimodal keyframes)
