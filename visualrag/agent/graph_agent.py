@@ -25,28 +25,7 @@ from typing import Optional, TypedDict
 
 from langgraph.graph import StateGraph, END
 
-from visualrag.agent.answerer import SEARCH_TOOL, SYSTEM_PROMPT, VideoQA
-
-TEMPORAL_TOOL = {
-    "name": "get_segments_around",
-    "description": (
-        "Get the video segments immediately BEFORE or AFTER a timestamp in a specific "
-        "video. Essential for temporal questions ('what did X do AFTER/BEFORE Y?'): "
-        "first locate the anchor moment Y with search_video_segments, then call this "
-        "with the anchor's end time and direction='after' (or start time and 'before') "
-        "to see what actually happens next — do not guess from the anchor segment alone."
-    ),
-    "input_schema": {
-        "type": "object",
-        "properties": {
-            "video_id": {"type": "string"},
-            "timestamp": {"type": "number", "description": "anchor time in seconds"},
-            "direction": {"type": "string", "enum": ["after", "before", "around"]},
-            "n": {"type": "integer", "description": "number of segments (default 4)"},
-        },
-        "required": ["video_id", "timestamp", "direction"],
-    },
-}
+from visualrag.agent.answerer import SEARCH_TOOL, SYSTEM_PROMPT, TEMPORAL_TOOL, VideoQA
 
 GRAPH_SYSTEM = SYSTEM_PROMPT + """
 
@@ -117,20 +96,8 @@ class GraphVideoQA:
         return resp.choices[0].message
 
     def _run_tool(self, name: str, args: dict, video_id: Optional[str]) -> str:
-        if name == "search_video_segments":
-            hits = self.qa.search(args["query"], args.get("modality"), video_id=video_id)
-            return self.qa.hits_to_text(hits)
-        if name == "get_segments_around":
-            rows = self.qa.segments.around(
-                args["video_id"], float(args["timestamp"]),
-                args.get("direction", "after"), int(args.get("n", 4)))
-            if not rows:
-                return "No segments in that direction."
-            return "\n\n".join(
-                f"[{i}] video_id={r['video_id']} time={r['start']}-{r['end']}s\n"
-                f"transcript: {(r.get('transcript') or '(no speech)').strip() or '(no speech)'}"
-                for i, r in enumerate(rows, 1))
-        return f"unknown tool {name}"
+        result, kind = self.qa.run_tool(name, args, video_id)
+        return self.qa.hits_to_text(result) if kind == "search" else self.qa.rows_to_text(result)
 
     # --- graph nodes -----------------------------------------------------
 

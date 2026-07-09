@@ -25,6 +25,9 @@ Rules:
 - The transcript may be empty or in another language; the keyframe shows what is on screen.
 - If the retrieved segments do not contain enough evidence to answer, say so explicitly \
 and describe the closest thing you did find. Never invent visual details.
+- Temporal questions (what happened AFTER/BEFORE X): first locate the anchor moment X \
+with search_video_segments, then use get_segments_around to read the adjacent segments \
+in time order — base the answer on those, not on the anchor segment alone.
 - Answer concisely: a direct answer first, then the supporting evidence."""
 
 SEARCH_TOOL = {
@@ -53,6 +56,28 @@ SEARCH_TOOL = {
             },
         },
         "required": ["query"],
+    },
+}
+
+
+TEMPORAL_TOOL = {
+    "name": "get_segments_around",
+    "description": (
+        "Get the video segments immediately BEFORE or AFTER a timestamp in a specific "
+        "video. Essential for temporal questions ('what did X do AFTER/BEFORE Y?'): "
+        "first locate the anchor moment Y with search_video_segments, then call this "
+        "with the anchor's end time and direction='after' (or start time and 'before') "
+        "to see what actually happens next — do not guess from the anchor segment alone."
+    ),
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "video_id": {"type": "string"},
+            "timestamp": {"type": "number", "description": "anchor time in seconds"},
+            "direction": {"type": "string", "enum": ["after", "before", "around"]},
+            "n": {"type": "integer", "description": "number of segments (default 4)"},
+        },
+        "required": ["video_id", "timestamp", "direction"],
     },
 }
 
@@ -172,6 +197,41 @@ class VideoQA:
             blocks.append({"type": "text", "text": "No segments found."})
         return blocks
 
+    def rows_to_blocks(self, rows: list[dict]) -> list[dict]:
+        """Render raw segment rows (temporal tool) as content blocks with keyframes."""
+        blocks: list[dict] = []
+        used = 0
+        for i, r in enumerate(rows, 1):
+            transcript = (r.get("transcript", "") + " " + r.get("ocr_text", "")).strip()
+            blocks.append({"type": "text", "text": (
+                f"[{i}] video_id={r['video_id']} time={r['start']}-{r['end']}s\n"
+                f"transcript: {transcript if transcript else '(no speech)'}\nkeyframe:")})
+            kfs = r.get("keyframe_paths", [])
+            img = _image_block(kfs[len(kfs) // 2]) if kfs else None
+            if img and used < self.max_images:
+                blocks.append(img)
+                used += 1
+            else:
+                blocks.append({"type": "text", "text": "(no keyframe available)"})
+        return blocks or [{"type": "text", "text": "No segments in that direction."}]
+
+    def rows_to_text(self, rows: list[dict]) -> str:
+        if not rows:
+            return "No segments in that direction."
+        return "\n\n".join(
+            f"[{i}] video_id={r['video_id']} time={r['start']}-{r['end']}s\n"
+            f"transcript: {((r.get('transcript') or '') + ' ' + (r.get('ocr_text') or '')).strip() or '(no speech)'}"
+            for i, r in enumerate(rows, 1))
+
+    def run_tool(self, name: str, args: dict, video_id: Optional[str] = None):
+        """Execute a tool call; returns (hits_or_rows, kind)."""
+        if name == "get_segments_around":
+            rows = self.segments.around(args["video_id"], float(args["timestamp"]),
+                                        args.get("direction", "after"), int(args.get("n", 4)))
+            return rows, "temporal"
+        hits = self.search(args["query"], args.get("modality"), video_id=video_id)
+        return hits, "search"
+
     def hits_to_text(self, hits: list[dict]) -> str:
         """Text-only rendering of hits (for providers without vision)."""
         lines = []
@@ -213,7 +273,7 @@ class VideoQA:
                 max_tokens=self.max_tokens,
                 thinking={"type": "adaptive"},
                 system=SYSTEM_PROMPT,
-                tools=[SEARCH_TOOL],
+                tools=[SEARCH_TOOL, TEMPORAL_TOOL],
                 messages=messages,
             )
             usage["input_tokens"] += response.usage.input_tokens
@@ -225,15 +285,19 @@ class VideoQA:
             tool_results = []
             for block in response.content:
                 if block.type == "tool_use":
-                    hits = self.search(block.input["query"], block.input.get("modality"),
-                                       video_id=video_id)
-                    searches.append({"query": block.input["query"],
-                                     "modality": block.input.get("modality", self.modality),
-                                     "hits": hits})
+                    result, kind = self.run_tool(block.name, dict(block.input), video_id)
+                    if kind == "search":
+                        searches.append({"query": block.input["query"],
+                                         "modality": block.input.get("modality", self.modality),
+                                         "hits": result})
+                        content = self.hits_to_blocks(result)
+                    else:
+                        searches.append({"tool": block.name, "args": dict(block.input)})
+                        content = self.rows_to_blocks(result)
                     tool_results.append({
                         "type": "tool_result",
                         "tool_use_id": block.id,
-                        "content": self.hits_to_blocks(hits),
+                        "content": content,
                     })
             messages.append({"role": "user", "content": tool_results})
 
@@ -244,7 +308,7 @@ class VideoQA:
                 max_tokens=self.max_tokens,
                 thinking={"type": "adaptive"},
                 system=SYSTEM_PROMPT,
-                tools=[SEARCH_TOOL],
+                tools=[SEARCH_TOOL, TEMPORAL_TOOL],
                 tool_choice={"type": "none"},
                 messages=messages,
             )
@@ -261,12 +325,9 @@ class VideoQA:
 
         tools = [{
             "type": "function",
-            "function": {
-                "name": SEARCH_TOOL["name"],
-                "description": SEARCH_TOOL["description"],
-                "parameters": SEARCH_TOOL["input_schema"],
-            },
-        }]
+            "function": {"name": t["name"], "description": t["description"],
+                         "parameters": t["input_schema"]},
+        } for t in (SEARCH_TOOL, TEMPORAL_TOOL)]
         messages = [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": user_text},
@@ -291,14 +352,19 @@ class VideoQA:
             messages.append(msg)
             for call in msg.tool_calls:
                 args = json.loads(call.function.arguments)
-                hits = self.search(args["query"], args.get("modality"), video_id=video_id)
-                searches.append({"query": args["query"],
-                                 "modality": args.get("modality", self.modality),
-                                 "hits": hits})
+                result, kind = self.run_tool(call.function.name, args, video_id)
+                if kind == "search":
+                    searches.append({"query": args["query"],
+                                     "modality": args.get("modality", self.modality),
+                                     "hits": result})
+                    content = self.hits_to_text(result)
+                else:
+                    searches.append({"tool": call.function.name, "args": args})
+                    content = self.rows_to_text(result)
                 messages.append({
                     "role": "tool",
                     "tool_call_id": call.id,
-                    "content": self.hits_to_text(hits),
+                    "content": content,
                 })
 
         # Rounds exhausted while still asking for tools -> force a final answer.

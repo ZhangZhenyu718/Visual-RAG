@@ -88,8 +88,11 @@ Primary: **NExT-QA** (causal/temporal multiple-choice QA) + **NExT-GQA**
   multiple-choice accuracy (150 val questions, `scripts/eval_qa.py`, text-only
   DeepSeek): simple 0.447 → graph **0.547** (+10pt; causal CW +13pt, TC +18pt).
   TN stuck at 0.341 for both — temporal-next answers are visual actions the
-  text-only provider cannot see: the measured ceiling that motivates the
-  multimodal (`provider: claude`) path.
+  text-only provider cannot see. **Controlled experiment**: same 44 TN questions,
+  same tools, `provider: claude` (keyframes in tool results) → **0.636** (+87% rel,
+  `artifacts/qa_claude_tn44.json`) — visual evidence in the answerer nearly doubles
+  temporal-QA accuracy, the answering-stage counterpart to W3's retrieval-stage
+  modality finding.
 - **W8+ (next):** backbone ablations (ViT-L/SigLIP as index), open-source LLM
   comparison, tau sensitivity, demo UI
 - **W8–12:** evaluation, ablations, open-source LLM comparison, demo, dissertation
