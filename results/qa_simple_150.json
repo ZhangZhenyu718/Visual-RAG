@@ -1,0 +1,1357 @@
+{
+ "agent": "simple",
+ "n": 150,
+ "accuracy": 0.44666666666666666,
+ "results": [
+  {
+   "video_id": "3441428429",
+   "qid": "10",
+   "qtype": "TN",
+   "gt": 1,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 340
+  },
+  {
+   "video_id": "3462517143",
+   "qid": "2",
+   "qtype": "CW",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 401
+  },
+  {
+   "video_id": "4882821564",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 2,
+   "choice": 2,
+   "correct": true,
+   "tokens_out": 370
+  },
+  {
+   "video_id": "4260763967",
+   "qid": "4",
+   "qtype": "CW",
+   "gt": 2,
+   "choice": 2,
+   "correct": true,
+   "tokens_out": 373
+  },
+  {
+   "video_id": "6356067859",
+   "qid": "6",
+   "qtype": "TN",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 387
+  },
+  {
+   "video_id": "2834146886",
+   "qid": "8",
+   "qtype": "TN",
+   "gt": 2,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 315
+  },
+  {
+   "video_id": "2435100235",
+   "qid": "7",
+   "qtype": "CH",
+   "gt": 2,
+   "choice": 2,
+   "correct": true,
+   "tokens_out": 380
+  },
+  {
+   "video_id": "8132842161",
+   "qid": "2",
+   "qtype": "CW",
+   "gt": 3,
+   "choice": 4,
+   "correct": false,
+   "tokens_out": 454
+  },
+  {
+   "video_id": "9088819598",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 1,
+   "choice": 2,
+   "correct": false,
+   "tokens_out": 414
+  },
+  {
+   "video_id": "9873067604",
+   "qid": "4",
+   "qtype": "CW",
+   "gt": 2,
+   "choice": 1,
+   "correct": false,
+   "tokens_out": 361
+  },
+  {
+   "video_id": "5735711594",
+   "qid": "5",
+   "qtype": "TC",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 528
+  },
+  {
+   "video_id": "6201488511",
+   "qid": "5",
+   "qtype": "CW",
+   "gt": 2,
+   "choice": 3,
+   "correct": false,
+   "tokens_out": 472
+  },
+  {
+   "video_id": "2614918961",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 1,
+   "choice": 4,
+   "correct": false,
+   "tokens_out": 609
+  },
+  {
+   "video_id": "2793260225",
+   "qid": "6",
+   "qtype": "CH",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 517
+  },
+  {
+   "video_id": "5296635780",
+   "qid": "7",
+   "qtype": "TN",
+   "gt": 3,
+   "choice": 3,
+   "correct": true,
+   "tokens_out": 694
+  },
+  {
+   "video_id": "2976913210",
+   "qid": "6",
+   "qtype": "TC",
+   "gt": 2,
+   "choice": 2,
+   "correct": true,
+   "tokens_out": 661
+  },
+  {
+   "video_id": "7508439506",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 0,
+   "choice": 3,
+   "correct": false,
+   "tokens_out": 369
+  },
+  {
+   "video_id": "6136926089",
+   "qid": "8",
+   "qtype": "TN",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 355
+  },
+  {
+   "video_id": "5987365500",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 2,
+   "choice": 2,
+   "correct": true,
+   "tokens_out": 386
+  },
+  {
+   "video_id": "6018490041",
+   "qid": "6",
+   "qtype": "TN",
+   "gt": 2,
+   "choice": 1,
+   "correct": false,
+   "tokens_out": 400
+  },
+  {
+   "video_id": "3171006258",
+   "qid": "0",
+   "qtype": "CW",
+   "gt": 4,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 321
+  },
+  {
+   "video_id": "7416295940",
+   "qid": "7",
+   "qtype": "TN",
+   "gt": 1,
+   "choice": 3,
+   "correct": false,
+   "tokens_out": 444
+  },
+  {
+   "video_id": "6582763207",
+   "qid": "2",
+   "qtype": "CW",
+   "gt": 3,
+   "choice": 3,
+   "correct": true,
+   "tokens_out": 453
+  },
+  {
+   "video_id": "6793786769",
+   "qid": "5",
+   "qtype": "TC",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 460
+  },
+  {
+   "video_id": "5833145209",
+   "qid": "5",
+   "qtype": "CW",
+   "gt": 0,
+   "choice": 0,
+   "correct": true,
+   "tokens_out": 371
+  },
+  {
+   "video_id": "3943634344",
+   "qid": "4",
+   "qtype": "TN",
+   "gt": 2,
+   "choice": 1,
+   "correct": false,
+   "tokens_out": 375
+  },
+  {
+   "video_id": "5333075105",
+   "qid": "10",
+   "qtype": "CW",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 383
+  },
+  {
+   "video_id": "5116088152",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 0,
+   "choice": 3,
+   "correct": false,
+   "tokens_out": 417
+  },
+  {
+   "video_id": "3562017845",
+   "qid": "7",
+   "qtype": "CH",
+   "gt": 1,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 492
+  },
+  {
+   "video_id": "6895608152",
+   "qid": "8",
+   "qtype": "CW",
+   "gt": 3,
+   "choice": 4,
+   "correct": false,
+   "tokens_out": 432
+  },
+  {
+   "video_id": "5679866364",
+   "qid": "1",
+   "qtype": "TC",
+   "gt": 1,
+   "choice": 3,
+   "correct": false,
+   "tokens_out": 694
+  },
+  {
+   "video_id": "4094488636",
+   "qid": "4",
+   "qtype": "TN",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 497
+  },
+  {
+   "video_id": "3429509208",
+   "qid": "3",
+   "qtype": "TN",
+   "gt": 2,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 490
+  },
+  {
+   "video_id": "2405940242",
+   "qid": "0",
+   "qtype": "CW",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 304
+  },
+  {
+   "video_id": "3477387686",
+   "qid": "2",
+   "qtype": "TN",
+   "gt": 3,
+   "choice": 2,
+   "correct": false,
+   "tokens_out": 555
+  },
+  {
+   "video_id": "7308042410",
+   "qid": "3",
+   "qtype": "CW",
+   "gt": 3,
+   "choice": 2,
+   "correct": false,
+   "tokens_out": 387
+  },
+  {
+   "video_id": "8740703217",
+   "qid": "1",
+   "qtype": "TN",
+   "gt": 3,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 460
+  },
+  {
+   "video_id": "6329077812",
+   "qid": "7",
+   "qtype": "TP",
+   "gt": 4,
+   "choice": 4,
+   "correct": true,
+   "tokens_out": 368
+  },
+  {
+   "video_id": "3943634344",
+   "qid": "8",
+   "qtype": "CH",
+   "gt": 3,
+   "choice": 3,
+   "correct": true,
+   "tokens_out": 453
+  },
+  {
+   "video_id": "7499763064",
+   "qid": "5",
+   "qtype": "CW",
+   "gt": 4,
+   "choice": 2,
+   "correct": false,
+   "tokens_out": 481
+  },
+  {
+   "video_id": "4263096481",
+   "qid": "0",
+   "qtype": "CH",
+   "gt": 4,
+   "choice": 4,
+   "correct": true,
+   "tokens_out": 335
+  },
+  {
+   "video_id": "4815534482",
+   "qid": "7",
+   "qtype": "CW",
+   "gt": 4,
+   "choice": 3,
+   "correct": false,
+   "tokens_out": 668
+  },
+  {
+   "video_id": "4584426085",
+   "qid": "1",
+   "qtype": "TN",
+   "gt": 1,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 660
+  },
+  {
+   "video_id": "7533369046",
+   "qid": "6",
+   "qtype": "TC",
+   "gt": 3,
+   "choice": 0,
+   "correct": false,
+   "tokens_out": 441
+  },
+  {
+   "video_id": "4273039295",
+   "qid": "4",
+   "qtype": "CW",
+   "gt": 0,
+   "choice": 0,
+   "correct": true,
+   "tokens_out": 336
+  },
+  {
+   "video_id": "3066064005",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 0,
+   "choice": 0,
+   "correct": true,
+   "tokens_out": 348
+  },
+  {
+   "video_id": "11871253306",
+   "qid": "4",
+   "qtype": "CW",
+   "gt": 2,
+   "choice": 2,
+   "correct": true,
+   "tokens_out": 414
+  },
+  {
+   "video_id": "3711681535",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 2,
+   "choice": 2,
+   "correct": true,
+   "tokens_out": 673
+  },
+  {
+   "video_id": "5256928210",
+   "qid": "1",
+   "qtype": "TC",
+   "gt": 4,
+   "choice": 1,
+   "correct": false,
+   "tokens_out": 376
+  },
+  {
+   "video_id": "3851961428",
+   "qid": "11",
+   "qtype": "TN",
+   "gt": 1,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 786
+  },
+  {
+   "video_id": "4978714491",
+   "qid": "2",
+   "qtype": "CW",
+   "gt": 4,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 344
+  },
+  {
+   "video_id": "9293415110",
+   "qid": "2",
+   "qtype": "CW",
+   "gt": 0,
+   "choice": 0,
+   "correct": true,
+   "tokens_out": 366
+  },
+  {
+   "video_id": "4822859674",
+   "qid": "2",
+   "qtype": "CW",
+   "gt": 3,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 561
+  },
+  {
+   "video_id": "6624174621",
+   "qid": "0",
+   "qtype": "TC",
+   "gt": 4,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 323
+  },
+  {
+   "video_id": "5445581571",
+   "qid": "2",
+   "qtype": "TN",
+   "gt": 3,
+   "choice": 3,
+   "correct": true,
+   "tokens_out": 493
+  },
+  {
+   "video_id": "9088819598",
+   "qid": "5",
+   "qtype": "TN",
+   "gt": 4,
+   "choice": 4,
+   "correct": true,
+   "tokens_out": 453
+  },
+  {
+   "video_id": "9565310990",
+   "qid": "7",
+   "qtype": "TN",
+   "gt": 1,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 311
+  },
+  {
+   "video_id": "8464056582",
+   "qid": "5",
+   "qtype": "TC",
+   "gt": 0,
+   "choice": 0,
+   "correct": true,
+   "tokens_out": 480
+  },
+  {
+   "video_id": "4279106208",
+   "qid": "10",
+   "qtype": "CW",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 398
+  },
+  {
+   "video_id": "5833145209",
+   "qid": "2",
+   "qtype": "CW",
+   "gt": 3,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 520
+  },
+  {
+   "video_id": "5635265624",
+   "qid": "2",
+   "qtype": "CH",
+   "gt": 0,
+   "choice": 2,
+   "correct": false,
+   "tokens_out": 404
+  },
+  {
+   "video_id": "8464056582",
+   "qid": "4",
+   "qtype": "TN",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 365
+  },
+  {
+   "video_id": "3711681535",
+   "qid": "3",
+   "qtype": "CW",
+   "gt": 4,
+   "choice": 2,
+   "correct": false,
+   "tokens_out": 455
+  },
+  {
+   "video_id": "3121571439",
+   "qid": "3",
+   "qtype": "TN",
+   "gt": 0,
+   "choice": 0,
+   "correct": true,
+   "tokens_out": 417
+  },
+  {
+   "video_id": "4217422838",
+   "qid": "4",
+   "qtype": "TN",
+   "gt": 2,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 333
+  },
+  {
+   "video_id": "7786283208",
+   "qid": "5",
+   "qtype": "CH",
+   "gt": 3,
+   "choice": 3,
+   "correct": true,
+   "tokens_out": 380
+  },
+  {
+   "video_id": "8064178441",
+   "qid": "7",
+   "qtype": "TN",
+   "gt": 2,
+   "choice": 3,
+   "correct": false,
+   "tokens_out": 435
+  },
+  {
+   "video_id": "2821968703",
+   "qid": "5",
+   "qtype": "CW",
+   "gt": 4,
+   "choice": 0,
+   "correct": false,
+   "tokens_out": 545
+  },
+  {
+   "video_id": "2793806282",
+   "qid": "12",
+   "qtype": "TC",
+   "gt": 1,
+   "choice": 3,
+   "correct": false,
+   "tokens_out": 377
+  },
+  {
+   "video_id": "3524939594",
+   "qid": "2",
+   "qtype": "TC",
+   "gt": 3,
+   "choice": 3,
+   "correct": true,
+   "tokens_out": 517
+  },
+  {
+   "video_id": "4273039295",
+   "qid": "8",
+   "qtype": "TN",
+   "gt": 1,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 354
+  },
+  {
+   "video_id": "4138579400",
+   "qid": "6",
+   "qtype": "TN",
+   "gt": 2,
+   "choice": 3,
+   "correct": false,
+   "tokens_out": 514
+  },
+  {
+   "video_id": "4273039295",
+   "qid": "7",
+   "qtype": "TC",
+   "gt": 3,
+   "choice": 4,
+   "correct": false,
+   "tokens_out": 357
+  },
+  {
+   "video_id": "5328004991",
+   "qid": "9",
+   "qtype": "TN",
+   "gt": 3,
+   "choice": 3,
+   "correct": true,
+   "tokens_out": 444
+  },
+  {
+   "video_id": "6356067859",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 3,
+   "choice": 4,
+   "correct": false,
+   "tokens_out": 354
+  },
+  {
+   "video_id": "2435633172",
+   "qid": "5",
+   "qtype": "TC",
+   "gt": 0,
+   "choice": 0,
+   "correct": true,
+   "tokens_out": 417
+  },
+  {
+   "video_id": "2503404966",
+   "qid": "6",
+   "qtype": "TC",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 376
+  },
+  {
+   "video_id": "7164729910",
+   "qid": "7",
+   "qtype": "CH",
+   "gt": 2,
+   "choice": 2,
+   "correct": true,
+   "tokens_out": 162
+  },
+  {
+   "video_id": "3151715056",
+   "qid": "7",
+   "qtype": "CH",
+   "gt": 4,
+   "choice": 4,
+   "correct": true,
+   "tokens_out": 361
+  },
+  {
+   "video_id": "8783897632",
+   "qid": "7",
+   "qtype": "TC",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 357
+  },
+  {
+   "video_id": "10597533885",
+   "qid": "4",
+   "qtype": "TN",
+   "gt": 1,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 426
+  },
+  {
+   "video_id": "8557532213",
+   "qid": "8",
+   "qtype": "CW",
+   "gt": 3,
+   "choice": 2,
+   "correct": false,
+   "tokens_out": 504
+  },
+  {
+   "video_id": "8783897632",
+   "qid": "2",
+   "qtype": "CH",
+   "gt": 3,
+   "choice": 1,
+   "correct": false,
+   "tokens_out": 384
+  },
+  {
+   "video_id": "11244289523",
+   "qid": "4",
+   "qtype": "TC",
+   "gt": 4,
+   "choice": 4,
+   "correct": true,
+   "tokens_out": 435
+  },
+  {
+   "video_id": "5333075105",
+   "qid": "6",
+   "qtype": "CW",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 427
+  },
+  {
+   "video_id": "14012319794",
+   "qid": "8",
+   "qtype": "CW",
+   "gt": 0,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 675
+  },
+  {
+   "video_id": "3249402410",
+   "qid": "9",
+   "qtype": "TN",
+   "gt": 2,
+   "choice": 4,
+   "correct": false,
+   "tokens_out": 401
+  },
+  {
+   "video_id": "9612838272",
+   "qid": "0",
+   "qtype": "CW",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 346
+  },
+  {
+   "video_id": "4010069381",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 1,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 350
+  },
+  {
+   "video_id": "4485498145",
+   "qid": "0",
+   "qtype": "TN",
+   "gt": 3,
+   "choice": 3,
+   "correct": true,
+   "tokens_out": 424
+  },
+  {
+   "video_id": "3445431963",
+   "qid": "2",
+   "qtype": "TC",
+   "gt": 3,
+   "choice": 0,
+   "correct": false,
+   "tokens_out": 349
+  },
+  {
+   "video_id": "9408800471",
+   "qid": "3",
+   "qtype": "TC",
+   "gt": 3,
+   "choice": 3,
+   "correct": true,
+   "tokens_out": 358
+  },
+  {
+   "video_id": "3477387686",
+   "qid": "3",
+   "qtype": "CW",
+   "gt": 0,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 321
+  },
+  {
+   "video_id": "2809330695",
+   "qid": "9",
+   "qtype": "CH",
+   "gt": 1,
+   "choice": 3,
+   "correct": false,
+   "tokens_out": 620
+  },
+  {
+   "video_id": "3784543730",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 250
+  },
+  {
+   "video_id": "2503404966",
+   "qid": "2",
+   "qtype": "CW",
+   "gt": 3,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 309
+  },
+  {
+   "video_id": "7114553643",
+   "qid": "1",
+   "qtype": "TN",
+   "gt": 4,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 525
+  },
+  {
+   "video_id": "4378803532",
+   "qid": "1",
+   "qtype": "CH",
+   "gt": 4,
+   "choice": 3,
+   "correct": false,
+   "tokens_out": 669
+  },
+  {
+   "video_id": "4688219212",
+   "qid": "3",
+   "qtype": "TN",
+   "gt": 1,
+   "choice": 3,
+   "correct": false,
+   "tokens_out": 908
+  },
+  {
+   "video_id": "6025238212",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 496
+  },
+  {
+   "video_id": "5658916668",
+   "qid": "6",
+   "qtype": "TN",
+   "gt": 3,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 491
+  },
+  {
+   "video_id": "3261079025",
+   "qid": "6",
+   "qtype": "TP",
+   "gt": 3,
+   "choice": 3,
+   "correct": true,
+   "tokens_out": 340
+  },
+  {
+   "video_id": "3942617402",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 4,
+   "choice": 0,
+   "correct": false,
+   "tokens_out": 354
+  },
+  {
+   "video_id": "5328616848",
+   "qid": "5",
+   "qtype": "TC",
+   "gt": 0,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 328
+  },
+  {
+   "video_id": "4087654898",
+   "qid": "0",
+   "qtype": "CH",
+   "gt": 0,
+   "choice": 1,
+   "correct": false,
+   "tokens_out": 663
+  },
+  {
+   "video_id": "5803861992",
+   "qid": "0",
+   "qtype": "CW",
+   "gt": 0,
+   "choice": 0,
+   "correct": true,
+   "tokens_out": 381
+  },
+  {
+   "video_id": "4698622422",
+   "qid": "7",
+   "qtype": "CW",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 510
+  },
+  {
+   "video_id": "3972259774",
+   "qid": "0",
+   "qtype": "TN",
+   "gt": 0,
+   "choice": 1,
+   "correct": false,
+   "tokens_out": 488
+  },
+  {
+   "video_id": "4251505427",
+   "qid": "2",
+   "qtype": "CH",
+   "gt": 3,
+   "choice": 4,
+   "correct": false,
+   "tokens_out": 558
+  },
+  {
+   "video_id": "6078524411",
+   "qid": "7",
+   "qtype": "CW",
+   "gt": 1,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 307
+  },
+  {
+   "video_id": "2809330695",
+   "qid": "2",
+   "qtype": "CW",
+   "gt": 3,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 540
+  },
+  {
+   "video_id": "4388652400",
+   "qid": "2",
+   "qtype": "TC",
+   "gt": 4,
+   "choice": 3,
+   "correct": false,
+   "tokens_out": 458
+  },
+  {
+   "video_id": "3471421544",
+   "qid": "4",
+   "qtype": "CH",
+   "gt": 0,
+   "choice": 1,
+   "correct": false,
+   "tokens_out": 333
+  },
+  {
+   "video_id": "10030609934",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 4,
+   "choice": 4,
+   "correct": true,
+   "tokens_out": 415
+  },
+  {
+   "video_id": "9408800471",
+   "qid": "0",
+   "qtype": "CH",
+   "gt": 4,
+   "choice": 0,
+   "correct": false,
+   "tokens_out": 502
+  },
+  {
+   "video_id": "5333075105",
+   "qid": "11",
+   "qtype": "TN",
+   "gt": 2,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 347
+  },
+  {
+   "video_id": "3321261856",
+   "qid": "2",
+   "qtype": "TN",
+   "gt": 0,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 573
+  },
+  {
+   "video_id": "7164729910",
+   "qid": "8",
+   "qtype": "CH",
+   "gt": 2,
+   "choice": 4,
+   "correct": false,
+   "tokens_out": 470
+  },
+  {
+   "video_id": "4013751996",
+   "qid": "7",
+   "qtype": "CW",
+   "gt": 3,
+   "choice": 3,
+   "correct": true,
+   "tokens_out": 359
+  },
+  {
+   "video_id": "5229476012",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 4,
+   "choice": 4,
+   "correct": true,
+   "tokens_out": 330
+  },
+  {
+   "video_id": "5801184682",
+   "qid": "2",
+   "qtype": "TN",
+   "gt": 3,
+   "choice": 0,
+   "correct": false,
+   "tokens_out": 391
+  },
+  {
+   "video_id": "3078294001",
+   "qid": "6",
+   "qtype": "TC",
+   "gt": 4,
+   "choice": 4,
+   "correct": true,
+   "tokens_out": 336
+  },
+  {
+   "video_id": "4838145161",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 3,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 382
+  },
+  {
+   "video_id": "7499763064",
+   "qid": "3",
+   "qtype": "TC",
+   "gt": 0,
+   "choice": 0,
+   "correct": true,
+   "tokens_out": 327
+  },
+  {
+   "video_id": "6617533993",
+   "qid": "7",
+   "qtype": "TC",
+   "gt": 4,
+   "choice": 4,
+   "correct": true,
+   "tokens_out": 386
+  },
+  {
+   "video_id": "2696280239",
+   "qid": "7",
+   "qtype": "CH",
+   "gt": 0,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 356
+  },
+  {
+   "video_id": "6754608321",
+   "qid": "4",
+   "qtype": "CW",
+   "gt": 2,
+   "choice": 3,
+   "correct": false,
+   "tokens_out": 352
+  },
+  {
+   "video_id": "5328004991",
+   "qid": "6",
+   "qtype": "TN",
+   "gt": 4,
+   "choice": 4,
+   "correct": true,
+   "tokens_out": 411
+  },
+  {
+   "video_id": "3851961428",
+   "qid": "4",
+   "qtype": "CW",
+   "gt": 4,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 315
+  },
+  {
+   "video_id": "4087654898",
+   "qid": "7",
+   "qtype": "TN",
+   "gt": 4,
+   "choice": 4,
+   "correct": true,
+   "tokens_out": 332
+  },
+  {
+   "video_id": "10082798964",
+   "qid": "6",
+   "qtype": "CW",
+   "gt": 4,
+   "choice": 4,
+   "correct": true,
+   "tokens_out": 353
+  },
+  {
+   "video_id": "4199369046",
+   "qid": "8",
+   "qtype": "TN",
+   "gt": 1,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 540
+  },
+  {
+   "video_id": "11541421563",
+   "qid": "5",
+   "qtype": "TN",
+   "gt": 4,
+   "choice": 3,
+   "correct": false,
+   "tokens_out": 571
+  },
+  {
+   "video_id": "7288107396",
+   "qid": "3",
+   "qtype": "TN",
+   "gt": 3,
+   "choice": 3,
+   "correct": true,
+   "tokens_out": 629
+  },
+  {
+   "video_id": "8563398032",
+   "qid": "5",
+   "qtype": "TN",
+   "gt": 4,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 336
+  },
+  {
+   "video_id": "5445581571",
+   "qid": "7",
+   "qtype": "TN",
+   "gt": 0,
+   "choice": 2,
+   "correct": false,
+   "tokens_out": 485
+  },
+  {
+   "video_id": "7605329840",
+   "qid": "2",
+   "qtype": "CW",
+   "gt": 2,
+   "choice": 2,
+   "correct": true,
+   "tokens_out": 541
+  },
+  {
+   "video_id": "2435100235",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 2,
+   "choice": 0,
+   "correct": false,
+   "tokens_out": 1111
+  },
+  {
+   "video_id": "4636208292",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 2,
+   "choice": 2,
+   "correct": true,
+   "tokens_out": 416
+  },
+  {
+   "video_id": "8531675050",
+   "qid": "7",
+   "qtype": "CW",
+   "gt": 3,
+   "choice": 0,
+   "correct": false,
+   "tokens_out": 404
+  },
+  {
+   "video_id": "4483447009",
+   "qid": "3",
+   "qtype": "TN",
+   "gt": 2,
+   "choice": 0,
+   "correct": false,
+   "tokens_out": 440
+  },
+  {
+   "video_id": "10030609934",
+   "qid": "5",
+   "qtype": "CW",
+   "gt": 4,
+   "choice": 4,
+   "correct": true,
+   "tokens_out": 608
+  },
+  {
+   "video_id": "9409566840",
+   "qid": "2",
+   "qtype": "CH",
+   "gt": 1,
+   "choice": null,
+   "correct": false,
+   "tokens_out": 310
+  },
+  {
+   "video_id": "4006608424",
+   "qid": "9",
+   "qtype": "CW",
+   "gt": 0,
+   "choice": 2,
+   "correct": false,
+   "tokens_out": 628
+  },
+  {
+   "video_id": "12682618843",
+   "qid": "3",
+   "qtype": "CH",
+   "gt": 3,
+   "choice": 3,
+   "correct": true,
+   "tokens_out": 449
+  },
+  {
+   "video_id": "8277866423",
+   "qid": "7",
+   "qtype": "CW",
+   "gt": 3,
+   "choice": 3,
+   "correct": true,
+   "tokens_out": 495
+  },
+  {
+   "video_id": "8811725760",
+   "qid": "6",
+   "qtype": "TN",
+   "gt": 1,
+   "choice": 1,
+   "correct": true,
+   "tokens_out": 430
+  },
+  {
+   "video_id": "4485707628",
+   "qid": "5",
+   "qtype": "CH",
+   "gt": 0,
+   "choice": 0,
+   "correct": true,
+   "tokens_out": 897
+  },
+  {
+   "video_id": "2735019707",
+   "qid": "1",
+   "qtype": "CW",
+   "gt": 2,
+   "choice": 3,
+   "correct": false,
+   "tokens_out": 591
+  },
+  {
+   "video_id": "5913180144",
+   "qid": "2",
+   "qtype": "TN",
+   "gt": 3,
+   "choice": 3,
+   "correct": true,
+   "tokens_out": 639
+  }
+ ]
+}

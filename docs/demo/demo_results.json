@@ -1,0 +1,233 @@
+[
+ {
+  "query": "a cartoon rabbit in a green forest",
+  "modality": "visual",
+  "hits": [
+   {
+    "segment_id": "bunny::4.00-10.00",
+    "score": 0.244,
+    "video_id": "bunny",
+    "start": 4.0,
+    "end": 10.0,
+    "text": "",
+    "keyframe": "artifacts_demo\\frames\\bunny\\00007.00.jpg"
+   },
+   {
+    "segment_id": "bunny::0.00-8.00",
+    "score": 0.239,
+    "video_id": "bunny",
+    "start": 0.0,
+    "end": 8.0,
+    "text": "",
+    "keyframe": "artifacts_demo\\frames\\bunny\\00005.00.jpg"
+   },
+   {
+    "segment_id": "nasa_snowflake::52.00-60.00",
+    "score": 0.164,
+    "video_id": "nasa_snowflake",
+    "start": 52.0,
+    "end": 60.0,
+    "text": "In the past, researchers have adopted some pretty creative methods to catch snowflakes, like using spiderwebs to net the delicate crystalline structures in order to watch their melt behavior.",
+    "keyframe": "artifacts_demo\\frames\\nasa_snowflake\\00057.00.jpg"
+   }
+  ]
+ },
+ {
+  "query": "jellyfish swimming underwater",
+  "modality": "visual",
+  "hits": [
+   {
+    "segment_id": "jellyfish::0.00-8.00",
+    "score": 0.332,
+    "video_id": "jellyfish",
+    "start": 0.0,
+    "end": 8.0,
+    "text": "",
+    "keyframe": "artifacts_demo\\frames\\jellyfish\\00005.00.jpg"
+   },
+   {
+    "segment_id": "jellyfish::4.00-10.01",
+    "score": 0.317,
+    "video_id": "jellyfish",
+    "start": 4.0,
+    "end": 10.01,
+    "text": "",
+    "keyframe": "artifacts_demo\\frames\\jellyfish\\00007.00.jpg"
+   },
+   {
+    "segment_id": "nasa_snowflake::148.00-156.00",
+    "score": 0.276,
+    "video_id": "nasa_snowflake",
+    "start": 148.0,
+    "end": 156.0,
+    "text": "Now we have the techniques and we have the computer power to actually make simulations of these things.",
+    "keyframe": "artifacts_demo\\frames\\nasa_snowflake\\00151.00.jpg"
+   }
+  ]
+ },
+ {
+  "query": "a snowy mountain landscape",
+  "modality": "visual",
+  "hits": [
+   {
+    "segment_id": "nasa_snowflake::68.00-76.00",
+    "score": 0.23,
+    "video_id": "nasa_snowflake",
+    "start": 68.0,
+    "end": 76.0,
+    "text": "where I asked for money to breed spiders. Understanding the microphysics of a melting snowflake has significant implications.",
+    "keyframe": "artifacts_demo\\frames\\nasa_snowflake\\00071.00.jpg"
+   },
+   {
+    "segment_id": "nasa_snowflake::156.00-163.93",
+    "score": 0.21,
+    "video_id": "nasa_snowflake",
+    "start": 156.0,
+    "end": 163.933,
+    "text": "",
+    "keyframe": "artifacts_demo\\frames\\nasa_snowflake\\00161.80.jpg"
+   },
+   {
+    "segment_id": "nasa_snowflake::72.00-80.00",
+    "score": 0.202,
+    "video_id": "nasa_snowflake",
+    "start": 72.0,
+    "end": 80.0,
+    "text": "Understanding the microphysics of a melting snowflake has significant implications. About 66% of rain starts as snow hires in the atmosphere,",
+    "keyframe": "artifacts_demo\\frames\\nasa_snowflake\\00076.40.jpg"
+   }
+  ]
+ },
+ {
+  "query": "two people fighting in the snow",
+  "modality": "visual",
+  "hits": [
+   {
+    "segment_id": "sintel::4.00-10.00",
+    "score": 0.28,
+    "video_id": "sintel",
+    "start": 4.0,
+    "end": 10.0,
+    "text": "",
+    "keyframe": "artifacts_demo\\frames\\sintel\\00007.00.jpg"
+   },
+   {
+    "segment_id": "sintel::0.00-8.00",
+    "score": 0.277,
+    "video_id": "sintel",
+    "start": 0.0,
+    "end": 8.0,
+    "text": "",
+    "keyframe": "artifacts_demo\\frames\\sintel\\00004.00.jpg"
+   },
+   {
+    "segment_id": "nasa_snowflake::84.00-92.00",
+    "score": 0.213,
+    "video_id": "nasa_snowflake",
+    "start": 84.0,
+    "end": 92.0,
+    "text": "and that layer of melting snow can, among other things, affect weather patterns, block radio signals, and be a hazard to aircraft. The hydrodynamics are actually particularly complex,",
+    "keyframe": "artifacts_demo\\frames\\nasa_snowflake\\00089.00.jpg"
+   }
+  ]
+ },
+ {
+  "query": "scientists explain how snowflakes melt",
+  "modality": "fused",
+  "hits": [
+   {
+    "segment_id": "nasa_snowflake::0.00-8.00",
+    "score": 0.615,
+    "video_id": "nasa_snowflake",
+    "start": 0.0,
+    "end": 8.0,
+    "text": "For the first time ever, scientists have created a 3D model of a melting snowflake.",
+    "keyframe": "artifacts_demo\\frames\\nasa_snowflake\\00005.00.jpg"
+   },
+   {
+    "segment_id": "nasa_snowflake::24.00-32.00",
+    "score": 0.598,
+    "video_id": "nasa_snowflake",
+    "start": 24.0,
+    "end": 32.0,
+    "text": "used for weather forecasting and climate modeling in the future. We've actually known how to measure the size and shape of snow particles for a while. But visualizing how a snowflake melts?",
+    "keyframe": "artifacts_demo\\frames\\nasa_snowflake\\00029.00.jpg"
+   },
+   {
+    "segment_id": "nasa_snowflake::4.00-12.00",
+    "score": 0.445,
+    "video_id": "nasa_snowflake",
+    "start": 4.0,
+    "end": 12.0,
+    "text": "For the first time ever, scientists have created a 3D model of a melting snowflake.",
+    "keyframe": "artifacts_demo\\frames\\nasa_snowflake\\00007.00.jpg"
+   }
+  ]
+ },
+ {
+  "query": "a 3D computer model",
+  "modality": "fused",
+  "hits": [
+   {
+    "segment_id": "nasa_snowflake::148.00-156.00",
+    "score": 0.45,
+    "video_id": "nasa_snowflake",
+    "start": 148.0,
+    "end": 156.0,
+    "text": "Now we have the techniques and we have the computer power to actually make simulations of these things.",
+    "keyframe": "artifacts_demo\\frames\\nasa_snowflake\\00151.00.jpg"
+   },
+   {
+    "segment_id": "nasa_snowflake::144.00-152.00",
+    "score": 0.45,
+    "video_id": "nasa_snowflake",
+    "start": 144.0,
+    "end": 152.0,
+    "text": "Now we have the techniques and we have the computer power to actually make simulations of these things.",
+    "keyframe": "artifacts_demo\\frames\\nasa_snowflake\\00149.00.jpg"
+   },
+   {
+    "segment_id": "nasa_snowflake::8.00-16.00",
+    "score": 0.406,
+    "video_id": "nasa_snowflake",
+    "start": 8.0,
+    "end": 16.0,
+    "text": "For the first time ever, scientists have created a 3D model of a melting snowflake. 3D modeling, coupled with new research about melting snowflake behavior,",
+    "keyframe": "artifacts_demo\\frames\\nasa_snowflake\\00013.00.jpg"
+   }
+  ]
+ },
+ {
+  "query": "radar observations of precipitation",
+  "modality": "text",
+  "hits": [
+   {
+    "segment_id": "nasa_snowflake::20.00-28.00",
+    "score": 0.67,
+    "video_id": "nasa_snowflake",
+    "start": 20.0,
+    "end": 28.0,
+    "text": "serves as one of the first steps for creating better precipitation models used for weather forecasting and climate modeling in the future. We've actually known how to measure the size and shape of snow particles for a while.",
+    "keyframe": "artifacts_demo\\frames\\nasa_snowflake\\00023.00.jpg"
+   },
+   {
+    "segment_id": "nasa_snowflake::88.00-96.00",
+    "score": 0.653,
+    "video_id": "nasa_snowflake",
+    "start": 88.0,
+    "end": 96.0,
+    "text": "affect weather patterns, block radio signals, and be a hazard to aircraft. The hydrodynamics are actually particularly complex, and completely different from the characteristics of rain or even snow that hasn't started melting yet,",
+    "keyframe": "artifacts_demo\\frames\\nasa_snowflake\\00090.40.jpg"
+   },
+   {
+    "segment_id": "nasa_snowflake::80.00-88.00",
+    "score": 0.638,
+    "video_id": "nasa_snowflake",
+    "start": 80.0,
+    "end": 88.0,
+    "text": "About 66% of rain starts as snow hires in the atmosphere, and that layer of melting snow can, among other things, affect weather patterns, block radio signals, and be a hazard to aircraft.",
+    "keyframe": "artifacts_demo\\frames\\nasa_snowflake\\00085.00.jpg"
+   }
+  ]
+ }
+]
