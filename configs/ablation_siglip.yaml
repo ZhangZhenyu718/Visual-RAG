@@ -1,0 +1,32 @@
+# W8 backbone ablation: SigLIP SO400M as the retrieval index.
+# Requires: scripts/embed_backbone.py --backbone ViT-SO400M-14-SigLIP-384
+#           --pretrained webli --out artifacts/embeddings_siglip
+
+paths:
+  data_root: data
+  videos: data/nextqa/videos
+  annotations: data/nextqa/annotations
+  artifacts: artifacts
+  frames: artifacts/frames
+  transcripts: artifacts/transcripts
+  ocr: artifacts/ocr
+  embeddings: artifacts/embeddings_siglip
+  chroma: artifacts/chroma_siglip
+
+device: auto
+
+embed:
+  backbone: ViT-SO400M-14-SigLIP-384
+  pretrained: webli
+  batch_size: 8
+
+segment:
+  window_sec: 8.0
+  stride_sec: 4.0
+
+decompose:
+  provider: deepseek
+  model: deepseek-chat
+  max_queries: 4
+  include_original: true
+  workers: 16

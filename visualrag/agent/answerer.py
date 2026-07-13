@@ -137,8 +137,14 @@ class VideoQA:
         self.segments = _SegmentLookup(cfg)
 
         self.provider = cfg.get_path("agent.provider", "claude")
-        default_model = "claude-opus-4-8" if self.provider == "claude" else "deepseek-chat"
+        _defaults = {"claude": ("claude-opus-4-8", None, None),
+                     "deepseek": ("deepseek-chat", "https://api.deepseek.com", "DEEPSEEK_API_KEY"),
+                     "local": ("qwen2.5:7b-instruct", "http://localhost:11434/v1", None)}
+        if self.provider not in _defaults:
+            raise ValueError(f"unknown agent.provider {self.provider!r}")
+        default_model, default_url, self._key_env = _defaults[self.provider]
         self.model = cfg.get_path("agent.model", default_model)
+        self.base_url = cfg.get_path("agent.base_url", default_url)
         self.k = int(cfg.get_path("agent.k", 6))
         self.modality = cfg.get_path("agent.modality", "visual")  # W3: visual > fused at alpha 0.5
         self.alpha = float(cfg.get_path("agent.alpha", 0.8))
@@ -152,14 +158,10 @@ class VideoQA:
             if self.provider == "claude":
                 import anthropic
                 self._client = anthropic.Anthropic()
-            elif self.provider == "deepseek":
+            else:  # any OpenAI-compatible endpoint (DeepSeek, Ollama, vLLM, ...)
                 from openai import OpenAI
-                self._client = OpenAI(
-                    api_key=os.environ["DEEPSEEK_API_KEY"],
-                    base_url="https://api.deepseek.com",
-                )
-            else:
-                raise ValueError(f"unknown agent.provider {self.provider!r}")
+                key = os.environ[self._key_env] if self._key_env else "not-needed"
+                self._client = OpenAI(api_key=key, base_url=self.base_url)
         return self._client
 
     # --- Tool execution -------------------------------------------------
@@ -256,9 +258,9 @@ class VideoQA:
             f"{question}\n\n(Search is restricted to video {video_id}; "
             f"the question is about that video's timeline.)"
         )
-        if self.provider == "deepseek":
-            return self._answer_openai_compat(user_text, video_id, max_rounds)
-        return self._answer_claude(user_text, video_id, max_rounds)
+        if self.provider == "claude":
+            return self._answer_claude(user_text, video_id, max_rounds)
+        return self._answer_openai_compat(user_text, video_id, max_rounds)
 
     def _answer_claude(self, user_text: str, video_id: Optional[str],
                        max_rounds: int) -> dict:

@@ -67,7 +67,9 @@ rerank:
 agent:
   # W4 MVP answerer: retrieve top-k segments, answer via LLM with timestamp citations.
   provider: deepseek          # deepseek (text-only, cheap) | claude (multimodal keyframes)
-  model: deepseek-chat        # claude-opus-4-8 when provider=claude
+                              # | local (any OpenAI-compatible endpoint, e.g. Ollama)
+  model: deepseek-chat        # claude-opus-4-8 when provider=claude; e.g. qwen2.5:7b-instruct when local
+  # base_url: http://localhost:11434/v1   # override for provider=local / self-hosted endpoints
   k: 6
   modality: visual            # W3 eval: visual-only beats fused at every alpha
   alpha: 0.8                  # only used when modality=fused

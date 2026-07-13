@@ -72,9 +72,9 @@ class GraphVideoQA:
 
     def __init__(self, cfg):
         self.qa = VideoQA(cfg)  # reuse retrieval, segment lookup, provider client
-        if self.qa.provider != "deepseek":
-            raise NotImplementedError("graph agent currently targets the OpenAI-compatible "
-                                      "provider (deepseek); use agent.provider: deepseek")
+        if self.qa.provider == "claude":
+            raise NotImplementedError("graph agent currently targets OpenAI-compatible "
+                                      "providers (deepseek/local); use the simple agent for claude")
         self.tools = [
             {"type": "function", "function": {
                 "name": t["name"], "description": t["description"],

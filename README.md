@@ -104,6 +104,11 @@ Primary: **NExT-QA** (causal/temporal multiple-choice QA) + **NExT-GQA**
   `artifacts/qa_claude_tn44.json`) — visual evidence in the answerer nearly doubles
   temporal-QA accuracy, the answering-stage counterpart to W3's retrieval-stage
   modality finding.
-- **W8+ (next):** backbone ablations (ViT-L/SigLIP as index), open-source LLM
-  comparison, tau sensitivity, demo UI
+- **W8:** ablations ✅ (`docs/EXPERIMENTS.md` for the full tables) — backbone:
+  **SigLIP SO400M as index nearly doubles corpus R@1** (.026→.044; +decompose .048)
+  while ViT-L-as-index ≈ ViT-B+ViT-L-rerank (two-stage recovers the big model's
+  quality); tau sensitivity: at tau=0.3 the best config localizes in-video at
+  R@5 .677 / R@10 .780; open-source LLM plumbing ready (`agent.provider: local`,
+  any OpenAI-compatible endpoint — run pending Ollama install).
+- **W9+ (next):** open-source LLM QA comparison, user study, dissertation writing
 - **W8–12:** evaluation, ablations, open-source LLM comparison, demo, dissertation

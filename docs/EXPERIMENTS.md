@@ -92,6 +92,42 @@ tools — only the evidence channel changed. Qualitative flagship (video
 the black dog"): DeepSeek answered "segments are silent, cannot tell"; Claude
 answered "sniffs/nuzzles the small black puppy [28–36s]".
 
+## W8 — ablations (2026-07-10)
+
+**Backbone as index** (corpus scope, visual, tau 0.5; `configs/ablation_{vitl,siglip}.yaml`;
+ViT-L reuses the W6 reranker embeddings, SigLIP embedded via
+`scripts/embed_backbone.py --backbone ViT-SO400M-14-SigLIP-384 --pretrained webli`):
+
+| index backbone | R@1 | R@5 | R@10 | MRR | tIoU@1 |
+|---|---|---|---|---|---|
+| ViT-B-32 (baseline) | .026 | .075 | .111 | .047 | .035 |
+| ViT-B + ViT-L rerank (W6) | .029 | .087 | .121 | .053 | .041 |
+| ViT-L-14 | .029 | .090 | .122 | .054 | .040 |
+| SigLIP SO400M | **.044** | **.106** | **.143** | **.070** | **.054** |
+| SigLIP + decompose (final best) | **.048** | **.110** | **.161** | **.076** | **.055** |
+
+Findings: (1) SigLIP dominates for retrieval (R@1 +69% rel vs ViT-B; sigmoid-loss
+pretraining is known to favour retrieval); (2) two-stage ViT-B+ViT-L-rerank ≈
+ViT-L-as-index to within ±.003 — the cheap-index/expensive-rerank design recovers
+the big model's quality at this corpus scale; (3) final best system (SigLIP index
++ W5 decomposition) nearly doubles corpus R@1 vs the W3 baseline (.026→.048) and
+reaches video-scope R@1 .176 / tIoU@1 .230. Re-ranking with the same model as the
+index is an identity op — the reranker must differ from the index backbone.
+Default config stays ViT-B-32 for provenance of earlier numbers; switch
+`configs/default.yaml` embed/paths to the SigLIP values for the best system.
+
+**tau sensitivity** (ViT-B baseline and best ViT-B config, tau 0.3 vs 0.5):
+baseline corpus R@10 .111→.186, video R@5 .394→.660 / R@10 .491→.774; best
+config (decompose+rerank) video R@5 .677 / R@10 .780. tau=0.5 is a strict
+criterion for 8s windows; gains from W5/W6 hold at both thresholds.
+
+**Open-source LLM plumbing**: `agent.provider: local` targets any
+OpenAI-compatible endpoint (`agent.base_url`, default Ollama at
+`http://localhost:11434/v1`). QA comparison: `scripts/eval_qa.py --provider local
+--model qwen2.5:7b-instruct` once Ollama is installed. Not yet run (no Ollama on
+this machine). Encoder fix that unblocked SigLIP: `CLIPEncoder.dim` now probes
+visual.output_dim → embed_dim → dummy text encode (SigLIP timm towers).
+
 ## Demo assets
 
 - 4-video smoke-test corpus (`configs/demo.yaml`, `data/demo/videos/`, git-ignored):

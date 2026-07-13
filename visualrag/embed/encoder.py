@@ -40,7 +40,14 @@ class CLIPEncoder:
     @property
     def dim(self) -> int:
         self._ensure()
-        return int(self._model.visual.output_dim)
+        d = getattr(self._model.visual, "output_dim", None)  # CLIP towers
+        if d is None:
+            d = getattr(self._model, "embed_dim", None)      # CustomTextCLIP
+        if d is None:  # SigLIP timm towers expose neither -> probe with a dummy encode
+            torch = self._torch
+            with torch.no_grad():
+                d = self._model.encode_text(self._tokenizer(["probe"]).to(self.device)).shape[-1]
+        return int(d)
 
     def encode_images(self, paths: list[str]) -> np.ndarray:
         """L2-normalized image embeddings, [N, D] float32. Unreadable files -> zero rows."""

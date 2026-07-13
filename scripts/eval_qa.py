@@ -55,8 +55,8 @@ def main():
     ap.add_argument("--limit", type=int, default=100)
     ap.add_argument("--types", default=None, help="comma list, e.g. TN,TC,TP")
     ap.add_argument("--workers", type=int, default=8)
-    ap.add_argument("--provider", choices=["deepseek", "claude"], default=None,
-                    help="override agent.provider")
+    ap.add_argument("--provider", choices=["deepseek", "claude", "local"], default=None,
+                    help="override agent.provider (local = OpenAI-compatible endpoint, e.g. Ollama)")
     ap.add_argument("--model", default=None, help="override agent.model")
     ap.add_argument("--json", default=None)
     args = ap.parse_args()
