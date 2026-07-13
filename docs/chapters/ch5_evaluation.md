@@ -15,9 +15,10 @@ recorded in `docs/EXPERIMENTS.md`.
 
 ## 5.1 Experimental setup
 
-**Dataset.** All experiments use the validation split of NExT-QA [ref], a benchmark
-of causal and temporal multiple-choice questions over short (~44 s) everyday
-videos, together with the temporal grounding labels contributed by NExT-GQA [ref].
+**Dataset.** All experiments use the validation split of NExT-QA (Xiao et al.,
+2021), a benchmark of causal and temporal multiple-choice questions over short
+(~44 s) everyday videos, together with the temporal grounding labels contributed
+by NExT-GQA (Xiao et al., 2024).
 The split contains 3,358 questions over 567 videos, and — after intersecting with
 the grounding annotations — every question carries at least one ground-truth
 temporal interval locating the evidence for its answer. NExT-GQA was chosen over
@@ -195,7 +196,7 @@ categorically stronger for this task**: as the index it lifts corpus R@1 by 69%
 relative over ViT-B (.026 → .044) and tIoU@1 by 54%, and with decomposition on
 top reaches R@1 .048 — **nearly double the original baseline** — and video-scope
 tIoU@1 .230. This is consistent with SigLIP's sigmoid-loss pretraining, which has
-been reported to favour retrieval tasks [ref].
+been reported to favour retrieval tasks (Zhai et al., 2023).
 
 Second, ViT-L used as the full index (corpus R@1 .029, R@5 .090, R@10 .122,
 MRR .054) is statistically indistinguishable from ViT-B *plus* ViT-L re-ranking
