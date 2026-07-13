@@ -132,6 +132,7 @@ def tab_search(cfg_path: str):
         use_rerank = st.toggle("视觉重排 (W6, ViT-L)", value=True)
 
     query = st.text_input("描述你要找的画面或台词",
+                          value=st.query_params.get("q", ""),
                           placeholder="例如: a boy unwrapping a present on a sofa")
     if not query:
         st.info("输入查询后回车。索引: 567 个 NExT-QA val 视频, 5725 个 8 秒片段。")

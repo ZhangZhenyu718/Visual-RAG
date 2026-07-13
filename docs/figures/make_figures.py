@@ -180,10 +180,57 @@ def fig7():
     return fig
 
 
+# --- Figure 8: white-dog qualitative case (needs artifacts/frames on disk) ----
+def fig8():
+    import matplotlib.image as mpimg
+    frames_dir = os.path.join(os.path.dirname(os.path.dirname(HERE)),
+                              "artifacts", "frames", "2834146886")
+    shots = [("00029.00.jpg", "t = 29 s · anchor"),
+             ("00033.00.jpg", "t = 33 s · leans down"),
+             ("00037.00.jpg", "t = 37 s · noses the puppy")]
+
+    fig = plt.figure(figsize=(6.3, 4.3))
+    gs = fig.add_gridspec(3, 3, height_ratios=[2.3, 1.0, 1.0], hspace=0.34, wspace=0.06,
+                          top=0.86, bottom=0.02, left=0.02, right=0.98)
+
+    for i, (fn, cap) in enumerate(shots):
+        ax = fig.add_subplot(gs[0, i])
+        ax.imshow(mpimg.imread(os.path.join(frames_dir, fn)))
+        ax.set_axis_off()
+        ax.set_title(cap, fontsize=7.6, color=INK2, pad=4)
+
+    def answer_panel(row, header, hcolor, body):
+        ax = fig.add_subplot(gs[row, :])
+        ax.set_axis_off()
+        ax.text(0.006, 0.94, header, fontsize=8.5, fontweight="bold", color=hcolor,
+                va="top", transform=ax.transAxes)
+        ax.text(0.006, 0.60, body, fontsize=8, color=INK, va="top", wrap=True,
+                transform=ax.transAxes,
+                bbox=dict(boxstyle="round,pad=0.45", facecolor=SURFACE,
+                          edgecolor=hcolor, linewidth=1))
+
+    answer_panel(1, "Text-only LLM — evidence starved", "#e34948",
+                 '"…after going to the cushion, the video simply continues in silence — no '
+                 'further spoken action is described. To know exactly what the dog physically '
+                 'does (e.g., lies down, sniffs, sits), the keyframe images would need to be '
+                 'inspected."')
+    answer_panel(2, 'Multimodal LLM — matches ground truth ("smells the black dog")',
+                 "#008300",
+                 '"…the white dog leans down and sniffs/nuzzles the small black puppy that is '
+                 'lying in the cushion [@ 28–36 s], then pushes its nose into the bedding '
+                 'toward the puppy [@ 36–44 s]."')
+
+    fig.suptitle('"What does the white dog do after going to the cushion?"\n'
+                 "Same retrieval, same tools — only the evidence channel differs",
+                 x=0.02, y=0.985, ha="left", fontsize=9.5, color=INK)
+    return fig
+
+
 if __name__ == "__main__":
     for name, fn in [("fig4_alpha_sweep", fig4),
                      ("fig5_ablation_ladder", fig5),
-                     ("fig7_qa_by_type", fig7)]:
+                     ("fig7_qa_by_type", fig7),
+                     ("fig8_whitedog_case", fig8)]:
         f = fn()
         f.savefig(os.path.join(HERE, f"{name}.png"), dpi=300)
         f.savefig(os.path.join(HERE, f"{name}.pdf"))

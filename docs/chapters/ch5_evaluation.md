@@ -220,15 +220,29 @@ index model — re-scoring with the index's own embeddings is an identity operat
 ### 5.3.5 Threshold sensitivity
 
 τ = 0.5 is a strict criterion for 8-second windows scored against ground-truth
-intervals of arbitrary length. Repeating key configurations at τ = 0.3 roughly
-doubles the binary metrics — the ViT-B baseline rises to corpus R@10 .186 and
-video R@5 .660 / R@10 .774, and the best ViT-B configuration (decomposition +
-re-ranking) reaches video R@5 .677 / R@10 .780 — while tIoU@1, which is
-threshold-free, is unchanged by construction. Two conclusions follow: the system's
-practical localisation ability ("lands within a loose overlap of the right moment")
-is considerably better than the strict headline numbers suggest, and the relative
-ordering of configurations is stable across thresholds, so the ablation
-conclusions above do not depend on the choice of τ.
+intervals of arbitrary length. Table 5.6 repeats the ViT-B baseline and the best
+ViT-B configuration at τ = 0.3; the binary metrics roughly double, while tIoU@1,
+which is threshold-free, is unchanged by construction.
+
+**Table 5.6 — Threshold sensitivity (visual modality, ViT-B index).**
+
+| Scope | Configuration | τ | R@1 | R@5 | R@10 | MRR |
+|---|---|---|---|---|---|---|
+| corpus | baseline | 0.5 | .026 | .075 | .111 | .047 |
+| corpus | baseline | 0.3 | .054 | .130 | .186 | .089 |
+| corpus | + decompose + rerank | 0.5 | .030 | .087 | .128 | .055 |
+| corpus | + decompose + rerank | 0.3 | .062 | .151 | .208 | .101 |
+| video | baseline | 0.5 | .148 | .394 | .491 | .250 |
+| video | baseline | 0.3 | .311 | .660 | .774 | .456 |
+| video | + decompose + rerank | 0.5 | .154 | .410 | .501 | .258 |
+| video | + decompose + rerank | 0.3 | .323 | .677 | .780 | .469 |
+
+Two conclusions follow: the system's practical localisation ability ("lands
+within a loose overlap of the right moment") is considerably better than the
+strict headline numbers suggest — within the correct video, a correct moment is
+in the top five for two-thirds of questions — and the relative ordering of
+configurations is stable across thresholds, so the ablation conclusions above do
+not depend on the choice of τ.
 
 ## 5.4 RQ3 — Agentic question answering
 
@@ -290,7 +304,8 @@ held fixed.
 Accuracy rises by 29.5 points (+87% relative, 44/44 questions completed). On the
 representative case above, the multimodal agent answered "leans down and
 sniffs/nuzzles the small black puppy [28–36 s]" — matching the ground truth
-almost verbatim from the keyframes alone. Because everything except the evidence
+almost verbatim from the keyframes alone; Figure 5.4 (fig8_whitedog_case) shows
+the keyframes in question beside the two models' verbatim answers. Because everything except the evidence
 modality was held constant, the improvement is attributable to visual evidence at
 the answering stage. Together with Section 5.2, this closes the loop on the
 modality question at *both* ends of the pipeline: retrieval needs visual
