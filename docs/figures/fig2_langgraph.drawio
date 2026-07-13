@@ -1,55 +1,63 @@
-<mxfile host="app.diagrams.net" agent="visual-rag" version="24.0.0">
+<mxfile host="app.diagrams.net" agent="visual-rag">
   <diagram id="fig2" name="LangGraph agent">
-    <mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="640" math="0" shadow="0">
+    <mxGraphModel dx="949" dy="662" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="640" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-
-        <mxCell id="title" value="W7 LangGraph answer agent — ReAct loop with bounded self-reflection" style="text;fontSize=14;fontStyle=1;fontColor=#0b0b0b;align=left;" vertex="1" parent="1">
-          <mxGeometry x="40" y="20" width="700" height="30" as="geometry" />
+        <mxCell id="title" parent="1" style="text;fontSize=14;fontStyle=1;fontColor=#0b0b0b;align=left;" value="W7 LangGraph answer agent — ReAct loop with bounded self-reflection" vertex="1">
+          <mxGeometry height="30" width="700" x="40" y="20" as="geometry" />
         </mxCell>
-
-        <mxCell id="start" value="" style="ellipse;fillColor=#0b0b0b;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="70" y="300" width="22" height="22" as="geometry" />
+        <mxCell id="start" parent="1" style="ellipse;fillColor=#0b0b0b;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="70" y="300" as="geometry" />
         </mxCell>
-
-        <mxCell id="agentN" value="agent&#10;LLM + tool schemas&#10;rounds ≤ 6" style="rounded=1;fillColor=#fdeecd;strokeColor=#eda100;fontSize=12;fontColor=#0b0b0b;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="180" y="260" width="220" height="100" as="geometry" />
+        <mxCell id="agentN" parent="1" style="rounded=1;fillColor=#fdeecd;strokeColor=#eda100;fontSize=12;fontColor=#0b0b0b;fontStyle=1;" value="agent&#xa;LLM + tool schemas&#xa;rounds ≤ 6" vertex="1">
+          <mxGeometry height="100" width="220" x="180" y="260" as="geometry" />
         </mxCell>
-
-        <mxCell id="toolsN" value="tools&#10;search_video_segments&#10;get_segments_around&#10;(temporal: before / after anchor)" style="rounded=1;fillColor=#c9efe0;strokeColor=#1baf7a;fontSize=12;fontColor=#0b0b0b;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="560" y="90" width="260" height="110" as="geometry" />
+        <mxCell id="toolsN" parent="1" style="rounded=1;fillColor=#c9efe0;strokeColor=#1baf7a;fontSize=12;fontColor=#0b0b0b;fontStyle=1;" value="tools&#xa;search_video_segments&#xa;get_segments_around&#xa;(temporal: before / after anchor)" vertex="1">
+          <mxGeometry height="110" width="260" x="560" y="90" as="geometry" />
         </mxCell>
-
-        <mxCell id="reflectN" value="reflect&#10;audit draft against gathered&#10;evidence · revisions ≤ 1" style="rounded=1;fillColor=#cde2fb;strokeColor=#2a78d6;fontSize=12;fontColor=#0b0b0b;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="560" y="420" width="260" height="100" as="geometry" />
+        <mxCell id="reflectN" parent="1" style="rounded=1;fillColor=#cde2fb;strokeColor=#2a78d6;fontSize=12;fontColor=#0b0b0b;fontStyle=1;" value="reflect&#xa;audit draft against gathered&#xa;evidence · revisions ≤ 1" vertex="1">
+          <mxGeometry height="100" width="260" x="560" y="420" as="geometry" />
         </mxCell>
-
-        <mxCell id="endN" value="" style="ellipse;shape=doubleEllipse;fillColor=#0b0b0b;strokeColor=#0b0b0b;" vertex="1" parent="1">
-          <mxGeometry x="915" y="455" width="30" height="30" as="geometry" />
+        <mxCell id="endN" parent="1" style="ellipse;shape=doubleEllipse;fillColor=#0b0b0b;strokeColor=#0b0b0b;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="915" y="455" as="geometry" />
         </mxCell>
-        <mxCell id="endLbl" value="END&#10;grounded answer" style="text;fontSize=10;fontColor=#52514e;align=center;" vertex="1" parent="1">
-          <mxGeometry x="880" y="490" width="100" height="36" as="geometry" />
+        <mxCell id="endLbl" parent="1" style="text;fontSize=10;fontColor=#52514e;align=center;" value="END&#xa;grounded answer" vertex="1">
+          <mxGeometry height="36" width="100" x="880" y="490" as="geometry" />
         </mxCell>
-
-        <mxCell id="s1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#52514e;" edge="1" parent="1" source="start" target="agentN"><mxGeometry relative="1" as="geometry" /></mxCell>
-
-        <mxCell id="t1" value="tool_calls" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#52514e;fontSize=11;fontColor=#52514e;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.35;entryDx=0;entryDy=0;" edge="1" parent="1" source="agentN" target="toolsN"><mxGeometry relative="1" as="geometry" /></mxCell>
-        <mxCell id="t2" value="tool results&#10;(transcripts + keyframes)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#52514e;fontSize=11;fontColor=#52514e;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="toolsN" target="agentN"><mxGeometry relative="1" as="geometry" /></mxCell>
-
-        <mxCell id="r1" value="draft answer" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#52514e;fontSize=11;fontColor=#52514e;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.35;entryDx=0;entryDy=0;" edge="1" parent="1" source="agentN" target="reflectN"><mxGeometry relative="1" as="geometry" /></mxCell>
-        <mxCell id="r2" value="revise — critique appended&#10;(only if round budget remains)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2a78d6;dashed=1;fontSize=11;fontColor=#2a78d6;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="reflectN" target="agentN"><mxGeometry relative="1" as="geometry" /></mxCell>
-        <mxCell id="r3" value="accept" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#008300;fontSize=11;fontColor=#008300;" edge="1" parent="1" source="reflectN" target="endN"><mxGeometry relative="1" as="geometry" /></mxCell>
-
-        <mxCell id="noteAgent" value="budget exhausted →&#10;forced final answer (tool_choice = none),&#10;stray tool markup stripped" style="rounded=0;fillColor=#ffffff;strokeColor=#898781;dashed=1;fontSize=10;fontColor=#52514e;align=left;spacingLeft=8;" vertex="1" parent="1">
-          <mxGeometry x="120" y="430" width="260" height="70" as="geometry" />
+        <mxCell id="s1" edge="1" parent="1" source="start" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#52514e;" target="agentN">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="na1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#898781;dashed=1;endArrow=none;" edge="1" parent="1" source="noteAgent" target="agentN"><mxGeometry relative="1" as="geometry" /></mxCell>
-
-        <mxCell id="noteReflect" value="checks:&#10;• every [video @ s–e] citation exists in evidence&#10;• claims supported, not invented&#10;• temporal relation to anchor is correct" style="rounded=0;fillColor=#ffffff;strokeColor=#898781;dashed=1;fontSize=10;fontColor=#52514e;align=left;spacingLeft=8;" vertex="1" parent="1">
-          <mxGeometry x="560" y="550" width="300" height="76" as="geometry" />
+        <mxCell id="t1" edge="1" parent="1" source="agentN" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#52514e;fontSize=11;fontColor=#52514e;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.35;entryDx=0;entryDy=0;" target="toolsN" value="tool_calls">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="nr1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#898781;dashed=1;endArrow=none;" edge="1" parent="1" source="noteReflect" target="reflectN"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="t2" edge="1" parent="1" source="toolsN" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#52514e;fontSize=11;fontColor=#52514e;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="agentN" value="tool results&#xa;(transcripts + keyframes)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r1" edge="1" parent="1" source="agentN" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#52514e;fontSize=11;fontColor=#52514e;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.35;entryDx=0;entryDy=0;" target="reflectN" value="draft answer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r2" edge="1" parent="1" source="reflectN" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2a78d6;dashed=1;fontSize=11;fontColor=#2a78d6;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="agentN" value="revise — critique appended&#xa;(only if round budget remains)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r3" edge="1" parent="1" source="reflectN" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#008300;fontSize=11;fontColor=#008300;" target="endN" value="accept">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="noteAgent" parent="1" style="rounded=0;fillColor=#ffffff;strokeColor=#898781;dashed=1;fontSize=10;fontColor=#52514e;align=left;spacingLeft=8;" value="budget exhausted →&#xa;forced final answer (tool_choice = none),&#xa;stray tool markup stripped" vertex="1">
+          <mxGeometry height="70" width="260" x="520" y="275" as="geometry" />
+        </mxCell>
+        <mxCell id="na1" edge="1" parent="1" source="noteAgent" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#898781;dashed=1;endArrow=none;" target="agentN">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="noteReflect" parent="1" style="rounded=0;fillColor=#ffffff;strokeColor=#898781;dashed=1;fontSize=10;fontColor=#52514e;align=left;spacingLeft=8;" value="checks:&#xa;• every [video @ s–e] citation exists in evidence&#xa;• claims supported, not invented&#xa;• temporal relation to anchor is correct" vertex="1">
+          <mxGeometry height="76" width="300" x="540" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="nr1" edge="1" parent="1" source="noteReflect" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#898781;dashed=1;endArrow=none;" target="reflectN">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PALsUPp12alihe8U2vJ9-1" edge="1" parent="1" source="noteAgent" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;innerLoopWaypoints=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="noteAgent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
