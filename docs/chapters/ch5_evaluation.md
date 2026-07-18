@@ -114,6 +114,8 @@ scope, where the best fused configuration (α = 0.8) ties visual-only on R@10
 fusion is catastrophic in corpus scope (R@10 .013) because the text scores act as
 high-variance noise added to a weak-but-real visual signal.
 
+![Late-fusion weight sweep in corpus scope.](../figures/fig4_alpha_sweep.pdf){#fig:alpha-sweep width=82%}
+
 The conclusion is sharper than "tune α": **with this text channel, there is no
 fusion weight at which the transcript embeddings contribute positive evidence.**
 Fusion is not a weighting problem but a channel-quality problem — the actionable
@@ -166,6 +168,8 @@ candidates with a stronger vision model (CLIP ViT-L-14) over pre-computed segmen
 embeddings, fusing the ViT-L ranking with the first-stage ranking by weighted RRF.
 Every segment has keyframes, so the missing-modality problem vanishes. Table 5.2
 and Figure 5.2 (fig5_ablation_ladder) show the ladder at τ = 0.5, corpus scope:
+
+![Retrieval ablation ladder from the baseline to the final configuration.](../figures/fig5_ablation_ladder.pdf){#fig:ablation-ladder width=86%}
 
 **Table 5.2 — Corpus-scope ablation ladder (visual modality, τ = 0.5).**
 
@@ -255,6 +259,8 @@ state machine (W7), which adds the temporal tool (`get_segments_around`) and a
 bounded self-reflection pass that audits the draft answer's citations against the
 gathered evidence before accepting it.
 
+![Question-answering accuracy by question type and agent configuration.](../figures/fig7_qa_by_type.pdf){#fig:qa-by-type width=88%}
+
 **Table 5.4 — Five-choice QA accuracy, 150 val questions (text-only LLM).**
 
 | Agent | Overall | CW (n=61) | TN (n=44) | TC (n=22) | CH (n=21) |
@@ -311,6 +317,8 @@ the answering stage. Together with Section 5.2, this closes the loop on the
 modality question at *both* ends of the pipeline: retrieval needs visual
 embeddings to find the right moment, and generation needs visual evidence to
 describe it.
+
+![White-dog qualitative case: retrieved keyframes and answers under text-only and visual evidence.](../figures/fig8_whitedog_case.pdf){#fig:white-dog width=96%}
 
 ### 5.4.3 Interpreting the .341 floor
 

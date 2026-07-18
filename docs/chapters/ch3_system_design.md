@@ -26,6 +26,8 @@ segments — timestamps, transcripts, and keyframes — are handed as evidence t
 answering agent that produces a grounded response with per-claim timestamp
 citations.
 
+![Visual RAG offline indexing and online retrieval pipeline.](../figures/fig1_pipeline.pdf){#fig:pipeline width=95%}
+
 The offline/online split is more than an engineering convenience. It makes the
 expensive artefacts *reusable and portable* — the index of 567 videos is a few
 hundred megabytes that can be computed once on any GPU and copied anywhere — and
@@ -186,6 +188,8 @@ after observing budget-exhausted revision loops. Second, the graph makes the
 control flow inspectable: every run yields a typed trace of rounds, tool calls,
 and reflections, which Chapter 5 uses for its qualitative analysis.
 
+![LangGraph answering-agent state machine with tools and bounded reflection.](../figures/fig2_langgraph.pdf){#fig:langgraph width=82%}
+
 **Provider abstraction and the evidence channel.** Both agents run against
 either an OpenAI-compatible endpoint (DeepSeek; any local server such as Ollama)
 or the Anthropic API. The abstraction is not merely operational: the two
@@ -211,6 +215,8 @@ tool call and the segments it returned). The toggles map one-to-one onto the
 ablation dimensions of Chapter 5; the interface therefore doubles as a research
 instrument — the qualitative observations cited in Chapters 5 and 6 were made
 through it — and as the project's demonstrable artefact.
+
+![Visual RAG demonstration interface showing search results and timestamped evidence.](../figures/fig10_demo_search.png){#fig:demo width=95%}
 
 ## 3.7 Summary
 

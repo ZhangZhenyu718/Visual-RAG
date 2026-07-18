@@ -1,0 +1,22 @@
+title: |
+  Visual RAG: An Autonomous Visual Search Agent for Video Retrieval
+author: |
+  Zhenyu Zhang --- Master's Thesis (draft)
+documentclass: report
+fontsize: 11pt
+mainfont: Arial
+geometry: margin=1in
+linkcolor: black
+abstract: |
+  Video is widely recorded but remains difficult to search at the moment level, especially
+  when a query expresses causal or temporal intent. This dissertation presents Visual RAG,
+  an agentic retrieval-augmented generation system that indexes timestamped visual and
+  transcript evidence, decomposes questions into retrieval-friendly descriptions, searches
+  and re-ranks candidate moments, and answers with grounded timestamp citations. Evaluation
+  on 3,358 temporally grounded questions over 567 NExT-QA/NExT-GQA videos shows that visual
+  retrieval substantially outperforms transcript retrieval. SigLIP with query decomposition
+  nearly doubles corpus-scope R@1 from 0.026 to 0.048. A LangGraph agent improves five-choice
+  accuracy from 0.447 to 0.547, while supplying visual evidence raises temporal-question
+  accuracy from 0.341 to 0.636. The results distinguish recall, ranking precision, and evidence
+  delivery as separate bottlenecks and provide reproducible guidance for video RAG on consumer
+  hardware.

@@ -1,0 +1,32 @@
+Video is widely recorded but remains difficult to search at the moment
+level, especially when a query expresses causal or temporal intent
+rather than literal visual content. This dissertation presents Visual
+RAG, an end-to-end agentic retrieval-augmented generation system that
+indexes timestamped visual and transcript evidence, decomposes
+natural-language questions into retrieval-friendly descriptions,
+searches and re-ranks candidate moments, and answers with grounded
+timestamp citations. The system is designed to run with modest resources
+by separating an offline indexing stage from a lightweight online query
+path.
+
+The design is evaluated on 3,358 temporally grounded questions over 567
+videos from NExT-QA and NExT-GQA. Visual retrieval substantially
+outperforms transcript retrieval at moment granularity. Replacing the
+baseline CLIP index with SigLIP and adding query decomposition nearly
+doubles corpus-scope recall at rank one from 0.026 to 0.048. A two-stage
+configuration using a cheaper index and a stronger visual re-ranker
+recovers most of the quality of an expensive index. Two negative results
+are also established: naive late fusion with sparse conversational
+transcripts and text cross-encoder re-ranking both reduce retrieval
+quality. At the answering stage, a bounded LangGraph agent improves
+five-choice accuracy from 0.447 to 0.547, while a controlled experiment
+on temporal questions shows that supplying visual evidence raises
+accuracy from 0.341 to 0.636.
+
+The results separate three bottlenecks in video RAG: recall, ranking
+precision, and evidence delivery. Query decomposition, visual
+re-ranking, and multimodal answering address these bottlenecks
+independently and compose effectively. The dissertation contributes a
+reproducible system, evaluation harness, ablation study, and practical
+design guidance for temporally grounded video search on consumer
+hardware.
