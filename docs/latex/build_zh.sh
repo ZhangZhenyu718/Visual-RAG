@@ -26,7 +26,7 @@ for c in $CHAPTERS; do
   fi
 done
 # References chapter (citeproc fills the #refs div; unnumbered, placed before the appendix):
-printf '\n\n# 参考文献 {.unnumbered}\n\n::: {#refs}\n:::\n\n' >> "$tmp"
+printf '\n\n# 参考文献 {.unnumbered}\n\n```{=latex}\n\\markboth{参考文献}{参考文献}\n```\n\n::: {#refs}\n:::\n\n' >> "$tmp"
 if [ -f "../zh/A_reproduction.md" ]; then
   printf '\n\n```{=latex}\n\\appendix\n```\n\n' >> "$tmp"
   preprocess "../zh/A_reproduction.md" >> "$tmp"; included="$included A"

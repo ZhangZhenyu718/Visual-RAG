@@ -9,6 +9,8 @@ classoption:
 mainfont: Arial
 geometry: margin=1in
 linkcolor: black
+nocite: |
+  @*
 abstract: |
   视频被广泛记录，却仍难以按具体时刻检索，尤其当查询表达因果或时序意图时更是如此。本文提出
   Visual RAG：一个智能体式检索增强生成系统。系统为带时间戳的视觉与转录证据建立索引，将问题分解为

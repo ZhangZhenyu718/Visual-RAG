@@ -14,7 +14,8 @@ preprocess() {
   # drop HTML comment blocks; strip "Chapter N."/"Appendix A." from # headings and
   # "N.M "/"A.1 " prefixes from ##/### headings (LaTeX auto-numbers both).
   sed -e '/<!--/,/-->/d' "$1" \
-    | sed -E 's/^# (Chapter [0-9]+\.|Appendix [A-Z]\.) /# /' \
+    | sed -E 's/^# Chapter [0-9]+ (—|-) /# /' \
+    | sed -E 's/^# Appendix [A-Z]+ (—|-) /# /' \
     | sed -E 's/^(#{2,3}) ([A-Z]\.)?[0-9]+(\.[0-9]+)* /\1 /' \
     | sed -e 's/≈/approximately /g' -e 's/✓/yes/g' \
           -e 's/10⁴/10,000/g' -e 's/∧/and/g' -e 's/∈/in/g'
@@ -22,7 +23,7 @@ preprocess() {
 
 for c in $CHAPTERS; do preprocess "../chapters/$c.md" >> "$tmp"; printf '\n\n' >> "$tmp"; done
 # References chapter (citeproc fills the #refs div; unnumbered, placed before the appendix):
-printf '\n\n# References {.unnumbered}\n\n::: {#refs}\n:::\n\n' >> "$tmp"
+printf '\n\n# References {.unnumbered}\n\n```{=latex}\n\\markboth{References}{References}\n```\n\n::: {#refs}\n:::\n\n' >> "$tmp"
 printf '\n\n```{=latex}\n\\appendix\n```\n\n' >> "$tmp"
 preprocess "../chapters/appendix_b_tables.md" >> "$tmp"
 
