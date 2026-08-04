@@ -1,0 +1,15 @@
+\contentsline {chapteratlist}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {chapteratlist}{\numberline {2}Background and Related Work}{5}{chapter.2}%
+\contentsline {chapteratlist}{\numberline {3}Model, Algorithms, and Methodology}{11}{chapter.3}%
+\contentsline {chapteratlist}{\numberline {4}The Unified Benchmark}{19}{chapter.4}%
+\contentsline {chapteratlist}{\numberline {5}What Governs the Loss: Order Error and ACI's Bound}{25}{chapter.5}%
+\contentsline {chapteratlist}{\numberline {6}Test-and-Fallback in Depth}{29}{chapter.6}%
+\contentsline {chapteratlist}{\numberline {7}External Validity}{35}{chapter.7}%
+\contentsline {chapteratlist}{\numberline {8}Exploratory Directions and Negative Results}{39}{chapter.8}%
+\contentsline {chapteratlist}{\numberline {9}The Impossibility Theorem: Why the Wall Is Necessary}{45}{chapter.9}%
+\contentsline {chapteratlist}{\numberline {10}Application Case Study: AI-Inference Serving}{51}{chapter.10}%
+\contentsline {chapteratlist}{\numberline {11}Conclusion and Future Work}{57}{chapter.11}%
+\contentsline {chapteratlist}{\numberline {A}Reproduction Guide}{61}{appendix.A}%
+\contentsline {chapteratlist}{\numberline {B}Proof Details for the Impossibility Theorem}{67}{appendix.B}%
+\contentsline {chapteratlist}{\nonumberline Bibliography}{77}{chapter*.5}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

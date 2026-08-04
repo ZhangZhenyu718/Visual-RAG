@@ -1,0 +1,71 @@
+% Generic single-column thesis template (swap this preamble for the school's later).
+% Chapters live in ch/*.tex, auto-generated from ../<chapter>.md by build.sh (pandoc).
+\documentclass[11pt,a4paper]{report}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} % scalable font, required for microtype expansion under pdflatex
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{parskip}
+
+\graphicspath{{../../../results/}} % PNGs live in matching-experiments/results/
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+
+% pandoc emits \tightlist for compact lists; define it so fragments compile standalone.
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% pandoc emits \pandocbounded around wide images; make it a no-op passthrough.
+\providecommand{\pandocbounded}[1]{#1}
+
+\title{The Limits of Predictions for Online Bipartite Matching:\\
+       A Unified Experimental Study and an Impossibility Theorem}
+\author{[Author Name]\\[4pt]\small [Institution] --- Master's Thesis (draft)}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Learning-augmented (``with-predictions'') algorithms for online bipartite matching have
+proliferated: MinPredictedDegree consumes a per-node degree predictor, and a family of
+\emph{test-and-fallback} schemes tests a type-histogram prediction on a sublinear prefix of
+the arrivals before committing to follow it or to fall back on an advice-free baseline.
+These algorithms have been analyzed in isolation. We give the first unified experimental
+study, placing all of them on a single harness with a common structured prediction-error
+model, a common optimum, and confidence intervals, across synthetic graphs, six real-world
+graphs, and real request traces. Our central finding is that on average-case inputs the
+value of predictions is \textbf{robustness insurance, not a performance lever}: the
+advice-free baseline is already near-optimal, so the consistency upside of good advice is
+small, whereas unguarded prediction-following can crash far below the baseline, and the
+practical worth of the sophisticated algorithms is that they never do. We then prove this
+wall is necessary: no test-and-fallback algorithm whose test inspects only a sublinear
+prefix can be both consistent and robust on strong-baseline instances, because the structure
+that makes the prefix distribution-test feasible is the structure that makes the baseline
+near-optimal. The proof reduces safe advice-use to \emph{tolerant} distribution testing and
+invokes its near-linear sample-complexity barrier. Experiments and theory together deliver
+one message: \emph{where you can test the advice, you do not need it.}
+\end{abstract}
+
+\tableofcontents
+
+\input{ch/01_introduction}
+\input{ch/02_background}
+\input{ch/03_model_methodology}
+\input{ch/04_unified_benchmark}
+\input{ch/05_order_error}
+\input{ch/06_test_and_fallback}
+\input{ch/07_external_validity}
+\input{ch/08_exploratory_negatives}
+\input{ch/09_theory}
+\input{ch/10_serving_case_study}
+\input{ch/11_conclusion}
+
+\appendix
+\input{ch/A_reproduction}
+
+\end{document}

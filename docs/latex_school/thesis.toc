@@ -1,0 +1,63 @@
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Research questions}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Contributions}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Dissertation structure}{4}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Background and Related Work}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Contrastive vision-language pretraining}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Video moment retrieval, video QA, and temporal grounding}{6}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Retrieval-augmented generation}{7}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Agentic LLM frameworks}{8}{section.2.4}%
+\contentsline {section}{\numberline {2.5}LLM-driven video understanding and video RAG}{9}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Summary of the gap}{9}{section.2.6}%
+\contentsline {chapter}{\numberline {3}System Design}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Architecture overview}{11}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Ingestion and temporal segmentation}{13}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Embedding and dual-modality indexing}{14}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Retrieval}{15}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Agentic answering}{16}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Demonstration interface}{18}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Summary}{19}{section.3.7}%
+\contentsline {chapter}{\numberline {4}Implementation}{21}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Technology stack}{21}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Fitting the pipeline into 6 GB}{22}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Cost engineering for LLM-dependent components}{23}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Provider-agnostic answering and its pitfalls}{24}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Evaluation harness and provenance}{25}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Summary}{25}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Evaluation}{26}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Experimental setup}{26}{section.5.1}%
+\contentsline {section}{\numberline {5.2}RQ1 --- Multi-modal retrieval against a text-only baseline}{28}{section.5.2}%
+\contentsline {section}{\numberline {5.3}RQ2 --- Embedding and retrieval strategy ablations}{29}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Negative result: naive late fusion never beats visual-only}{29}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Query decomposition recalls more, but no more precisely}{30}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Second-stage re-ranking: a negative and a positive result}{31}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Backbone: SigLIP dominates, and two-stage retrieval matches one-stage}{33}{subsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.3.5}Threshold sensitivity}{34}{subsection.5.3.5}%
+\contentsline {section}{\numberline {5.4}RQ3 --- Agentic question answering}{35}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Agent comparison}{35}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Controlled experiment: visual evidence at the answering stage}{37}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Interpreting the .341 floor}{38}{subsection.5.4.3}%
+\contentsline {section}{\numberline {5.5}System-level measurements}{39}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Summary}{39}{section.5.6}%
+\contentsline {chapter}{\numberline {6}Discussion}{41}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Synthesis: three separable problems}{41}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Limitations}{42}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Threats to validity}{44}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Summary}{45}{section.6.4}%
+\contentsline {chapter}{\numberline {7}Conclusion and Future Work}{46}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Answers to the research questions}{46}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Future work}{47}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Closing remark}{48}{section.7.3}%
+\contentsline {chapter}{\numberline {A}Full per-question-type result tables}{49}{appendix.A}%
+\contentsline {section}{\numberline {A.1}ViT-B-32 baseline --- corpus scope (visual, tau 0.5)}{49}{section.A.1}%
+\contentsline {section}{\numberline {A.2}ViT-B-32 baseline --- video scope (visual, tau 0.5)}{50}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Decomposition + visual re-ranking --- corpus scope}{51}{section.A.3}%
+\contentsline {section}{\numberline {A.4}Decomposition + visual re-ranking --- video scope}{52}{section.A.4}%
+\contentsline {section}{\numberline {A.5}SigLIP + decomposition (final best) --- corpus scope}{53}{section.A.5}%
+\contentsline {section}{\numberline {A.6}SigLIP + decomposition (final best) --- video scope}{54}{section.A.6}%
+\contentsline {section}{\numberline {A.7}QA accuracy by type --- simple agent, text-only (150 questions)}{55}{section.A.7}%
+\contentsline {section}{\numberline {A.8}QA accuracy by type --- graph agent, text-only (150 questions)}{56}{section.A.8}%
+\contentsline {section}{\numberline {A.9}QA accuracy --- multimodal simple agent (44 TN questions)}{56}{section.A.9}%
+\contentsline {chapter}{\nonumberline Bibliography}{57}{chapter*.2}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

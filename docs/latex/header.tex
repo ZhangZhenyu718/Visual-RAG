@@ -1,0 +1,8 @@
+% Extra preamble injected via pandoc -H (amssymb for \checkmark).
+\usepackage{amssymb}
+\usepackage{float} % [H] placement for the combined Table 4.1
+\usepackage{iftex}
+\ifXeTeX
+  \usepackage{xeCJK}
+  \setCJKmainfont{Songti SC}
+\fi
