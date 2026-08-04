@@ -38,26 +38,28 @@
 \contentsline {subsection}{\numberline {5.4.1}Agent comparison}{35}{subsection.5.4.1}%
 \contentsline {subsection}{\numberline {5.4.2}Controlled experiment: visual evidence at the answering stage}{37}{subsection.5.4.2}%
 \contentsline {subsection}{\numberline {5.4.3}Interpreting the .341 floor}{38}{subsection.5.4.3}%
-\contentsline {section}{\numberline {5.5}System-level measurements}{39}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Summary}{39}{section.5.6}%
-\contentsline {chapter}{\numberline {6}Discussion}{41}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Synthesis: three separable problems}{41}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Limitations}{42}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Threats to validity}{44}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Summary}{45}{section.6.4}%
-\contentsline {chapter}{\numberline {7}Conclusion and Future Work}{46}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Answers to the research questions}{46}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Future work}{47}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Closing remark}{48}{section.7.3}%
-\contentsline {chapter}{\numberline {A}Full per-question-type result tables}{49}{appendix.A}%
-\contentsline {section}{\numberline {A.1}ViT-B-32 baseline --- corpus scope (visual, tau 0.5)}{49}{section.A.1}%
-\contentsline {section}{\numberline {A.2}ViT-B-32 baseline --- video scope (visual, tau 0.5)}{50}{section.A.2}%
-\contentsline {section}{\numberline {A.3}Decomposition + visual re-ranking --- corpus scope}{51}{section.A.3}%
-\contentsline {section}{\numberline {A.4}Decomposition + visual re-ranking --- video scope}{52}{section.A.4}%
-\contentsline {section}{\numberline {A.5}SigLIP + decomposition (final best) --- corpus scope}{53}{section.A.5}%
-\contentsline {section}{\numberline {A.6}SigLIP + decomposition (final best) --- video scope}{54}{section.A.6}%
-\contentsline {section}{\numberline {A.7}QA accuracy by type --- simple agent, text-only (150 questions)}{55}{section.A.7}%
-\contentsline {section}{\numberline {A.8}QA accuracy by type --- graph agent, text-only (150 questions)}{56}{section.A.8}%
-\contentsline {section}{\numberline {A.9}QA accuracy --- multimodal simple agent (44 TN questions)}{56}{section.A.9}%
-\contentsline {chapter}{\nonumberline Bibliography}{57}{chapter*.2}%
+\contentsline {subsection}{\numberline {5.4.4}Best-configuration run and contextualisation with published systems}{38}{subsection.5.4.4}%
+\contentsline {section}{\numberline {5.5}System-level measurements}{41}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Summary}{42}{section.5.6}%
+\contentsline {chapter}{\numberline {6}Discussion}{43}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Synthesis: three separable problems}{43}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Limitations}{44}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Threats to validity}{46}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Summary}{47}{section.6.4}%
+\contentsline {chapter}{\numberline {7}Conclusion and Future Work}{49}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Answers to the research questions}{49}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Future work}{50}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Closing remark}{51}{section.7.3}%
+\def \@chapapp {\appendixname }
+\contentsline {chapter}{\numberline {A}Full per-question-type result tables}{52}{appendix.A}%
+\contentsline {section}{\numberline {A.1}ViT-B-32 baseline --- corpus scope (visual, tau 0.5)}{52}{section.A.1}%
+\contentsline {section}{\numberline {A.2}ViT-B-32 baseline --- video scope (visual, tau 0.5)}{53}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Decomposition + visual re-ranking --- corpus scope}{54}{section.A.3}%
+\contentsline {section}{\numberline {A.4}Decomposition + visual re-ranking --- video scope}{55}{section.A.4}%
+\contentsline {section}{\numberline {A.5}SigLIP + decomposition (final best) --- corpus scope}{56}{section.A.5}%
+\contentsline {section}{\numberline {A.6}SigLIP + decomposition (final best) --- video scope}{57}{section.A.6}%
+\contentsline {section}{\numberline {A.7}QA accuracy by type --- simple agent, text-only (150 questions)}{58}{section.A.7}%
+\contentsline {section}{\numberline {A.8}QA accuracy by type --- graph agent, text-only (150 questions)}{59}{section.A.8}%
+\contentsline {section}{\numberline {A.9}QA accuracy --- multimodal simple agent (44 TN questions)}{59}{section.A.9}%
+\contentsline {chapter}{\nonumberline Bibliography}{60}{chapter*.2}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
