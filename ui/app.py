@@ -165,12 +165,9 @@ def tab_ask(cfg_path: str):
         provider = st.selectbox("LLM", ["deepseek", "claude"], index=0,
                                 help="deepseek: 便宜, 纯文本证据 | claude: 关键帧图片进上下文")
         agent_kind = st.selectbox("Agent", ["simple", "graph"], index=1,
-                                  help="graph = LangGraph ReAct + 自反思 (W7); claude 仅支持 simple")
+                                  help="graph = LangGraph ReAct + 自反思 (W7), 两种 LLM 均支持")
         video_scope = st.text_input("限定 video_id (可选)", "")
 
-    if provider == "claude" and agent_kind == "graph":
-        st.warning("graph agent 目前仅支持 DeepSeek; 已自动切换为 simple。")
-        agent_kind = "simple"
     key_name = "DEEPSEEK_API_KEY" if provider == "deepseek" else "ANTHROPIC_API_KEY"
     if not os.environ.get(key_name):
         st.error(f"缺少 {key_name} 环境变量")

@@ -1,0 +1,41 @@
+# Best-known QA configuration (SOTA attempt): SigLIP index + ViT-L visual
+# re-ranking inside the agent's search tool + multimodal Claude answerer.
+
+paths:
+  data_root: data
+  videos: data/nextqa/videos
+  annotations: data/nextqa/annotations
+  artifacts: artifacts
+  frames: artifacts/frames
+  transcripts: artifacts/transcripts
+  ocr: artifacts/ocr
+  embeddings: artifacts/embeddings_siglip
+  chroma: artifacts/chroma_siglip
+
+device: auto
+
+embed:
+  backbone: ViT-SO400M-14-SigLIP-384
+  pretrained: webli
+  batch_size: 8
+
+segment:
+  window_sec: 8.0
+  stride_sec: 4.0
+
+rerank:
+  method: visual                    # second opinion from a DIFFERENT backbone than the index
+  candidates: 30
+  retrieval_weight: 0.5
+  visual_backbone: ViT-L-14
+  visual_pretrained: laion2b_s32b_b82k
+  visual_embeddings: artifacts/embeddings_vitl
+
+agent:
+  provider: claude                  # multimodal: keyframes enter the evidence
+  k: 6
+  modality: visual
+  alpha: 0.8
+  max_images: 6
+  max_tokens: 16000
+  use_rerank: true                  # agent's search tool re-ranks its candidates

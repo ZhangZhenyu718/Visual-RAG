@@ -150,7 +150,9 @@ class VideoQA:
         self.alpha = float(cfg.get_path("agent.alpha", 0.8))
         self.max_images = int(cfg.get_path("agent.max_images", 6))
         self.max_tokens = int(cfg.get_path("agent.max_tokens", 16000))
+        self.use_rerank = bool(cfg.get_path("agent.use_rerank", False))
         self._client = None
+        self._reranker = None
 
     @property
     def client(self):
@@ -169,10 +171,20 @@ class VideoQA:
     def search(self, query: str, modality: Optional[str] = None,
                video_id: Optional[str] = None) -> list[dict]:
         where = {"video_id": video_id} if video_id else None
-        return self.retriever.search(
-            query, modality=modality or self.modality, k=self.k,
+        if not self.use_rerank:
+            return self.retriever.search(
+                query, modality=modality or self.modality, k=self.k,
+                alpha=self.alpha, where=where,
+            )
+        # Best config: retrieve a wider pool, then second-stage visual re-rank.
+        if self._reranker is None:
+            from visualrag.retrieve.rerank import make_reranker
+            self._reranker = make_reranker(self.cfg)
+        pool = self.retriever.search(
+            query, modality=modality or self.modality, k=self._reranker.candidates,
             alpha=self.alpha, where=where,
         )
+        return self._reranker.rerank(query, pool, k=self.k)
 
     def hits_to_blocks(self, hits: list[dict]) -> list[dict]:
         """Render retrieval hits as tool_result content blocks (text + keyframes)."""
