@@ -110,5 +110,9 @@ Primary: **NExT-QA** (causal/temporal multiple-choice QA) + **NExT-GQA**
   quality); tau sensitivity: at tau=0.3 the best config localizes in-video at
   R@5 .677 / R@10 .780; open-source LLM plumbing ready (`agent.provider: local`,
   any OpenAI-compatible endpoint — run pending Ollama install).
-- **W9+ (next):** open-source LLM QA comparison, user study, dissertation writing
+- **Best-config run:** SigLIP retrieval + visual rerank + multimodal LangGraph agent
+  → **.727** five-way accuracy on the 150-question grounded sample (95% CI
+  [.655, .798]) — at, and in point estimate above, published zero-shot SOTA
+  (VideoAgent .713, full val). `results/qa_best_150.json`, §5.4.4.
+- **W9+ (next):** open-source LLM QA comparison, user study, dissertation polish
 - **W8–12:** evaluation, ablations, open-source LLM comparison, demo, dissertation

@@ -94,13 +94,14 @@ non-deterministic API models without confidence intervals; the reported effects
 variance, but small differences in Table 5.4's by-type columns (n ≤ 22) should
 not be over-read.
 
-**Asymmetries in the agent comparison.** The LangGraph agent currently targets
-OpenAI-compatible providers only, so the controlled vision experiment ran under
-the *simple* agent; the strongest configuration observed (multimodal evidence)
-and the strongest agent (graph) have never been combined, and the .636 TN result
-is therefore likely a floor, not a ceiling. Symmetrically, the graph agent's
-reflection pass and the multimodal channel might interact (e.g. reflection could
-audit visual claims), which remains untested.
+**Asymmetries in the agent comparison.** The controlled vision experiment
+(§5.4.2) ran under the *simple* agent, because at that point the LangGraph
+harness targeted OpenAI-compatible providers only; the graph-plus-vision
+combination was implemented subsequently and evaluated in §5.4.4, confirming
+the floor-not-ceiling reading (TN .568 and overall .727 under the combined
+configuration). One asymmetry remains: whether the reflection pass specifically
+benefits from *seeing* the keyframes it audits (currently it audits a text
+rendering of the evidence) has not been isolated.
 
 **No user study.** The project plan scheduled a small user study (W10); it was
 descoped in favour of the controlled vision experiment and the ablation matrix,

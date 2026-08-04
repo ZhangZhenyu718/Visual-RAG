@@ -128,6 +128,23 @@ OpenAI-compatible endpoint (`agent.base_url`, default Ollama at
 this machine). Encoder fix that unblocked SigLIP: `CLIPEncoder.dim` now probes
 visual.output_dim → embed_dim → dummy text encode (SigLIP timm towers).
 
+## Best-configuration QA run — SOTA comparison (2026-07-14)
+
+```bash
+python scripts/eval_qa.py --config configs/agent_best.yaml --agent graph \
+    --limit 150 --workers 3 --json artifacts/qa_best_150.json
+```
+
+configs/agent_best.yaml = SigLIP index + ViT-L visual rerank inside the agent's
+search tool (`agent.use_rerank`) + LangGraph agent + claude-opus-4-8 multimodal
+(graph agent gained Anthropic support for this run). Result: **.727** overall
+(95% CI [.655, .798], 0 errors, ≈$25): CW .852 / CH .762 / TC .682 / TN .568.
+Published zero-shot anchors (full val): VideoAgent .713, LLoVi ≈.677, SeViLA-ZS
+≈.636. Grounding anchors (NExT-GQA test, answer-grounding mIoU): SeViLA .217,
+Temp[CLIP] NG+ .121 vs our val-set retrieval tIoU@1 .230 (SigLIP+decompose).
+Claim discipline: "at, and in point estimate above, published zero-shot SOTA
+on our 150-question grounded sample" — full-split run (~$250) would settle it.
+
 ## Demo assets
 
 - 4-video smoke-test corpus (`configs/demo.yaml`, `data/demo/videos/`, git-ignored):

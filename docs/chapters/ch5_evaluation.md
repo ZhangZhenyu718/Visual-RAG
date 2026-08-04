@@ -255,12 +255,13 @@ state machine (W7), which adds the temporal tool (`get_segments_around`) and a
 bounded self-reflection pass that audits the draft answer's citations against the
 gathered evidence before accepting it.
 
-**Table 5.4 — Five-choice QA accuracy, 150 val questions (text-only LLM).**
+**Table 5.4 — Five-choice QA accuracy, 150 val questions.**
 
-| Agent | Overall | CW (n=61) | TN (n=44) | TC (n=22) | CH (n=21) |
-|---|---|---|---|---|---|
-| Simple loop (W4) | .447 | .459 | .341 | .591 | .429 |
-| LangGraph (W7) | **.547** | **.590** | .341 | **.773** | **.619** |
+| Agent | Evidence | Overall | CW (n=61) | TN (n=44) | TC (n=22) | CH (n=21) |
+|---|---|---|---|---|---|---|
+| Simple loop (W4) | text-only | .447 | .459 | .341 | .591 | .429 |
+| LangGraph (W7) | text-only | .547 | .590 | .341 | .773 | .619 |
+| LangGraph, best config (§5.4.4) | multimodal | **.727** | **.852** | **.568** | .682 | **.762** |
 
 Both agents clear the .20 random floor by a wide margin, confirming that
 retrieved transcript evidence carries usable signal. The graph agent improves
@@ -322,6 +323,60 @@ whatever fraction of .341 is prior-driven, the additional .295 from keyframes is
 not, since priors were identical across conditions. A fuller prior-only baseline
 (answering without any tool access) is left to future work.
 
+### 5.4.4 Best-configuration run and contextualisation with published systems
+
+The strongest components identified across this chapter were finally combined
+into one configuration: the SigLIP index (§5.3.4) with ViT-L visual re-ranking
+inside the agent's search tool, the LangGraph agent (§5.4.1), and the
+multimodal evidence channel (§5.4.2). On the same 150-question sample this
+configuration reaches **.727** overall (Table 5.4, bottom row; 95% CI
+[.655, .798]; zero failed runs; ≈US$25 of API usage). The gains concentrate
+where each component predicts: causal questions reach .852 (CW) and .762 (CH)
+— the multimodal evidence lets the model *see* the causes it previously had to
+guess — and TN rises from .341 to .568, confirming §5.4.2's diagnosis while
+remaining the hardest type.
+
+To situate these numbers, Table 5.7 lists published zero-shot results on the
+NExT-QA validation set alongside ours, and the closest published temporal
+grounding figures on NExT-GQA.
+
+**Table 5.7 — Contextualisation with published systems (protocols differ; see
+caveats below).**
+
+| System | Protocol | NExT-QA val acc. |
+|---|---|---|
+| Random | — | .200 |
+| SeViLA zero-shot (Yu et al., 2023) | full val, fine-tuned localiser | ≈.636 |
+| LLoVi (Zhang et al., 2024) | full val, GPT-based | ≈.677 |
+| VideoAgent (Wang et al., 2024) | full val, GPT-4 + iterative frame selection | .713 |
+| **This work, best config** | grounded 150-q sample, ≤6 segments/search | **.727** [.655, .798] |
+
+| Grounding | Protocol | metric |
+|---|---|---|
+| FrozenBiLM (NG+) (Xiao et al., 2024) | NExT-GQA test, answer grounding | mIoU .096 |
+| Temp[CLIP] (NG+) (Xiao et al., 2024) | NExT-GQA test, answer grounding | mIoU .121 |
+| SeViLA (Xiao et al., 2024) | NExT-GQA test, answer grounding | mIoU .217 |
+| **This work, SigLIP + decomposition** | NExT-GQA val, top-1 retrieved segment | tIoU@1 **.230** |
+
+Three caveats govern the reading of Table 5.7, and are repeated wherever these
+numbers are cited. First, the QA comparison is *indicative, not a leaderboard
+claim*: published systems evaluate the full ≈5,000-question validation set
+while ours is a 150-question sample of the grounded subset, so the honest
+statement is that the best configuration performs **at, and in point estimate
+above, the published zero-shot state of the art on our sample**, with a
+confidence interval that overlaps the strongest published figure. Second, the
+comparison is not equal-resource: our system answers from at most six
+retrieved segments per search under ≈US$0.17 per question, but benefits from a
+stronger underlying LLM (claude-opus-4-8) than the GPT-4-era published
+systems — LLM generation and method both differ, and this chapter's internal
+ablations (not Table 5.7) are what isolate the method's contribution. Third,
+the grounding rows compare related but non-identical protocols (their mIoU
+grounds a QA model's answer on the test split; our tIoU@1 scores the top
+retrieved segment on val); we include them because both measure "where the
+system points for its evidence", where our retrieval-first design proves
+competitive with — and in point estimate above — published weakly-supervised
+grounding, while additionally emitting the citation as a first-class output.
+
 ## 5.5 System-level measurements
 
 The offline stage processed all 567 videos in ≈2 h on a single RTX 4050 laptop
@@ -351,5 +406,10 @@ matches the expensive index outright. Against RQ3, a LangGraph agent with
 temporal tools and self-reflection improves QA accuracy by 10 points over a
 single-loop agent, and a controlled evidence-channel experiment shows visual
 evidence nearly doubling temporal-next accuracy — establishing that modality
-matters at the answering stage independently of retrieval. Chapter 6 discusses
-the limitations and generality of these findings.
+matters at the answering stage independently of retrieval. Combining the
+best-measured component in every slot yields .727 five-way accuracy — at, and
+in point estimate above, the published zero-shot state of the art on our
+sample — while temporal grounding proves competitive with published
+weakly-supervised answer-grounding methods under a stricter,
+citation-producing protocol. Chapter 6 discusses the limitations and
+generality of these findings.

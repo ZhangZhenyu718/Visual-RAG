@@ -53,11 +53,13 @@ disentangling the informativeness/readability confound of §6.2 — and only the
 revisit late fusion and text re-ranking, whose negative results are conditional
 on the broken channel.
 
-**Combine the graph agent with multimodal evidence.** The strongest agent and
-the strongest evidence channel were never run together; extending the LangGraph
-harness to the Anthropic API (or a vision-capable open model) tests whether
-reflection can audit *visual* claims, and how far beyond .636 the TN ceiling
-moves.
+**Scale the best-configuration evaluation.** The graph-plus-multimodal
+combination now exists and reaches .727 on the 150-question sample (§5.4.4);
+the direct next step is statistical rather than architectural — evaluating the
+full grounded split (≈US$250) would shrink the confidence interval from ±7 to
+±1.5 points and settle the comparison with published zero-shot systems, and a
+multimodal *reflection* pass (auditing the keyframes themselves) is the one
+untested component interaction.
 
 **Complete the open-source model comparison.** The provider abstraction already
 targets any OpenAI-compatible endpoint; running the QA suite against local
