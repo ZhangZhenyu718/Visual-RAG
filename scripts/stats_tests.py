@@ -96,6 +96,18 @@ def main() -> None:
         report("C. Evidence stack: claude prior-only -> best config (150 questions)",
                load(prior_c), load(best))
 
+    # D. Same model, prior only vs the text-only agent stacks (deepseek, 150 q).
+    prior_d = rd / "qa_prior_deepseek_150.json"
+    if prior_d.exists():
+        dp = load(prior_d)
+        report("D1. Evidence stack: deepseek prior-only -> simple agent (150 questions)",
+               dp, simple)
+        report("D2. Evidence stack: deepseek prior-only -> graph agent (150 questions)",
+               dp, graph)
+        dp_tn = {k: v for k, v in dp.items() if k in tn_keys}
+        report("D3. TN subset: deepseek prior-only -> graph agent (44 TN questions)",
+               dp_tn, graph_tn)
+
 
 if __name__ == "__main__":
     main()

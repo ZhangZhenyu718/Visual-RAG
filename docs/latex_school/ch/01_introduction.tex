@@ -122,8 +122,13 @@ noted and empirically grounded in Chapter 5:
   controlled evidence-channel experiment holding all else fixed, a
   demonstration that supplying keyframes to the answering model nearly
   doubles accuracy on \emph{what-happened-next} questions (.341
-  \ensuremath{\rightarrow} .636). Modality, the experiment shows,
-  matters independently at both ends of the pipeline.
+  \ensuremath{\rightarrow} .636). Prior-only baselines complete the
+  accounting: with no evidence at all both LLMs score .560, the
+  text-only stack at best matches that prior --- falling significantly
+  below it on temporal-next questions --- while the multimodal stack
+  exceeds its own prior by +.167. Modality matters independently at both
+  ends of the pipeline, and visual evidence is the only channel measured
+  that beats the bare model.
 \item
   \textbf{Reproducible research artefacts}: the complete codebase,
   evaluation harness, per-experiment result files, provenance log

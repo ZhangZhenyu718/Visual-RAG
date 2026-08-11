@@ -36,13 +36,19 @@ retrieval layer, decomposition is safe-by-construction (the original query is
 always retained) and lifts recall. At the answering layer, a LangGraph state
 machine that anchors events, walks the timeline, and audits its own citations
 raises five-way QA accuracy from .447 to .547 over a single-loop agent, with
-the largest gains on causal and temporal-current questions. The controlled
-evidence-channel experiment completes the answer: agentic machinery alone
-cannot compensate for evidence the model cannot perceive — supplying keyframes
-to the answerer nearly doubled temporal-next accuracy (.341 → .636) with
-everything else held fixed. An effective video-QA agent is therefore *jointly*
-a retrieval planner and a multimodal reader; either half alone leaves the
-other's headroom unrealised.
+the largest gains on causal and temporal-current questions. The prior-only
+baselines calibrate what that machinery buys: with text-only evidence even the
+better agent only recovers the bare model's answer prior (.560), because the
+channel's genuine gains (temporal-current) are cancelled by its losses on
+silent visual actions (temporal-next, where delivered transcripts drag the
+model below its own prior). The controlled evidence-channel experiment
+completes the answer: agentic machinery alone cannot compensate for evidence
+the model cannot perceive — supplying keyframes to the answerer nearly doubled
+temporal-next accuracy (.341 → .636) with everything else held fixed, and the
+full multimodal stack is the only configuration to beat its model's prior
+(+.167). An effective video-QA agent is therefore *jointly* a retrieval
+planner and a multimodal reader; either half alone leaves the other's headroom
+unrealised.
 
 ## 7.2 Future work
 

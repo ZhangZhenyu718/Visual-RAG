@@ -24,7 +24,9 @@ transcripts and text cross-encoder re-ranking both reduce retrieval
 quality. At the answering stage, a bounded LangGraph agent improves
 five-choice accuracy from 0.447 to 0.547, while a controlled experiment
 on temporal questions shows that supplying visual evidence raises
-accuracy from 0.341 to 0.636.
+accuracy from 0.341 to 0.636. Prior-only baselines calibrate these
+gains: only the multimodal configuration beats the bare model's answer
+prior, and transcript-only evidence can fall significantly below it.
 
 The results separate three bottlenecks in video RAG: recall, ranking
 precision, and evidence delivery. Query decomposition, visual

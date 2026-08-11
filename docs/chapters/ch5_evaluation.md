@@ -266,19 +266,20 @@ gathered evidence before accepting it.
 
 ![Question-answering accuracy by question type and agent configuration.](../figures/fig7_qa_by_type.pdf){#fig:qa-by-type width=88%}
 
-**Table 5.4 — Five-choice QA accuracy, 150 val questions.** Rows 1–2 use the
-text-only LLM (deepseek-chat); the last two rows use claude-opus-4-8
-(§5.4.3–§5.4.4).
+**Table 5.4 — Five-choice QA accuracy, 150 val questions.**
 
 | Agent | Evidence | Overall | CW (n=61) | TN (n=44) | TC (n=22) | CH (n=21) |
 |---|---|---|---|---|---|---|
-| Simple loop (W4) | text-only | .447 | .459 | .341 | .591 | .429 |
-| LangGraph (W7) | text-only | .547 | .590 | .341 | .773 | .619 |
-| Prior-only, no tools (§5.4.3) | none | .560 | .639 | .455 | .591 | .476 |
-| LangGraph, best config (§5.4.4) | multimodal | **.727** | **.852** | **.568** | .682 | **.762** |
+| Simple loop (W4), deepseek-chat | text-only | .447 | .459 | .341 | .591 | .429 |
+| LangGraph (W7), deepseek-chat | text-only | .547 | .590 | .341 | .773 | .619 |
+| Prior-only, deepseek-chat (§5.4.3) | none | .560 | .574 | .568 | .545 | .524 |
+| Prior-only, claude-opus-4-8 (§5.4.3) | none | .560 | .639 | .455 | .591 | .476 |
+| LangGraph best config, claude-opus-4-8 (§5.4.4) | multimodal | **.727** | **.852** | .568 | .682 | **.762** |
 
-Both agents clear the .20 random floor by a wide margin, confirming that
-retrieved transcript evidence carries usable signal. The graph agent improves
+Both agents clear the .20 random floor by a wide margin — although §5.4.3 will
+show that the random floor is the wrong bar, since the bare model answers at
+.560 with no evidence at all; the informative comparison in this section is
+between the two agents, which saw identical evidence. The graph agent improves
 overall accuracy by 10 points (+22% relative), with the gains concentrated in
 causal questions (CW +13.1, CH +19.0 points) and temporal-current questions
 (TC +18.2). Because both agents answered the identical 150 questions, the
@@ -330,38 +331,57 @@ sniffs/nuzzles the small black puppy [28–36 s]" — matching the ground truth
 almost verbatim from the keyframes alone; Figure 5.4 (fig8_whitedog_case) shows
 the keyframes in question beside the two models' verbatim answers. Because everything except the evidence
 modality was held constant, the improvement is attributable to visual evidence at
-the answering stage. Together with Section 5.2, this closes the loop on the
+the answering stage; §5.4.3 adds the absolute calibration — .636 also clears the
+multimodal model's own no-evidence prior on TN (.455) by +.18. Together with Section 5.2, this closes the loop on the
 modality question at *both* ends of the pipeline: retrieval needs visual
 embeddings to find the right moment, and generation needs visual evidence to
 describe it.
 
 ![White-dog qualitative case: retrieved keyframes and answers under text-only and visual evidence.](../figures/fig8_whitedog_case.pdf){#fig:white-dog width=96%}
 
-### 5.4.3 Interpreting the .341 floor
+### 5.4.3 Prior-only baselines: what the .341 floor actually was
 
-Two readings of the text-only TN floor deserve separation. Part of the .14 margin
-above random reflects genuine transcript evidence; part likely reflects
+Two readings of the text-only TN floor deserve separation. Part of the margin
+above random could reflect genuine transcript evidence; part could reflect
 NExT-QA answer priors — a language model can sometimes reject implausible
-distractors without any evidence. The controlled experiment bounds the effect:
-whatever fraction of .341 is prior-driven, the additional .295 from keyframes is
-not, since priors were identical across conditions.
+distractors without any evidence. To separate them, both models answered the
+same 150 questions with *no tool access at all* — the question and its five
+options, nothing else (Table 5.4, prior-only rows; 150/150 completed each).
 
-A **prior-only baseline** makes the prior component concrete: the multimodal
-model (claude-opus-4-8) answering with *no tool access at all* — the question
-and its five options, nothing else — scores .560 overall and .455 on TN
-(Table 5.4, third row; 150/150 completed). Three consequences follow. First,
-NExT-QA's multiple-choice format carries a substantial answer prior for a
-strong LLM: .560 without any evidence, far above the .200 random floor, which
-calibrates every absolute accuracy in this chapter. Second, evidence still
-matters even for the strongest model tested: on the identical 150 questions its
-full retrieval-and-evidence stack adds +.167 over its own prior (.560 → .727;
-37 questions flip to correct against 12 that flip away; exact McNemar
-p = .0005, paired-bootstrap 95% CI [+.080, +.253]), and keyframe evidence
-lifts TN from a .455 prior to .636 in the controlled experiment. Third, the
-baseline sharpens the resource caveat of §5.4.4: the stronger model's prior
-*alone* (.560) already exceeds the text-only agent stack's .547, so
-comparisons across Table 5.4's rows conflate base-model strength with evidence
-delivery — the clean attributions are the within-model ones.
+The result overturns the natural reading of the floor. Both models score .560
+overall without evidence — coincidentally identical headlines over different
+by-type profiles — and the text-only model's own TN prior is **.568**. The
+.341 text-only TN figure was therefore never a floor: it is a *suppression*.
+Given transcript-only evidence on questions whose answers are visual, the same
+model performs .227 **below** its own prior (paired on the 44 TN questions:
+14 flips away from correct against 4 toward it; exact McNemar p = .031,
+bootstrap 95% CI [−.409, −.045]). The mechanism is visible in the §5.4.1
+transcripts: instructed to ground its answer in evidence, the model dutifully
+reasons from segments that contain nothing relevant — and abandons the prior
+that would have served it better. When the channel carries no signal for the
+question asked, delivered evidence is not merely unhelpful; it is
+anti-informative.
+
+The same accounting reframes the agent comparison. The simple agent's .447
+sits significantly below the bare prior (p = .024, CI [−.207, −.020]); the
+graph agent's .547 recovers only to parity with it (p = .88). And the recovery
+is not uniform but a sum of opposing type-level effects: transcript evidence
+genuinely beats the prior where speech describes the concurrent scene
+(TC .773 vs a .545 prior), is roughly neutral on the causal types (CW .590 vs
+.574; CH .619 vs .524), and is destructive on TN as above. Averaged over the
+type mix, the best text-only stack lands where the bare model started.
+
+Visual evidence is the only channel measured that beats the prior. Within the
+multimodal model, the full stack adds +.167 over its own prior (.560 → .727;
+37 flips up against 12 down; exact McNemar p = .0005, CI [+.080, +.253]), and
+on TN the keyframe evidence of §5.4.2 lifts its .455 prior to .636. Three
+consequences follow. First, the .200 random floor is the wrong bar for
+multiple-choice video QA — the right bar is the bare model's prior, and every
+absolute accuracy in this chapter should be calibrated against .560. Second,
+the clean attributions are within-model, within-channel pairs; comparisons
+across Table 5.4's rows conflate base-model strength, evidence channel, and
+agent machinery. Third, grounding discipline has a measurable cost when the
+channel is empty — a design implication taken up in §6.1.
 
 ### 5.4.4 Best-configuration run and contextualisation with published systems
 
@@ -451,9 +471,11 @@ temporal tools and self-reflection improves QA accuracy by 10 points over a
 single-loop agent (McNemar p = .031), and a controlled evidence-channel
 experiment shows visual evidence nearly doubling temporal-next accuracy
 (p = .004) — establishing that modality matters at the answering stage
-independently of retrieval. A prior-only baseline calibrates all QA numbers:
-the strongest model scores .560 with no evidence at all, and the full stack's
-+.167 above that prior (p = .0005) is the method's within-model contribution.
+independently of retrieval. Prior-only baselines calibrate all QA numbers: both models score .560
+with no evidence at all; the best text-only stack merely matches that prior —
+and on temporal-next questions falls .227 below it (p = .031) — while the
+multimodal stack exceeds its own prior by +.167 (p = .0005). Visual evidence
+is the only channel measured that beats the bare model.
 Combining the best-measured component in every slot yields .727 five-way
 accuracy — at, and in point estimate above, the published zero-shot state of
 the art on our sample — while temporal grounding proves competitive with

@@ -102,8 +102,12 @@ and empirically grounded in Chapter 5:
    .447 to .547 over a single-loop agent — and, via a controlled
    evidence-channel experiment holding all else fixed, a demonstration that
    supplying keyframes to the answering model nearly doubles accuracy on
-   *what-happened-next* questions (.341 → .636). Modality, the experiment
-   shows, matters independently at both ends of the pipeline.
+   *what-happened-next* questions (.341 → .636). Prior-only baselines complete
+   the accounting: with no evidence at all both LLMs score .560, the text-only
+   stack at best matches that prior — falling significantly below it on
+   temporal-next questions — while the multimodal stack exceeds its own prior
+   by +.167. Modality matters independently at both ends of the pipeline, and
+   visual evidence is the only channel measured that beats the bare model.
 
 5. **Reproducible research artefacts**: the complete codebase, evaluation
    harness, per-experiment result files, provenance log mapping every reported

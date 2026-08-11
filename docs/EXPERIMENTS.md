@@ -160,18 +160,25 @@ stack within-model (claude prior-only→best config, 150 q): 37 up vs 12 down,
 p = .0005, CI [+.080, +.253]. Reported in §5.4.1–§5.4.3; limitation wording
 updated in §6.2.
 
-## Prior-only baseline (supervisor revision, 2026-08-05)
+## Prior-only baselines (supervisor revision, 2026-08-05)
 
 ```bash
 python scripts/eval_qa.py --agent prior --provider claude --limit 150 \
     --workers 4 --json artifacts/qa_prior_claude_150.json
+python scripts/eval_qa.py --agent prior --provider deepseek --limit 150 \
+    --workers 8 --json artifacts/qa_prior_deepseek_150.json
 ```
 
 No tools, no evidence — question + 5 options only (`PRIOR_TEMPLATE`).
-claude-opus-4-8: **.560** overall (CW .639 / TN .455 / TC .591 / CH .476,
-0 errors) → Table 5.4 row 3, §5.4.3, §6.3. Within-model attribution for the
-full stack: .560 → .727 (+.167). DeepSeek arm pending a valid
-DEEPSEEK_API_KEY (stored key was rejected with 401 on 2026-08-05).
+claude-opus-4-8: **.560** overall (CW .639 / TN .455 / TC .591 / CH .476).
+deepseek-chat: **.560** overall (CW .574 / **TN .568** / TC .545 / CH .524).
+0 errors both. Headline finding: the .341 text-only TN "floor" sits **below**
+deepseek's own prior (.568) — evidence-induced suppression, McNemar p = .031,
+CI [−.409, −.045] (stats_tests.py D3). Simple agent < prior overall (p = .024);
+graph agent ≈ prior (p = .88); only the multimodal stack beats its prior
+(+.167, p = .0005). Rewrote §5.4.3 (now "Prior-only baselines"), §5.4.1/5.4.2
+calibration sentences, §5.6, §6.1 modality-role thread, §6.3, ch1
+contribution 4, ch7 RQ3. Table 5.4 now five rows (both priors).
 
 ## Demo assets
 

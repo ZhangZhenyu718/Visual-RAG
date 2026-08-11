@@ -21,6 +21,7 @@ abstract: |
   retrieval substantially outperforms transcript retrieval. SigLIP with query decomposition
   nearly doubles corpus-scope R@1 from 0.026 to 0.048. A LangGraph agent improves five-choice
   accuracy from 0.447 to 0.547, while supplying visual evidence raises temporal-question
-  accuracy from 0.341 to 0.636. The results distinguish recall, ranking precision, and evidence
+  accuracy from 0.341 to 0.636; prior-only baselines show that only the multimodal
+  configuration beats the bare model's answer prior. The results distinguish recall, ranking precision, and evidence
   delivery as separate bottlenecks and provide reproducible guidance for video RAG on consumer
   hardware.

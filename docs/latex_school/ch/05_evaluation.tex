@@ -383,9 +383,7 @@ accepting it.
 configuration.}
 \end{figure}
 
-\textbf{Table 5.4 --- Five-choice QA accuracy, 150 val questions.} Rows
-1--2 use the text-only LLM (deepseek-chat); the last two rows use
-claude-opus-4-8 (§5.4.3--§5.4.4).
+\textbf{Table 5.4 --- Five-choice QA accuracy, 150 val questions.}
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
@@ -415,29 +413,36 @@ CH (n=21)
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Simple loop (W4) & text-only & .447 & .459 & .341 & .591 & .429 \\
-LangGraph (W7) & text-only & .547 & .590 & .341 & .773 & .619 \\
-Prior-only, no tools (§5.4.3) & none & .560 & .639 & .455 & .591 &
-.476 \\
-LangGraph, best config (§5.4.4) & multimodal & \textbf{.727} &
-\textbf{.852} & \textbf{.568} & .682 & \textbf{.762} \\
+Simple loop (W4), deepseek-chat & text-only & .447 & .459 & .341 & .591
+& .429 \\
+LangGraph (W7), deepseek-chat & text-only & .547 & .590 & .341 & .773 &
+.619 \\
+Prior-only, deepseek-chat (§5.4.3) & none & .560 & .574 & .568 & .545 &
+.524 \\
+Prior-only, claude-opus-4-8 (§5.4.3) & none & .560 & .639 & .455 & .591
+& .476 \\
+LangGraph best config, claude-opus-4-8 (§5.4.4) & multimodal &
+\textbf{.727} & \textbf{.852} & .568 & .682 & \textbf{.762} \\
 \end{longtable}
 
-Both agents clear the .20 random floor by a wide margin, confirming that
-retrieved transcript evidence carries usable signal. The graph agent
-improves overall accuracy by 10 points (+22\% relative), with the gains
-concentrated in causal questions (CW +13.1, CH +19.0 points) and
-temporal-current questions (TC +18.2). Because both agents answered the
-identical 150 questions, the comparison is paired: 29 questions flipped
-to correct under the graph agent against 14 that flipped to incorrect,
-giving an exact McNemar p = .031, with a paired-bootstrap 95\% CI on the
-difference of {[}+.013, +.187{]} (10,000 resamples) --- the improvement
-is unlikely to be run-to-run LLM variance. Inspection of transcripts
-attributes the gains to three behaviours: systematic anchor-then-walk
-retrieval on temporal questions, reformulated follow-up searches when
-initial evidence is thin, and the reflection pass --- which in observed
-runs rejected drafts whose citations did not appear in the gathered
-evidence, forcing a grounded rewrite.
+Both agents clear the .20 random floor by a wide margin --- although
+§5.4.3 will show that the random floor is the wrong bar, since the bare
+model answers at .560 with no evidence at all; the informative
+comparison in this section is between the two agents, which saw
+identical evidence. The graph agent improves overall accuracy by 10
+points (+22\% relative), with the gains concentrated in causal questions
+(CW +13.1, CH +19.0 points) and temporal-current questions (TC +18.2).
+Because both agents answered the identical 150 questions, the comparison
+is paired: 29 questions flipped to correct under the graph agent against
+14 that flipped to incorrect, giving an exact McNemar p = .031, with a
+paired-bootstrap 95\% CI on the difference of {[}+.013, +.187{]} (10,000
+resamples) --- the improvement is unlikely to be run-to-run LLM
+variance. Inspection of transcripts attributes the gains to three
+behaviours: systematic anchor-then-walk retrieval on temporal questions,
+reformulated follow-up searches when initial evidence is thin, and the
+reflection pass --- which in observed runs rejected drafts whose
+citations did not appear in the gathered evidence, forcing a grounded
+rewrite.
 
 The striking exception is TN (\emph{what happened next}), frozen at .341
 for \textbf{both} agents. Qualitative inspection shows the temporal
@@ -487,10 +492,12 @@ the ground truth almost verbatim from the keyframes alone; Figure 5.4
 (fig8\_whitedog\_case) shows the keyframes in question beside the two
 models' verbatim answers. Because everything except the evidence
 modality was held constant, the improvement is attributable to visual
-evidence at the answering stage. Together with Section 5.2, this closes
-the loop on the modality question at \emph{both} ends of the pipeline:
-retrieval needs visual embeddings to find the right moment, and
-generation needs visual evidence to describe it.
+evidence at the answering stage; §5.4.3 adds the absolute calibration
+--- .636 also clears the multimodal model's own no-evidence prior on TN
+(.455) by +.18. Together with Section 5.2, this closes the loop on the
+modality question at \emph{both} ends of the pipeline: retrieval needs
+visual embeddings to find the right moment, and generation needs visual
+evidence to describe it.
 
 \begin{figure}
 \centering
@@ -499,35 +506,55 @@ generation needs visual evidence to describe it.
 under text-only and visual evidence.}
 \end{figure}
 
-\subsection{Interpreting the .341
-floor}
+\subsection{Prior-only baselines: what the .341 floor actually
+was}
 
 Two readings of the text-only TN floor deserve separation. Part of the
-.14 margin above random reflects genuine transcript evidence; part
-likely reflects NExT-QA answer priors --- a language model can sometimes
-reject implausible distractors without any evidence. The controlled
-experiment bounds the effect: whatever fraction of .341 is prior-driven,
-the additional .295 from keyframes is not, since priors were identical
-across conditions.
+margin above random could reflect genuine transcript evidence; part
+could reflect NExT-QA answer priors --- a language model can sometimes
+reject implausible distractors without any evidence. To separate them,
+both models answered the same 150 questions with \emph{no tool access at
+all} --- the question and its five options, nothing else (Table 5.4,
+prior-only rows; 150/150 completed each).
 
-A \textbf{prior-only baseline} makes the prior component concrete: the
-multimodal model (claude-opus-4-8) answering with \emph{no tool access
-at all} --- the question and its five options, nothing else --- scores
-.560 overall and .455 on TN (Table 5.4, third row; 150/150 completed).
-Three consequences follow. First, NExT-QA's multiple-choice format
-carries a substantial answer prior for a strong LLM: .560 without any
-evidence, far above the .200 random floor, which calibrates every
-absolute accuracy in this chapter. Second, evidence still matters even
-for the strongest model tested: on the identical 150 questions its full
-retrieval-and-evidence stack adds +.167 over its own prior (.560
-\ensuremath{\rightarrow} .727; 37 questions flip to correct against 12
-that flip away; exact McNemar p = .0005, paired-bootstrap 95\% CI
-{[}+.080, +.253{]}), and keyframe evidence lifts TN from a .455 prior to
-.636 in the controlled experiment. Third, the baseline sharpens the
-resource caveat of §5.4.4: the stronger model's prior \emph{alone}
-(.560) already exceeds the text-only agent stack's .547, so comparisons
-across Table 5.4's rows conflate base-model strength with evidence
-delivery --- the clean attributions are the within-model ones.
+The result overturns the natural reading of the floor. Both models score
+.560 overall without evidence --- coincidentally identical headlines
+over different by-type profiles --- and the text-only model's own TN
+prior is \textbf{.568}. The .341 text-only TN figure was therefore never
+a floor: it is a \emph{suppression}. Given transcript-only evidence on
+questions whose answers are visual, the same model performs .227
+\textbf{below} its own prior (paired on the 44 TN questions: 14 flips
+away from correct against 4 toward it; exact McNemar p = .031, bootstrap
+95\% CI {[}−.409, −.045{]}). The mechanism is visible in the §5.4.1
+transcripts: instructed to ground its answer in evidence, the model
+dutifully reasons from segments that contain nothing relevant --- and
+abandons the prior that would have served it better. When the channel
+carries no signal for the question asked, delivered evidence is not
+merely unhelpful; it is anti-informative.
+
+The same accounting reframes the agent comparison. The simple agent's
+.447 sits significantly below the bare prior (p = .024, CI {[}−.207,
+−.020{]}); the graph agent's .547 recovers only to parity with it (p =
+.88). And the recovery is not uniform but a sum of opposing type-level
+effects: transcript evidence genuinely beats the prior where speech
+describes the concurrent scene (TC .773 vs a .545 prior), is roughly
+neutral on the causal types (CW .590 vs .574; CH .619 vs .524), and is
+destructive on TN as above. Averaged over the type mix, the best
+text-only stack lands where the bare model started.
+
+Visual evidence is the only channel measured that beats the prior.
+Within the multimodal model, the full stack adds +.167 over its own
+prior (.560 \ensuremath{\rightarrow} .727; 37 flips up against 12 down;
+exact McNemar p = .0005, CI {[}+.080, +.253{]}), and on TN the keyframe
+evidence of §5.4.2 lifts its .455 prior to .636. Three consequences
+follow. First, the .200 random floor is the wrong bar for
+multiple-choice video QA --- the right bar is the bare model's prior,
+and every absolute accuracy in this chapter should be calibrated against
+.560. Second, the clean attributions are within-model, within-channel
+pairs; comparisons across Table 5.4's rows conflate base-model strength,
+evidence channel, and agent machinery. Third, grounding discipline has a
+measurable cost when the channel is empty --- a design implication taken
+up in §6.1.
 
 \subsection{Best-configuration run and contextualisation with published
 systems}
@@ -662,12 +689,15 @@ tools and self-reflection improves QA accuracy by 10 points over a
 single-loop agent (McNemar p = .031), and a controlled evidence-channel
 experiment shows visual evidence nearly doubling temporal-next accuracy
 (p = .004) --- establishing that modality matters at the answering stage
-independently of retrieval. A prior-only baseline calibrates all QA
-numbers: the strongest model scores .560 with no evidence at all, and
-the full stack's +.167 above that prior (p = .0005) is the method's
-within-model contribution. Combining the best-measured component in
-every slot yields .727 five-way accuracy --- at, and in point estimate
-above, the published zero-shot state of the art on our sample --- while
-temporal grounding proves competitive with published weakly-supervised
-answer-grounding methods under a stricter, citation-producing protocol.
-Chapter 6 discusses the limitations and generality of these findings.
+independently of retrieval. Prior-only baselines calibrate all QA
+numbers: both models score .560 with no evidence at all; the best
+text-only stack merely matches that prior --- and on temporal-next
+questions falls .227 below it (p = .031) --- while the multimodal stack
+exceeds its own prior by +.167 (p = .0005). Visual evidence is the only
+channel measured that beats the bare model. Combining the best-measured
+component in every slot yields .727 five-way accuracy --- at, and in
+point estimate above, the published zero-shot state of the art on our
+sample --- while temporal grounding proves competitive with published
+weakly-supervised answer-grounding methods under a stricter,
+citation-producing protocol. Chapter 6 discusses the limitations and
+generality of these findings.

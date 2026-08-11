@@ -33,17 +33,24 @@ deep recall to separate recall from precision problems, and compare
 text-only against multimodal answering to expose evidence starvation.
 
 A second thread worth drawing out is that \textbf{the value of a
-modality is role-dependent, not absolute}. The transcript channel failed
-twice as a \emph{retrieval key} --- as embeddings (§5.2) and as a
-cross-encoder signal (§5.3.3) --- yet the same transcripts, delivered as
-\emph{evidence} to the answering LLM, sustain QA accuracy far above the
-random floor (.547 overall) and clearly carry the causal questions,
-where much of the gain over chance cannot plausibly come from priors
-alone. Speech in everyday video is a poor pointer to \emph{where}
-something happens, but once the right moment is found it still describes
-some of \emph{what} happens. Modality ablations that report a single
-``contribution'' number conflate these two roles; our results suggest
-they should be measured separately.
+modality is role- and question-dependent, not absolute}. The transcript
+channel failed twice as a \emph{retrieval key} --- as embeddings (§5.2)
+and as a cross-encoder signal (§5.3.3) --- and the prior-only baselines
+of §5.4.3 discipline any remaining optimism about its third role as
+\emph{evidence}: the best text-only stack (.547) merely matches the bare
+model's answer prior (.560), and the apparent causal gains largely
+dissolve against that bar (CW .590 against a .574 prior). What survives
+is sharply type-dependent. Transcript evidence genuinely beats the prior
+where speech describes the concurrent scene (TC .773 vs .545) and falls
+far below it where the answer is a silent visual action (TN .341 vs
+.568) --- an instructed-grounding effect in which the model abandons a
+useful prior in favour of evidence that contains nothing. Speech in
+everyday video is a poor pointer to \emph{where} something happens, and
+describes \emph{what} happens only when someone happens to narrate it.
+Modality ablations that report a single ``contribution'' number conflate
+roles and question types; our results suggest both splits are necessary
+--- and that any evidence-grounded system should be benchmarked against
+the bare model's prior, not against random.
 
 Finally, the two-stage equivalence result (§5.3.4) has an architectural
 implication beyond this project. At 5,725 segments, indexing with the
@@ -137,11 +144,12 @@ format admits answer-prior effects: a language model can reject
 implausible distractors without evidence. The controlled experiment
 bounds this --- priors were identical across both evidence conditions,
 so the +29.5-point effect cannot be prior-driven --- and the prior-only
-baseline (§5.4.3) measures the prior directly for the multimodal model:
-.560 with no evidence at all, which is why this dissertation rests its
-QA claims on paired within-model comparisons rather than absolute
-accuracies. The corresponding prior-only run for the text-only model
-would complete the decomposition of the .341 floor specifically.
+baselines (§5.4.3) measure the prior directly for both models (.560 each
+with no evidence at all), completing the decomposition: the .341
+text-only TN figure turned out to sit \emph{below} the model's own
+prior, so what looked like weak evidence was evidence-induced
+suppression. This is why the dissertation rests its QA claims on paired
+within-model comparisons rather than absolute accuracies.
 
 \textbf{Internal validity.} The decomposition cache is shared verbatim
 across all configurations that use it, eliminating decomposition
