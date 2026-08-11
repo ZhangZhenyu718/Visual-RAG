@@ -145,6 +145,34 @@ Temp[CLIP] NG+ .121 vs our val-set retrieval tIoU@1 .230 (SigLIP+decompose).
 Claim discipline: "at, and in point estimate above, published zero-shot SOTA
 on our 150-question grounded sample" — full-split run (~$250) would settle it.
 
+## Paired significance tests (supervisor revision, 2026-08-05)
+
+```bash
+python scripts/stats_tests.py
+```
+
+Exact McNemar + paired bootstrap (10k resamples, seed 0) over the per-question
+outcomes already in `results/`. Agent effect (simple→graph, 150 paired q):
+29 flips up vs 14 down, p = .031, diff 95% CI [+.013, +.187]. Evidence-channel
+effect (text-only graph→multimodal, same 44 TN q): 16 up vs 3 down, p = .004,
+CI [+.114, +.455] (vs simple agent: p = .007, CI [+.114, +.477]). Evidence
+stack within-model (claude prior-only→best config, 150 q): 37 up vs 12 down,
+p = .0005, CI [+.080, +.253]. Reported in §5.4.1–§5.4.3; limitation wording
+updated in §6.2.
+
+## Prior-only baseline (supervisor revision, 2026-08-05)
+
+```bash
+python scripts/eval_qa.py --agent prior --provider claude --limit 150 \
+    --workers 4 --json artifacts/qa_prior_claude_150.json
+```
+
+No tools, no evidence — question + 5 options only (`PRIOR_TEMPLATE`).
+claude-opus-4-8: **.560** overall (CW .639 / TN .455 / TC .591 / CH .476,
+0 errors) → Table 5.4 row 3, §5.4.3, §6.3. Within-model attribution for the
+full stack: .560 → .727 (+.167). DeepSeek arm pending a valid
+DEEPSEEK_API_KEY (stored key was rejected with 401 on 2026-08-05).
+
 ## Demo assets
 
 - 4-video smoke-test corpus (`configs/demo.yaml`, `data/demo/videos/`, git-ignored):

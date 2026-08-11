@@ -2,7 +2,7 @@
 """Visual RAG demo UI (W10 demo / plan `ui/`): retrieval with timestamp-jump
 playback + agent QA.
 
-    streamlit run ui/app.py
+    run_demo.bat  (or: D:/Anaconda/envs/visualrag/python.exe -m streamlit run ui/app.py)
 
 Tabs:
   1. 片段检索 — query -> (optional decompose/rerank) -> segments with keyframes,
@@ -18,6 +18,18 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import streamlit as st
+
+# Fail fast with a fix, not a traceback, when launched from the wrong env
+# (a bare `streamlit run` resolves to the base env, which lacks chromadb).
+import importlib.util
+
+if importlib.util.find_spec("chromadb") is None:
+    st.error(
+        "当前 Python 环境缺少 `chromadb` —— 你大概率用 base 环境的 streamlit 启动了。\n\n"
+        "请改用仓库根目录的 **run_demo.bat**（双击即可），或在终端运行：\n\n"
+        "```\nD:/Anaconda/envs/visualrag/python.exe -m streamlit run ui/app.py\n```"
+    )
+    st.stop()
 
 from visualrag.utils.config import load_config
 

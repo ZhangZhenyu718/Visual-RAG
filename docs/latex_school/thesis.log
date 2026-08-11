@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.4)  4 AUG 2026 23:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.4)  11 AUG 2026 23:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1612,23 +1612,31 @@ Package typearea Info: These are the values describing the layout:
 (typearea)              on input line 76.
 Package typearea Info: Using dirty hack to recalculate internal output
 (typearea)             dimensions of LaTeX on input line 76.
-(abstract.tex) [2
+(abstract.tex
+LaTeX Font Info:    Trying to load font information for TS1+mlmr on input line 
+14.
+
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/mlmodern\ts1mlmr.fd
+File: ts1mlmr.fd 2021/01/11 v1.0 Font defs for mlmodern
+))
+[2
 
 
-] [3
+{C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}] [
+3] [4
 
 ]
-<sig.png, id=18, 502.87875pt x 101.37875pt>
+<sig.png, id=21, 502.87875pt x 101.37875pt>
 File: sig.png Graphic file (type png)
 <use sig.png>
-Package pdftex.def Info: sig.png  used on input line 116.
+Package pdftex.def Info: sig.png  used on input line 102.
 (pdftex.def)             Requested size: 113.81102pt x 22.9438pt.
- [4
+ [5
 
  <./sig.png>]
-Package hyperref Info: Option `pageanchor' set `true' on input line 118.
-Package tocbasic Info: character protrusion at toc deactivated on input line 12
-5.
+Package hyperref Info: Option `pageanchor' set `true' on input line 104.
+Package tocbasic Info: character protrusion at toc deactivated on input line 11
+1.
  (thesis.toc [1
 
 
@@ -1638,8 +1646,7 @@ Package tocbasic Info: character protrusion at toc deactivated on input line 12
 \tf@toc=\write4
 \openout4 = `thesis.toc'.
 
- [3]
-(ch/01_introduction.tex
+ [3] (ch/01_introduction.tex
 chapter 1.
 Package hyperref Info: bookmark level for unknown chapteratlist defaults to 0 o
 n input line 1.
@@ -1647,14 +1654,8 @@ n input line 1.
 
 
 
-]
-LaTeX Font Info:    Trying to load font information for TS1+mlmr on input line 
-48.
- (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/mlmodern\ts1mlmr.fd
-File: ts1mlmr.fd 2021/01/11 v1.0 Font defs for mlmodern
-) [2{C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc
-}] [3]) (ch/02_related_work.tex [4{C:/Users/20821/AppData/Local/Programs/MiKTeX
-/fonts/enc/dvips/lm/lm-mathsy.enc}]
+] [2] [3{C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mat
+hsy.enc}]) (ch/02_related_work.tex [4] [5]
 chapter 2.
 LaTeX Font Info:    Trying to load font information for T1+mlmtt on input line 
 9.
@@ -1666,30 +1667,30 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-[5
+[6
 
 
-] [6] [7] [8]) (ch/03_system_design.tex [9] [10]
+] [7] [8] [9]) (ch/03_system_design.tex [10] [11]
 chapter 3.
-[11
+[12
 
 
 ]
 
 pdfTeX warning: pdflatex.exe (file ../figures/fig1_pipeline.pdf): PDF inclusion
 : found PDF version <1.7>, but at most version <1.5> allowed
-<../figures/fig1_pipeline.pdf, id=219, 896.38889pt x 636.45775pt>
+<../figures/fig1_pipeline.pdf, id=227, 896.38889pt x 636.45775pt>
 File: ../figures/fig1_pipeline.pdf Graphic file (type pdf)
 <use ../figures/fig1_pipeline.pdf>
 Package pdftex.def Info: ../figures/fig1_pipeline.pdf  used on input line 34.
 (pdftex.def)             Requested size: 397.33937pt x 282.12054pt.
-[12
+[13
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.60 
-      <../figures/fig1_pipeline.pdf>] [13] [14] [15{C:/Users/20821/AppData/Loca
+      <../figures/fig1_pipeline.pdf>] [14] [15] [16{C:/Users/20821/AppData/Loca
 l/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/20821/AppData/Local/Pr
 ograms/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}]
 Overfull \hbox (70.89674pt too wide) in paragraph at lines 187--197
@@ -1697,31 +1698,31 @@ Overfull \hbox (70.89674pt too wide) in paragraph at lines 187--197
 's tool-use be-haviour. \T1/mlmtt/m/n/10.95 get_segments_around(video_id,
  []
 
-[16]
+[17]
 
 pdfTeX warning: pdflatex.exe (file ../figures/fig2_langgraph.pdf): PDF inclusio
 n: found PDF version <1.7>, but at most version <1.5> allowed
-<../figures/fig2_langgraph.pdf, id=263, 722.7pt x 462.76888pt>
+<../figures/fig2_langgraph.pdf, id=271, 722.7pt x 462.76888pt>
 File: ../figures/fig2_langgraph.pdf Graphic file (type pdf)
 <use ../figures/fig2_langgraph.pdf>
 Package pdftex.def Info: ../figures/fig2_langgraph.pdf  used on input line 223.
 
 (pdftex.def)             Requested size: 342.9773pt x 219.61977pt.
-[17] [18
+[18] [19
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.256 
        <../figures/fig2_langgraph.pdf>]
-<../figures/fig10_demo_search.png, id=288, 1445.4pt x 1505.625pt>
+<../figures/fig10_demo_search.png, id=295, 1445.4pt x 1505.625pt>
 File: ../figures/fig10_demo_search.png Graphic file (type png)
 <use ../figures/fig10_demo_search.png>
 Package pdftex.def Info: ../figures/fig10_demo_search.png  used on input line 2
 59.
 (pdftex.def)             Requested size: 397.34288pt x 413.89883pt.
-) (ch/04_implementation.tex [19]
-[20
+) (ch/04_implementation.tex [20]
+[21
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -1729,138 +1730,138 @@ has been already used, duplicate ignored
 l.1 \chapter
             {Implementation} <../figures/fig10_demo_search.png (PNG copy)>]
 chapter 4.
-ignored error: Infinite glue shrinkage found in box being split [21
+ignored error: Infinite glue shrinkage found in box being split [22
 
 
-] [22]
-[23]
+] [23]
+[24]
 Overfull \hbox (2.02094pt too wide) in paragraph at lines 143--156
 \T1/mlmtt/m/n/10.95 --agent\T1/mlmr/m/n/10.95 (-20) , \T1/mlmtt/m/n/10.95 --pro
 vider\T1/mlmr/m/n/10.95 (-20) ) over per-condition YAML con-fig-u-ra-tions, and
  emits a self-describing
  []
 
-[24]) (ch/05_evaluation.tex [25]
+[25]) (ch/05_evaluation.tex [26]
 chapter 5.
-[26
+[27
 
 
-] [27] [28]
-<../figures/fig4_alpha_sweep.pdf, id=333, 455.30101pt x 245.718pt>
+] [28]
+ignored error: Infinite glue shrinkage found in box being split [29] [30]
+<../figures/fig4_alpha_sweep.pdf, id=345, 455.30101pt x 245.718pt>
 File: ../figures/fig4_alpha_sweep.pdf Graphic file (type pdf)
 <use ../figures/fig4_alpha_sweep.pdf>
 Package pdftex.def Info: ../figures/fig4_alpha_sweep.pdf  used on input line 14
-1.
+7.
 (pdftex.def)             Requested size: 342.98248pt x 185.10164pt.
- [29] [30
+
+[31
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.167 
-       <../figures/fig4_alpha_sweep.pdf>] [31]
-<../figures/fig5_ablation_ladder.pdf, id=367, 455.30101pt x 195.129pt>
+l.160 
+       <../figures/fig4_alpha_sweep.pdf>] [32]
+<../figures/fig5_ablation_ladder.pdf, id=374, 455.30101pt x 195.129pt>
 File: ../figures/fig5_ablation_ladder.pdf Graphic file (type pdf)
 <use ../figures/fig5_ablation_ladder.pdf>
 Package pdftex.def Info: ../figures/fig5_ablation_ladder.pdf  used on input lin
-e 211.
+e 217.
 (pdftex.def)             Requested size: 359.71164pt x 154.16211pt.
 
-Overfull \hbox (4.69333pt too wide) in paragraph at lines 228--229
+Overfull \hbox (4.69333pt too wide) in paragraph at lines 234--235
 []\T1/mlmr/m/n/10.95 (-20) Configuration  
  []
 
-ignored error: Infinite glue shrinkage found in box being split [32
+[33
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.251 \end{longtable}
-                      <../figures/fig5_ablation_ladder.pdf>]
-Overfull \hbox (0.68408pt too wide) in paragraph at lines 277--288
+l.257 \end{longtable}
+                      <../figures/fig5_ablation_ladder.pdf>] [34]
+Overfull \hbox (0.68408pt too wide) in paragraph at lines 283--294
 \T1/mlmr/m/n/10.95 (-20) is statistically indistinguishable from ViT-B \T1/mlmr
 /m/it/10.95 (-20) plus \T1/mlmr/m/n/10.95 (-20) ViT-L re-ranking (.029/.087/.12
 1/.053) ---
  []
 
-[33]
-ignored error: Infinite glue shrinkage found in box being split [34]
-<../figures/fig7_qa_by_type.pdf, id=399, 455.30101pt x 231.26399pt>
+[35] [36]
+<../figures/fig7_qa_by_type.pdf, id=411, 455.30101pt x 231.26399pt>
 File: ../figures/fig7_qa_by_type.pdf Graphic file (type pdf)
 <use ../figures/fig7_qa_by_type.pdf>
-Package pdftex.def Info: ../figures/fig7_qa_by_type.pdf  used on input line 375
+Package pdftex.def Info: ../figures/fig7_qa_by_type.pdf  used on input line 381
 .
 (pdftex.def)             Requested size: 368.07622pt x 186.95932pt.
 
-Overfull \hbox (0.10036pt too wide) in alignment at lines 390--408
+Overfull \hbox (0.10036pt too wide) in alignment at lines 397--415
  [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (0.10036pt too wide) in alignment at lines 408--410
+Overfull \hbox (0.10036pt too wide) in alignment at lines 415--417
  [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (3.83229pt too wide) in paragraph at lines 412--412
+Overfull \hbox (3.83229pt too wide) in paragraph at lines 419--419
 []|\T1/mlmr/m/n/10.95 (-20) LangGraph 
  []
 
 
-Overfull \hbox (5.29105pt too wide) in paragraph at lines 413--413
+Overfull \hbox (5.29105pt too wide) in paragraph at lines 422--422
 []|\T1/mlmr/m/n/10.95 (-20) LangGraph, 
  []
 
 
-Overfull \hbox (4.17468pt too wide) in paragraph at lines 413--413
+Overfull \hbox (4.17468pt too wide) in paragraph at lines 422--422
 []|\T1/mlmr/m/n/10.95 (-20) multimodal|  
  []
 
 
-Overfull \hbox (0.10036pt too wide) in alignment at lines 410--415
+Overfull \hbox (0.10036pt too wide) in alignment at lines 417--424
  [] [] [] [] [] [] [] 
  []
 
-[35] [36
+ignored error: Infinite glue shrinkage found in box being split [37
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.427 
-       <../figures/fig7_qa_by_type.pdf>]
-ignored error: Infinite glue shrinkage found in box being split [37]
-<../figures/fig8_whitedog_case.pdf, id=431, 455.30101pt x 310.761pt>
+l.424 \end{longtable}
+                      <../figures/fig7_qa_by_type.pdf>] [38] [39]
+<../figures/fig8_whitedog_case.pdf, id=442, 455.30101pt x 310.761pt>
 File: ../figures/fig8_whitedog_case.pdf Graphic file (type pdf)
 <use ../figures/fig8_whitedog_case.pdf>
 Package pdftex.def Info: ../figures/fig8_whitedog_case.pdf  used on input line 
-479.
+497.
 (pdftex.def)             Requested size: 401.54149pt x 274.068pt.
- [38]
-[39
+ [40
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.4}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.517 
-       <../figures/fig8_whitedog_case.pdf>] [40] [41]) (ch/06_discussion.tex
-[42]
+l.512 
+       <../figures/fig8_whitedog_case.pdf>] [41]
+ignored error: Infinite glue shrinkage found in box being split [42] [43])
+(ch/06_discussion.tex [44] [45]
 chapter 6.
-[43
+[46
 
 
-] [44] [45] [46]) (ch/07_conclusion.tex [47] [48]
+] [47] [48] [49]) (ch/07_conclusion.tex [50] [51]
 chapter 7.
-[49
+[52
 
 
-] [50]) (ch/A_full_results.tex [51]
+] [53]) (ch/A_full_results.tex [54]
 chapter A.
 
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 36--37
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
  []
 
-ignored error: Infinite glue shrinkage found in box being split [52
+ignored error: Infinite glue shrinkage found in box being split [55
 
 
 ]
@@ -1868,34 +1869,34 @@ Overfull \hbox (7.3514pt too wide) in paragraph at lines 78--79
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
  []
 
-ignored error: Infinite glue shrinkage found in box being split [53]
+ignored error: Infinite glue shrinkage found in box being split [56]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 120--121
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
  []
 
-ignored error: Infinite glue shrinkage found in box being split [54]
+ignored error: Infinite glue shrinkage found in box being split [57]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 162--163
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
  []
 
-ignored error: Infinite glue shrinkage found in box being split [55]
+ignored error: Infinite glue shrinkage found in box being split [58]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 204--205
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
  []
 
-ignored error: Infinite glue shrinkage found in box being split [56]
+ignored error: Infinite glue shrinkage found in box being split [59]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 246--247
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
  []
 
-ignored error: Infinite glue shrinkage found in box being split [57] [58])
-[59]
+ignored error: Infinite glue shrinkage found in box being split [60] [61])
+[62]
 chapter without number
-[60
+[63
 
 
 
-] [61] [62] [63] [64] (thesis.aux)
+] [64] [65] [66] [67] (thesis.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
@@ -1905,11 +1906,11 @@ Package logreq Info: Writing requests to 'thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 37131 strings out of 467871
- 738281 string characters out of 5418377
+ 37133 strings out of 467871
+ 738264 string characters out of 5418377
  1765222 words of memory out of 5000000
- 65034 multiletter control sequences out of 15000+600000
- 700632 words of font info for 227 fonts, out of 8000000 for 9000
+ 65033 multiletter control sequences out of 15000+600000
+ 700567 words of font info for 227 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  122i,20n,134p,11245b,2531s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/type1/public/mlmodern/mlm
@@ -1923,9 +1924,9 @@ MiKTeX/fonts/type1/public/mlmodern/mlmri10.pfb><C:/Users/20821/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/mlmodern/mlmro10.pfb><C:/Users/20821/AppData/L
 ocal/Programs/MiKTeX/fonts/type1/public/mlmodern/mlmsy10.pfb><C:/Users/20821/Ap
 pData/Local/Programs/MiKTeX/fonts/type1/public/mlmodern/mlmtt10.pfb>
-Output written on thesis.pdf (71 pages, 1908440 bytes).
+Output written on thesis.pdf (75 pages, 1915814 bytes).
 PDF statistics:
- 905 PDF objects out of 1000 (max. 8388607)
- 194 named destinations out of 1000 (max. 500000)
+ 922 PDF objects out of 1000 (max. 8388607)
+ 197 named destinations out of 1000 (max. 500000)
  35878 words of extra memory for PDF output out of 42996 (max. 10000000)
 

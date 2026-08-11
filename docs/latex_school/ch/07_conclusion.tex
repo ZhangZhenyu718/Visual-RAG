@@ -29,9 +29,10 @@ encoder's native register (scene captions) via LLM decomposition for
 deep-rank recall; and do \emph{not} fuse in a weak text channel at any
 weight, nor re-rank with a text cross-encoder --- both degrade quality
 for an identified cause (sparse, multilingual, conversational speech).
-The optimal strategy for audio and on-screen text on this benchmark is
-the null strategy; Chapter 6 marks the domains where that conclusion
-should be re-tested.
+For the audio channel --- which enters this system as transcribed speech
+(§1.2) --- the optimal strategy on this benchmark is the null strategy;
+on-screen-text OCR was out of scope and remains untested. Chapter 6
+marks the domains where the speech conclusion should be re-tested.
 
 \textbf{RQ3 --- agentic decomposition and synthesis.} Query
 decomposition, temporal tool use, and bounded self-reflection each
@@ -51,7 +52,7 @@ other's headroom unrealised.
 
 \section{Future work}
 
-Six directions follow directly from the limitations identified in
+Five directions follow directly from the limitations identified in
 Chapter 6, ordered roughly by evidence-per-effort.
 
 \textbf{Repair the text channel, then re-test fusion.} Machine-translate
@@ -74,11 +75,6 @@ abstraction already targets any OpenAI-compatible endpoint; running the
 QA suite against local Qwen/Llama models (the plumbing and evaluation
 scripts exist) would quantify the API-versus-open trade-off the project
 plan anticipated.
-
-\textbf{A prior-only QA baseline.} Answering the multiple-choice
-questions with no tool access would bound the answer-prior component of
-all QA numbers (§6.3), sharpening every agent comparison at negligible
-cost.
 
 \textbf{Adaptive segmentation.} Fixed 8-second windows impose a
 structural ceiling on tIoU (§6.2); shot-aligned or query-adaptive

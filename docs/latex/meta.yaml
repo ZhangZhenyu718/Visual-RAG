@@ -15,7 +15,9 @@ abstract: |
   an agentic retrieval-augmented generation system that indexes timestamped visual and
   transcript evidence, decomposes questions into retrieval-friendly descriptions, searches
   and re-ranks candidate moments, and answers with grounded timestamp citations. Evaluation
-  on 3,358 temporally grounded questions over 567 NExT-QA/NExT-GQA videos shows that visual
+  on 3,358 temporally grounded questions over 567 NExT-QA/NExT-GQA videos uses a deliberately
+  strict hit criterion (correct video and tIoU >= 0.5 against the annotated moment) that makes
+  absolute recall small by construction; under it, visual
   retrieval substantially outperforms transcript retrieval. SigLIP with query decomposition
   nearly doubles corpus-scope R@1 from 0.026 to 0.048. A LangGraph agent improves five-choice
   accuracy from 0.447 to 0.547, while supplying visual evidence raises temporal-question

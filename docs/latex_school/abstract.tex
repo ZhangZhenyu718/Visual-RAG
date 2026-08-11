@@ -10,7 +10,10 @@ by separating an offline indexing stage from a lightweight online query
 path.
 
 The design is evaluated on 3,358 temporally grounded questions over 567
-videos from NExT-QA and NExT-GQA. Visual retrieval substantially
+videos from NExT-QA and NExT-GQA, under a deliberately strict hit
+criterion ¡ª the correct video and tIoU ¡Ý 0.5 against the annotated
+moment ¡ª that makes absolute recall small by construction and places
+the emphasis on controlled comparisons. Visual retrieval substantially
 outperforms transcript retrieval at moment granularity. Replacing the
 baseline CLIP index with SigLIP and adding query decomposition nearly
 doubles corpus-scope recall at rank one from 0.026 to 0.048. A two-stage

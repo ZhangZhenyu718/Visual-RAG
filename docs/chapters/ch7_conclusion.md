@@ -24,9 +24,11 @@ model, which matched the expensive index to within measurement noise; translate
 questions into the encoder's native register (scene captions) via LLM
 decomposition for deep-rank recall; and do *not* fuse in a weak text channel at
 any weight, nor re-rank with a text cross-encoder — both degrade quality for an
-identified cause (sparse, multilingual, conversational speech). The optimal
-strategy for audio and on-screen text on this benchmark is the null strategy;
-Chapter 6 marks the domains where that conclusion should be re-tested.
+identified cause (sparse, multilingual, conversational speech). For the audio
+channel — which enters this system as transcribed speech (§1.2) — the optimal
+strategy on this benchmark is the null strategy; on-screen-text OCR was out of
+scope and remains untested. Chapter 6 marks the domains where the speech
+conclusion should be re-tested.
 
 **RQ3 — agentic decomposition and synthesis.** Query decomposition, temporal
 tool use, and bounded self-reflection each demonstrably contribute. At the
@@ -44,7 +46,7 @@ other's headroom unrealised.
 
 ## 7.2 Future work
 
-Six directions follow directly from the limitations identified in Chapter 6,
+Five directions follow directly from the limitations identified in Chapter 6,
 ordered roughly by evidence-per-effort.
 
 **Repair the text channel, then re-test fusion.** Machine-translate transcripts
@@ -65,10 +67,6 @@ untested component interaction.
 targets any OpenAI-compatible endpoint; running the QA suite against local
 Qwen/Llama models (the plumbing and evaluation scripts exist) would quantify
 the API-versus-open trade-off the project plan anticipated.
-
-**A prior-only QA baseline.** Answering the multiple-choice questions with no
-tool access would bound the answer-prior component of all QA numbers (§6.3),
-sharpening every agent comparison at negligible cost.
 
 **Adaptive segmentation.** Fixed 8-second windows impose a structural ceiling on
 tIoU (§6.2); shot-aligned or query-adaptive windowing would raise the ceiling

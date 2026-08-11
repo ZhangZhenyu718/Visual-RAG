@@ -100,11 +100,15 @@ questions and are deterministic given the frozen decomposition cache.
 The QA experiments, however, are budget-limited: 150 questions for the
 agent comparison, 44 for the controlled vision experiment, and the text
 cross-encoder was rejected on a 100-question development subset. All
-agent numbers are single runs of non-deterministic API models without
-confidence intervals; the reported effects (+10 points overall, +29.5
-points on TN) are large relative to plausible variance, but small
-differences in Table 5.4's by-type columns (n ≤ 22) should not be
-over-read.
+agent numbers are single runs of non-deterministic API models. The two
+central paired comparisons are, however, statistically supported: exact
+McNemar tests on the shared question sets give p = .031 for the agent
+effect and p = .004 for the evidence-channel effect, with
+paired-bootstrap 95\% CIs of {[}+.013, +.187{]} and {[}+.114, +.455{]}
+respectively (§5.4.1, §5.4.2) --- so neither headline effect is
+plausibly run-to-run variance. The caution that remains is for the
+\emph{small} differences in Table 5.4's by-type columns (n ≤ 22), which
+carry no such support and should not be over-read.
 
 \textbf{Asymmetries in the agent comparison.} The controlled vision
 experiment (§5.4.2) ran under the \emph{simple} agent, because at that
@@ -132,9 +136,12 @@ faithful to the moment-retrieval construct. For QA, the multiple-choice
 format admits answer-prior effects: a language model can reject
 implausible distractors without evidence. The controlled experiment
 bounds this --- priors were identical across both evidence conditions,
-so the +29.5-point effect cannot be prior-driven --- but the absolute
-.341 text-only floor mixes prior with evidence in unknown proportion; a
-no-retrieval prior-only baseline would complete the picture.
+so the +29.5-point effect cannot be prior-driven --- and the prior-only
+baseline (§5.4.3) measures the prior directly for the multimodal model:
+.560 with no evidence at all, which is why this dissertation rests its
+QA claims on paired within-model comparisons rather than absolute
+accuracies. The corresponding prior-only run for the text-only model
+would complete the decomposition of the .341 floor specifically.
 
 \textbf{Internal validity.} The decomposition cache is shared verbatim
 across all configurations that use it, eliminating decomposition

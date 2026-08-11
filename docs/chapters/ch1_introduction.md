@@ -46,10 +46,27 @@ in Chapter 5:
 - **RQ3** — How can an agentic framework autonomously decompose complex queries
   into sub-retrieval tasks and synthesise coherent answers?
 
+A scoping note on RQ2: in the system evaluated here the audio channel enters as
+*transcribed speech* (Whisper ASR), so "text" throughout this dissertation means
+the spoken content of the video. Optical character recognition of on-screen text
+is implemented in the ingestion pipeline but remained disabled for every
+experiment and is out of scope; the modality comparisons of Chapter 5 are
+therefore between visual embeddings and speech-transcript embeddings.
+
 Temporal precision is treated throughout as a first-class requirement rather
 than an afterthought: retrieval is scored not on finding the right *video* but
 on finding the right *moment* (temporal intersection-over-union against
 ground-truth intervals), and generated answers must carry timestamp citations.
+One consequence deserves stating before any numbers are read. A retrieval *hit*
+requires the correct video **and** tight temporal overlap (tIoU ≥ 0.5) between a
+fixed 8-second window and a freely placed ground-truth interval — found among
+all 5,725 segments of the corpus. This is a far stricter criterion than the
+video-level retrieval measures common in the literature, and it makes absolute
+scores small *by construction*: corpus-scope top-1 recall in the low single
+digits of a percent is the expected scale on this metric, not a symptom of a
+broken system. Results throughout should accordingly be read as controlled
+comparisons on a deliberately hard metric, and Chapter 5 restates this where
+the first numbers appear.
 
 ## 1.3 Contributions
 

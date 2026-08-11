@@ -68,7 +68,12 @@ temperature-default API calls and are therefore subject to normal LLM variance.
 Table 5.1 reports the three single-strategy configurations on both scopes at
 τ = 0.5. The text-only baseline embeds each segment's Whisper transcript and
 searches it with the question text — the standard "search what was said"
-approach that RQ1 asks us to beat.
+approach that RQ1 asks us to beat. A reminder of scale before reading the
+table (§1.2): a hit requires the correct video *and* tIoU ≥ 0.5 between an
+8-second window and the annotated moment, searched over all 5,725 segments —
+a deliberately strict criterion under which absolute scores are small by
+construction, so the informative content of the table is in the *relative*
+comparisons between rows, not in the magnitudes.
 
 **Table 5.1 — Retrieval by modality (ViT-B-32 index, τ = 0.5).**
 
@@ -261,19 +266,26 @@ gathered evidence before accepting it.
 
 ![Question-answering accuracy by question type and agent configuration.](../figures/fig7_qa_by_type.pdf){#fig:qa-by-type width=88%}
 
-**Table 5.4 — Five-choice QA accuracy, 150 val questions (text-only LLM).**
+**Table 5.4 — Five-choice QA accuracy, 150 val questions.** Rows 1–2 use the
+text-only LLM (deepseek-chat); the last two rows use claude-opus-4-8
+(§5.4.3–§5.4.4).
 
 | Agent | Evidence | Overall | CW (n=61) | TN (n=44) | TC (n=22) | CH (n=21) |
 |---|---|---|---|---|---|---|
 | Simple loop (W4) | text-only | .447 | .459 | .341 | .591 | .429 |
 | LangGraph (W7) | text-only | .547 | .590 | .341 | .773 | .619 |
+| Prior-only, no tools (§5.4.3) | none | .560 | .639 | .455 | .591 | .476 |
 | LangGraph, best config (§5.4.4) | multimodal | **.727** | **.852** | **.568** | .682 | **.762** |
 
 Both agents clear the .20 random floor by a wide margin, confirming that
 retrieved transcript evidence carries usable signal. The graph agent improves
 overall accuracy by 10 points (+22% relative), with the gains concentrated in
 causal questions (CW +13.1, CH +19.0 points) and temporal-current questions
-(TC +18.2). Inspection of transcripts attributes the gains to three behaviours:
+(TC +18.2). Because both agents answered the identical 150 questions, the
+comparison is paired: 29 questions flipped to correct under the graph agent
+against 14 that flipped to incorrect, giving an exact McNemar p = .031, with a
+paired-bootstrap 95% CI on the difference of [+.013, +.187] (10,000 resamples)
+— the improvement is unlikely to be run-to-run LLM variance. Inspection of transcripts attributes the gains to three behaviours:
 systematic anchor-then-walk retrieval on temporal questions, reformulated
 follow-up searches when initial evidence is thin, and the reflection pass —
 which in observed runs rejected drafts whose citations did not appear in the
@@ -308,7 +320,11 @@ held fixed.
 | Text-only LLM, graph agent (temporal tool) | .341 |
 | **Multimodal LLM, keyframes in evidence** | **.636** |
 
-Accuracy rises by 29.5 points (+87% relative, 44/44 questions completed). On the
+Accuracy rises by 29.5 points (+87% relative, 44/44 questions completed). This
+comparison is likewise paired on identical questions: against the graph agent,
+16 questions flipped to correct under visual evidence and 3 flipped away (exact
+McNemar p = .004; paired-bootstrap 95% CI [+.114, +.455]; against the simple
+agent, p = .007). On the
 representative case above, the multimodal agent answered "leans down and
 sniffs/nuzzles the small black puppy [28–36 s]" — matching the ground truth
 almost verbatim from the keyframes alone; Figure 5.4 (fig8_whitedog_case) shows
@@ -328,8 +344,24 @@ above random reflects genuine transcript evidence; part likely reflects
 NExT-QA answer priors — a language model can sometimes reject implausible
 distractors without any evidence. The controlled experiment bounds the effect:
 whatever fraction of .341 is prior-driven, the additional .295 from keyframes is
-not, since priors were identical across conditions. A fuller prior-only baseline
-(answering without any tool access) is left to future work.
+not, since priors were identical across conditions.
+
+A **prior-only baseline** makes the prior component concrete: the multimodal
+model (claude-opus-4-8) answering with *no tool access at all* — the question
+and its five options, nothing else — scores .560 overall and .455 on TN
+(Table 5.4, third row; 150/150 completed). Three consequences follow. First,
+NExT-QA's multiple-choice format carries a substantial answer prior for a
+strong LLM: .560 without any evidence, far above the .200 random floor, which
+calibrates every absolute accuracy in this chapter. Second, evidence still
+matters even for the strongest model tested: on the identical 150 questions its
+full retrieval-and-evidence stack adds +.167 over its own prior (.560 → .727;
+37 questions flip to correct against 12 that flip away; exact McNemar
+p = .0005, paired-bootstrap 95% CI [+.080, +.253]), and keyframe evidence
+lifts TN from a .455 prior to .636 in the controlled experiment. Third, the
+baseline sharpens the resource caveat of §5.4.4: the stronger model's prior
+*alone* (.560) already exceeds the text-only agent stack's .547, so
+comparisons across Table 5.4's rows conflate base-model strength with evidence
+delivery — the clean attributions are the within-model ones.
 
 ### 5.4.4 Best-configuration run and contextualisation with published systems
 
@@ -377,7 +409,11 @@ comparison is not equal-resource: our system answers from at most six
 retrieved segments per search under ≈US$0.17 per question, but benefits from a
 stronger underlying LLM (claude-opus-4-8) than the GPT-4-era published
 systems — LLM generation and method both differ, and this chapter's internal
-ablations (not Table 5.7) are what isolate the method's contribution. Third,
+ablations (not Table 5.7) are what isolate the method's contribution. The
+prior-only baseline (§5.4.3) quantifies the model-strength component directly:
+claude-opus-4-8 reaches .560 on these questions with no tools at all, so the
+honest within-model attribution for the method is .560 → .727 (+.167,
+p = .0005). Third,
 the grounding rows compare related but non-identical protocols (their mIoU
 grounds a QA model's answer on the test split; our tIoU@1 scores the top
 retrieved segment on val); we include them because both measure "where the
@@ -412,12 +448,15 @@ precision, and they compose; (iii) SigLIP is the strongest index backbone, nearl
 doubling baseline R@1; and (iv) a two-stage cheap-index/expensive-re-rank design
 matches the expensive index outright. Against RQ3, a LangGraph agent with
 temporal tools and self-reflection improves QA accuracy by 10 points over a
-single-loop agent, and a controlled evidence-channel experiment shows visual
-evidence nearly doubling temporal-next accuracy — establishing that modality
-matters at the answering stage independently of retrieval. Combining the
-best-measured component in every slot yields .727 five-way accuracy — at, and
-in point estimate above, the published zero-shot state of the art on our
-sample — while temporal grounding proves competitive with published
-weakly-supervised answer-grounding methods under a stricter,
+single-loop agent (McNemar p = .031), and a controlled evidence-channel
+experiment shows visual evidence nearly doubling temporal-next accuracy
+(p = .004) — establishing that modality matters at the answering stage
+independently of retrieval. A prior-only baseline calibrates all QA numbers:
+the strongest model scores .560 with no evidence at all, and the full stack's
++.167 above that prior (p = .0005) is the method's within-model contribution.
+Combining the best-measured component in every slot yields .727 five-way
+accuracy — at, and in point estimate above, the published zero-shot state of
+the art on our sample — while temporal grounding proves competitive with
+published weakly-supervised answer-grounding methods under a stricter,
 citation-producing protocol. Chapter 6 discusses the limitations and
 generality of these findings.

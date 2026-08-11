@@ -38,6 +38,56 @@ After your evidence-based reasoning, the LAST line of your reply must be exactly
 "FINAL: <option number>" (0-4). If the evidence is inconclusive, pick the most
 plausible option — never refuse."""
 
+PRIOR_TEMPLATE = """Answer this multiple-choice question about a video you cannot see.
+You have NO access to the video, its transcript, or any retrieval tools — choose
+the most plausible option from the question text and the options alone.
+
+Question: {question}
+
+Options:
+{options}
+
+The LAST line of your reply must be exactly "FINAL: <option number>" (0-4).
+Never refuse."""
+
+
+class PriorOnlyQA:
+    """Answer-prior baseline: the bare LLM, no tools, no evidence (§6.3).
+
+    Bounds the answer-prior component of every QA number: whatever this scores
+    above the .20 random floor is what the model can do with the option texts
+    alone."""
+
+    def __init__(self, cfg):
+        provider = cfg.get_path("agent.provider", "deepseek")
+        _defaults = {"claude": ("claude-opus-4-8", None, None),
+                     "deepseek": ("deepseek-chat", "https://api.deepseek.com", "DEEPSEEK_API_KEY"),
+                     "local": ("qwen2.5:7b-instruct", "http://localhost:11434/v1", None)}
+        if provider not in _defaults:
+            raise ValueError(f"unknown agent.provider {provider!r}")
+        default_model, default_url, key_env = _defaults[provider]
+        self.provider = provider
+        self.model = cfg.get_path("agent.model", default_model)
+        if self.provider == "claude":
+            import anthropic
+            self.client = anthropic.Anthropic()
+        else:
+            from openai import OpenAI
+            key = os.environ[key_env] if key_env else "not-needed"
+            self.client = OpenAI(api_key=key, base_url=cfg.get_path("agent.base_url", default_url))
+
+    def answer(self, question: str, video_id=None) -> dict:
+        if self.provider == "claude":
+            resp = self.client.messages.create(
+                model=self.model, max_tokens=1000,
+                messages=[{"role": "user", "content": question}])
+            text = "".join(b.text for b in resp.content if b.type == "text")
+            return {"answer": text, "usage": {"output_tokens": resp.usage.output_tokens}}
+        resp = self.client.chat.completions.create(
+            model=self.model, messages=[{"role": "user", "content": question}])
+        return {"answer": resp.choices[0].message.content or "",
+                "usage": {"output_tokens": resp.usage.completion_tokens}}
+
 
 def parse_choice(text: str) -> int | None:
     m = re.findall(r"FINAL:\s*([0-4])", text)
@@ -51,7 +101,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/default.yaml")
     ap.add_argument("--split", default="val")
-    ap.add_argument("--agent", choices=["simple", "graph"], default="simple")
+    ap.add_argument("--agent", choices=["simple", "graph", "prior"], default="simple")
     ap.add_argument("--limit", type=int, default=100)
     ap.add_argument("--types", default=None, help="comma list, e.g. TN,TC,TP")
     ap.add_argument("--workers", type=int, default=8)
@@ -76,13 +126,16 @@ def main():
     if args.agent == "graph":
         from visualrag.agent.graph_agent import GraphVideoQA
         qa = GraphVideoQA(cfg)
+    elif args.agent == "prior":
+        qa = PriorOnlyQA(cfg)
     else:
         from visualrag.agent.answerer import VideoQA
         qa = VideoQA(cfg)
+    template = PRIOR_TEMPLATE if args.agent == "prior" else MC_TEMPLATE
 
     def ask(r: dict) -> dict:
         options = "\n".join(f"{i}. {c}" for i, c in enumerate(r["choices"]))
-        prompt = MC_TEMPLATE.format(question=r["question"], options=options)
+        prompt = template.format(question=r["question"], options=options)
         gt = r["choices"].index(r["answer"]) if r["answer"] in r["choices"] else -1
         try:
             res = qa.answer(prompt, video_id=r["video_id"])
