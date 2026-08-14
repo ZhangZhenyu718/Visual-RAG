@@ -87,7 +87,11 @@ and empirically grounded in Chapter 5:
    visual-only retrieval at any weight on this domain, and a text cross-encoder
    re-ranker strictly degrades ranking quality. Both trace to the same cause —
    sparse, multilingual, conversational speech is a poor retrieval key for
-   everyday video — and both redirect effort toward the visual channel.
+   everyday video — and both redirect effort toward the visual channel. A
+   40-video speech-dense replication (§5.5, YouCook2) then confirms the causal
+   reading: both negative results reverse sign exactly as predicted, which
+   establishes the modality ordering as domain-conditional and measurable
+   rather than universal.
 
 3. **A two-stage retrieval equivalence finding** (§5.3.4): re-ranking a cheap
    index's top-30 with a stronger visual backbone matches indexing the entire

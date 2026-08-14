@@ -1,0 +1,46 @@
+[ingest] device: cuda (NVIDIA GeForce RTX 4050 Laptop GPU, 6.4 GB)
+[ingest] indexed 41 video files on disk
+[ingest] 40 videos referenced by split 'val'
+[asr] loading faster-whisper 'large-v3' on cuda (int8)
+[1/40] -AwyG1JcMp8: 76 segments
+[2/40] -ErPSunMfcs: 38 segments
+[3/40] -GlSSp5ZOCQ: 61 segments
+[4/40] -Ju39A-G0Dk: 123 segments
+[5/40] -dh_uGahzYo: 140 segments
+[6/40] -goI2-eJO1w: 99 segments
+[7/40] -ju7_ZORsZw: 60 segments
+[8/40] -k7trpuj3X8: 71 segments
+[9/40] 02nUKT0A7uE: 66 segments
+[10/40] 05ZSU-5UkXw: 38 segments
+[11/40] 0EuykeOvGg4: 111 segments
+[12/40] 0ShsPjf9shQ: 45 segments
+[13/40] 0hb6NShH9hY: 76 segments
+[14/40] 0uaKitJaqmI: 103 segments
+[15/40] 10dZTHlkb8w: 0 segments
+[16/40] 186EQzPPHW8: 97 segments
+[17/40] 1Ihxcua2HBc: 0 segments
+[18/40] 1iv2xhPN3vk: 16 segments
+[19/40] 1rMT2uMF78E: 38 segments
+[20/40] 2-mxsib6pJo: 95 segments
+[21/40] 29Wkj1LqaK8: 92 segments
+[22/40] 2HsWZdKKBGg: 96 segments
+[23/40] 2IcWR76i1bo: 110 segments
+[24/40] 2IkN3hTEZ2Y: 84 segments
+[25/40] 2SxbO4VAgN8: 102 segments
+[26/40] 2heP32bqOV0: 153 segments
+[27/40] 2iWUUcW08ac: 127 segments
+[28/40] 2rJ3KKx0oRk: 52 segments
+[29/40] 2zFAZy0zSbw: 93 segments
+[30/40] 3V4MxH2GuIU: 130 segments
+[31/40] 3aFiXsrKSoQ: 101 segments
+[32/40] 3dUm-m3iFaI: 78 segments
+[33/40] 3jDAyeKeYFA: 74 segments
+[34/40] 3meb_5kcPFg: 135 segments
+[35/40] 3z_QhNnSFtM: 42 segments
+[36/40] 4K9h7ojJYkc: 21 segments
+[37/40] 4SnAlRlxlFk: 75 segments
+[38/40] 4ZbNtfqKkiI: 75 segments
+[39/40] 4Zl5NvXPi-0: 27 segments
+[40/40] 4apR0YypAGc: 38 segments
+
+[ingest] done: 40 videos, 3058 segments, 0 videos missing on disk

@@ -63,17 +63,21 @@ provides evidence that the quality sacrifice can be nil.
 
 \section{Limitations}
 
-\textbf{Single benchmark, single domain.} All conclusions are drawn from
+\textbf{Domain coverage.} The primary conclusions are drawn from
 NExT-QA/GQA: short, everyday, speech-sparse home videos. The negative
 results about the text channel --- fusion never helping (§5.3.1), the
-text cross-encoder hurting (§5.3.3) --- are best read as
-\emph{conditional on this domain}. In speech-dense, single-language
-domains (lectures, meetings, news), transcripts are far more informative
-and the same components may well invert sign. The positive results
+text cross-encoder hurting (§5.3.3) --- are \emph{conditional on this
+domain}, and that conditionality is now a measured result rather than a
+caveat: the speech-dense replication of §5.5 (YouCook2, 40 videos)
+reversed both signs exactly as predicted, with transcript retrieval
+doubling visual retrieval and late fusion becoming the best
+configuration. What remains limited is coverage: two domains, a small
+second corpus, and a retrieval-only replication --- the positive results
 (decomposition, visual re-ranking, backbone ordering, evidence-channel
-effect) rest on properties of contrastive encoders and of the QA task
-rather than of this corpus, and should transfer more readily; verifying
-this on a second benchmark is the most direct extension of this work.
+effect) have not yet been re-tested outside NExT-QA, and the QA-stage
+experiments were not repeated on the second domain. Their transfer
+argument still rests on properties of contrastive encoders and of the QA
+task rather than on measurement.
 
 \textbf{A confound inside the text-channel result.} The weak text
 channel has two entangled causes: the transcripts are often
@@ -178,13 +182,17 @@ replication of agent runs is not guaranteed by the providers.
 \section{Summary}
 
 The findings hold together as a single narrative: in everyday video,
-visual signal dominates at every stage where a modality choice exists,
-and the remaining errors are separable into recall, precision, and
-evidence problems with independent, composable remedies. The principal
-limitations --- one domain, proxy QA metrics, budget-limited agent
-samples, and an untested graph-plus-vision combination --- are all
-addressable with more compute rather than new machinery, and none
-threatens the direction of the reported effects, whose magnitudes (+69\%
-relative R@1 from the backbone, +87\% from the evidence channel) far
-exceed the plausible noise floor. Chapter 7 concludes and sets out the
+visual signal dominates at every stage where a modality choice exists
+--- and the speech-dense replication shows this dominance is a
+measurable property of the domain, reversing cleanly where narration is
+dense and task-aligned. The remaining errors are separable into recall,
+precision, and evidence problems with independent, composable remedies,
+benchmarked against the bare model's prior rather than against random.
+The principal limitations --- partial domain coverage, proxy QA metrics,
+budget-limited agent samples, and the untested multimodal-reflection
+interaction --- are all addressable with more compute rather than new
+machinery, and none threatens the direction of the reported effects,
+whose magnitudes (+69\% relative R@1 from the backbone, +87\% from the
+evidence channel, 2× modality reversal on YouCook2) far exceed the
+plausible noise floor. Chapter 7 concludes and sets out the
 corresponding future work.

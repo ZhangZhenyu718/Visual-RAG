@@ -13,7 +13,9 @@ localisation: given the right video, the system places a correct moment in its
 top five for two-thirds of questions at the looser τ = 0.3 (R@5 .677). The
 answer to RQ1 is therefore affirmative with a precise caveat: *visual* retrieval
 is effective and improvable; retrieval on what is *said* is, on this domain, not
-a viable baseline so much as a cautionary one.
+a viable baseline so much as a cautionary one — and §5.5 shows the caveat cuts
+both ways, since on speech-dense video the same pipeline's transcript channel
+doubles its visual channel.
 
 **RQ2 — the multi-modal embedding strategy.** The experiments support a
 strategy, not merely a ranking: index the visual channel with the strongest
@@ -26,9 +28,13 @@ decomposition for deep-rank recall; and do *not* fuse in a weak text channel at
 any weight, nor re-rank with a text cross-encoder — both degrade quality for an
 identified cause (sparse, multilingual, conversational speech). For the audio
 channel — which enters this system as transcribed speech (§1.2) — the optimal
-strategy on this benchmark is the null strategy; on-screen-text OCR was out of
-scope and remains untested. Chapter 6 marks the domains where the speech
-conclusion should be re-tested.
+strategy on the primary benchmark is the null strategy; on-screen-text OCR was
+out of scope and remains untested. The speech-dense replication (§5.5) then
+completes the answer: the ordering is domain-conditional by measurement, not
+conjecture — on YouCook2 the transcript channel doubles the visual channel and
+late fusion becomes the best configuration. The optimal embedding strategy is
+therefore not a fixed recipe but a measured, domain-adaptive choice, and this
+dissertation's harness is the instrument that measures it.
 
 **RQ3 — agentic decomposition and synthesis.** Query decomposition, temporal
 tool use, and bounded self-reflection each demonstrably contribute. At the
@@ -78,10 +84,13 @@ the API-versus-open trade-off the project plan anticipated.
 tIoU (§6.2); shot-aligned or query-adaptive windowing would raise the ceiling
 itself, and the evaluation harness can measure the gain directly.
 
-**A second domain and a user study.** Replicating the modality ablations on
-speech-dense video (lectures, meetings) tests the conditionality claims of
-Chapter 6, and the descoped user study remains the right instrument for claims
-about end-user utility that no offline metric can support.
+**Deepen the second domain, and run the user study.** The speech-dense
+retrieval replication is done (§5.5); its natural extensions are to repeat the
+QA-stage and agent experiments on YouCook2, replicate the *positive* results
+(decomposition, re-ranking, backbone ordering) cross-domain, and derive a
+quantitative domain-adaptive fusion policy from measured speech density. The
+descoped user study remains the right instrument for claims about end-user
+utility that no offline metric can support.
 
 ## 7.3 Closing remark
 

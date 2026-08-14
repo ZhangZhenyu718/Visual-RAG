@@ -270,7 +270,7 @@ Package typearea Warning: \typearea used at group level 3.
  [3] [4] [5 <./sig.png>] (thesis.toc [1] [2]) [3] (ch/01_introduction.tex
 chapter 1.
 [1] [2] [3{C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-m
-athsy.enc}]) (ch/02_related_work.tex [4] [5]
+athsy.enc}] [4]) (ch/02_related_work.tex [5]
 chapter 2.
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/mlmodern\t1mlmtt.fd)
 [6] [7] [8] [9]) (ch/03_system_design.tex [10] [11]
@@ -325,80 +325,97 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.160 
+l.163 
        <../figures/fig4_alpha_sweep.pdf>] [32]
-Overfull \hbox (4.69333pt too wide) in paragraph at lines 234--235
+Overfull \hbox (4.69333pt too wide) in paragraph at lines 237--238
 []\T1/mlmr/m/n/10.95 (-20) Configuration  
 [33
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.257 \end{longtable}
+l.260 \end{longtable}
                       <../figures/fig5_ablation_ladder.pdf>] [34]
-Overfull \hbox (0.68408pt too wide) in paragraph at lines 283--294
+Overfull \hbox (0.68408pt too wide) in paragraph at lines 286--297
 \T1/mlmr/m/n/10.95 (-20) is statistically indistinguishable from ViT-B \T1/mlmr
 /m/it/10.95 (-20) plus \T1/mlmr/m/n/10.95 (-20) ViT-L re-ranking (.029/.087/.12
 1/.053) ---
 [35] [36]
-Overfull \hbox (0.10036pt too wide) in alignment at lines 395--413
+Overfull \hbox (0.10036pt too wide) in alignment at lines 398--416
  [] [] [] [] [] [] [] 
 
-Overfull \hbox (0.10036pt too wide) in alignment at lines 413--415
+Overfull \hbox (0.10036pt too wide) in alignment at lines 416--418
  [] [] [] [] [] [] [] 
 
-Overfull \hbox (3.83229pt too wide) in paragraph at lines 418--418
+Overfull \hbox (3.83229pt too wide) in paragraph at lines 421--421
 []|\T1/mlmr/m/n/10.95 (-20) LangGraph 
 
-Overfull \hbox (3.83229pt too wide) in paragraph at lines 424--424
+Overfull \hbox (3.83229pt too wide) in paragraph at lines 427--427
 []|\T1/mlmr/m/n/10.95 (-20) LangGraph 
 
-Overfull \hbox (4.17468pt too wide) in paragraph at lines 424--424
+Overfull \hbox (4.17468pt too wide) in paragraph at lines 427--427
 []|\T1/mlmr/m/n/10.95 (-20) multimodal|  
 
-Overfull \hbox (0.10036pt too wide) in alignment at lines 415--426
+Overfull \hbox (0.10036pt too wide) in alignment at lines 418--429
  [] [] [] [] [] [] [] 
 [37
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.426 \end{longtable}
+l.429 \end{longtable}
                       <../figures/fig7_qa_by_type.pdf>] [38] [39] [40] [41
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.4}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.534 
-       <../figures/fig8_whitedog_case.pdf>] [42] [43] [44])
-(ch/06_discussion.tex [45] [46]
+l.537 
+       <../figures/fig8_whitedog_case.pdf>] [42] [43] [44]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 5.9 on input line 700.
+
+ignored error: Infinite glue shrinkage found in box being split [45] [46])
+(ch/06_discussion.tex [47] [48]
 chapter 6.
-[47] [48] [49] [50] [51]) (ch/07_conclusion.tex [52]
+[49] [50] [51] [52] [53]) (ch/07_conclusion.tex [54]
 chapter 7.
-[53] [54]) [55] (ch/A_full_results.tex [56]
+[55] [56] [57]) (ch/A_full_results.tex [58]
 chapter A.
 
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 36--37
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
-ignored error: Infinite glue shrinkage found in box being split [57]
+ignored error: Infinite glue shrinkage found in box being split [59]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 78--79
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
-ignored error: Infinite glue shrinkage found in box being split [58]
+ignored error: Infinite glue shrinkage found in box being split [60]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 120--121
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
-ignored error: Infinite glue shrinkage found in box being split [59]
+ignored error: Infinite glue shrinkage found in box being split [61]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 162--163
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
-ignored error: Infinite glue shrinkage found in box being split [60]
+ignored error: Infinite glue shrinkage found in box being split [62]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 204--205
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
-ignored error: Infinite glue shrinkage found in box being split [61]
+ignored error: Infinite glue shrinkage found in box being split [63]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 246--247
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
-ignored error: Infinite glue shrinkage found in box being split [62] [63])
-[64]
+ignored error: Infinite glue shrinkage found in box being split [64] [65]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table A.8 on input line 296.
+
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table A.9 on input line 310.
+
+) [66]
 chapter without number
-[65] [66] [67] [68] [69] (thesis.aux) )
+[67] [68] [69] [70]
+
+Package longtable Warning: Table widths have changed. Rerun LaTeX.
+
+[71] (thesis.aux) )
 (see the transcript file for additional information)<C:/Users/20821/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/mlmodern/mlmbx10.pfb><C:/Users/20821/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/mlmodern/mlmbx12.pfb><C:/Users/208
@@ -411,7 +428,7 @@ odern/mlmri10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/type1/pub
 lic/mlmodern/mlmro10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/ty
 pe1/public/mlmodern/mlmsy10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/mlmodern/mlmtt10.pfb>
-Output written on thesis.pdf (77 pages, 1920371 bytes).
+Output written on thesis.pdf (79 pages, 1928616 bytes).
 Transcript written on thesis.log.
 pdflatex: major issue: So far, you have not checked for MiKTeX updates.
 INFO - This is Biber 2.21
@@ -701,7 +718,7 @@ Package typearea Warning: \typearea used at group level 3.
  [3] [4] [5 <./sig.png>] (thesis.toc [1] [2]) [3] (ch/01_introduction.tex
 chapter 1.
 [1] [2] [3{C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-m
-athsy.enc}]) (ch/02_related_work.tex [4] [5]
+athsy.enc}] [4]) (ch/02_related_work.tex [5]
 chapter 2.
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/mlmodern\t1mlmtt.fd)
 [6] [7] [8] [9]) (ch/03_system_design.tex [10] [11]
@@ -756,80 +773,88 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.160 
+l.163 
        <../figures/fig4_alpha_sweep.pdf>] [32]
-Overfull \hbox (4.69333pt too wide) in paragraph at lines 234--235
+Overfull \hbox (4.69333pt too wide) in paragraph at lines 237--238
 []\T1/mlmr/m/n/10.95 (-20) Configuration  
 [33
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.257 \end{longtable}
+l.260 \end{longtable}
                       <../figures/fig5_ablation_ladder.pdf>] [34]
-Overfull \hbox (0.68408pt too wide) in paragraph at lines 283--294
+Overfull \hbox (0.68408pt too wide) in paragraph at lines 286--297
 \T1/mlmr/m/n/10.95 (-20) is statistically indistinguishable from ViT-B \T1/mlmr
 /m/it/10.95 (-20) plus \T1/mlmr/m/n/10.95 (-20) ViT-L re-ranking (.029/.087/.12
 1/.053) ---
 [35] [36]
-Overfull \hbox (0.10036pt too wide) in alignment at lines 395--413
+Overfull \hbox (0.10036pt too wide) in alignment at lines 398--416
  [] [] [] [] [] [] [] 
 
-Overfull \hbox (0.10036pt too wide) in alignment at lines 413--415
+Overfull \hbox (0.10036pt too wide) in alignment at lines 416--418
  [] [] [] [] [] [] [] 
 
-Overfull \hbox (3.83229pt too wide) in paragraph at lines 418--418
+Overfull \hbox (3.83229pt too wide) in paragraph at lines 421--421
 []|\T1/mlmr/m/n/10.95 (-20) LangGraph 
 
-Overfull \hbox (3.83229pt too wide) in paragraph at lines 424--424
+Overfull \hbox (3.83229pt too wide) in paragraph at lines 427--427
 []|\T1/mlmr/m/n/10.95 (-20) LangGraph 
 
-Overfull \hbox (4.17468pt too wide) in paragraph at lines 424--424
+Overfull \hbox (4.17468pt too wide) in paragraph at lines 427--427
 []|\T1/mlmr/m/n/10.95 (-20) multimodal|  
 
-Overfull \hbox (0.10036pt too wide) in alignment at lines 415--426
+Overfull \hbox (0.10036pt too wide) in alignment at lines 418--429
  [] [] [] [] [] [] [] 
 [37
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.426 \end{longtable}
+l.429 \end{longtable}
                       <../figures/fig7_qa_by_type.pdf>] [38] [39] [40] [41
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.4}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.534 
-       <../figures/fig8_whitedog_case.pdf>] [42] [43] [44])
-(ch/06_discussion.tex [45] [46]
+l.537 
+       <../figures/fig8_whitedog_case.pdf>] [42] [43] [44]
+ignored error: Infinite glue shrinkage found in box being split [45] [46])
+(ch/06_discussion.tex [47] [48]
 chapter 6.
-[47] [48] [49] [50] [51]) (ch/07_conclusion.tex [52]
+[49] [50] [51] [52] [53]) (ch/07_conclusion.tex [54]
 chapter 7.
-[53] [54]) [55] (ch/A_full_results.tex [56]
+[55] [56] [57]) (ch/A_full_results.tex [58]
 chapter A.
 
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 36--37
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
-ignored error: Infinite glue shrinkage found in box being split [57]
+ignored error: Infinite glue shrinkage found in box being split [59]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 78--79
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
-ignored error: Infinite glue shrinkage found in box being split [58]
+ignored error: Infinite glue shrinkage found in box being split [60]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 120--121
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
-ignored error: Infinite glue shrinkage found in box being split [59]
+ignored error: Infinite glue shrinkage found in box being split [61]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 162--163
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
-ignored error: Infinite glue shrinkage found in box being split [60]
+ignored error: Infinite glue shrinkage found in box being split [62]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 204--205
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
-ignored error: Infinite glue shrinkage found in box being split [61]
+ignored error: Infinite glue shrinkage found in box being split [63]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 246--247
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
-ignored error: Infinite glue shrinkage found in box being split [62] [63])
-[64]
+ignored error: Infinite glue shrinkage found in box being split [64] [65])
+[66]
 chapter without number
-[65] [66] [67] [68] [69] (thesis.aux) )
+[67] [68] [69] [70] [71] (thesis.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+Package biblatex Warning: Please rerun LaTeX.
+
+ )
 (see the transcript file for additional information)<C:/Users/20821/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/mlmodern/mlmbx10.pfb><C:/Users/20821/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/mlmodern/mlmbx12.pfb><C:/Users/208
@@ -842,7 +867,7 @@ odern/mlmri10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/type1/pub
 lic/mlmodern/mlmro10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/ty
 pe1/public/mlmodern/mlmsy10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/mlmodern/mlmtt10.pfb>
-Output written on thesis.pdf (77 pages, 1920383 bytes).
+Output written on thesis.pdf (79 pages, 1929411 bytes).
 Transcript written on thesis.log.
 pdflatex: major issue: So far, you have not checked for MiKTeX updates.
 This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex.fmt)
@@ -1117,7 +1142,7 @@ Package typearea Warning: \typearea used at group level 3.
  [3] [4] [5 <./sig.png>] (thesis.toc [1] [2]) [3] (ch/01_introduction.tex
 chapter 1.
 [1] [2] [3{C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-m
-athsy.enc}]) (ch/02_related_work.tex [4] [5]
+athsy.enc}] [4]) (ch/02_related_work.tex [5]
 chapter 2.
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/mlmodern\t1mlmtt.fd)
 [6] [7] [8] [9]) (ch/03_system_design.tex [10] [11]
@@ -1172,80 +1197,81 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.160 
+l.163 
        <../figures/fig4_alpha_sweep.pdf>] [32]
-Overfull \hbox (4.69333pt too wide) in paragraph at lines 234--235
+Overfull \hbox (4.69333pt too wide) in paragraph at lines 237--238
 []\T1/mlmr/m/n/10.95 (-20) Configuration  
 [33
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.257 \end{longtable}
+l.260 \end{longtable}
                       <../figures/fig5_ablation_ladder.pdf>] [34]
-Overfull \hbox (0.68408pt too wide) in paragraph at lines 283--294
+Overfull \hbox (0.68408pt too wide) in paragraph at lines 286--297
 \T1/mlmr/m/n/10.95 (-20) is statistically indistinguishable from ViT-B \T1/mlmr
 /m/it/10.95 (-20) plus \T1/mlmr/m/n/10.95 (-20) ViT-L re-ranking (.029/.087/.12
 1/.053) ---
 [35] [36]
-Overfull \hbox (0.10036pt too wide) in alignment at lines 395--413
+Overfull \hbox (0.10036pt too wide) in alignment at lines 398--416
  [] [] [] [] [] [] [] 
 
-Overfull \hbox (0.10036pt too wide) in alignment at lines 413--415
+Overfull \hbox (0.10036pt too wide) in alignment at lines 416--418
  [] [] [] [] [] [] [] 
 
-Overfull \hbox (3.83229pt too wide) in paragraph at lines 418--418
+Overfull \hbox (3.83229pt too wide) in paragraph at lines 421--421
 []|\T1/mlmr/m/n/10.95 (-20) LangGraph 
 
-Overfull \hbox (3.83229pt too wide) in paragraph at lines 424--424
+Overfull \hbox (3.83229pt too wide) in paragraph at lines 427--427
 []|\T1/mlmr/m/n/10.95 (-20) LangGraph 
 
-Overfull \hbox (4.17468pt too wide) in paragraph at lines 424--424
+Overfull \hbox (4.17468pt too wide) in paragraph at lines 427--427
 []|\T1/mlmr/m/n/10.95 (-20) multimodal|  
 
-Overfull \hbox (0.10036pt too wide) in alignment at lines 415--426
+Overfull \hbox (0.10036pt too wide) in alignment at lines 418--429
  [] [] [] [] [] [] [] 
 [37
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.426 \end{longtable}
+l.429 \end{longtable}
                       <../figures/fig7_qa_by_type.pdf>] [38] [39] [40] [41
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.4}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.534 
-       <../figures/fig8_whitedog_case.pdf>] [42] [43] [44])
-(ch/06_discussion.tex [45] [46]
+l.537 
+       <../figures/fig8_whitedog_case.pdf>] [42] [43] [44]
+ignored error: Infinite glue shrinkage found in box being split [45] [46])
+(ch/06_discussion.tex [47] [48]
 chapter 6.
-[47] [48] [49] [50] [51]) (ch/07_conclusion.tex [52]
+[49] [50] [51] [52] [53]) (ch/07_conclusion.tex [54]
 chapter 7.
-[53] [54]) [55] (ch/A_full_results.tex [56]
+[55] [56] [57]) (ch/A_full_results.tex [58]
 chapter A.
 
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 36--37
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
-ignored error: Infinite glue shrinkage found in box being split [57]
+ignored error: Infinite glue shrinkage found in box being split [59]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 78--79
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
-ignored error: Infinite glue shrinkage found in box being split [58]
+ignored error: Infinite glue shrinkage found in box being split [60]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 120--121
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
-ignored error: Infinite glue shrinkage found in box being split [59]
+ignored error: Infinite glue shrinkage found in box being split [61]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 162--163
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
-ignored error: Infinite glue shrinkage found in box being split [60]
+ignored error: Infinite glue shrinkage found in box being split [62]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 204--205
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
-ignored error: Infinite glue shrinkage found in box being split [61]
+ignored error: Infinite glue shrinkage found in box being split [63]
 Overfull \hbox (7.3514pt too wide) in paragraph at lines 246--247
 []\T1/mlmr/m/n/10.95 (-20) nDCG@10  
-ignored error: Infinite glue shrinkage found in box being split [62] [63])
-[64]
+ignored error: Infinite glue shrinkage found in box being split [64] [65])
+[66]
 chapter without number
-[65] [66] [67] [68] [69] (thesis.aux) )
+[67] [68] [69] [70] [71] (thesis.aux) )
 (see the transcript file for additional information)<C:/Users/20821/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/mlmodern/mlmbx10.pfb><C:/Users/20821/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/mlmodern/mlmbx12.pfb><C:/Users/208
@@ -1258,6 +1284,6 @@ odern/mlmri10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/type1/pub
 lic/mlmodern/mlmro10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/ty
 pe1/public/mlmodern/mlmsy10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/mlmodern/mlmtt10.pfb>
-Output written on thesis.pdf (77 pages, 1920383 bytes).
+Output written on thesis.pdf (79 pages, 1929411 bytes).
 Transcript written on thesis.log.
 pdflatex: major issue: So far, you have not checked for MiKTeX updates.

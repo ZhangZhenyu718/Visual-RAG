@@ -1608,6 +1608,7 @@
       \strng{authornamehash}{f9981c1bdc244ea279f477a22c19e4bf}
       \strng{authorfullhash}{37779134f33d9dd8a14ee8b71221e299}
       \strng{authorfullhashraw}{37779134f33d9dd8a14ee8b71221e299}
+      \field{extraname}{1}
       \field{sortinit}{Z}
       \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
       \field{labelnamesource}{author}
@@ -1615,6 +1616,42 @@
       \field{booktitle}{Proceedings of the Eleventh International Conference on Learning Representations (ICLR)}
       \field{title}{Least-to-Most Prompting Enables Complex Reasoning in Large Language Models}
       \field{year}{2023}
+      \true{nocite}
+    \endentry
+    \entry{zhou2018youcook2}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=53260edd50847234330ae950adb78d7d}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Luowei},
+           giveni={L\bibinitperiod}}}%
+        {{hash=72713df178c18b10a3339615b92e3887}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Chenliang},
+           giveni={C\bibinitperiod}}}%
+        {{hash=9cfe6b83e3e83c5d60d37fc86a862ccc}{%
+           family={Corso},
+           familyi={C\bibinitperiod},
+           given={Jason\bibnamedelima J.},
+           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{fd97f4f0d35370b83ea719f070100882}
+      \strng{fullhash}{eede47d2735799989d8c432d6b39d2ab}
+      \strng{fullhashraw}{eede47d2735799989d8c432d6b39d2ab}
+      \strng{bibnamehash}{eede47d2735799989d8c432d6b39d2ab}
+      \strng{authorbibnamehash}{eede47d2735799989d8c432d6b39d2ab}
+      \strng{authornamehash}{fd97f4f0d35370b83ea719f070100882}
+      \strng{authorfullhash}{eede47d2735799989d8c432d6b39d2ab}
+      \strng{authorfullhashraw}{eede47d2735799989d8c432d6b39d2ab}
+      \field{extraname}{2}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the AAAI Conference on Artificial Intelligence (AAAI)}
+      \field{title}{Towards Automatic Learning of Procedures from Web Instructional Videos}
+      \field{year}{2018}
       \true{nocite}
     \endentry
   \enddatalist

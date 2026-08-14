@@ -1,15 +1,15 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is 'thesis.blg'
-[94] biber-MSWIN64:342> INFO - === 
-[134] Biber.pm:421> INFO - Reading 'thesis.bcf'
-[229] Biber.pm:999> INFO - Using all citekeys in bib section 0
-[240] Biber.pm:4487> INFO - Processing section 0
-[250] Biber.pm:4678> INFO - Looking for bibtex file 'refs_clean.bib' for section 0
-[311] bibtex.pm:1713> INFO - LaTeX decoding ...
-[338] bibtex.pm:1519> INFO - Found BibTeX data source 'refs_clean.bib'
-[551] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[551] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[551] Biber.pm:4307> INFO - Sorting list 'anyt/global//global/global/global' of type 'entry' with template 'anyt' and locale 'en-US'
-[551] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
-[577] bbl.pm:676> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
-[600] bbl.pm:779> INFO - Output to thesis.bbl
+[100] biber-MSWIN64:342> INFO - === 
+[142] Biber.pm:421> INFO - Reading 'thesis.bcf'
+[239] Biber.pm:999> INFO - Using all citekeys in bib section 0
+[250] Biber.pm:4487> INFO - Processing section 0
+[260] Biber.pm:4678> INFO - Looking for bibtex file 'refs_clean.bib' for section 0
+[326] bibtex.pm:1713> INFO - LaTeX decoding ...
+[356] bibtex.pm:1519> INFO - Found BibTeX data source 'refs_clean.bib'
+[592] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[592] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[592] Biber.pm:4307> INFO - Sorting list 'anyt/global//global/global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[592] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[619] bbl.pm:676> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
+[645] bbl.pm:779> INFO - Output to thesis.bbl

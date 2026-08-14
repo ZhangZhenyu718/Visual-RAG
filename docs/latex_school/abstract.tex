@@ -26,7 +26,10 @@ five-choice accuracy from 0.447 to 0.547, while a controlled experiment
 on temporal questions shows that supplying visual evidence raises
 accuracy from 0.341 to 0.636. Prior-only baselines calibrate these
 gains: only the multimodal configuration beats the bare model's answer
-prior, and transcript-only evidence can fall significantly below it.
+prior, and transcript-only evidence can fall significantly below it. A
+forty-video replication on speech-dense instructional video confirms the
+negative results are domain-conditional: there, transcript retrieval
+doubles visual retrieval and late fusion becomes the best configuration.
 
 The results separate three bottlenecks in video RAG: recall, ranking
 precision, and evidence delivery. Query decomposition, visual

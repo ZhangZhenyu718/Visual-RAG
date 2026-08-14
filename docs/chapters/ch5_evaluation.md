@@ -8,8 +8,10 @@ strategy — modality fusion, query decomposition, second-stage re-ranking, and 
 embedding backbone — including two negative results that shaped the final design.
 Section 5.4 addresses RQ3 by measuring end-to-end question-answering accuracy of
 the agentic pipeline, culminating in a controlled experiment that isolates the
-contribution of visual evidence at the answering stage. Section 5.5 reports
-system-level costs. Every number in this chapter is reproducible from the committed
+contribution of visual evidence at the answering stage. Section 5.5 replicates
+the modality comparison on a speech-dense second domain (YouCook2), testing the
+domain-conditionality prediction that Chapter 6 attaches to the text-channel
+negative results. Section 5.6 reports system-level costs. Every number in this chapter is reproducible from the committed
 result files (`results/*.json`); the exact command that produced each result is
 recorded in `docs/EXPERIMENTS.md`.
 
@@ -441,7 +443,66 @@ system points for its evidence", where our retrieval-first design proves
 competitive with — and in point estimate above — published weakly-supervised
 grounding, while additionally emitting the citation as a first-class output.
 
-## 5.5 System-level measurements
+## 5.5 Cross-domain replication: speech-dense video
+
+Chapter 6 (§6.2) reads this dissertation's text-channel negative results as
+*domain-conditional*: NExT-QA's home videos are speech-sparse — 60% of segments
+contain any speech, much of it multilingual chatter — and the stated prediction
+is that in a speech-dense, single-language domain the same components should
+reverse sign. This section tests that prediction directly.
+
+**Setup.** Forty validation videos of YouCook2 (Zhou, Xu and Corso, 2018) —
+English-narrated cooking instruction, mean duration ≈5 minutes — were ingested
+by the *unchanged* pipeline: the same 8 s / 4 s segmentation, the same Whisper
+transcription, and the same ViT-B-32 index as the §5.2 baseline, producing
+3,110 visual and 3,100 transcript vectors over 3,173 segments. The benchmark's
+own step annotations serve as queries: each annotated step (a sentence plus a
+ground-truth [start, end] interval) becomes one moment-retrieval query — 314
+in total — scored under the §5.1 protocol. The speech-density contrast is
+stark: 99.7% of segments carry speech (against 60% on NExT-QA), and the speech
+is task-aligned narration rather than incidental conversation.
+
+**Table 5.8 — Modality comparison on YouCook2 (ViT-B-32 index, τ = 0.5, 314
+step queries).**
+
+| Scope | Modality | R@1 | R@5 | R@10 | MRR | tIoU@1 |
+|---|---|---|---|---|---|---|
+| corpus | visual | .048 | .099 | .143 | .076 | .058 |
+| corpus | text | .096 | .213 | .261 | .145 | .128 |
+| corpus | fused (α=.5) | .099 | .197 | .287 | .145 | .108 |
+| video | visual | .115 | .245 | .318 | .173 | .152 |
+| video | text | .146 | .331 | .392 | .221 | .199 |
+| video | fused (α=.5) | .169 | .350 | .420 | .247 | .215 |
+
+Every sign flips as predicted. Transcript retrieval **doubles** visual
+retrieval in corpus scope (R@1 .096 vs .048; MRR .145 vs .076) — the mirror
+image of §5.2, where visual led text by an order of magnitude. Late fusion,
+which on NExT-QA never beat visual-only at any weight (§5.3.1), is here the
+**best configuration in video scope on every metric** (MRR .247 against .221
+text-only and .173 visual-only) and the best deep-rank configuration in corpus
+scope (R@10 .287). The α sweep confirms the direction of the regime: quality
+now *falls* as the visual weight rises (corpus R@10 .287 at α = .5 → .194 at
+α = .8), where on NExT-QA the same sweep improved monotonically toward
+visual. The ordering is unchanged at the looser τ = 0.3 (corpus text R@1 .191
+vs visual .099).
+
+The replication upgrades Chapter 6's conditionality *claim* to a measured
+result: the negative results of §5.3.1 are properties of the domain, not of
+the components. Part of the reversal is register — YouCook2 queries are step
+descriptions phrased in the narrator's own vocabulary, where NExT-QA questions
+are causal and temporal reformulations of silent visual events — and that is
+precisely the point: the modality ordering is a function of the domain's
+query-speech alignment, not a universal constant. The practical corollary is a
+*domain-adaptive* modality policy — weight the transcript channel by measured
+speech density and register match, using exactly this harness to measure it —
+rather than a fixed design choice. Two qualifications temper the result: the
+second corpus is small (40 videos, sized to the remaining project budget), and
+the replication covers the retrieval layer only — the QA-stage experiments of
+§5.4 were not repeated. The direction and magnitude of the reversals (2× on
+corpus R@1, fusion best across the board in video scope) are nonetheless far
+outside plausible noise for a deterministic 314-query evaluation.
+
+## 5.6 System-level measurements
 
 The offline stage processed all 567 videos in ≈2 h on a single RTX 4050 laptop
 GPU (6 GB): keyframe extraction at <1 s per video and Whisper large-v3 (int8,
@@ -457,7 +518,7 @@ Marginal API costs are small: query decomposition for the entire split cost
 44-question multimodal run ≈US$3. The complete evaluation suite of this chapter
 is reproducible on one consumer laptop plus ≈US$5 of API usage.
 
-## 5.6 Summary
+## 5.7 Summary
 
 Against RQ1, multi-modal (visual) retrieval outperforms the text-only baseline by
 an order of magnitude in corpus scope, and the corpus/video gap identifies
@@ -465,8 +526,11 @@ cross-video confusion as the dominant error. Against RQ2, the ablations show tha
 (i) naive late fusion cannot rescue a weak text channel at any weight; (ii) query
 decomposition buys recall at depth while visual re-ranking buys top-rank
 precision, and they compose; (iii) SigLIP is the strongest index backbone, nearly
-doubling baseline R@1; and (iv) a two-stage cheap-index/expensive-re-rank design
-matches the expensive index outright. Against RQ3, a LangGraph agent with
+doubling baseline R@1; (iv) a two-stage cheap-index/expensive-re-rank design
+matches the expensive index outright; and (v) a speech-dense replication
+(§5.5) shows the modality ordering itself is domain-conditional — on YouCook2
+transcript retrieval doubles visual retrieval and late fusion becomes the best
+configuration, exactly as the causal analysis predicted. Against RQ3, a LangGraph agent with
 temporal tools and self-reflection improves QA accuracy by 10 points over a
 single-loop agent (McNemar p = .031), and a controlled evidence-channel
 experiment shows visual evidence nearly doubling temporal-next accuracy

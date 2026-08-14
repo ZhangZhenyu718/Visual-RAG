@@ -180,6 +180,26 @@ graph agent ≈ prior (p = .88); only the multimodal stack beats its prior
 calibration sentences, §5.6, §6.1 modality-role thread, §6.3, ch1
 contribution 4, ch7 RQ3. Table 5.4 now five rows (both priors).
 
+## YouCook2 speech-dense replication (supervisor revision, 2026-08-12)
+
+```bash
+python scripts/prep_youcook2.py --n 40      # yt-dlp download + NExT-style annotations
+python scripts/ingest_dataset.py --config configs/youcook2.yaml --split val
+python scripts/build_index.py   --config configs/youcook2.yaml --split val
+python scripts/evaluate.py --config configs/youcook2.yaml --split val \
+    --scope corpus --json artifacts_yc2/eval_yc2_corpus.json      # + --scope video,
+    # --tau 0.3, --alpha 0.7/0.8 variants; all JSONs copied to results/eval_yc2_*.json
+```
+
+40 val videos (2 truncated downloads auto-replaced; 1 MB integrity floor),
+3,173 segments, 3,110 visual + 3,100 text vectors (99.7% speech coverage vs
+NExT's 60%). Queries = the benchmark's own 314 step annotations. **Both
+negative results reverse as §6.2 predicted**: corpus text R@1 .096 vs visual
+.048 (2×), video-scope fused (α=.5) best on every metric (MRR .247 vs .221
+text / .173 visual); fusion degrades as α→visual (.287→.194 R@10); ordering
+unchanged at τ=0.3. Reported in new §5.5 (EN+ZH), ch6 §6.2/§6.4, ch7 RQ1/RQ2 +
+future work, ch1 contribution 2, abstracts. Zero API cost (all local GPU).
+
 ## Demo assets
 
 - 4-video smoke-test corpus (`configs/demo.yaml`, `data/demo/videos/`, git-ignored):
