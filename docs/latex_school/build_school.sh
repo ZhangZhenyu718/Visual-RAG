@@ -44,25 +44,33 @@ GENERATED="$GENERATED ch/A_full_results.tex"
 echo "fragments: $(printf '%s\n' $GENERATED | wc -l | tr -d ' ') chapters/appendices"
 
 # Keep the project metadata here so this school-template build is self-contained.
-python3 - <<'EOF'
+# -X utf8 is load-bearing: without it, Python decodes this heredoc, the pipe to
+# pandoc, and the output file using the system locale (cp936 on a Chinese Windows),
+# which silently turned the abstract's em dashes and ">=" into mojibake.
+python3 -X utf8 - <<'EOF'
 import subprocess, pathlib
-text = '''Video is widely recorded but remains difficult to search at the moment level, especially when a query expresses causal or temporal intent rather than literal visual content. This dissertation presents Visual RAG, an end-to-end agentic retrieval-augmented generation system that indexes timestamped visual and transcript evidence, decomposes natural-language questions into retrieval-friendly descriptions, searches and re-ranks candidate moments, and answers with grounded timestamp citations. The system is designed to run with modest resources by separating an offline indexing stage from a lightweight online query path.
+text = '''Video is widely recorded but remains hard to search at the moment level. The questions people ask of footage are causal and temporal — *why* did the boy carry the present to the sofa — while the metadata and speech transcripts video search relies on are neither. This dissertation asks how far an agentic retrieval-augmented generation system can close that gap with off-the-shelf components on consumer hardware, treating every design choice as something to measure rather than assert.
 
-The design is evaluated on 3,358 temporally grounded questions over 567 videos from NExT-QA and NExT-GQA, under a deliberately strict hit criterion — the correct video and tIoU ≥ 0.5 against the annotated moment — that makes absolute recall small by construction and places the emphasis on controlled comparisons. Visual retrieval substantially outperforms transcript retrieval at moment granularity. Replacing the baseline CLIP index with SigLIP and adding query decomposition nearly doubles corpus-scope recall at rank one from 0.026 to 0.048. A two-stage configuration using a cheaper index and a stronger visual re-ranker recovers most of the quality of an expensive index. Two negative results are also established: naive late fusion with sparse conversational transcripts and text cross-encoder re-ranking both reduce retrieval quality. At the answering stage, a bounded LangGraph agent improves five-choice accuracy from 0.447 to 0.547, while a controlled experiment on temporal questions shows that supplying visual evidence raises accuracy from 0.341 to 0.636. Prior-only baselines calibrate these gains: only the multimodal configuration beats the bare model's answer prior, and transcript-only evidence can fall significantly below it. A forty-video replication on speech-dense instructional video confirms the negative results are domain-conditional: there, transcript retrieval doubles visual retrieval and late fusion becomes the best configuration.
+The system indexes visual and transcript evidence as overlapping 8-second segments, rewrites a question into the scene-caption register a contrastive encoder can match, searches and re-ranks candidate moments, and answers through a bounded LangGraph agent that cites the seconds of video supporting each claim. Retrieval is scored on 3,358 temporally grounded NExT-QA/NExT-GQA questions over 567 videos under a deliberately strict criterion — correct video *and* tIoU ≥ 0.5 — which makes absolute recall small by construction and puts the weight on controlled comparisons.
 
-The results separate three bottlenecks in video RAG: recall, ranking precision, and evidence delivery. Query decomposition, visual re-ranking, and multimodal answering address these bottlenecks independently and compose effectively. The dissertation contributes a reproducible system, evaluation harness, ablation study, and practical design guidance for temporally grounded video search on consumer hardware.'''
+- A reproducible, temporally grounded video RAG pipeline and evaluation harness, runnable end to end on one 6 GB laptop GPU (Chapters 3–4).
+- A component-wise ablation over all 3,358 questions: a SigLIP index with query decomposition nearly doubles top-1 moment recall (0.026 to 0.048); decomposition buys recall at depth, visual re-ranking top-rank precision (§5.3).
+- Two negative results with one diagnosis — late fusion never beats visual-only at any weight, and a text cross-encoder re-ranker degrades ranking, both traced to sparse, multilingual, conversational speech — together with a cross-domain replication on speech-dense video that reverses both exactly as the diagnosis predicts, making the modality ordering domain-conditional and measurable (§5.3.1, §5.3.3, §5.5).
+- A two-stage equivalence finding: re-ranking a cheap index's top-30 with a stronger backbone matches indexing the whole corpus with it, decoupling quality from indexing cost (§5.3.4).
+- A calibrated account of agentic answering: the graph agent lifts five-choice accuracy 0.447 to 0.547 and keyframe evidence lifts temporal-next accuracy 0.341 to 0.636, while prior-only baselines (0.560) leave the multimodal stack the only configuration that beats the bare model (§5.4).'''
 tex = subprocess.run(['pandoc', '-f', 'markdown', '-t', 'latex'],
-                     input=text, capture_output=True, text=True, check=True).stdout
-pathlib.Path('abstract.tex').write_text(tex)
+                     input=text, capture_output=True, text=True, check=True,
+                     encoding='utf-8').stdout
+pathlib.Path('abstract.tex').write_text(tex, encoding='utf-8')
 EOF
 echo "abstract.tex regenerated"
 
 # refs_clean.bib = references.bib minus note fields (biblatex prints notes; ours are TODO markers)
-python3 - <<'EOF'
+python3 -X utf8 - <<'EOF'
 import re, pathlib
-bib = pathlib.Path('../chapters/references.bib').read_text()
+bib = pathlib.Path('../chapters/references.bib').read_text(encoding='utf-8')
 bib = re.sub(r',?\s*note\s*=\s*\{[^{}]*\}', '', bib)
-pathlib.Path('refs_clean.bib').write_text(bib)
+pathlib.Path('refs_clean.bib').write_text(bib, encoding='utf-8')
 EOF
 echo "refs_clean.bib regenerated (note fields stripped)"
 

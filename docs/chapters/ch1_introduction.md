@@ -79,7 +79,9 @@ and empirically grounded in Chapter 5:
    vision-language space, staged retrieval, and an answering agent with
    per-claim timestamp citations — evaluated on 3,358 temporally annotated
    questions over 567 videos (NExT-QA/NExT-GQA), and runnable end-to-end on one
-   consumer GPU plus ≈US$5 of API usage.
+   consumer GPU plus ≈US$5 of API usage for the retrieval and text-only
+   answering programme (≈US$30 including the multimodal best-configuration run
+   of §5.4.4).
 
 2. **A systematic ablation of the multi-modal embedding strategy** (§5.3),
    including two documented *negative results* with causal analyses: weighted

@@ -62,7 +62,6 @@
       \field{booktitle}{Proceedings of the Twelfth International Conference on Learning Representations (ICLR)}
       \field{title}{Self-{RAG}: Learning to Retrieve, Generate, and Critique through Self-Reflection}
       \field{year}{2024}
-      \true{nocite}
     \endentry
     \entry{chen2024bgem3}{article}{}{}
       \name{author}{6}{}{%
@@ -112,7 +111,6 @@
       \field{journaltitle}{arXiv preprint arXiv:2402.03216}
       \field{title}{{BGE M3-Embedding}: Multi-Lingual, Multi-Functionality, Multi-Granularity Text Embeddings Through Self-Knowledge Distillation}
       \field{year}{2024}
-      \true{nocite}
     \endentry
     \entry{cherti2023openclip}{inproceedings}{}{}
       \name{author}{9}{}{%
@@ -177,7 +175,6 @@
       \field{booktitle}{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}
       \field{title}{Reproducible Scaling Laws for Contrastive Language-Image Learning}
       \field{year}{2023}
-      \true{nocite}
     \endentry
     \entry{cormack2009rrf}{inproceedings}{}{}
       \name{author}{3}{}{%
@@ -212,7 +209,6 @@
       \field{booktitle}{Proceedings of the 32nd International ACM SIGIR Conference on Research and Development in Information Retrieval}
       \field{title}{Reciprocal Rank Fusion Outperforms {C}ondorcet and Individual Rank Learning Methods}
       \field{year}{2009}
-      \true{nocite}
     \endentry
     \entry{deepseek2024v3}{article}{}{}
       \name{author}{1}{}{%
@@ -235,7 +231,6 @@
       \field{journaltitle}{arXiv preprint arXiv:2412.19437}
       \field{title}{{DeepSeek-V3} Technical Report}
       \field{year}{2024}
-      \true{nocite}
     \endentry
     \entry{fan2024videoagent}{inproceedings}{}{}
       \name{author}{7}{}{%
@@ -290,7 +285,6 @@
       \field{booktitle}{Proceedings of the European Conference on Computer Vision (ECCV)}
       \field{title}{{VideoAgent}: A Memory-Augmented Multimodal Agent for Video Understanding}
       \field{year}{2024}
-      \true{nocite}
     \endentry
     \entry{gao2017tall}{inproceedings}{}{}
       \name{author}{4}{}{%
@@ -331,7 +325,6 @@
       \field{booktitle}{Proceedings of the IEEE International Conference on Computer Vision (ICCV)}
       \field{title}{{TALL}: Temporal Activity Localization via Language Query}
       \field{year}{2017}
-      \true{nocite}
     \endentry
     \entry{gao2023hyde}{inproceedings}{}{}
       \name{author}{4}{}{%
@@ -372,7 +365,6 @@
       \field{booktitle}{Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (ACL)}
       \field{title}{Precise Zero-Shot Dense Retrieval without Relevance Labels}
       \field{year}{2023}
-      \true{nocite}
     \endentry
     \entry{guu2020realm}{inproceedings}{}{}
       \name{author}{5}{}{%
@@ -417,7 +409,6 @@
       \field{booktitle}{Proceedings of the 37th International Conference on Machine Learning (ICML)}
       \field{title}{{REALM}: Retrieval-Augmented Language Model Pre-Training}
       \field{year}{2020}
-      \true{nocite}
     \endentry
     \entry{karpukhin2020dpr}{inproceedings}{}{}
       \name{author}{8}{}{%
@@ -477,7 +468,6 @@
       \field{booktitle}{Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)}
       \field{title}{Dense Passage Retrieval for Open-Domain Question Answering}
       \field{year}{2020}
-      \true{nocite}
     \endentry
     \entry{krishna2017activitynet}{inproceedings}{}{}
       \name{author}{5}{}{%
@@ -522,7 +512,6 @@
       \field{booktitle}{Proceedings of the IEEE International Conference on Computer Vision (ICCV)}
       \field{title}{Dense-Captioning Events in Videos}
       \field{year}{2017}
-      \true{nocite}
     \endentry
     \entry{lei2021momentdetr}{inproceedings}{}{}
       \name{author}{3}{}{%
@@ -550,6 +539,7 @@
       \strng{authornamehash}{4ed830a90429c2531042d4f2f20f0b12}
       \strng{authorfullhash}{5d6af07ca67f725417a35df93a82b37a}
       \strng{authorfullhashraw}{5d6af07ca67f725417a35df93a82b37a}
+      \field{extraname}{1}
       \field{sortinit}{L}
       \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
       \field{labelnamesource}{author}
@@ -557,7 +547,46 @@
       \field{booktitle}{Advances in Neural Information Processing Systems (NeurIPS)}
       \field{title}{Detecting Moments and Highlights in Videos via Natural Language Queries}
       \field{year}{2021}
-      \true{nocite}
+    \endentry
+    \entry{lei2020tvr}{inproceedings}{}{}
+      \name{author}{4}{}{%
+        {{hash=b3e0eae77968a02323a3ac5b7a02f45c}{%
+           family={Lei},
+           familyi={L\bibinitperiod},
+           given={Jie},
+           giveni={J\bibinitperiod}}}%
+        {{hash=be39c121bc7a07fa378493551b4a44c6}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Licheng},
+           giveni={L\bibinitperiod}}}%
+        {{hash=3181321df1332fe55f7e4521be715c86}{%
+           family={Berg},
+           familyi={B\bibinitperiod},
+           given={Tamara\bibnamedelima L.},
+           giveni={T\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=b118f9d5c7ddaa3d38926cc7de6586e0}{%
+           family={Bansal},
+           familyi={B\bibinitperiod},
+           given={Mohit},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{4ed830a90429c2531042d4f2f20f0b12}
+      \strng{fullhash}{42eee9156f8c8b39cd80f1299a81db36}
+      \strng{fullhashraw}{42eee9156f8c8b39cd80f1299a81db36}
+      \strng{bibnamehash}{42eee9156f8c8b39cd80f1299a81db36}
+      \strng{authorbibnamehash}{42eee9156f8c8b39cd80f1299a81db36}
+      \strng{authornamehash}{4ed830a90429c2531042d4f2f20f0b12}
+      \strng{authorfullhash}{42eee9156f8c8b39cd80f1299a81db36}
+      \strng{authorfullhashraw}{42eee9156f8c8b39cd80f1299a81db36}
+      \field{extraname}{2}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{European Conference on Computer Vision (ECCV)}
+      \field{title}{{TVR}: A Large-Scale Dataset for Video-Subtitle Moment Retrieval}
+      \field{year}{2020}
     \endentry
     \entry{lewis2020rag}{inproceedings}{}{}
       \name{author}{12}{}{%
@@ -637,7 +666,6 @@
       \field{booktitle}{Advances in Neural Information Processing Systems (NeurIPS)}
       \field{title}{Retrieval-Augmented Generation for Knowledge-Intensive {NLP} Tasks}
       \field{year}{2020}
-      \true{nocite}
     \endentry
     \entry{luo2022clip4clip}{article}{}{}
       \name{author}{7}{}{%
@@ -693,7 +721,6 @@
       \field{title}{{CLIP4Clip}: An Empirical Study of {CLIP} for End-to-End Video Clip Retrieval and Captioning}
       \field{volume}{508}
       \field{year}{2022}
-      \true{nocite}
       \field{pages}{293\bibrangedash 304}
       \range{pages}{12}
     \endentry
@@ -727,7 +754,6 @@
       \field{title}{Efficient and Robust Approximate Nearest Neighbor Search Using Hierarchical Navigable Small World Graphs}
       \field{volume}{42}
       \field{year}{2020}
-      \true{nocite}
       \field{pages}{824\bibrangedash 836}
       \range{pages}{13}
     \endentry
@@ -759,7 +785,6 @@
       \field{journaltitle}{arXiv preprint arXiv:1901.04085}
       \field{title}{Passage Re-ranking with {BERT}}
       \field{year}{2019}
-      \true{nocite}
     \endentry
     \entry{radford2023whisper}{inproceedings}{}{}
       \name{author}{6}{}{%
@@ -810,7 +835,6 @@
       \field{booktitle}{Proceedings of the 40th International Conference on Machine Learning (ICML)}
       \field{title}{Robust Speech Recognition via Large-Scale Weak Supervision}
       \field{year}{2023}
-      \true{nocite}
     \endentry
     \entry{radford2021clip}{inproceedings}{}{}
       \name{author}{12}{}{%
@@ -891,7 +915,6 @@
       \field{booktitle}{Proceedings of the 38th International Conference on Machine Learning (ICML)}
       \field{title}{Learning Transferable Visual Models From Natural Language Supervision}
       \field{year}{2021}
-      \true{nocite}
     \endentry
     \entry{ren2025videorag}{article}{}{}
       \name{author}{6}{}{%
@@ -941,7 +964,6 @@
       \field{journaltitle}{arXiv preprint arXiv:2502.01549}
       \field{title}{{VideoRAG}: Retrieval-Augmented Generation with Extreme Long-Context Videos}
       \field{year}{2025}
-      \true{nocite}
     \endentry
     \entry{schick2023toolformer}{inproceedings}{}{}
       \name{author}{9}{}{%
@@ -1006,7 +1028,6 @@
       \field{booktitle}{Advances in Neural Information Processing Systems (NeurIPS)}
       \field{title}{Toolformer: Language Models Can Teach Themselves to Use Tools}
       \field{year}{2023}
-      \true{nocite}
     \endentry
     \entry{schuhmann2022laion}{inproceedings}{}{}
       \true{moreauthor}
@@ -1078,7 +1099,6 @@
       \field{booktitle}{Advances in Neural Information Processing Systems (NeurIPS) Datasets and Benchmarks Track}
       \field{title}{{LAION}-5{B}: An Open Large-Scale Dataset for Training Next Generation Image-Text Models}
       \field{year}{2022}
-      \true{nocite}
     \endentry
     \entry{shinn2023reflexion}{inproceedings}{}{}
       \name{author}{5}{}{%
@@ -1123,7 +1143,6 @@
       \field{booktitle}{Advances in Neural Information Processing Systems (NeurIPS)}
       \field{title}{Reflexion: Language Agents with Verbal Reinforcement Learning}
       \field{year}{2023}
-      \true{nocite}
     \endentry
     \entry{wang2024videoagent}{inproceedings}{}{}
       \name{author}{4}{}{%
@@ -1163,7 +1182,6 @@
       \field{booktitle}{Proceedings of the European Conference on Computer Vision (ECCV)}
       \field{title}{{VideoAgent}: Long-Form Video Understanding with Large Language Model as Agent}
       \field{year}{2024}
-      \true{nocite}
     \endentry
     \entry{wei2022cot}{inproceedings}{}{}
       \name{author}{9}{}{%
@@ -1228,7 +1246,6 @@
       \field{booktitle}{Advances in Neural Information Processing Systems (NeurIPS)}
       \field{title}{Chain-of-Thought Prompting Elicits Reasoning in Large Language Models}
       \field{year}{2022}
-      \true{nocite}
     \endentry
     \entry{xiao2021nextqa}{inproceedings}{}{}
       \name{author}{4}{}{%
@@ -1269,7 +1286,6 @@
       \field{booktitle}{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}
       \field{title}{{NExT-QA}: Next Phase of Question-Answering to Explaining Temporal Actions}
       \field{year}{2021}
-      \true{nocite}
     \endentry
     \entry{xiao2024nextgqa}{inproceedings}{}{}
       \name{author}{4}{}{%
@@ -1310,7 +1326,6 @@
       \field{booktitle}{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}
       \field{title}{Can {I} Trust Your Answer? Visually Grounded Video Question Answering}
       \field{year}{2024}
-      \true{nocite}
     \endentry
     \entry{xu2016msrvtt}{inproceedings}{}{}
       \name{author}{4}{}{%
@@ -1350,7 +1365,6 @@
       \field{booktitle}{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}
       \field{title}{{MSR-VTT}: A Large Video Description Dataset for Bridging Video and Language}
       \field{year}{2016}
-      \true{nocite}
     \endentry
     \entry{yao2023react}{inproceedings}{}{}
       \name{author}{7}{}{%
@@ -1405,7 +1419,6 @@
       \field{booktitle}{Proceedings of the Eleventh International Conference on Learning Representations (ICLR)}
       \field{title}{{ReAct}: Synergizing Reasoning and Acting in Language Models}
       \field{year}{2023}
-      \true{nocite}
     \endentry
     \entry{yu2023sevila}{inproceedings}{}{}
       \name{author}{4}{}{%
@@ -1445,7 +1458,6 @@
       \field{booktitle}{Advances in Neural Information Processing Systems (NeurIPS)}
       \field{title}{Self-Chained Image-Language Model for Video Localization and Question Answering}
       \field{year}{2023}
-      \true{nocite}
     \endentry
     \entry{zhai2023siglip}{inproceedings}{}{}
       \name{author}{4}{}{%
@@ -1485,7 +1497,6 @@
       \field{booktitle}{Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)}
       \field{title}{Sigmoid Loss for Language Image Pre-Training}
       \field{year}{2023}
-      \true{nocite}
     \endentry
     \entry{zhang2024llovi}{inproceedings}{}{}
       \name{author}{7}{}{%
@@ -1540,7 +1551,6 @@
       \field{booktitle}{Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing (EMNLP)}
       \field{title}{A Simple {LLM} Framework for Long-Range Video Question-Answering}
       \field{year}{2024}
-      \true{nocite}
     \endentry
     \entry{zhou2023leasttomost}{inproceedings}{}{}
       \name{author}{11}{}{%
@@ -1616,7 +1626,6 @@
       \field{booktitle}{Proceedings of the Eleventh International Conference on Learning Representations (ICLR)}
       \field{title}{Least-to-Most Prompting Enables Complex Reasoning in Large Language Models}
       \field{year}{2023}
-      \true{nocite}
     \endentry
     \entry{zhou2018youcook2}{inproceedings}{}{}
       \name{author}{3}{}{%
@@ -1652,7 +1661,6 @@
       \field{booktitle}{Proceedings of the AAAI Conference on Artificial Intelligence (AAAI)}
       \field{title}{Towards Automatic Learning of Procedures from Web Instructional Videos}
       \field{year}{2018}
-      \true{nocite}
     \endentry
   \enddatalist
 \endrefsection

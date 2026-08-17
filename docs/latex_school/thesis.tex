@@ -31,6 +31,30 @@
 \DeclareUnicodeCharacter{2265}{\ensuremath{\geq}}
 \DeclareUnicodeCharacter{2264}{\ensuremath{\leq}}
 
+%% The CS unit's submission checklist calls this front-matter section an
+%% "executive summary" (one page, ending in contribution bullets) where the class
+%% hard-codes the heading "Abstract". Retitled here rather than in the class so
+%% the template stays as distributed. Restore by deleting this block.
+\RenewDocumentEnvironment{abstract}{+b}{%
+  \recalctypearea
+  \thispagestyle{empty}
+  \begin{center}
+    {\Large\bfseries Executive Summary}\\
+  \end{center}
+  \bigskip
+  {#1}
+  \cleardoubleoddemptypage
+}{}
+
+%% LINE SPACING. uob-thesis.cls sets \linespread{1.5}. In LaTeX that is a
+%% baselineskip multiplier, not a line-count multiplier: 1.5 renders wider than
+%% the one-and-a-half spacing normally meant by the phrase, which the setspace
+%% package implements as \setstretch{1.25} at 11pt. Annex 14 fixes font size
+%% (11-12pt) and margins (>=2cm) but not leading, so this is compliant.
+%% Must precede \recalctypearea so the type area is computed for this leading.
+%% Delete this line to return to the class default.
+\linespread{1.25}
+
 %% E-SUBMISSION LAYOUT: single-sided, no parity-forced blank pages.
 %% For the printed two-sided copy, delete the next two lines (and set twoside above).
 \KOMAoptions{twoside=false}\recalctypearea
@@ -75,11 +99,17 @@
   \input{abstract}         % generated from latex/meta.yaml by build_school.sh
 \end{abstract}
 
-%% Optional dedication/acknowledgements — write before submission.
+%% Acknowledgements are a REQUIRED section on the CS unit's submission checklist
+%% ("a list of acknowledgements"), so the section is enabled. Replace the line
+%% below before submitting — it is deliberately conspicuous so it cannot ship.
+\begin{acknowledgements}
+  \textbf{[TO WRITE BEFORE SUBMISSION]} Thanks to my supervisor, \emph{name},
+  for \emph{\ldots}; and to \emph{\ldots}
+\end{acknowledgements}
+
+%% Optional dedication.
 % \begin{dedication}
 % \end{dedication}
-% \begin{acknowledgements}
-% \end{acknowledgements}
 
 %% Mandatory.
 \begin{statement}
@@ -98,7 +128,7 @@ My dissertation does not include non-published collaborative work that contains 
 
   \vspace{2cm}
 
-  \includegraphics[width=4cm]{sig}   % TODO: replace sig.png with your signature
+  \includegraphics[width=4cm]{sig}
 \end{declaration}
 
 \hypersetup{pageanchor=true}
@@ -135,9 +165,8 @@ My dissertation does not include non-published collaborative work that contains 
 %%%%%%%%%%%%%%%%
 
 \backmatter
-% The Markdown currently cites authors in prose rather than with Pandoc citation
-% keys; include the curated project bibliography in full.
-\nocite{*}
+% Chapters cite with Pandoc citation keys, so biblatex prints exactly the works
+% the text cites. Do NOT reinstate \nocite{*}: it would mask an uncited entry.
 \printbibliography[heading=bibintoc]
 
 \end{CJK*}

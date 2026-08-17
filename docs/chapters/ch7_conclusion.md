@@ -80,9 +80,13 @@ targets any OpenAI-compatible endpoint; running the QA suite against local
 Qwen/Llama models (the plumbing and evaluation scripts exist) would quantify
 the API-versus-open trade-off the project plan anticipated.
 
-**Adaptive segmentation.** Fixed 8-second windows impose a structural ceiling on
-tIoU (§6.2); shot-aligned or query-adaptive windowing would raise the ceiling
-itself, and the evaluation harness can measure the gain directly.
+**Adaptive segmentation, on a tested segmenter.** Fixed 8-second windows impose a
+structural ceiling on tIoU (§6.2); shot-aligned or query-adaptive windowing would
+raise the ceiling itself, and the evaluation harness can measure the gain
+directly. Reworking the segmenter is also the point at which the missing unit
+tests (§4.7) should be written: the boundary arithmetic and the rank-fusion and
+imputation logic are exactly the code whose errors surface as plausible-looking
+metrics rather than crashes.
 
 **Deepen the second domain, and run the user study.** The speech-dense
 retrieval replication is done (§5.5); its natural extensions are to repeat the

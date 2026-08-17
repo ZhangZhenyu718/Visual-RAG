@@ -21,16 +21,17 @@ command that produced each result is recorded in
 \section{Experimental setup}
 
 \textbf{Dataset.} All experiments use the validation split of NExT-QA
-(Xiao et al., 2021), a benchmark of causal and temporal multiple-choice
-questions over short (\textasciitilde44 s) everyday videos, together
-with the temporal grounding labels contributed by NExT-GQA (Xiao et al.,
-2024). The split contains 3,358 questions over 567 videos, and --- after
-intersecting with the grounding annotations --- every question carries
-at least one ground-truth temporal interval locating the evidence for
-its answer. NExT-GQA was chosen over larger retrieval benchmarks
-(e.g.~MSRVTT, ActivityNet Captions) precisely because these interval
-labels allow retrieval to be scored with \emph{temporal} precision
-rather than at whole-video granularity.
+\autocite{xiao2021nextqa}, a benchmark of causal and temporal
+multiple-choice questions over short (\textasciitilde44 s) everyday
+videos, together with the temporal grounding labels contributed by
+NExT-GQA \autocite{xiao2024nextgqa}. The split contains 3,358 questions
+over 567 videos, and --- after intersecting with the grounding
+annotations --- every question carries at least one ground-truth
+temporal interval locating the evidence for its answer. NExT-GQA was
+chosen over larger retrieval benchmarks (e.g.~MSRVTT, ActivityNet
+Captions) precisely because these interval labels allow retrieval to be
+scored with \emph{temporal} precision rather than at whole-video
+granularity.
 
 \textbf{Indexing.} The ingestion pipeline of Chapter 3 produced 5,725
 overlapping segments (8 s window, 4 s stride) from the 567 videos. Each
@@ -111,14 +112,18 @@ Three observations answer RQ1. First, \textbf{visual retrieval dominates
 text retrieval by an order of magnitude in corpus scope} (R@10 .111 vs
 .011): to find a moment among 567 videos of everyday footage, what is
 \emph{on screen} is far more discriminative than what is \emph{said}.
-Second, the failure of the text channel has an identifiable cause rather
-than being an artefact of poor transcription: NExT-QA's home videos
-contain sparse, conversational, and frequently non-English speech
-(German, Mandarin and other languages appear in the transcripts), while
-the CLIP text encoder that embeds both queries and transcripts is
-trained predominantly on English alt-text. The information is often
-simply absent --- a question about what a child \emph{does} is rarely
-answered by what anyone \emph{says}. Third, the corpus/video gap
+Second, two causes plausibly account for the failure of the text
+channel, and neither is poor transcription as such. NExT-QA's home
+videos contain sparse, conversational, and frequently non-English speech
+(German, Mandarin and other languages appear in the transcripts), so the
+information a question asks about is often simply \emph{absent} from the
+speech --- a question about what a child \emph{does} is rarely answered
+by what anyone \emph{says}. And the CLIP text encoder that embeds both
+queries and transcripts is trained predominantly on English alt-text, so
+even present information may be \emph{unreadable} to it. These two
+causes are entangled in this experiment; §6.2 explains why the present
+design cannot apportion blame between them, and names the
+translate-then-embed variant that would. Third, the corpus/video gap
 localises the difficulty: within the correct video the system already
 ranks a correct moment in its top five for 39\% of questions, but across
 the corpus R@10 falls to 11\% --- \textbf{cross-video confusion, not
@@ -136,14 +141,14 @@ ablations}
 visual-only}
 
 The natural response to a weak-but-nonzero text channel is weighted late
-fusion: score = α·visual + (1−α)·text. Figure 5.1 (fig4\_alpha\_sweep)
-sweeps α over \{0.5, 0.7, 0.8, 0.9\} in corpus scope. Every metric rises
-monotonically toward the α = 1.0 endpoint --- visual-only --- and none
-crosses it; the same holds in video scope, where the best fused
-configuration (α = 0.8) ties visual-only on R@10 (.494 vs .491) but
-loses on R@1 (.139 vs .148) and MRR (.244 vs .250). At α = 0.5 fusion is
-catastrophic in corpus scope (R@10 .013) because the text scores act as
-high-variance noise added to a weak-but-real visual signal.
+fusion: score = α·visual + (1−α)·text. Figure 5.1 sweeps α over \{0.5,
+0.7, 0.8, 0.9\} in corpus scope. Every metric rises monotonically toward
+the α = 1.0 endpoint --- visual-only --- and none crosses it; the same
+holds in video scope, where the best fused configuration (α = 0.8) ties
+visual-only on R@10 (.494 vs .491) but loses on R@1 (.139 vs .148) and
+MRR (.244 vs .250). At α = 0.5 fusion is catastrophic in corpus scope
+(R@10 .013) because the text scores act as high-variance noise added to
+a weak-but-real visual signal.
 
 \begin{figure}
 \centering
@@ -176,13 +181,14 @@ questions approximately US\$0.15 of LLM usage).
 
 Decomposition lifts the deep-rank metrics in corpus scope --- R@10 .111
 \ensuremath{\rightarrow} .122 (+9.9\% relative), R@5 +6.7\%, MRR +6.4\%
---- while leaving R@1 and tIoU@1 unchanged (Table 5.2, rows 1--2; Figure
-5.2). The pattern is informative: translating abstract questions into
-CLIP-native captions surfaces \emph{additional correct candidates} into
-the top ten, but rank fusion of near-tied cosine scores cannot push them
-to position one. Recall problems and precision problems are separable;
-decomposition solves a recall problem, and the next section supplies the
-missing precision.
+--- while leaving the top of the ranking essentially untouched (R@1 .026
+\ensuremath{\rightarrow} .025, tIoU@1 unchanged at .035; Table 5.2, rows
+1--2; Figure 5.2). The pattern is informative: translating abstract
+questions into CLIP-native captions surfaces \emph{additional correct
+candidates} into the top ten, but rank fusion of near-tied cosine scores
+cannot push them to position one. Recall problems and precision problems
+are separable; decomposition solves a recall problem, and the next
+section supplies the missing precision.
 
 \subsection{Second-stage re-ranking: a negative and a positive
 result}
@@ -192,28 +198,32 @@ standard text cross-encoder re-ranker (bge-reranker) scoring (question,
 transcript) pairs over the candidate pool. On a 100-question development
 subset this \emph{reduced} quality at every fusion weight tested --- at
 weight 0.5 it halved R@5 (.070 \ensuremath{\rightarrow} .030), and even
-at 0.8 it remained below the no-reranking baseline. The mechanism
-mirrors §5.3.1: the transcripts are conversational chatter, largely
-uncorrelated with the visual events the questions ask about, so every
-reordering the cross-encoder makes injects noise. An implementation
-subtlety compounds the problem and is worth recording: 40\% of segments
-have no transcript at all, and if such candidates simply receive no
-re-ranker score, any scored candidate the cross-encoder likes outranks
-\emph{every} unscored one --- structurally demoting exactly the
-visual-only segments most likely to be correct. (Our first
-implementation had this flaw and drove R@1 to zero.) The repaired design
-imputes the re-ranker term of a modality-missing candidate from its
-retrieval rank, keeping both candidate classes on one score scale; the
-negative result above is reported \emph{with} this repair, so it
-reflects the channel, not the bug.
+at 0.8 it remained below the no-reranking baseline. One asymmetry should
+be stated plainly: this negative result rests on 100 questions, whereas
+every positive retrieval result in this chapter is measured on all
+3,358. The component was rejected on the development subset and never
+promoted to a full-split run, so the evidence against it is weaker than
+the evidence for the components that replaced it --- a decision
+revisited in §6.3. The mechanism mirrors §5.3.1: the transcripts are
+conversational chatter, largely uncorrelated with the visual events the
+questions ask about, so every reordering the cross-encoder makes injects
+noise. An implementation subtlety compounds the problem and is worth
+recording: 40\% of segments have no transcript at all, and if such
+candidates simply receive no re-ranker score, any scored candidate the
+cross-encoder likes outranks \emph{every} unscored one --- structurally
+demoting exactly the visual-only segments most likely to be correct.
+(Our first implementation had this flaw and drove R@1 to zero.) The
+repaired design imputes the re-ranker term of a modality-missing
+candidate from its retrieval rank, keeping both candidate classes on one
+score scale; the negative result above is reported \emph{with} this
+repair, so it reflects the channel, not the bug.
 
 \textbf{Visual re-ranker (positive).} The replacement re-ranker
 re-scores the top-30 candidates with a stronger vision model (CLIP
 ViT-L-14) over pre-computed segment embeddings, fusing the ViT-L ranking
 with the first-stage ranking by weighted RRF. Every segment has
 keyframes, so the missing-modality problem vanishes. Table 5.2 and
-Figure 5.2 (fig5\_ablation\_ladder) show the ladder at τ = 0.5, corpus
-scope:
+Figure 5.2 show the ladder at τ = 0.5, corpus scope:
 
 \begin{figure}
 \centering
@@ -281,12 +291,13 @@ lifts corpus R@1 by 69\% relative over ViT-B (.026
 decomposition on top reaches R@1 .048 --- \textbf{nearly double the
 original baseline} --- and video-scope tIoU@1 .230. This is consistent
 with SigLIP's sigmoid-loss pretraining, which has been reported to
-favour retrieval tasks (Zhai et al., 2023).
+favour retrieval tasks \autocite{zhai2023siglip}.
 
 Second, ViT-L used as the full index (corpus R@1 .029, R@5 .090, R@10
-.122, MRR .054) is statistically indistinguishable from ViT-B
-\emph{plus} ViT-L re-ranking (.029/.087/.121/.053) --- every metric
-agrees within ±.003. \textbf{The two-stage
+.122, MRR .054) is indistinguishable at the resolution of this
+evaluation from ViT-B \emph{plus} ViT-L re-ranking (.029/.087/.121/.053)
+--- every metric agrees to within ±.003, though the pair was compared
+numerically and not by a significance test. \textbf{The two-stage
 cheap-index/expensive-re-ranker design recovers essentially all of the
 larger model's quality} while embedding the corpus only with the small
 model; at larger corpus scales, where re-embedding everything with the
@@ -333,12 +344,12 @@ SigLIP + decomposition & \textbf{.176} & \textbf{.419} & \textbf{.496} &
 \subsection{Threshold sensitivity}
 
 τ = 0.5 is a strict criterion for 8-second windows scored against
-ground-truth intervals of arbitrary length. Table 5.6 repeats the ViT-B
+ground-truth intervals of arbitrary length. Table 5.4 repeats the ViT-B
 baseline and the best ViT-B configuration at τ = 0.3; the binary metrics
 roughly double, while tIoU@1, which is threshold-free, is unchanged by
 construction.
 
-\textbf{Table 5.6 --- Threshold sensitivity (visual modality, ViT-B
+\textbf{Table 5.4 --- Threshold sensitivity (visual modality, ViT-B
 index).}
 
 \begin{longtable}[]{@{}lllllll@{}}
@@ -371,13 +382,13 @@ answering}
 
 \subsection{Agent comparison}
 
-Table 5.4 and Figure 5.3 (fig7\_qa\_by\_type) compare the two agent
-designs of Chapter 3 on the first 150 grounded val questions under a
-text-only LLM (deepseek-chat): the single-loop function-calling agent
-(W4) and the LangGraph state machine (W7), which adds the temporal tool
-(\texttt{get\_segments\_around}) and a bounded self-reflection pass that
-audits the draft answer's citations against the gathered evidence before
-accepting it.
+Table 5.5 and Figure 5.3 compare the two agent designs of Chapter 3 on
+the first 150 grounded val questions under a text-only LLM
+(deepseek-chat \autocite{deepseek2024v3}): the single-loop
+function-calling agent (W4) and the LangGraph state machine (W7), which
+adds the temporal tool (\texttt{get\_segments\_around}) and a bounded
+self-reflection pass that audits the draft answer's citations against
+the gathered evidence before accepting it.
 
 \begin{figure}
 \centering
@@ -386,19 +397,26 @@ accepting it.
 configuration.}
 \end{figure}
 
-\textbf{Table 5.4 --- Five-choice QA accuracy, 150 val questions.}
+\textbf{Table 5.5 --- Five-choice QA accuracy, 150 val questions.} Three
+variables move across these rows --- agent, base model, and evidence
+channel --- so only rows sharing two of the three are directly
+comparable; §5.4.3 draws the valid pairings. TP is omitted from the
+by-type columns (n = 2) and reported in Appendix B.
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Agent
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Base model
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Evidence
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -416,15 +434,15 @@ CH (n=21)
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Simple loop (W4), deepseek-chat & text-only & .447 & .459 & .341 & .591
+Simple loop (W4) & deepseek-chat & text-only & .447 & .459 & .341 & .591
 & .429 \\
-LangGraph (W7), deepseek-chat & text-only & .547 & .590 & .341 & .773 &
+LangGraph (W7) & deepseek-chat & text-only & .547 & .590 & .341 & .773 &
 .619 \\
-Prior-only, deepseek-chat (§5.4.3) & none & .560 & .574 & .568 & .545 &
-.524 \\
-Prior-only, claude-opus-4-8 (§5.4.3) & none & .560 & .639 & .455 & .591
-& .476 \\
-LangGraph best config, claude-opus-4-8 (§5.4.4) & multimodal &
+none --- prior only (§5.4.3) & deepseek-chat & none & .560 & .574 & .568
+& .545 & .524 \\
+none --- prior only (§5.4.3) & claude-opus-4-8 & none & .560 & .639 &
+.455 & .591 & .476 \\
+LangGraph (W7), best config (§5.4.4) & claude-opus-4-8 & multimodal &
 \textbf{.727} & \textbf{.852} & .568 & .682 & \textbf{.762} \\
 \end{longtable}
 
@@ -465,12 +483,19 @@ stage}
 
 The TN result yields a precise hypothesis: the bottleneck is the
 \emph{evidence channel}, not the temporal mechanism. To test it, the
-same 44 TN questions were re-run with a single change: the provider was
-switched to a multimodal LLM (claude-opus-4-8), whose tool results embed
-each segment's keyframe image alongside the transcript. Retrieval index,
-tools, prompts, and questions were held fixed.
+same 44 TN questions were re-run under the \emph{simple} agent with a
+single change from its own text-only row: the provider was switched to a
+multimodal LLM (claude-opus-4-8), whose tool results embed each
+segment's keyframe image alongside the transcript. Retrieval index,
+tools, prompts, and questions were held fixed. The agent is named
+because it matters for the comparison: the LangGraph harness targeted
+OpenAI-compatible providers only at the time of this experiment, so the
+strict single-variable contrast is row 1 against row 3 of Table 5.6. The
+graph-agent row is listed because it lands on the identical .341, which
+makes the same conclusion hold against it; the graph-plus-multimodal
+combination was implemented later and is evaluated in §5.4.4.
 
-\textbf{Table 5.5 --- Same 44 TN questions, evidence channel varied.}
+\textbf{Table 5.6 --- Same 44 TN questions, evidence channel varied.}
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule\noalign{}
@@ -481,7 +506,8 @@ Configuration & TN accuracy \\
 \endlastfoot
 Text-only LLM, simple agent & .341 \\
 Text-only LLM, graph agent (temporal tool) & .341 \\
-\textbf{Multimodal LLM, keyframes in evidence} & \textbf{.636} \\
+\textbf{Multimodal LLM, simple agent, keyframes in evidence} &
+\textbf{.636} \\
 \end{longtable}
 
 Accuracy rises by 29.5 points (+87\% relative, 44/44 questions
@@ -492,15 +518,15 @@ evidence and 3 flipped away (exact McNemar p = .004; paired-bootstrap
 representative case above, the multimodal agent answered ``leans down
 and sniffs/nuzzles the small black puppy {[}28--36 s{]}'' --- matching
 the ground truth almost verbatim from the keyframes alone; Figure 5.4
-(fig8\_whitedog\_case) shows the keyframes in question beside the two
-models' verbatim answers. Because everything except the evidence
-modality was held constant, the improvement is attributable to visual
-evidence at the answering stage; §5.4.3 adds the absolute calibration
---- .636 also clears the multimodal model's own no-evidence prior on TN
-(.455) by +.18. Together with Section 5.2, this closes the loop on the
-modality question at \emph{both} ends of the pipeline: retrieval needs
-visual embeddings to find the right moment, and generation needs visual
-evidence to describe it.
+shows the keyframes in question beside the two models' verbatim answers.
+Because everything except the evidence modality was held constant, the
+improvement is attributable to visual evidence at the answering stage;
+§5.4.3 adds the absolute calibration --- .636 also clears the multimodal
+model's own no-evidence prior on TN (.455) by +.18. Together with
+Section 5.2, this closes the loop on the modality question at
+\emph{both} ends of the pipeline: retrieval needs visual embeddings to
+find the right moment, and generation needs visual evidence to describe
+it.
 
 \begin{figure}
 \centering
@@ -517,7 +543,7 @@ margin above random could reflect genuine transcript evidence; part
 could reflect NExT-QA answer priors --- a language model can sometimes
 reject implausible distractors without any evidence. To separate them,
 both models answered the same 150 questions with \emph{no tool access at
-all} --- the question and its five options, nothing else (Table 5.4,
+all} --- the question and its five options, nothing else (Table 5.5,
 prior-only rows; 150/150 completed each).
 
 The result overturns the natural reading of the floor. Both models score
@@ -554,7 +580,7 @@ follow. First, the .200 random floor is the wrong bar for
 multiple-choice video QA --- the right bar is the bare model's prior,
 and every absolute accuracy in this chapter should be calibrated against
 .560. Second, the clean attributions are within-model, within-channel
-pairs; comparisons across Table 5.4's rows conflate base-model strength,
+pairs; comparisons across Table 5.5's rows conflate base-model strength,
 evidence channel, and agent machinery. Third, grounding discipline has a
 measurable cost when the channel is empty --- a design implication taken
 up in §6.1.
@@ -567,12 +593,28 @@ combined into one configuration: the SigLIP index (§5.3.4) with ViT-L
 visual re-ranking inside the agent's search tool, the LangGraph agent
 (§5.4.1), and the multimodal evidence channel (§5.4.2). On the same
 150-question sample this configuration reaches \textbf{.727} overall
-(Table 5.4, bottom row; 95\% CI {[}.655, .798{]}; zero failed runs;
+(Table 5.5, bottom row; 95\% CI {[}.655, .798{]}; zero failed runs;
 approximately US\$25 of API usage). The gains concentrate where each
 component predicts: causal questions reach .852 (CW) and .762 (CH) ---
 the multimodal evidence lets the model \emph{see} the causes it
 previously had to guess --- and TN rises from .341 to .568, confirming
 §5.4.2's diagnosis while remaining the hardest type.
+
+One result inside that figure runs against the trend and should be
+stated rather than averaged away. On the same 44 TN items, under the
+same multimodal evidence channel, the graph agent's .568 is \emph{three
+questions below} the simple agent's .636 (§5.4.2): adding the temporal
+tool and the reflection pass did not help here, and marginally hurt. At
+n = 44 a three-question gap is well inside sampling noise and no claim
+of a real regression is made. The direction is nonetheless consistent
+with a structural gap in the current design --- the reflection node
+audits a \emph{text} rendering of the gathered evidence, so on questions
+whose answer is a silent visual action it interposes a text-mediated
+check on a judgement the model made from keyframes, and has nothing to
+contribute. This makes the keyframe-aware reflection pass the one
+component interaction the dissertation leaves untested (§6.2), and the
+headline TN figure for the evidence-channel effect remains §5.4.2's .636
+under the simple agent.
 
 To situate these numbers, Table 5.7 lists published zero-shot results on
 the NExT-QA validation set alongside ours, and the closest published
@@ -598,11 +640,12 @@ NExT-QA val acc.
 \bottomrule\noalign{}
 \endlastfoot
 Random & --- & .200 \\
-SeViLA zero-shot (Yu et al., 2023) & full val, fine-tuned localiser &
-approximately .636 \\
-LLoVi (Zhang et al., 2024) & full val, GPT-based & approximately .677 \\
-VideoAgent (Wang et al., 2024) & full val, GPT-4 + iterative frame
-selection & .713 \\
+SeViLA zero-shot \autocite{yu2023sevila} & full val, fine-tuned
+localiser & approximately .636 \\
+LLoVi \autocite{zhang2024llovi} & full val, GPT-based & approximately
+.677 \\
+VideoAgent \autocite{wang2024videoagent} & full val, GPT-4 + iterative
+frame selection & .713 \\
 \textbf{This work, best config} & grounded 150-q sample, ≤6
 segments/search & \textbf{.727} {[}.655, .798{]} \\
 \end{longtable}
@@ -623,12 +666,12 @@ metric
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-FrozenBiLM (NG+) (Xiao et al., 2024) & NExT-GQA test, answer grounding &
-mIoU .096 \\
-Temp{[}CLIP{]} (NG+) (Xiao et al., 2024) & NExT-GQA test, answer
+FrozenBiLM (NG+) \autocite{xiao2024nextgqa} & NExT-GQA test, answer
+grounding & mIoU .096 \\
+Temp{[}CLIP{]} (NG+) \autocite{xiao2024nextgqa} & NExT-GQA test, answer
 grounding & mIoU .121 \\
-SeViLA (Xiao et al., 2024) & NExT-GQA test, answer grounding & mIoU
-.217 \\
+SeViLA \autocite{xiao2024nextgqa} & NExT-GQA test, answer grounding &
+mIoU .217 \\
 \textbf{This work, SigLIP + decomposition} & NExT-GQA val, top-1
 retrieved segment & tIoU@1 \textbf{.230} \\
 \end{longtable}
@@ -661,25 +704,26 @@ emitting the citation as a first-class output.
 \section{Cross-domain replication: speech-dense
 video}
 
-Chapter 6 (§6.2) reads this dissertation's text-channel negative results
-as \emph{domain-conditional}: NExT-QA's home videos are speech-sparse
---- 60\% of segments contain any speech, much of it multilingual chatter
---- and the stated prediction is that in a speech-dense, single-language
-domain the same components should reverse sign. This section tests that
-prediction directly.
+The causal analyses of §5.2 and §5.3.1 blame the text channel's failure
+on a property of the \emph{domain} rather than of the components:
+NExT-QA's home videos are speech-sparse, 60\% of segments carrying any
+speech and much of that multilingual chatter. That reading makes a
+falsifiable prediction --- in a speech-dense, single-language domain the
+same components should reverse sign --- and this section tests it
+directly.
 
-\textbf{Setup.} Forty validation videos of YouCook2 (Zhou, Xu and Corso,
-2018) --- English-narrated cooking instruction, mean duration
-approximately 5 minutes --- were ingested by the \emph{unchanged}
-pipeline: the same 8 s / 4 s segmentation, the same Whisper
-transcription, and the same ViT-B-32 index as the §5.2 baseline,
+\textbf{Setup.} Forty validation videos of YouCook2
+\autocite{zhou2018youcook2} --- English-narrated cooking instruction,
+mean duration approximately 5 minutes --- were ingested by the
+\emph{unchanged} pipeline: the same 8 s / 4 s segmentation, the same
+Whisper transcription, and the same ViT-B-32 index as the §5.2 baseline,
 producing 3,110 visual and 3,100 transcript vectors over 3,173 segments.
 The benchmark's own step annotations serve as queries: each annotated
 step (a sentence plus a ground-truth {[}start, end{]} interval) becomes
 one moment-retrieval query --- 314 in total --- scored under the §5.1
-protocol. The speech-density contrast is stark: 99.7\% of segments carry
-speech (against 60\% on NExT-QA), and the speech is task-aligned
-narration rather than incidental conversation.
+protocol. The speech-density contrast is stark: 97.7\% of segments carry
+speech (3,100 of 3,173, against 60\% on NExT-QA), and the speech is
+task-aligned narration rather than incidental conversation.
 
 \textbf{Table 5.8 --- Modality comparison on YouCook2 (ViT-B-32 index, τ
 = 0.5, 314 step queries).}
@@ -714,21 +758,25 @@ the looser τ = 0.3 (corpus text R@1 .191 vs visual .099).
 
 The replication upgrades Chapter 6's conditionality \emph{claim} to a
 measured result: the negative results of §5.3.1 are properties of the
-domain, not of the components. Part of the reversal is register ---
-YouCook2 queries are step descriptions phrased in the narrator's own
-vocabulary, where NExT-QA questions are causal and temporal
-reformulations of silent visual events --- and that is precisely the
-point: the modality ordering is a function of the domain's query-speech
-alignment, not a universal constant. The practical corollary is a
-\emph{domain-adaptive} modality policy --- weight the transcript channel
-by measured speech density and register match, using exactly this
-harness to measure it --- rather than a fixed design choice. Two
-qualifications temper the result: the second corpus is small (40 videos,
-sized to the remaining project budget), and the replication covers the
-retrieval layer only --- the QA-stage experiments of §5.4 were not
-repeated. The direction and magnitude of the reversals (2× on corpus
-R@1, fusion best across the board in video scope) are nonetheless far
-outside plausible noise for a deterministic 314-query evaluation.
+domain, not of the components. Part of the reversal, however, is
+\emph{register} rather than speech density --- YouCook2 queries are step
+descriptions phrased in the narrator's own vocabulary, where NExT-QA
+questions are causal reformulations of silent visual events. The two
+move together in this design and it cannot separate them; doing so would
+need a third condition, speech-dense video queried out of register,
+which was not run. What the replication does establish is the weaker but
+sufficient claim: with every component held fixed, changing the domain
+reverses the ordering, so that ordering is not a property of the
+components. The practical corollary is a \emph{domain-adaptive} modality
+policy --- weight the transcript channel by measured speech density and
+register match, using exactly this harness to measure it --- rather than
+a fixed design choice. Two qualifications temper the result: the second
+corpus is small (40 videos, sized to the remaining project budget), and
+the replication covers the retrieval layer only --- the QA-stage
+experiments of §5.4 were not repeated. The direction and magnitude of
+the reversals (2× on corpus R@1, fusion best across the board in video
+scope) are nonetheless far outside plausible noise for a deterministic
+314-query evaluation.
 
 \section{System-level measurements}
 
@@ -746,8 +794,13 @@ s depending on tool rounds, dominated by LLM latency. Marginal API costs
 are small: query decomposition for the entire split cost approximately
 US\$0.15 (cached thereafter), a 150-question text-only QA run
 approximately US\$0.35, and the 44-question multimodal run approximately
-US\$3. The complete evaluation suite of this chapter is reproducible on
-one consumer laptop plus approximately US\$5 of API usage.
+US\$3. The retrieval programme and the text-only QA studies --- every
+experiment of §5.2, §5.3 and §5.5, plus the agent comparison of §5.4.1
+--- are therefore reproducible on one consumer laptop plus approximately
+US\$5 of API usage. The one expensive run is the 150-question multimodal
+best configuration of §5.4.4, at approximately US\$25 (approximately
+US\$0.17 per question, dominated by keyframe image tokens), bringing the
+full chapter to approximately US\$30 end to end.
 
 \section{Summary}
 

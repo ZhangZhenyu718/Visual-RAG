@@ -15,7 +15,7 @@ design choices below are justified primarily by it.
 
 ## 3.1 Architecture overview
 
-Figure 3.1 (fig1_pipeline) shows the system's two lanes. The **offline lane**
+Figure 3.1 shows the system's two lanes. The **offline lane**
 ingests a video corpus and produces a portable index: keyframes and timestamped
 transcripts are extracted per video, fused into overlapping temporal segments,
 embedded into a joint vision-language space, and stored in a vector database.
@@ -48,8 +48,9 @@ video (an even subsample if exceeded); frames are stored as JPEGs resized to
 either alone: scene detection under-samples static footage, uniform sampling
 misses brief transitions.
 
-**Speech.** Audio is transcribed by Whisper large-v3 in int8 quantisation via
-CTranslate2, yielding sentence-level chunks with start/end timestamps. Two
+**Speech.** Audio is transcribed by Whisper [@radford2023whisper] large-v3 in
+int8 quantisation via CTranslate2, yielding sentence-level chunks with start/end
+timestamps. Two
 robustness details matter in practice. First, videos without an audio stream are
 detected up front and skipped rather than crashing the batch — a real failure
 mode discovered with silent test clips. Second, language is auto-detected per
@@ -98,8 +99,9 @@ an index rebuild a matter of minutes — the property that made the W8 backbone
 comparison affordable.
 
 Vectors live in ChromaDB — an embedded vector store chosen over server-class
-alternatives (Milvus, Qdrant) because at 10³–10⁴ segments HNSW search is
-effectively exact and operational simplicity dominates. The two modalities are
+alternatives (Milvus, Qdrant) because at 10³–10⁴ segments HNSW
+[@malkov2020hnsw] search is effectively exact and operational simplicity
+dominates. The two modalities are
 stored as **separate collections** sharing segment IDs and metadata
 (`video_id`, `start`, `end`, frame count) rather than as one concatenated
 vector. This is the single most consequential indexing decision: separate
@@ -175,7 +177,7 @@ LLM providers, left to themselves, will occasionally keep requesting searches
 until the round budget expires and return an empty answer — an early bug whose
 fix (an explicit "budget exhausted, answer now" turn) applies to both harnesses.
 
-**Graph agent (W7).** The LangGraph state machine of Figure 3.2 (fig2_langgraph)
+**Graph agent (W7).** The LangGraph state machine of Figure 3.2
 adds two things a linear loop cannot express cleanly. First, an explicit
 **reflect node**: when the agent produces a draft answer, a separate LLM pass
 audits it against the *actually gathered* evidence — do the cited segments exist
@@ -212,9 +214,12 @@ video seeked to the segment's start time, closing the loop from natural-language
 query to the exact moment on screen. The *ask* tab runs either agent under
 either provider and displays the answer alongside its full evidence trail (every
 tool call and the segments it returned). The toggles map one-to-one onto the
-ablation dimensions of Chapter 5; the interface therefore doubles as a research
-instrument — the qualitative observations cited in Chapters 5 and 6 were made
-through it — and as the project's demonstrable artefact.
+ablation dimensions of Chapter 5, which makes the interface an exploratory
+instrument as well as the project's demonstrable artefact: behaviours noticed
+here motivated several of the diagnostics Chapter 5 then measured properly. The
+qualitative claims of Chapters 5 and 6 do not rest on it, however — those are
+drawn from the typed agent traces of §3.5, which record every tool call and
+reflection of a run.
 
 ![Visual RAG demonstration interface showing search results and timestamped evidence.](../figures/fig10_demo_search.png){#fig:demo width=95%}
 

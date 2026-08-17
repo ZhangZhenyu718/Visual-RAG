@@ -17,17 +17,17 @@ justified primarily by it.
 
 \section{Architecture overview}
 
-Figure 3.1 (fig1\_pipeline) shows the system's two lanes. The
-\textbf{offline lane} ingests a video corpus and produces a portable
-index: keyframes and timestamped transcripts are extracted per video,
-fused into overlapping temporal segments, embedded into a joint
-vision-language space, and stored in a vector database. The
-\textbf{online lane} serves a natural-language query: the query is
-(optionally) decomposed into retrieval-friendly sub-queries, encoded,
-searched against the index, (optionally) re-ranked by a stronger visual
-model, and the resulting segments --- timestamps, transcripts, and
-keyframes --- are handed as evidence to an answering agent that produces
-a grounded response with per-claim timestamp citations.
+Figure 3.1 shows the system's two lanes. The \textbf{offline lane}
+ingests a video corpus and produces a portable index: keyframes and
+timestamped transcripts are extracted per video, fused into overlapping
+temporal segments, embedded into a joint vision-language space, and
+stored in a vector database. The \textbf{online lane} serves a
+natural-language query: the query is (optionally) decomposed into
+retrieval-friendly sub-queries, encoded, searched against the index,
+(optionally) re-ranked by a stronger visual model, and the resulting
+segments --- timestamps, transcripts, and keyframes --- are handed as
+evidence to an answering agent that produces a grounded response with
+per-claim timestamp citations.
 
 \begin{figure}
 \centering
@@ -58,19 +58,20 @@ frames are stored as JPEGs resized to 384 px on the long side. The dual
 strategy reflects the two failure modes of either alone: scene detection
 under-samples static footage, uniform sampling misses brief transitions.
 
-\textbf{Speech.} Audio is transcribed by Whisper large-v3 in int8
-quantisation via CTranslate2, yielding sentence-level chunks with
-start/end timestamps. Two robustness details matter in practice. First,
-videos without an audio stream are detected up front and skipped rather
-than crashing the batch --- a real failure mode discovered with silent
-test clips. Second, language is auto-detected per video and \emph{not}
-forced to English: NExT-QA's home videos are multilingual, and
-transcribing them faithfully (rather than mistranscribing them as
-English) preserves the option of translate-then-embed pipelines later,
-at the cost of the encoder mismatch analysed in §5.2. On-screen-text OCR
-is implemented but disabled by default: benchmark footage carries almost
-no legible text, and the modality can be enabled by configuration where
-it earns its cost.
+\textbf{Speech.} Audio is transcribed by Whisper
+\autocite{radford2023whisper} large-v3 in int8 quantisation via
+CTranslate2, yielding sentence-level chunks with start/end timestamps.
+Two robustness details matter in practice. First, videos without an
+audio stream are detected up front and skipped rather than crashing the
+batch --- a real failure mode discovered with silent test clips. Second,
+language is auto-detected per video and \emph{not} forced to English:
+NExT-QA's home videos are multilingual, and transcribing them faithfully
+(rather than mistranscribing them as English) preserves the option of
+translate-then-embed pipelines later, at the cost of the encoder
+mismatch analysed in §5.2. On-screen-text OCR is implemented but
+disabled by default: benchmark footage carries almost no legible text,
+and the modality can be enabled by configuration where it earns its
+cost.
 
 \textbf{Temporal segmentation.} The atomic unit of retrieval is the
 \emph{segment}: an 8-second window advanced with a 4-second stride,
@@ -118,17 +119,17 @@ affordable.
 
 Vectors live in ChromaDB --- an embedded vector store chosen over
 server-class alternatives (Milvus, Qdrant) because at 10³--10⁴ segments
-HNSW search is effectively exact and operational simplicity dominates.
-The two modalities are stored as \textbf{separate collections} sharing
-segment IDs and metadata (\texttt{video\_id}, \texttt{start},
-\texttt{end}, frame count) rather than as one concatenated vector. This
-is the single most consequential indexing decision: separate collections
-mean each modality can be searched, scored, and evaluated in isolation,
-which is precisely what RQ2's ablations require; late fusion, early
-fusion, or either modality alone all become query-time choices over the
-same index. Segment text rides along as the collection's document
-payload, so downstream components (re-rankers, agents) can access it
-without re-reading disk.
+HNSW \autocite{malkov2020hnsw} search is effectively exact and
+operational simplicity dominates. The two modalities are stored as
+\textbf{separate collections} sharing segment IDs and metadata
+(\texttt{video\_id}, \texttt{start}, \texttt{end}, frame count) rather
+than as one concatenated vector. This is the single most consequential
+indexing decision: separate collections mean each modality can be
+searched, scored, and evaluated in isolation, which is precisely what
+RQ2's ablations require; late fusion, early fusion, or either modality
+alone all become query-time choices over the same index. Segment text
+rides along as the collection's document payload, so downstream
+components (re-rankers, agents) can access it without re-reading disk.
 
 \section{Retrieval}
 
@@ -204,13 +205,13 @@ return an empty answer --- an early bug whose fix (an explicit ``budget
 exhausted, answer now'' turn) applies to both harnesses.
 
 \textbf{Graph agent (W7).} The LangGraph state machine of Figure 3.2
-(fig2\_langgraph) adds two things a linear loop cannot express cleanly.
-First, an explicit \textbf{reflect node}: when the agent produces a
-draft answer, a separate LLM pass audits it against the \emph{actually
-gathered} evidence --- do the cited segments exist in the tool results?
-are the claims supported rather than invented? is the temporal relation
-to the anchor correct? --- and either accepts it (terminating the graph)
-or returns it once with a critique appended, resuming the tool loop.
+adds two things a linear loop cannot express cleanly. First, an explicit
+\textbf{reflect node}: when the agent produces a draft answer, a
+separate LLM pass audits it against the \emph{actually gathered}
+evidence --- do the cited segments exist in the tool results? are the
+claims supported rather than invented? is the temporal relation to the
+anchor correct? --- and either accepts it (terminating the graph) or
+returns it once with a critique appended, resuming the tool loop.
 Reflection is bounded (one revision) and budget-aware: a revision is
 only requested if enough tool rounds remain to act on the critique, a
 guard added after observing budget-exhausted revision loops. Second, the
@@ -249,10 +250,12 @@ time, closing the loop from natural-language query to the exact moment
 on screen. The \emph{ask} tab runs either agent under either provider
 and displays the answer alongside its full evidence trail (every tool
 call and the segments it returned). The toggles map one-to-one onto the
-ablation dimensions of Chapter 5; the interface therefore doubles as a
-research instrument --- the qualitative observations cited in Chapters 5
-and 6 were made through it --- and as the project's demonstrable
-artefact.
+ablation dimensions of Chapter 5, which makes the interface an
+exploratory instrument as well as the project's demonstrable artefact:
+behaviours noticed here motivated several of the diagnostics Chapter 5
+then measured properly. The qualitative claims of Chapters 5 and 6 do
+not rest on it, however --- those are drawn from the typed agent traces
+of §3.5, which record every tool call and reflection of a run.
 
 \begin{figure}
 \centering

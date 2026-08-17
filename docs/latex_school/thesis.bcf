@@ -2412,7 +2412,50 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">refs_clean.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1" intorder="1" nocite="1">*</bcf:citekey>
+    <bcf:citekey order="1" intorder="1">radford2021clip</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">schuhmann2022laion</bcf:citekey>
+    <bcf:citekey order="2" intorder="2">cherti2023openclip</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">zhai2023siglip</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">xu2016msrvtt</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">luo2022clip4clip</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">gao2017tall</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">krishna2017activitynet</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">lei2021momentdetr</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">lei2020tvr</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">xiao2021nextqa</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">xiao2024nextgqa</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">yu2023sevila</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">lewis2020rag</bcf:citekey>
+    <bcf:citekey order="13" intorder="2">guu2020realm</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">karpukhin2020dpr</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">gao2023hyde</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">zhou2023leasttomost</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">cormack2009rrf</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">nogueira2019bertrerank</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">chen2024bgem3</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">asai2024selfrag</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">wei2022cot</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">yao2023react</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">schick2023toolformer</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">shinn2023reflexion</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">zhang2024llovi</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">wang2024videoagent</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">fan2024videoagent</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">ren2025videorag</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">xiao2024nextgqa</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">radford2023whisper</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">malkov2020hnsw</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">xiao2021nextqa</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">xiao2024nextgqa</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">zhai2023siglip</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">deepseek2024v3</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">yu2023sevila</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">zhang2024llovi</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">wang2024videoagent</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">xiao2024nextgqa</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">xiao2024nextgqa</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">xiao2024nextgqa</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">zhou2018youcook2</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="anyt">

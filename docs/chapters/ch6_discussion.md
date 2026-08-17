@@ -105,17 +105,20 @@ statistically supported: exact McNemar tests on the shared question sets give
 p = .031 for the agent effect and p = .004 for the evidence-channel effect, with
 paired-bootstrap 95% CIs of [+.013, +.187] and [+.114, +.455] respectively
 (§5.4.1, §5.4.2) — so neither headline effect is plausibly run-to-run variance.
-The caution that remains is for the *small* differences in Table 5.4's by-type
+The caution that remains is for the *small* differences in Table 5.5's by-type
 columns (n ≤ 22), which carry no such support and should not be over-read.
 
 **Asymmetries in the agent comparison.** The controlled vision experiment
 (§5.4.2) ran under the *simple* agent, because at that point the LangGraph
 harness targeted OpenAI-compatible providers only; the graph-plus-vision
 combination was implemented subsequently and evaluated in §5.4.4, confirming
-the floor-not-ceiling reading (TN .568 and overall .727 under the combined
-configuration). One asymmetry remains: whether the reflection pass specifically
-benefits from *seeing* the keyframes it audits (currently it audits a text
-rendering of the evidence) has not been isolated.
+the floor-not-ceiling reading on the overall figure (.727 under the combined
+configuration). Its TN figure, however, is .568 — three questions *below* the
+simple agent's .636 on the same items. That gap is within noise at n = 44, but
+it points at the asymmetry that remains: whether the reflection pass benefits
+from *seeing* the keyframes it audits, rather than the text rendering of the
+evidence it currently audits, has not been isolated, and TN is precisely the
+type where a text-mediated audit has least to offer.
 
 **No user study.** The project plan scheduled a small user study (W10); it was
 descoped in favour of the controlled vision experiment and the ablation matrix,
