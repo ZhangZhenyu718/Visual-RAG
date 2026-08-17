@@ -28,23 +28,24 @@ against video scope to separate cross-video confusion from localisation error,
 compare shallow against deep recall to separate recall from precision problems,
 and compare text-only against multimodal answering to expose evidence starvation.
 
-A second thread worth drawing out is that **the value of a modality is role-
-and question-dependent, not absolute**. The transcript channel failed twice as
-a *retrieval key* — as embeddings (§5.2) and as a cross-encoder signal
-(§5.3.3) — and the prior-only baselines of §5.4.3 discipline any remaining
+A second thread worth drawing out is that *the value of a modality is role- and
+question-dependent, not absolute*. The transcript channel failed twice as a
+*retrieval key*, once as embeddings (§5.2) and once as a cross-encoder signal
+(§5.3.3), and the prior-only baselines of §5.4.3 discipline any remaining
 optimism about its third role as *evidence*: the best text-only stack (.547)
 merely matches the bare model's answer prior (.560), and the apparent causal
-gains largely dissolve against that bar (CW .590 against a .574 prior). What
-survives is sharply type-dependent. Transcript evidence genuinely beats the
-prior where speech describes the concurrent scene (TC .773 vs .545) and falls
-far below it where the answer is a silent visual action (TN .341 vs .568) —
-an instructed-grounding effect in which the model abandons a useful prior in
-favour of evidence that contains nothing. Speech in everyday video is a poor
-pointer to *where* something happens, and describes *what* happens only when
+gains largely dissolve against that bar (CW .590 against a .574 prior).
+
+What survives is sharply type-dependent. Transcript evidence genuinely beats the
+prior where speech describes the concurrent scene (TC .773 vs .545), and falls
+far below it where the answer is a silent visual action (TN .341 vs .568). The
+latter is an instructed-grounding effect, in which the model abandons a useful
+prior in favour of evidence that contains nothing. Speech in everyday video is a
+poor pointer to *where* something happens, and describes *what* happens only when
 someone happens to narrate it. Modality ablations that report a single
-"contribution" number conflate roles and question types; our results suggest
-both splits are necessary — and that any evidence-grounded system should be
-benchmarked against the bare model's prior, not against random.
+"contribution" number therefore conflate roles and question types; the results
+above suggest both splits are necessary, and that any evidence-grounded system
+should be benchmarked against the bare model's prior rather than against random.
 
 Finally, the two-stage equivalence result (§5.3.4) has an architectural
 implication beyond this project. At 5,725 segments, indexing with the expensive
@@ -121,8 +122,8 @@ evidence it currently audits, has not been isolated, and TN is precisely the
 type where a text-mediated audit has least to offer.
 
 **No user study.** The project plan scheduled a small user study (W10); it was
-descoped in favour of the controlled vision experiment and the ablation matrix,
-which we judged to produce more defensible evidence per unit time. The Streamlit
+descoped in favour of the controlled vision experiment and the ablation matrix, as the
+more defensible evidence per unit of time available. The Streamlit
 demo (§3.6) stands in for qualitative validation, but claims about end-user
 utility remain unsupported and are deliberately absent from this dissertation.
 

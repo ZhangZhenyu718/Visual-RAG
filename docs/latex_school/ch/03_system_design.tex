@@ -241,21 +241,22 @@ the design property that enables the evidence-channel experiment of
 
 \section{Demonstration interface}
 
-A Streamlit application exposes the full pipeline interactively in two
-tabs. The \emph{search} tab runs the retrieval stack with per-component
-toggles --- modality, query decomposition, visual re-ranking --- and
-renders each hit with its keyframe, timestamps, transcript, and score;
-expanding a hit plays the source video seeked to the segment's start
-time, closing the loop from natural-language query to the exact moment
-on screen. The \emph{ask} tab runs either agent under either provider
-and displays the answer alongside its full evidence trail (every tool
-call and the segments it returned). The toggles map one-to-one onto the
-ablation dimensions of Chapter 5, which makes the interface an
-exploratory instrument as well as the project's demonstrable artefact:
-behaviours noticed here motivated several of the diagnostics Chapter 5
-then measured properly. The qualitative claims of Chapters 5 and 6 do
-not rest on it, however --- those are drawn from the typed agent traces
-of §3.5, which record every tool call and reflection of a run.
+A Streamlit application (Figure 3.3) exposes the full pipeline
+interactively in two tabs. The \emph{search} tab runs the retrieval
+stack with per-component toggles --- modality, query decomposition,
+visual re-ranking --- and renders each hit with its keyframe,
+timestamps, transcript, and score; expanding a hit plays the source
+video seeked to the segment's start time, closing the loop from
+natural-language query to the exact moment on screen. The \emph{ask} tab
+runs either agent under either provider and displays the answer
+alongside its full evidence trail (every tool call and the segments it
+returned). The toggles map one-to-one onto the ablation dimensions of
+Chapter 5, which makes the interface an exploratory instrument as well
+as the project's demonstrable artefact: behaviours noticed here
+motivated several of the diagnostics Chapter 5 then measured properly.
+The qualitative claims of Chapters 5 and 6 do not rest on it, however
+--- those are drawn from the typed agent traces of §3.5, which record
+every tool call and reflection of a run.
 
 \begin{figure}
 \centering

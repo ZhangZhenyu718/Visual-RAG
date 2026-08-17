@@ -54,16 +54,13 @@
       <file>blx-compat.def</file>
       <file>biblatex.def</file>
       <file>standard.bbx</file>
-      <file>trad-standard.bbx</file>
-      <file>trad-plain.bbx</file>
-      <file>software.bbx</file>
-      <file>acmnumeric.bbx</file>
-      <file>numeric.cbx</file>
-      <file>acmnumeric.cbx</file>
+      <file>numeric.bbx</file>
+      <file>numeric-comp.bbx</file>
+      <file>ieee.bbx</file>
+      <file>numeric-verb.cbx</file>
+      <file>ieee.cbx</file>
       <file>biblatex.cfg</file>
       <file>english.lbx</file>
-      <file>english-software.lbx</file>
-      <file>american.lbx</file>
     </requires>
   </internal>
   <external package="biblatex" priority="5" active="0">

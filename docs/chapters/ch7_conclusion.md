@@ -5,17 +5,17 @@
 **RQ1 — retrieval effectiveness against text-only baselines.** A multi-modal
 pipeline retrieving on visual embeddings outperforms transcript-based retrieval
 by an order of magnitude at moment granularity on everyday video (corpus-scope
-R@10 .111 vs .011 at tIoU ≥ 0.5), and the fully developed system — SigLIP index
-with LLM query decomposition — nearly doubles the initial visual baseline itself
+R@10 .111 vs .011 at tIoU ≥ 0.5). The fully developed system, a SigLIP index
+with LLM query decomposition, nearly doubles that initial visual baseline in turn
 (R@1 .026 → .048; video-scope tIoU@1 .230). Scope analysis attributes the
 remaining difficulty to cross-video confusion rather than within-video
 localisation: given the right video, the system places a correct moment in its
 top five for two-thirds of questions at the looser τ = 0.3 (R@5 .677). The
 answer to RQ1 is therefore affirmative with a precise caveat: *visual* retrieval
-is effective and improvable; retrieval on what is *said* is, on this domain, not
-a viable baseline so much as a cautionary one — and §5.5 shows the caveat cuts
-both ways, since on speech-dense video the same pipeline's transcript channel
-doubles its visual channel.
+is effective and improvable, while retrieval on what is *said* is, on this
+domain, not a viable baseline so much as a cautionary one. §5.5 shows that the
+caveat cuts both ways, since on speech-dense video the same pipeline's transcript
+channel doubles its visual channel.
 
 **RQ2 — the multi-modal embedding strategy.** The experiments support a
 strategy, not merely a ranking: index the visual channel with the strongest
@@ -25,14 +25,14 @@ corpus scale, index cheaply and re-rank its top candidates with the stronger
 model, which matched the expensive index to within measurement noise; translate
 questions into the encoder's native register (scene captions) via LLM
 decomposition for deep-rank recall; and do *not* fuse in a weak text channel at
-any weight, nor re-rank with a text cross-encoder — both degrade quality for an
-identified cause (sparse, multilingual, conversational speech). For the audio
-channel — which enters this system as transcribed speech (§1.2) — the optimal
+any weight, nor re-rank with a text cross-encoder, since both degrade quality for
+an identified cause (sparse, multilingual, conversational speech). For the audio
+channel, which enters this system as transcribed speech (§1.2), the optimal
 strategy on the primary benchmark is the null strategy; on-screen-text OCR was
 out of scope and remains untested. The speech-dense replication (§5.5) then
-completes the answer: the ordering is domain-conditional by measurement, not
-conjecture — on YouCook2 the transcript channel doubles the visual channel and
-late fusion becomes the best configuration. The optimal embedding strategy is
+completes the answer. The ordering is domain-conditional by measurement rather
+than conjecture: on YouCook2 the transcript channel doubles the visual channel
+and late fusion becomes the best configuration. The optimal embedding strategy is
 therefore not a fixed recipe but a measured, domain-adaptive choice, and this
 dissertation's harness is the instrument that measures it.
 

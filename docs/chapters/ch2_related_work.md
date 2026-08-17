@@ -36,35 +36,35 @@ everyday video.
 Text-to-video retrieval initially operated at whole-video granularity, with
 benchmarks such as MSR-VTT [@xu2016msrvtt]; CLIP4Clip [@luo2022clip4clip]
 showed that frame-level CLIP features, pooled, transfer to this task with
-minimal video-specific machinery — the same frames-as-proxy assumption this
-system makes at segment level. *Moment* retrieval sharpened the task to
+minimal video-specific machinery. That is the same frames-as-proxy assumption
+this system makes at segment level. *Moment* retrieval sharpened the task to
 localising an interval inside a video: Gao et al. [@gao2017tall] introduced the
 sliding-window formulation and Charades-STA, dense event captions came with
 ActivityNet Captions [@krishna2017activitynet], and Moment-DETR [@lei2021momentdetr]
 reframed localisation as end-to-end set prediction. The present system inherits
-the sliding-window formulation — its 8-second overlapping segments are windows
-scored by embedding similarity — but performs *corpus-level* moment retrieval:
-the query does not name its video, so finding it is part of the task. That
-setting is an established sub-task in its own right — video corpus moment
-retrieval, introduced with TVR [@lei2020tvr] — normally studied with in-domain
+the sliding-window formulation, its 8-second overlapping segments being windows
+scored by embedding similarity. It performs *corpus-level* moment retrieval,
+however: the query does not name its video, so finding it is part of the task.
+That setting is an established sub-task in its own right, video corpus moment
+retrieval, introduced with TVR [@lei2020tvr] and normally studied with in-domain
 supervision and subtitle-aligned training data. The difference here is not the
 task but the means: the same retrieval is served zero-shot by composed
 off-the-shelf encoders, and scored by tIoU against grounding labels rather than
 by the benchmark's own retrieval metric.
 
 On the question-answering side, NExT-QA [@xiao2021nextqa] moved video QA
-beyond descriptive questions to causal and temporal ones — *why* and
-*what-happened-next* — over everyday videos. Its extension NExT-GQA [@xiao2024nextgqa] added 10.5K temporal grounding labels and reported a sobering
+beyond descriptive questions to causal and temporal ones (*why* and
+*what-happened-next*) over everyday videos. Its extension NExT-GQA [@xiao2024nextgqa] added 10.5K temporal grounding labels and reported a sobering
 finding: state-of-the-art video-language models answer well while attending to
 the *wrong moments*, i.e. their answers are weakly grounded. This finding
 motivates both the benchmark choice and the evaluation design of this
-dissertation: NExT-GQA's interval labels are what allow retrieval to be scored
+dissertation. NExT-GQA's interval labels are what allow retrieval to be scored
 at moment granularity (tIoU) rather than video granularity, and answer
-grounding — every claim citing its seconds of video — is treated as a
+grounding, meaning every claim citing its seconds of video, is treated as a
 first-class output requirement rather than a diagnostic. SeViLA [@yu2023sevila] addressed grounding by chaining a localiser and an answerer within one
-trained model; the present system reaches a similar decomposition —
-localise-then-answer — with zero-shot components orchestrated by an agent
-instead of end-to-end training.
+trained model; the present system reaches a similar localise-then-answer
+decomposition, but with zero-shot components orchestrated by an agent instead of
+end-to-end training.
 
 ## 2.3 Retrieval-augmented generation
 

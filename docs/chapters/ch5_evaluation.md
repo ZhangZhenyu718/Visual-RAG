@@ -39,7 +39,7 @@ ViT-B-32 (laion2b); Section 5.3.4 varies the backbone.
 and the top-K segments are retrieved. A retrieved segment counts as a *hit* if it
 comes from the ground-truth video **and** its temporal interval overlaps a
 ground-truth interval with tIoU ≥ τ; requiring both conditions ties the metric to
-moment-level retrieval rather than video identification. We report Recall@{1,5,10}
+moment-level retrieval rather than video identification. Reported metrics are Recall@{1,5,10}
 and MRR at the primary threshold τ = 0.5, nDCG@10 with graded tIoU gains
 (ideal-normalised against the ground-truth video's own segments), and tIoU@1 — the
 mean temporal overlap of the top-ranked segment, the dissertation's "temporal
@@ -69,7 +69,7 @@ temperature-default API calls and are therefore subject to normal LLM variance.
 Table 5.1 reports the three single-strategy configurations on both scopes at
 τ = 0.5. The text-only baseline embeds each segment's Whisper transcript and
 searches it with the question text — the standard "search what was said"
-approach that RQ1 asks us to beat. A reminder of scale before reading the
+approach that RQ1 asks the system to beat. A reminder of scale before reading the
 table (§1.2): a hit requires the correct video *and* tIoU ≥ 0.5 between an
 8-second window and the annotated moment, searched over all 5,725 segments —
 a deliberately strict criterion under which absolute scores are small by
@@ -87,8 +87,8 @@ comparisons between rows, not in the magnitudes.
 | video | text | .080 | .232 | .305 | .143 | .390 | .117 |
 | video | fused (α=.5) | .129 | .384 | .491 | .235 | .639 | .186 |
 
-Three observations answer RQ1. First, **visual retrieval dominates text retrieval
-by an order of magnitude in corpus scope** (R@10 .111 vs .011): to find a moment
+Three observations answer RQ1. First, *visual retrieval dominates text retrieval
+by an order of magnitude in corpus scope* (R@10 .111 vs .011): to find a moment
 among 567 videos of everyday footage, what is *on screen* is far more
 discriminative than what is *said*. Second, two causes plausibly account for the
 failure of the text channel, and neither is poor transcription as such. NExT-QA's
@@ -103,8 +103,8 @@ present design cannot apportion blame between them, and names the
 translate-then-embed variant that would. Third, the corpus/video gap
 localises the difficulty: within the correct video the system already ranks a
 correct moment in its top five for 39% of questions, but across the corpus R@10
-falls to 11% — **cross-video confusion, not within-video imprecision, is the
-dominant error mode**, which motivates the precision-oriented interventions of
+falls to 11% — *cross-video confusion, not within-video imprecision, is the
+dominant error mode*, which motivates the precision-oriented interventions of
 Section 5.3.
 
 The by-type breakdown (Appendix B) shows temporal-precise question types (TP,
@@ -126,8 +126,8 @@ high-variance noise added to a weak-but-real visual signal.
 
 ![Late-fusion weight sweep in corpus scope.](../figures/fig4_alpha_sweep.pdf){#fig:alpha-sweep width=82%}
 
-The conclusion is sharper than "tune α": **with this text channel, there is no
-fusion weight at which the transcript embeddings contribute positive evidence.**
+The conclusion is sharper than "tune α": *with this text channel, there is no
+fusion weight at which the transcript embeddings contribute positive evidence.*
 Fusion is not a weighting problem but a channel-quality problem — the actionable
 implication being to repair the text channel (e.g. translate transcripts to
 English before embedding, or use a dedicated multilingual text-retrieval encoder)
@@ -173,8 +173,7 @@ injects noise. An implementation subtlety compounds the problem and is worth
 recording: 40% of segments have no transcript at all, and if such candidates
 simply receive no re-ranker score, any scored candidate the cross-encoder likes
 outranks *every* unscored one — structurally demoting exactly the visual-only
-segments most likely to be correct. (Our first implementation had this flaw and
-drove R@1 to zero.) The repaired design imputes the re-ranker term of a
+segments most likely to be correct. (The first implementation here had this flaw, and drove R@1 to zero.) The repaired design imputes the re-ranker term of a
 modality-missing candidate from its retrieval rank, keeping both candidate classes
 on one score scale; the negative result above is reported *with* this repair, so
 it reflects the channel, not the bug.
@@ -211,10 +210,10 @@ and evaluation fixed. Three backbones were compared as *the index*: CLIP ViT-B-3
 (baseline), CLIP ViT-L-14, and SigLIP SO400M (webli), each with its own question
 encoder.
 
-Two findings emerge from Table 5.2 (bottom rows) and Table 5.3. First, **SigLIP is
-categorically stronger for this task**: as the index it lifts corpus R@1 by 69%
+Two findings emerge from Table 5.2 (bottom rows) and Table 5.3. First, *SigLIP is
+categorically stronger for this task*: as the index it lifts corpus R@1 by 69%
 relative over ViT-B (.026 → .044) and tIoU@1 by 54%, and with decomposition on
-top reaches R@1 .048 — **nearly double the original baseline** — and video-scope
+top reaches R@1 .048 — *nearly double the original baseline* — and video-scope
 tIoU@1 .230. This is consistent with SigLIP's sigmoid-loss pretraining, which has
 been reported to favour retrieval tasks [@zhai2023siglip].
 
@@ -222,9 +221,9 @@ Second, ViT-L used as the full index (corpus R@1 .029, R@5 .090, R@10 .122,
 MRR .054) is indistinguishable at the resolution of this evaluation from ViT-B
 *plus* ViT-L re-ranking (.029/.087/.121/.053) — every metric agrees to within
 ±.003, though the pair was compared numerically and not by a significance test.
-**The two-stage
+*The two-stage
 cheap-index/expensive-re-ranker design recovers essentially all of the larger
-model's quality** while embedding the corpus only with the small model; at larger
+model's quality* while embedding the corpus only with the small model; at larger
 corpus scales, where re-embedding everything with the expensive model is
 prohibitive, the two-stage design is the scalable route to the same accuracy. A
 corollary worth stating for practitioners: a re-ranker must *differ* from the
@@ -434,7 +433,7 @@ leaves untested (§6.2), and the headline TN figure for the evidence-channel
 effect remains §5.4.2's .636 under the simple agent.
 
 To situate these numbers, Table 5.7 lists published zero-shot results on the
-NExT-QA validation set alongside ours, and the closest published temporal
+NExT-QA validation set alongside this system's, and the closest published temporal
 grounding figures on NExT-GQA.
 
 **Table 5.7 — Contextualisation with published systems (protocols differ; see
@@ -458,11 +457,11 @@ caveats below).**
 Three caveats govern the reading of Table 5.7, and are repeated wherever these
 numbers are cited. First, the QA comparison is *indicative, not a leaderboard
 claim*: published systems evaluate the full ≈5,000-question validation set
-while ours is a 150-question sample of the grounded subset, so the honest
-statement is that the best configuration performs **at, and in point estimate
-above, the published zero-shot state of the art on our sample**, with a
+while the figure here comes from a 150-question sample of the grounded subset, so the honest
+statement is that the best configuration performs *at, and in point estimate
+above, the published zero-shot state of the art on this sample*, with a
 confidence interval that overlaps the strongest published figure. Second, the
-comparison is not equal-resource: our system answers from at most six
+comparison is not equal-resource: this system answers from at most six
 retrieved segments per search under ≈US$0.17 per question, but benefits from a
 stronger underlying LLM (claude-opus-4-8) than the GPT-4-era published
 systems — LLM generation and method both differ, and this chapter's internal
@@ -472,9 +471,9 @@ claude-opus-4-8 reaches .560 on these questions with no tools at all, so the
 honest within-model attribution for the method is .560 → .727 (+.167,
 p = .0005). Third,
 the grounding rows compare related but non-identical protocols (their mIoU
-grounds a QA model's answer on the test split; our tIoU@1 scores the top
-retrieved segment on val); we include them because both measure "where the
-system points for its evidence", where our retrieval-first design proves
+grounds a QA model's answer on the test split; tIoU@1 here scores the top
+retrieved segment on val); they are included because both measure "where the
+system points for its evidence", where this retrieval-first design proves
 competitive with — and in point estimate above — published weakly-supervised
 grounding, while additionally emitting the citation as a first-class output.
 
@@ -487,14 +486,14 @@ multilingual chatter. That reading makes a falsifiable prediction — in a
 speech-dense, single-language domain the same components should reverse sign —
 and this section tests it directly.
 
-**Setup.** Forty validation videos of YouCook2 [@zhou2018youcook2] —
-English-narrated cooking instruction, mean duration ≈5 minutes — were ingested
+**Setup.** Forty validation videos of YouCook2 [@zhou2018youcook2], which is
+English-narrated cooking instruction of mean duration ≈5 minutes, were ingested
 by the *unchanged* pipeline: the same 8 s / 4 s segmentation, the same Whisper
 transcription, and the same ViT-B-32 index as the §5.2 baseline, producing
 3,110 visual and 3,100 transcript vectors over 3,173 segments. The benchmark's
-own step annotations serve as queries: each annotated step (a sentence plus a
-ground-truth [start, end] interval) becomes one moment-retrieval query — 314
-in total — scored under the §5.1 protocol. The speech-density contrast is
+own step annotations serve as queries. Each annotated step (a sentence plus a
+ground-truth [start, end] interval) becomes one moment-retrieval query, 314 in
+total, scored under the §5.1 protocol. The speech-density contrast is
 stark: 97.7% of segments carry speech (3,100 of 3,173, against 60% on NExT-QA),
 and the speech is task-aligned narration rather than incidental conversation.
 
@@ -514,7 +513,7 @@ Every sign flips as predicted. Transcript retrieval **doubles** visual
 retrieval in corpus scope (R@1 .096 vs .048; MRR .145 vs .076) — the mirror
 image of §5.2, where visual led text by an order of magnitude. Late fusion,
 which on NExT-QA never beat visual-only at any weight (§5.3.1), is here the
-**best configuration in video scope on every metric** (MRR .247 against .221
+*best configuration in video scope on every metric* (MRR .247 against .221
 text-only and .173 visual-only) and the best deep-rank configuration in corpus
 scope (R@10 .287). The α sweep confirms the direction of the regime: quality
 now *falls* as the visual weight rises (corpus R@10 .287 at α = .5 → .194 at
@@ -522,25 +521,28 @@ now *falls* as the visual weight rises (corpus R@10 .287 at α = .5 → .194 at
 visual. The ordering is unchanged at the looser τ = 0.3 (corpus text R@1 .191
 vs visual .099).
 
-The replication upgrades Chapter 6's conditionality *claim* to a measured
-result: the negative results of §5.3.1 are properties of the domain, not of
-the components. Part of the reversal, however, is *register* rather than speech
-density — YouCook2 queries are step descriptions phrased in the narrator's own
-vocabulary, where NExT-QA questions are causal reformulations of silent visual
-events. The two move together in this design and it cannot separate them;
-doing so would need a third condition, speech-dense video queried out of
-register, which was not run. What the replication does establish is the weaker
-but sufficient claim: with every component held fixed, changing the domain
-reverses the ordering, so that ordering is not a property of the components.
-The practical corollary is a
-*domain-adaptive* modality policy — weight the transcript channel by measured
-speech density and register match, using exactly this harness to measure it —
-rather than a fixed design choice. Two qualifications temper the result: the
-second corpus is small (40 videos, sized to the remaining project budget), and
-the replication covers the retrieval layer only — the QA-stage experiments of
-§5.4 were not repeated. The direction and magnitude of the reversals (2× on
-corpus R@1, fusion best across the board in video scope) are nonetheless far
-outside plausible noise for a deterministic 314-query evaluation.
+The replication turns the conditionality *claim* of §5.3.1 into a measured
+result: those negative results are properties of the domain, not of the
+components.
+
+Part of the reversal, however, is *register* rather than speech density.
+YouCook2 queries are step descriptions phrased in the narrator's own vocabulary,
+where NExT-QA questions are causal reformulations of silent visual events. The
+two factors move together in this design and it cannot separate them; doing so
+would need a third condition, speech-dense video queried out of register, which
+was not run. What the replication does establish is the weaker but sufficient
+claim: with every component held fixed, changing the domain reverses the
+ordering, so that ordering is not a property of the components. The practical
+corollary is a *domain-adaptive* modality policy, weighting the transcript
+channel by measured speech density and register match with exactly this harness,
+rather than a fixed design choice.
+
+Two qualifications temper the result. The second corpus is small (40 videos,
+sized to the remaining project budget), and the replication covers the retrieval
+layer only, since the QA-stage experiments of §5.4 were not repeated. The
+direction and magnitude of the reversals (2× on corpus R@1, fusion best across
+the board in video scope) are nonetheless far outside plausible noise for a
+deterministic 314-query evaluation.
 
 ## 5.6 System-level measurements
 
@@ -564,29 +566,34 @@ bringing the full chapter to ≈US$30 end to end.
 
 ## 5.7 Summary
 
-Against RQ1, multi-modal (visual) retrieval outperforms the text-only baseline by
-an order of magnitude in corpus scope, and the corpus/video gap identifies
-cross-video confusion as the dominant error. Against RQ2, the ablations show that
-(i) naive late fusion cannot rescue a weak text channel at any weight; (ii) query
-decomposition buys recall at depth while visual re-ranking buys top-rank
-precision, and they compose; (iii) SigLIP is the strongest index backbone, nearly
-doubling baseline R@1; (iv) a two-stage cheap-index/expensive-re-rank design
-matches the expensive index outright; and (v) a speech-dense replication
-(§5.5) shows the modality ordering itself is domain-conditional — on YouCook2
+**RQ1.** Visual retrieval outperforms the text-only baseline by an order of
+magnitude in corpus scope, and the corpus/video gap identifies cross-video
+confusion, not within-video imprecision, as the dominant error mode.
+
+**RQ2.** Five ablation results answer the embedding-strategy question.
+(i) Naive late fusion cannot rescue a weak text channel at any weight.
+(ii) Query decomposition buys recall at depth while visual re-ranking buys
+top-rank precision, and the two compose. (iii) SigLIP is the strongest index
+backbone, nearly doubling baseline R@1. (iv) A two-stage
+cheap-index/expensive-re-rank design matches the expensive index outright.
+(v) The modality ordering itself is domain-conditional: on YouCook2 (§5.5)
 transcript retrieval doubles visual retrieval and late fusion becomes the best
-configuration, exactly as the causal analysis predicted. Against RQ3, a LangGraph agent with
-temporal tools and self-reflection improves QA accuracy by 10 points over a
-single-loop agent (McNemar p = .031), and a controlled evidence-channel
-experiment shows visual evidence nearly doubling temporal-next accuracy
-(p = .004) — establishing that modality matters at the answering stage
-independently of retrieval. Prior-only baselines calibrate all QA numbers: both models score .560
-with no evidence at all; the best text-only stack merely matches that prior —
-and on temporal-next questions falls .227 below it (p = .031) — while the
-multimodal stack exceeds its own prior by +.167 (p = .0005). Visual evidence
-is the only channel measured that beats the bare model.
+configuration, exactly as the causal analysis predicted.
+
+**RQ3.** A LangGraph agent with temporal tools and self-reflection improves QA
+accuracy by 10 points over a single-loop agent (McNemar p = .031), and a
+controlled evidence-channel experiment shows visual evidence nearly doubling
+temporal-next accuracy (p = .004). Modality therefore matters at the answering
+stage independently of retrieval.
+
+**Calibration.** Prior-only baselines reframe every QA number above. Both models
+score .560 with no evidence at all. The best text-only stack merely matches that
+prior, and on temporal-next questions falls .227 below it (p = .031), while the
+multimodal stack exceeds its own prior by +.167 (p = .0005). Visual evidence is
+the only channel measured that beats the bare model.
+
 Combining the best-measured component in every slot yields .727 five-way
-accuracy — at, and in point estimate above, the published zero-shot state of
-the art on our sample — while temporal grounding proves competitive with
-published weakly-supervised answer-grounding methods under a stricter,
-citation-producing protocol. Chapter 6 discusses the limitations and
-generality of these findings.
+accuracy — at, and in point estimate above, the published zero-shot state of the
+art on this sample — while temporal grounding proves competitive with published
+weakly-supervised answer-grounding methods under a stricter, citation-producing
+protocol. Chapter 6 discusses the limitations and generality of these findings.

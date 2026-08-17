@@ -161,19 +161,17 @@ ounter.sty)))
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-dm.def)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-compat.def
 ) (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.def
-) (acmnumeric.bbx
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-trad\trad-plai
-n.bbx
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-trad\trad-stan
-dard.bbx
+)
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-ieee\ieee.bbx
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\numeric-co
+mp.bbx
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\numeric.bb
+x
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\standard.b
-bx)))
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-software\softw
-are.bbx (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/xurl\xurl.sty
-xurl: Set penalties for biblatex
-))) (acmnumeric.cbx
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/cbx\numeric.cb
-x))
+bx))))
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-ieee\ieee.cbx
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/cbx\numeric-ve
+rb.cbx))
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.cfg)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-case-expl3
 .sty)))
@@ -197,7 +195,7 @@ Package biblatex Warning: Load 'inputenc' before biblatex.
 
 
 LaTeX Warning: Unused global option(s):
-    [bibstyle=acmnumeric,twoside=false].
+    [bibstyle=ieee,twoside=false].
 
 (thesis.aux)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg)
@@ -211,16 +209,8 @@ ase.sty
 fg))
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/fmtcount\fc-english.def
 )
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\american.l
-bx
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-software\engli
-sh-software.lbx
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\english.lb
-x))
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-software\engli
-sh-software.lbx
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\english.lb
-x))) (thesis.bbl)
+x) (thesis.bbl)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/cjk/UTF8\UTF8.bdg)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/cjk/UTF8\UTF8.enc)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/cjk/UTF8\UTF8.chr)
@@ -230,7 +220,7 @@ Package typearea Warning: \typearea used at group level 8.
 (typearea)                environments, math mode, boxes, etc. may result in
 (typearea)                many type setting problems.
 (typearea)                You should move the command \typearea
-(typearea)                outside all groups on input line 96.
+(typearea)                outside all groups on input line 105.
 
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/mlmodern\omlmlmm.fd)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/mlmodern\omsmlmsy.fd)
@@ -249,8 +239,8 @@ Package scrlayer-scrpage Warning: \headheight to low.
 (scrlayer-scrpage)                processing, but you should do this yourself,
 (scrlayer-scrpage)                e.g., setting typearea's option
 (scrlayer-scrpage)                `headheight=17.0pt'.
-(scrlayer-scrpage)                I'll also decrease \topmargin on input line 9
-6.
+(scrlayer-scrpage)                I'll also decrease \topmargin on input line 1
+05.
 
 
 Overfull \vbox (17.0pt too high) has occurred while \output is active [1{C:/Use
@@ -262,7 +252,7 @@ Package typearea Warning: \typearea used at group level 3.
 (typearea)                environments, math mode, boxes, etc. may result in
 (typearea)                many type setting problems.
 (typearea)                You should move the command \typearea
-(typearea)                outside all groups on input line 100.
+(typearea)                outside all groups on input line 109.
 
 (abstract.tex
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/mlmodern\ts1mlmr.fd))
@@ -321,13 +311,13 @@ vider\T1/mlmr/m/n/10.95 (-20) ) over per-condition YAML con-fig-u-ra-tions, and
  emits a self-describing
 [23]) (ch/05_evaluation.tex [24]
 chapter 5.
-[25] [26] [27] [28] [29
+[25] [26] [27] [28
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.220 
-       <../figures/fig4_alpha_sweep.pdf>]
+l.168 
+       <../figures/fig4_alpha_sweep.pdf>] [29]
 Overfull \hbox (4.69333pt too wide) in paragraph at lines 247--248
 []\T1/mlmr/m/n/10.95 (-20) Configuration  
 [30
@@ -336,7 +326,8 @@ has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.270 \end{longtable}
-                      <../figures/fig5_ablation_ladder.pdf>] [31] [32]
+                      <../figures/fig5_ablation_ladder.pdf>] [31]
+ignored error: Infinite glue shrinkage found in box being split [32]
 Overfull \hbox (0.86383pt too wide) in paragraph at lines 437--437
 []|\T1/mlmr/m/n/10.95 (-20) deepseek- 
 
@@ -354,19 +345,19 @@ Overfull \hbox (11.52977pt too wide) in paragraph at lines 445--445
 
 Overfull \hbox (11.87216pt too wide) in paragraph at lines 445--445
 []|\T1/mlmr/m/n/10.95 (-20) multimodal|  
-[33]
-ignored error: Infinite glue shrinkage found in box being split [34
+ignored error: Infinite glue shrinkage found in box being split [33] [34]
+[35
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.447 \end{longtable}
-                      <../figures/fig7_qa_by_type.pdf>] [35] [36] [37
+l.497 
+       <../figures/fig7_qa_by_type.pdf>] [36] [37
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.4}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.563 
+l.573 
        <../figures/fig8_whitedog_case.pdf>] [38] [39] [40] [41] [42])
 (ch/06_discussion.tex [43]
 chapter 6.
@@ -395,7 +386,17 @@ Overfull \hbox (7.3514pt too wide) in paragraph at lines 246--247
 ignored error: Infinite glue shrinkage found in box being split [56] [57])
 [58]
 chapter without number
-[59] [60] [61] [62] (thesis.aux) )
+[59] [60]
+Overfull \hbox (35.96121pt too wide) in paragraph at lines 182--182
+[]\T1/mlmr/m/n/10.95 (-20) R. Nogueira and K. Cho, ``Pas-sage re-ranking with B
+ERT,'' \T1/mlmr/m/it/10.95 (-20) arXiv preprint arXiv:1901.04085\T1/mlmr/m/n/10
+.95 (-20) ,
+[61]
+Overfull \hbox (29.92079pt too wide) in paragraph at lines 182--182
+\T1/mlmr/m/n/10.95 (-20) augmented gen-er-a-tion with ex-treme long-context vid
+eos,'' \T1/mlmr/m/it/10.95 (-20) arXiv preprint arXiv:2502.01549\T1/mlmr/m/n/10
+.95 (-20) ,
+[62] (thesis.aux) )
 (see the transcript file for additional information)<C:/Users/20821/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/mlmodern/mlmbx10.pfb><C:/Users/20821/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/mlmodern/mlmbx12.pfb><C:/Users/208
@@ -408,7 +409,7 @@ odern/mlmri10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/type1/pub
 lic/mlmodern/mlmro10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/ty
 pe1/public/mlmodern/mlmsy10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/mlmodern/mlmtt10.pfb>
-Output written on thesis.pdf (70 pages, 1974000 bytes).
+Output written on thesis.pdf (70 pages, 1973003 bytes).
 Transcript written on thesis.log.
 pdflatex: major issue: So far, you have not checked for MiKTeX updates.
 INFO - This is Biber 2.21
@@ -421,7 +422,7 @@ INFO - LaTeX decoding ...
 INFO - Found BibTeX data source 'refs_clean.bib'
 INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
 INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-INFO - Sorting list 'anyt/global//global/global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-US'
 INFO - No sort tailoring available for locale 'en-US'
 INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
 INFO - Output to thesis.bbl
@@ -589,19 +590,17 @@ ounter.sty)))
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-dm.def)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-compat.def
 ) (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.def
-) (acmnumeric.bbx
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-trad\trad-plai
-n.bbx
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-trad\trad-stan
-dard.bbx
+)
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-ieee\ieee.bbx
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\numeric-co
+mp.bbx
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\numeric.bb
+x
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\standard.b
-bx)))
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-software\softw
-are.bbx (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/xurl\xurl.sty
-xurl: Set penalties for biblatex
-))) (acmnumeric.cbx
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/cbx\numeric.cb
-x))
+bx))))
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-ieee\ieee.cbx
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/cbx\numeric-ve
+rb.cbx))
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.cfg)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-case-expl3
 .sty)))
@@ -625,7 +624,7 @@ Package biblatex Warning: Load 'inputenc' before biblatex.
 
 
 LaTeX Warning: Unused global option(s):
-    [bibstyle=acmnumeric,twoside=false].
+    [bibstyle=ieee,twoside=false].
 
 (thesis.aux)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg)
@@ -639,16 +638,8 @@ ase.sty
 fg))
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/fmtcount\fc-english.def
 )
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\american.l
-bx
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-software\engli
-sh-software.lbx
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\english.lb
-x))
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-software\engli
-sh-software.lbx
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\english.lb
-x))) (thesis.bbl)
+x) (thesis.bbl)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/cjk/UTF8\UTF8.bdg)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/cjk/UTF8\UTF8.enc)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/cjk/UTF8\UTF8.chr)
@@ -658,7 +649,7 @@ Package typearea Warning: \typearea used at group level 8.
 (typearea)                environments, math mode, boxes, etc. may result in
 (typearea)                many type setting problems.
 (typearea)                You should move the command \typearea
-(typearea)                outside all groups on input line 96.
+(typearea)                outside all groups on input line 105.
 
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/mlmodern\omlmlmm.fd)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/mlmodern\omsmlmsy.fd)
@@ -677,8 +668,8 @@ Package scrlayer-scrpage Warning: \headheight to low.
 (scrlayer-scrpage)                processing, but you should do this yourself,
 (scrlayer-scrpage)                e.g., setting typearea's option
 (scrlayer-scrpage)                `headheight=17.0pt'.
-(scrlayer-scrpage)                I'll also decrease \topmargin on input line 9
-6.
+(scrlayer-scrpage)                I'll also decrease \topmargin on input line 1
+05.
 
 
 Overfull \vbox (17.0pt too high) has occurred while \output is active [1{C:/Use
@@ -690,7 +681,7 @@ Package typearea Warning: \typearea used at group level 3.
 (typearea)                environments, math mode, boxes, etc. may result in
 (typearea)                many type setting problems.
 (typearea)                You should move the command \typearea
-(typearea)                outside all groups on input line 100.
+(typearea)                outside all groups on input line 109.
 
 (abstract.tex
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/mlmodern\ts1mlmr.fd))
@@ -749,13 +740,13 @@ vider\T1/mlmr/m/n/10.95 (-20) ) over per-condition YAML con-fig-u-ra-tions, and
  emits a self-describing
 [23]) (ch/05_evaluation.tex [24]
 chapter 5.
-[25] [26] [27] [28] [29
+[25] [26] [27] [28
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.220 
-       <../figures/fig4_alpha_sweep.pdf>]
+l.168 
+       <../figures/fig4_alpha_sweep.pdf>] [29]
 Overfull \hbox (4.69333pt too wide) in paragraph at lines 247--248
 []\T1/mlmr/m/n/10.95 (-20) Configuration  
 [30
@@ -764,7 +755,8 @@ has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.270 \end{longtable}
-                      <../figures/fig5_ablation_ladder.pdf>] [31] [32]
+                      <../figures/fig5_ablation_ladder.pdf>] [31]
+ignored error: Infinite glue shrinkage found in box being split [32]
 Overfull \hbox (0.86383pt too wide) in paragraph at lines 437--437
 []|\T1/mlmr/m/n/10.95 (-20) deepseek- 
 
@@ -782,19 +774,19 @@ Overfull \hbox (11.52977pt too wide) in paragraph at lines 445--445
 
 Overfull \hbox (11.87216pt too wide) in paragraph at lines 445--445
 []|\T1/mlmr/m/n/10.95 (-20) multimodal|  
-[33]
-ignored error: Infinite glue shrinkage found in box being split [34
+ignored error: Infinite glue shrinkage found in box being split [33] [34]
+[35
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.447 \end{longtable}
-                      <../figures/fig7_qa_by_type.pdf>] [35] [36] [37
+l.497 
+       <../figures/fig7_qa_by_type.pdf>] [36] [37
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.4}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.563 
+l.573 
        <../figures/fig8_whitedog_case.pdf>] [38] [39] [40] [41] [42])
 (ch/06_discussion.tex [43]
 chapter 6.
@@ -823,7 +815,17 @@ Overfull \hbox (7.3514pt too wide) in paragraph at lines 246--247
 ignored error: Infinite glue shrinkage found in box being split [56] [57])
 [58]
 chapter without number
-[59] [60] [61] [62] (thesis.aux) )
+[59] [60]
+Overfull \hbox (35.96121pt too wide) in paragraph at lines 182--182
+[]\T1/mlmr/m/n/10.95 (-20) R. Nogueira and K. Cho, ``Pas-sage re-ranking with B
+ERT,'' \T1/mlmr/m/it/10.95 (-20) arXiv preprint arXiv:1901.04085\T1/mlmr/m/n/10
+.95 (-20) ,
+[61]
+Overfull \hbox (29.92079pt too wide) in paragraph at lines 182--182
+\T1/mlmr/m/n/10.95 (-20) augmented gen-er-a-tion with ex-treme long-context vid
+eos,'' \T1/mlmr/m/it/10.95 (-20) arXiv preprint arXiv:2502.01549\T1/mlmr/m/n/10
+.95 (-20) ,
+[62] (thesis.aux) )
 (see the transcript file for additional information)<C:/Users/20821/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/mlmodern/mlmbx10.pfb><C:/Users/20821/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/mlmodern/mlmbx12.pfb><C:/Users/208
@@ -836,7 +838,7 @@ odern/mlmri10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/type1/pub
 lic/mlmodern/mlmro10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/ty
 pe1/public/mlmodern/mlmsy10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/mlmodern/mlmtt10.pfb>
-Output written on thesis.pdf (70 pages, 1974479 bytes).
+Output written on thesis.pdf (70 pages, 1973003 bytes).
 Transcript written on thesis.log.
 pdflatex: major issue: So far, you have not checked for MiKTeX updates.
 This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex.fmt)
@@ -1002,19 +1004,17 @@ ounter.sty)))
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-dm.def)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-compat.def
 ) (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.def
-) (acmnumeric.bbx
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-trad\trad-plai
-n.bbx
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-trad\trad-stan
-dard.bbx
+)
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-ieee\ieee.bbx
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\numeric-co
+mp.bbx
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\numeric.bb
+x
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\standard.b
-bx)))
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-software\softw
-are.bbx (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/xurl\xurl.sty
-xurl: Set penalties for biblatex
-))) (acmnumeric.cbx
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/cbx\numeric.cb
-x))
+bx))))
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-ieee\ieee.cbx
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/cbx\numeric-ve
+rb.cbx))
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.cfg)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-case-expl3
 .sty)))
@@ -1038,7 +1038,7 @@ Package biblatex Warning: Load 'inputenc' before biblatex.
 
 
 LaTeX Warning: Unused global option(s):
-    [bibstyle=acmnumeric,twoside=false].
+    [bibstyle=ieee,twoside=false].
 
 (thesis.aux)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg)
@@ -1052,16 +1052,8 @@ ase.sty
 fg))
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/fmtcount\fc-english.def
 )
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\american.l
-bx
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-software\engli
-sh-software.lbx
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\english.lb
-x))
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-software\engli
-sh-software.lbx
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\english.lb
-x))) (thesis.bbl)
+x) (thesis.bbl)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/cjk/UTF8\UTF8.bdg)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/cjk/UTF8\UTF8.enc)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/cjk/UTF8\UTF8.chr)
@@ -1071,7 +1063,7 @@ Package typearea Warning: \typearea used at group level 8.
 (typearea)                environments, math mode, boxes, etc. may result in
 (typearea)                many type setting problems.
 (typearea)                You should move the command \typearea
-(typearea)                outside all groups on input line 96.
+(typearea)                outside all groups on input line 105.
 
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/mlmodern\omlmlmm.fd)
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/mlmodern\omsmlmsy.fd)
@@ -1090,8 +1082,8 @@ Package scrlayer-scrpage Warning: \headheight to low.
 (scrlayer-scrpage)                processing, but you should do this yourself,
 (scrlayer-scrpage)                e.g., setting typearea's option
 (scrlayer-scrpage)                `headheight=17.0pt'.
-(scrlayer-scrpage)                I'll also decrease \topmargin on input line 9
-6.
+(scrlayer-scrpage)                I'll also decrease \topmargin on input line 1
+05.
 
 
 Overfull \vbox (17.0pt too high) has occurred while \output is active [1{C:/Use
@@ -1103,7 +1095,7 @@ Package typearea Warning: \typearea used at group level 3.
 (typearea)                environments, math mode, boxes, etc. may result in
 (typearea)                many type setting problems.
 (typearea)                You should move the command \typearea
-(typearea)                outside all groups on input line 100.
+(typearea)                outside all groups on input line 109.
 
 (abstract.tex
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/mlmodern\ts1mlmr.fd))
@@ -1162,13 +1154,13 @@ vider\T1/mlmr/m/n/10.95 (-20) ) over per-condition YAML con-fig-u-ra-tions, and
  emits a self-describing
 [23]) (ch/05_evaluation.tex [24]
 chapter 5.
-[25] [26] [27] [28] [29
+[25] [26] [27] [28
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.220 
-       <../figures/fig4_alpha_sweep.pdf>]
+l.168 
+       <../figures/fig4_alpha_sweep.pdf>] [29]
 Overfull \hbox (4.69333pt too wide) in paragraph at lines 247--248
 []\T1/mlmr/m/n/10.95 (-20) Configuration  
 [30
@@ -1177,7 +1169,8 @@ has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.270 \end{longtable}
-                      <../figures/fig5_ablation_ladder.pdf>] [31] [32]
+                      <../figures/fig5_ablation_ladder.pdf>] [31]
+ignored error: Infinite glue shrinkage found in box being split [32]
 Overfull \hbox (0.86383pt too wide) in paragraph at lines 437--437
 []|\T1/mlmr/m/n/10.95 (-20) deepseek- 
 
@@ -1195,19 +1188,19 @@ Overfull \hbox (11.52977pt too wide) in paragraph at lines 445--445
 
 Overfull \hbox (11.87216pt too wide) in paragraph at lines 445--445
 []|\T1/mlmr/m/n/10.95 (-20) multimodal|  
-[33]
-ignored error: Infinite glue shrinkage found in box being split [34
+ignored error: Infinite glue shrinkage found in box being split [33] [34]
+[35
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.447 \end{longtable}
-                      <../figures/fig7_qa_by_type.pdf>] [35] [36] [37
+l.497 
+       <../figures/fig7_qa_by_type.pdf>] [36] [37
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.4}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.563 
+l.573 
        <../figures/fig8_whitedog_case.pdf>] [38] [39] [40] [41] [42])
 (ch/06_discussion.tex [43]
 chapter 6.
@@ -1236,7 +1229,17 @@ Overfull \hbox (7.3514pt too wide) in paragraph at lines 246--247
 ignored error: Infinite glue shrinkage found in box being split [56] [57])
 [58]
 chapter without number
-[59] [60] [61] [62] (thesis.aux) )
+[59] [60]
+Overfull \hbox (35.96121pt too wide) in paragraph at lines 182--182
+[]\T1/mlmr/m/n/10.95 (-20) R. Nogueira and K. Cho, ``Pas-sage re-ranking with B
+ERT,'' \T1/mlmr/m/it/10.95 (-20) arXiv preprint arXiv:1901.04085\T1/mlmr/m/n/10
+.95 (-20) ,
+[61]
+Overfull \hbox (29.92079pt too wide) in paragraph at lines 182--182
+\T1/mlmr/m/n/10.95 (-20) augmented gen-er-a-tion with ex-treme long-context vid
+eos,'' \T1/mlmr/m/it/10.95 (-20) arXiv preprint arXiv:2502.01549\T1/mlmr/m/n/10
+.95 (-20) ,
+[62] (thesis.aux) )
 (see the transcript file for additional information)<C:/Users/20821/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/mlmodern/mlmbx10.pfb><C:/Users/20821/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/mlmodern/mlmbx12.pfb><C:/Users/208
@@ -1249,6 +1252,6 @@ odern/mlmri10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/type1/pub
 lic/mlmodern/mlmro10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/ty
 pe1/public/mlmodern/mlmsy10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/mlmodern/mlmtt10.pfb>
-Output written on thesis.pdf (70 pages, 1974479 bytes).
+Output written on thesis.pdf (70 pages, 1973003 bytes).
 Transcript written on thesis.log.
 pdflatex: major issue: So far, you have not checked for MiKTeX updates.

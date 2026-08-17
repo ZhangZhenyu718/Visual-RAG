@@ -192,8 +192,8 @@ python scripts/evaluate.py --config configs/youcook2.yaml --split val \
 ```
 
 40 val videos (2 truncated downloads auto-replaced; 1 MB integrity floor),
-3,173 segments, 3,110 visual + 3,100 text vectors (99.7% speech coverage vs
-NExT's 60%). Queries = the benchmark's own 314 step annotations. **Both
+3,173 segments, 3,110 visual + 3,100 text vectors (97.7% speech coverage —
+3,100/3,173 — vs NExT's 60%). Queries = the benchmark's own 314 step annotations. **Both
 negative results reverse as §6.2 predicted**: corpus text R@1 .096 vs visual
 .048 (2×), video-scope fused (α=.5) best on every metric (MRR .247 vs .221
 text / .173 visual); fusion degrades as α→visual (.287→.194 R@10); ordering

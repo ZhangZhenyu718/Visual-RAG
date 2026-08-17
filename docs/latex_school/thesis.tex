@@ -2,10 +2,19 @@
 %% Chapter bodies are generated from ../chapters/*.md by build_school.sh (pandoc fragments,
 %% citations as biblatex \autocite). Edit the markdown, not ch/*.tex.
 \documentclass[
-  bibstyle=acmnumeric,   % numeric [1] style, matching the draft build
+  bibstyle=ieee,         % IEEE numeric style — the convention the CS unit names
   twoside=false,         % e-submission: no blank verso pages. For the PRINTED
                          % two-sided copy, change to: twoside
 ]{uob-thesis}
+
+%% The class hard-codes sorting=anyt (alphabetical), which would number the
+%% references alphabetically. IEEE numbers them in order of first citation.
+\ExecuteBibliographyOptions{sorting=none}
+
+%% KOMA's \autodot appends a period after every number, which collides with the
+%% caption separator and prints "Figure 3.1.: ...". Turning it off gives
+%% "Figure 3.1: ..." and "2.2 Section title", per normal English typography.
+\KOMAoptions{numbers=noenddot}
 
 \addbibresource{refs_clean.bib}  % generated: docs/references.bib minus note fields
 
@@ -103,8 +112,11 @@
 %% ("a list of acknowledgements"), so the section is enabled. Replace the line
 %% below before submitting — it is deliberately conspicuous so it cannot ship.
 \begin{acknowledgements}
-  \textbf{[TO WRITE BEFORE SUBMISSION]} Thanks to my supervisor, \emph{name},
-  for \emph{\ldots}; and to \emph{\ldots}
+  I would like to thank my supervisor, Dr~Junxiao Shen, for proposing this
+  project and for guidance that consistently sharpened it. My sincere thanks
+  also go to my friend Zhuolun Li, whose generous help throughout the project
+  made a real difference, and to my classmates for their support and
+  discussion.
 \end{acknowledgements}
 
 %% Optional dedication.

@@ -96,7 +96,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxbibnames</bcf:key>
-      <bcf:value>9</bcf:value>
+      <bcf:value>6</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxcitenames</bcf:key>
@@ -104,7 +104,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxsortnames</bcf:key>
-      <bcf:value>9</bcf:value>
+      <bcf:value>6</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxitems</bcf:key>
@@ -172,7 +172,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>sortingtemplatename</bcf:key>
-      <bcf:value>anyt</bcf:value>
+      <bcf:value>none</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>sortsets</bcf:key>
@@ -204,7 +204,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>useprefix</bcf:key>
-      <bcf:value>1</bcf:value>
+      <bcf:value>0</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>useafterword</bcf:key>
@@ -331,7 +331,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxbibnames</bcf:key>
-      <bcf:value>9</bcf:value>
+      <bcf:value>6</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxcitenames</bcf:key>
@@ -339,7 +339,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxsortnames</bcf:key>
-      <bcf:value>9</bcf:value>
+      <bcf:value>6</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxitems</bcf:key>
@@ -419,7 +419,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>useprefix</bcf:key>
-      <bcf:value>1</bcf:value>
+      <bcf:value>0</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>useafterword</bcf:key>
@@ -644,14 +644,7 @@
     <bcf:option datatype="boolean">eprint</bcf:option>
     <bcf:option datatype="boolean">related</bcf:option>
     <bcf:option datatype="boolean">subentry</bcf:option>
-    <bcf:option datatype="boolean">halid</bcf:option>
-    <bcf:option datatype="boolean">swhid</bcf:option>
-    <bcf:option datatype="boolean">shortswhid</bcf:option>
-    <bcf:option datatype="boolean">swlabels</bcf:option>
-    <bcf:option datatype="boolean">vcs</bcf:option>
-    <bcf:option datatype="boolean">license</bcf:option>
-    <bcf:option datatype="boolean">addendum</bcf:option>
-    <bcf:option datatype="boolean">crossrefexpansion</bcf:option>
+    <bcf:option datatype="boolean">dashed</bcf:option>
     <bcf:option datatype="boolean">bibtexcaseprotection</bcf:option>
     <bcf:option datatype="integer">mincrossrefs</bcf:option>
     <bcf:option datatype="integer">minxrefs</bcf:option>
@@ -883,22 +876,6 @@
   </bcf:datafieldset>
   <!-- SOURCEMAP -->
   <bcf:sourcemap>
-    <bcf:maps datatype="bibtex" map_overwrite="1" level="style">
-      <bcf:map>
-        <bcf:map_step map_field_source="swhid" map_match="\s" map_replace=""/>
-      </bcf:map>
-      <bcf:map>
-        <bcf:map_step map_field_source="swhid"/>
-        <bcf:map_step map_field_set="swhidcore" map_origfieldval="1"/>
-        <bcf:map_step map_field_source="swhidcore" map_match=";.*" map_replace=""/>
-      </bcf:map>
-    </bcf:maps>
-    <bcf:maps datatype="bibtex" level="style">
-      <bcf:map>
-        <bcf:map_step map_type_source="artifactsoftware" map_type_target="software"/>
-        <bcf:map_step map_type_source="artifactdataset" map_type_target="dataset"/>
-      </bcf:map>
-    </bcf:maps>
     <bcf:maps datatype="bibtex" level="driver">
       <bcf:map>
         <bcf:map_step map_field_set="day" map_null="1"/>
@@ -1080,21 +1057,6 @@
       <bcf:field source="shorthand" skip="true"/>
       <bcf:field source="shorthandintro" skip="true"/>
       <bcf:field source="sortkey" skip="true"/>
-    </bcf:inherit>
-    <bcf:inherit>
-      <bcf:type_pair source="software" target="softwareversion"/>
-      <bcf:type_pair source="software" target="softwaremodule"/>
-      <bcf:type_pair source="software" target="codefragment"/>
-      <bcf:field source="*" target="*"/>
-    </bcf:inherit>
-    <bcf:inherit>
-      <bcf:type_pair source="softwareversion" target="softwaremodule"/>
-      <bcf:type_pair source="softwareversion" target="codefragment"/>
-      <bcf:field source="*" target="*"/>
-    </bcf:inherit>
-    <bcf:inherit>
-      <bcf:type_pair source="softwaremodule" target="codefragment"/>
-      <bcf:field source="*" target="*"/>
     </bcf:inherit>
   </bcf:inheritance>
   <!-- UNIQUENAME TEMPLATES -->
@@ -2458,42 +2420,19 @@
     <bcf:citekey order="42" intorder="1">zhou2018youcook2</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
-  <bcf:sortingtemplate name="anyt">
+  <bcf:sortingtemplate name="none">
     <bcf:sort order="1">
-      <bcf:sortitem order="1">presort</bcf:sortitem>
+      <bcf:sortitem order="1">citeorder</bcf:sortitem>
     </bcf:sort>
     <bcf:sort order="2">
-      <bcf:sortitem order="1">labelalpha</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="3" final="1">
-      <bcf:sortitem order="1">sortkey</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="4">
-      <bcf:sortitem order="1">sortname</bcf:sortitem>
-      <bcf:sortitem order="2">author</bcf:sortitem>
-      <bcf:sortitem order="3">editor</bcf:sortitem>
-      <bcf:sortitem order="4">translator</bcf:sortitem>
-      <bcf:sortitem order="5">sorttitle</bcf:sortitem>
-      <bcf:sortitem order="6">title</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="5">
-      <bcf:sortitem order="1">sortyear</bcf:sortitem>
-      <bcf:sortitem order="2">year</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="6">
-      <bcf:sortitem order="1">sorttitle</bcf:sortitem>
-      <bcf:sortitem order="2">title</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="7">
-      <bcf:sortitem order="1">volume</bcf:sortitem>
-      <bcf:sortitem literal="1" order="2">0</bcf:sortitem>
+      <bcf:sortitem order="1">intciteorder</bcf:sortitem>
     </bcf:sort>
   </bcf:sortingtemplate>
   <!-- DATALISTS -->
   <bcf:datalist section="0"
-                name="anyt/global//global/global/global"
+                name="none/global//global/global/global"
                 type="entry"
-                sortingtemplatename="anyt"
+                sortingtemplatename="none"
                 sortingnamekeytemplatename="global"
                 labelprefix=""
                 uniquenametemplatename="global"

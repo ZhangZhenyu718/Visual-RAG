@@ -206,8 +206,8 @@ single-variable comparison.
 
 ## 3.6 Demonstration interface
 
-A Streamlit application exposes the full pipeline interactively in two tabs.
-The *search* tab runs the retrieval stack with per-component toggles —
+A Streamlit application (Figure 3.3) exposes the full pipeline interactively in
+two tabs. The *search* tab runs the retrieval stack with per-component toggles —
 modality, query decomposition, visual re-ranking — and renders each hit with its
 keyframe, timestamps, transcript, and score; expanding a hit plays the source
 video seeked to the segment's start time, closing the loop from natural-language

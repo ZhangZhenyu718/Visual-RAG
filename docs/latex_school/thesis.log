@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.4)  17 AUG 2026 22:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.4)  17 AUG 2026 23:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -859,7 +859,7 @@ Package biblatex Info: ... file 'blx-dm.def' found.
 File: blx-dm.def 2025/07/10 v3.21 biblatex datamodel (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex style data model...
-Package biblatex Info: ... file 'acmnumeric.dbx' not found.
+Package biblatex Info: ... file 'ieee.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
 \c@afterword=\count391
@@ -968,22 +968,23 @@ File: biblatex.def 2025/07/10 v3.21 biblatex compatibility (PK/MW)
 \biburllcskip=\muskip22
 \c@smartand=\count467
 )
-Package biblatex Info: Trying to load bibliography style 'acmnumeric'...
-Package biblatex Info: ... file 'acmnumeric.bbx' found.
- (acmnumeric.bbx
-File: acmnumeric.bbx 2017-09-27 v0.1 biblatex bibliography style
-Package biblatex Info: Trying to load bibliography style 'trad-plain'...
-Package biblatex Info: ... file 'trad-plain.bbx' found.
+Package biblatex Info: Trying to load bibliography style 'ieee'...
+Package biblatex Info: ... file 'ieee.bbx' found.
 
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-trad\trad-plai
-n.bbx
-File: trad-plain.bbx 2021/03/06 v0.5 biblatex-trad plain bibliography style
-Package biblatex Info: Trying to load bibliography style 'trad-standard'...
-Package biblatex Info: ... file 'trad-standard.bbx' found.
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-ieee\ieee.bbx
+File: ieee.bbx 2025-08-01 v1.4f biblatex bibliography style
+Package biblatex Info: Trying to load bibliography style 'numeric-comp'...
+Package biblatex Info: ... file 'numeric-comp.bbx' found.
 
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-trad\trad-stan
-dard.bbx
-File: trad-standard.bbx 2021/03/06 v0.5 biblatex-trad base bibliography style
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\numeric-co
+mp.bbx
+File: numeric-comp.bbx 2025/07/10 v3.21 biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'numeric'...
+Package biblatex Info: ... file 'numeric.bbx' found.
+
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\numeric.bb
+x
+File: numeric.bbx 2025/07/10 v3.21 biblatex bibliography style (PK/MW)
 Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
 
@@ -992,45 +993,28 @@ bx
 File: standard.bbx 2025/07/10 v3.21 biblatex bibliography style (PK/MW)
 \c@bbx:relatedcount=\count468
 \c@bbx:relatedtotal=\count469
-)))
-Package biblatex Info: Trying to load biblatex style for software...
-Package biblatex Info: ... file 'software.bbx' found.
+))))
+Package biblatex Info: Trying to load citation style 'ieee'...
+Package biblatex Info: ... file 'ieee.cbx' found.
 
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-software\softw
-are.bbx
-File: software.bbx 2022/08/01 bibliography driver extension for software entrie
-s, Roberto Di Cosmo
- (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/xurl\xurl.sty
-Package: xurl 2022/01/09 v 0.10 modify URL breaks
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-ieee\ieee.cbx
+File: ieee.cbx 2025-08-01 v1.4f biblatex citation style
+Package biblatex Info: Trying to load citation style 'numeric-verb'...
+Package biblatex Info: ... file 'numeric-verb.cbx' found.
 
-xurl: Set penalties for biblatex
-)
-\bbx@tempbox=\box62
-\bbx@tempboxb=\box63
-\bbx@tempboxc=\box64
-\bbx@tempboxd=\box65
-))
-Package biblatex Info: Trying to load citation style 'acmnumeric'...
-Package biblatex Info: ... file 'acmnumeric.cbx' found.
- (acmnumeric.cbx
-File: acmnumeric.cbx 2017-09-27 v0.1
-Package biblatex Info: Trying to load citation style 'numeric'...
-Package biblatex Info: ... file 'numeric.cbx' found.
-
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/cbx\numeric.cb
-x
-File: numeric.cbx 2025/07/10 v3.21 biblatex citation style (PK/MW)
+(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/cbx\numeric-ve
+rb.cbx
+File: numeric-verb.cbx 2025/07/10 v3.21 biblatex citation style (PK/MW)
 Package biblatex Info: Redefining '\cite'.
 Package biblatex Info: Redefining '\parencite'.
 Package biblatex Info: Redefining '\footcite'.
 Package biblatex Info: Redefining '\footcitetext'.
 Package biblatex Info: Redefining '\smartcite'.
-Package biblatex Info: Redefining '\supercite'.
 Package biblatex Info: Redefining '\textcite'.
-Package biblatex Info: Redefining '\textcites'.
-Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\supercite'.
 Package biblatex Info: Redefining '\parencites'.
 Package biblatex Info: Redefining '\smartcites'.
+Package biblatex Info: Redefining '\textcites'.
 ))
 Package biblatex Info: Trying to load configuration file...
 Package biblatex Info: ... file 'biblatex.cfg' found.
@@ -1063,18 +1047,18 @@ Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
 \LTpost=\skip117
 \LTchunksize=\count470
 \LTcapwidth=\dimen178
-\LT@head=\box66
-\LT@firsthead=\box67
-\LT@foot=\box68
-\LT@lastfoot=\box69
-\LT@gbox=\box70
+\LT@head=\box62
+\LT@firsthead=\box63
+\LT@foot=\box64
+\LT@lastfoot=\box65
+\LT@gbox=\box66
 \LT@cols=\count471
 \LT@rows=\count472
 \c@LT@tables=\count473
 \c@LT@chunks=\count474
 \LT@p@ftn=\toks47
 )
-Class scrbook Info: longtable captions redefined on input line 14.
+Class scrbook Info: longtable captions redefined on input line 23.
 
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
@@ -1187,7 +1171,7 @@ Now handling font encoding C41 ...
 Now handling font encoding C62 ...
 ... no UTF-8 mapping file for font encoding C62
 )
-\CJK@indent=\box71
+\CJK@indent=\box67
 )
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
@@ -1196,9 +1180,9 @@ Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count480
 \float@exts=\toks50
-\float@box=\box72
+\float@box=\box68
 \@float@everytoks=\toks51
-\@floatcapt=\box73
+\@floatcapt=\box69
 )
    defining Unicode char U+00B3 (decimal 179)
    defining Unicode char U+2074 (decimal 8308)
@@ -1227,7 +1211,7 @@ Package typearea Info: These are the values describing the layout:
 (typearea)              \topskip        = 11.0pt
 (typearea)              \footskip       = 59.5pt
 (typearea)              \baselineskip   = 17.0pt
-(typearea)              on input line 60.
+(typearea)              on input line 69.
 Package typearea Info: These are the values describing the layout:
 (typearea)             DIV  = 10
 (typearea)             BCOR = 0.0pt
@@ -1244,7 +1228,7 @@ Package typearea Info: These are the values describing the layout:
 (typearea)              \topskip        = 11.0pt
 (typearea)              \footskip       = 59.5pt
 (typearea)              \baselineskip   = 17.0pt
-(typearea)              on input line 60.
+(typearea)              on input line 69.
 
 (wordcount.tex)
 Class scrbook Info: loading recommended package `bookmark'.
@@ -1254,7 +1238,7 @@ Class scrbook Info: loading recommended package `bookmark'.
 (scrbook)           `bookmarkpackage=false' before \begin{document} and
 (scrbook)           you can avoid this message adding:
 (scrbook)             \usepackage{bookmark}
-(scrbook)           before \begin{document} on input line 90.
+(scrbook)           before \begin{document} on input line 99.
 
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bookmark.sty
 Package: bookmark 2026-05-21 v1.32 PDF bookmarks (HO)
@@ -1270,110 +1254,110 @@ Package biblatex Warning: Load 'inputenc' before biblatex.
 \@quotereset=\count483
 
 LaTeX Warning: Unused global option(s):
-    [bibstyle=acmnumeric,twoside=false].
+    [bibstyle=ieee,twoside=false].
 
 (thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C00/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C05/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C09/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C10/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C20/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C19/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C40/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C42/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C43/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C50/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C52/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C49/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C60/mj/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C61/mj/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C63/mj/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C64/mj/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C65/mj/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C70/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C31/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C32/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C33/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C34/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C35/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C36/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C37/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C80/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C81/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C01/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C11/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C21/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C41/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for C62/song/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-Package scrbase Info: activating english \partname on input line 90.
-Package scrbase Info: activating english \chaptername on input line 90.
-Package scrbase Info: activating english \appendixname on input line 90.
-Package scrbase Info: activating english \figurename on input line 90.
-Package scrbase Info: activating english \tablename on input line 90.
-Package scrbase Info: activating english \contentsname on input line 90.
-Package scrbase Info: activating english \listfigurename on input line 90.
-Package scrbase Info: activating english \listtablename on input line 90.
-Package scrbase Info: activating english \bibname on input line 90.
-Package scrbase Info: activating english \indexname on input line 90.
-LaTeX Info: Redefining \microtypecontext on input line 90.
-Package microtype Info: Applying patch `item' on input line 90.
-Package microtype Info: Applying patch `toc' on input line 90.
-Package microtype Info: Applying patch `eqnum' on input line 90.
-Package microtype Info: Applying patch `footnote' on input line 90.
-Package microtype Info: Applying patch `verbatim' on input line 90.
-LaTeX Info: Redefining \microtypesetup on input line 90.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C00/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C05/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C09/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C10/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C20/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C19/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C40/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C42/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C43/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C50/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C52/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C49/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C60/mj/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C61/mj/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C63/mj/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C64/mj/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C65/mj/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C70/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C31/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C32/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C33/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C34/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C35/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C36/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C37/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C80/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C81/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C01/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C11/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C21/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C41/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for C62/song/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+Package scrbase Info: activating english \partname on input line 99.
+Package scrbase Info: activating english \chaptername on input line 99.
+Package scrbase Info: activating english \appendixname on input line 99.
+Package scrbase Info: activating english \figurename on input line 99.
+Package scrbase Info: activating english \tablename on input line 99.
+Package scrbase Info: activating english \contentsname on input line 99.
+Package scrbase Info: activating english \listfigurename on input line 99.
+Package scrbase Info: activating english \listtablename on input line 99.
+Package scrbase Info: activating english \bibname on input line 99.
+Package scrbase Info: activating english \indexname on input line 99.
+LaTeX Info: Redefining \microtypecontext on input line 99.
+Package microtype Info: Applying patch `item' on input line 99.
+Package microtype Info: Applying patch `toc' on input line 99.
+Package microtype Info: Applying patch `eqnum' on input line 99.
+Package microtype Info: Applying patch `footnote' on input line 99.
+Package microtype Info: Applying patch `verbatim' on input line 99.
+LaTeX Info: Redefining \microtypesetup on input line 99.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1394,7 +1378,7 @@ ii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count484
 \scratchdimen=\dimen193
-\scratchbox=\box74
+\scratchbox=\box70
 \nofMPsegments=\count485
 \nofMParguments=\count486
 \everyMPshowfont=\toks52
@@ -1417,41 +1401,14 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/fmtcount\fc-english.def
 File: fc-english.def 2016/01/12
 )
-Package hyperref Info: Link coloring ON on input line 90.
-Package biblatex Info: Trying to load language 'american'...
-Package biblatex Info: ... file 'american.lbx' found.
-
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\american.l
-bx
-File: american.lbx 2025/07/10 v3.21 biblatex localization (PK/MW)
-Package biblatex Info: Trying to load language 'english' -> 'english-software'.
-..
-Package biblatex Info: ... file 'english-software.lbx' found.
-
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-software\engli
-sh-software.lbx
-File: english-software.lbx 2022/08/01 english with additions for software
+Package hyperref Info: Link coloring ON on input line 99.
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
 
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\english.lb
 x
 File: english.lbx 2025/07/10 v3.21 biblatex localization (PK/MW)
-))
-Package biblatex Info: Trying to load language 'english' -> 'english-software'.
-..
-Package biblatex Info: ... file 'english-software.lbx' found.
-
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-software\engli
-sh-software.lbx
-File: english-software.lbx 2022/08/01 english with additions for software
-Package biblatex Info: Trying to load language 'english'...
-Package biblatex Info: ... file 'english.lbx' found.
-
-(C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\english.lb
-x
-File: english.lbx 2025/07/10 v3.21 biblatex localization (PK/MW)
-)))
+)
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
@@ -1460,8 +1417,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'thesis.bbl' found.
  (thesis.bbl)
-Package biblatex Info: Reference section=0 on input line 90.
-Package biblatex Info: Reference segment=0 on input line 90.
+Package biblatex Info: Reference section=0 on input line 99.
+Package biblatex Info: Reference segment=0 on input line 99.
 
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/cjk/UTF8\UTF8.bdg
 File: UTF8.bdg 2021/10/16 4.8.5
@@ -1472,7 +1429,7 @@ File: UTF8.enc 2021/10/16 4.8.5
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/cjk/UTF8\UTF8.chr
 File: UTF8.chr 2021/10/16 4.8.5
 )
-Package hyperref Info: Option `pageanchor' set `false' on input line 94.
+Package hyperref Info: Option `pageanchor' set `false' on input line 103.
 
 
 Package typearea Warning: \typearea used at group level 8.
@@ -1480,7 +1437,7 @@ Package typearea Warning: \typearea used at group level 8.
 (typearea)                environments, math mode, boxes, etc. may result in
 (typearea)                many type setting problems.
 (typearea)                You should move the command \typearea
-(typearea)                outside all groups on input line 96.
+(typearea)                outside all groups on input line 105.
 
 Package typearea Info: These are the values describing the layout:
 (typearea)             DIV  = 10
@@ -1498,34 +1455,34 @@ Package typearea Info: These are the values describing the layout:
 (typearea)              \topskip        = 11.0pt
 (typearea)              \footskip       = 59.5pt
 (typearea)              \baselineskip   = 17.0pt
-(typearea)              on input line 96.
+(typearea)              on input line 105.
 Package typearea Info: Using dirty hack to recalculate internal output
-(typearea)             dimensions of LaTeX on input line 96.
+(typearea)             dimensions of LaTeX on input line 105.
 LaTeX Font Info:    Trying to load font information for OML+mlmm on input line 
-96.
+105.
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/mlmodern\omlmlmm.fd
 File: omlmlmm.fd 2021/01/11 v1.0 Font defs for mlmodern
 )
 LaTeX Font Info:    Trying to load font information for OMS+mlmsy on input line
- 96.
+ 105.
 
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/mlmodern\omsmlmsy.fd
 File: omsmlmsy.fd 2021/01/11 v1.0 Font defs for mlmodern
 )
 LaTeX Font Info:    Trying to load font information for OMX+mlmex on input line
- 96.
+ 105.
 
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/mlmodern\omxmlmex.fd
 File: omxmlmex.fd 2021/01/11 v1.0 Font defs for mlmodern
 )
 LaTeX Font Info:    External font `mlmex10' loaded for size
-(Font)              <14.4> on input line 96.
+(Font)              <14.4> on input line 105.
 LaTeX Font Info:    External font `mlmex10' loaded for size
-(Font)              <10> on input line 96.
+(Font)              <10> on input line 105.
 LaTeX Font Info:    External font `mlmex10' loaded for size
-(Font)              <7> on input line 96.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 96.
-
+(Font)              <7> on input line 105.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 105
+.
 
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1533,8 +1490,8 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 96.
-
+LaTeX Font Info:    Trying to load font information for U+msb on input line 105
+.
 
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1542,27 +1499,27 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+wasy on input line 96
-.
+LaTeX Font Info:    Trying to load font information for U+wasy on input line 10
+5.
 
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/wasysym\uwasy.fd
 File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 9
-6.
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 1
+05.
 
 (C:\Users\20821\AppData\Local\Programs\MiKTeX\tex/latex/stmaryrd\ustmry.fd)
 <UoB_RGB_24.jpg, id=3, 742.9356pt x 215.1237pt>
 File: UoB_RGB_24.jpg Graphic file (type jpg)
 <use UoB_RGB_24.jpg>
-Package pdftex.def Info: UoB_RGB_24.jpg  used on input line 96.
+Package pdftex.def Info: UoB_RGB_24.jpg  used on input line 105.
 (pdftex.def)             Requested size: 209.12778pt x 60.55263pt.
 LaTeX Font Info:    External font `mlmex10' loaded for size
-(Font)              <10.95> on input line 96.
+(Font)              <10.95> on input line 105.
 LaTeX Font Info:    External font `mlmex10' loaded for size
-(Font)              <8> on input line 96.
+(Font)              <8> on input line 105.
 LaTeX Font Info:    External font `mlmex10' loaded for size
-(Font)              <6> on input line 96.
+(Font)              <6> on input line 105.
 
 
 Package scrlayer-scrpage Warning: \headheight to low.
@@ -1572,8 +1529,8 @@ Package scrlayer-scrpage Warning: \headheight to low.
 (scrlayer-scrpage)                processing, but you should do this yourself,
 (scrlayer-scrpage)                e.g., setting typearea's option
 (scrlayer-scrpage)                `headheight=17.0pt'.
-(scrlayer-scrpage)                I'll also decrease \topmargin on input line 9
-6.
+(scrlayer-scrpage)                I'll also decrease \topmargin on input line 1
+05.
 
 
 Overfull \vbox (17.0pt too high) has occurred while \output is active []
@@ -1591,7 +1548,7 @@ Package typearea Warning: \typearea used at group level 3.
 (typearea)                environments, math mode, boxes, etc. may result in
 (typearea)                many type setting problems.
 (typearea)                You should move the command \typearea
-(typearea)                outside all groups on input line 100.
+(typearea)                outside all groups on input line 109.
 
 Package typearea Info: These are the values describing the layout:
 (typearea)             DIV  = 10
@@ -1609,9 +1566,9 @@ Package typearea Info: These are the values describing the layout:
 (typearea)              \topskip        = 11.0pt
 (typearea)              \footskip       = 59.5pt
 (typearea)              \baselineskip   = 17.0pt
-(typearea)              on input line 100.
+(typearea)              on input line 109.
 Package typearea Info: Using dirty hack to recalculate internal output
-(typearea)             dimensions of LaTeX on input line 100.
+(typearea)             dimensions of LaTeX on input line 109.
 (abstract.tex
 LaTeX Font Info:    Trying to load font information for TS1+mlmr on input line 
 23.
@@ -1629,17 +1586,17 @@ File: ts1mlmr.fd 2021/01/11 v1.0 Font defs for mlmodern
 ] [4
 
 ]
-<sig.png, id=24, 1204.5pt x 399.4925pt>
+<sig.png, id=23, 1204.5pt x 399.4925pt>
 File: sig.png Graphic file (type png)
 <use sig.png>
-Package pdftex.def Info: sig.png  used on input line 132.
+Package pdftex.def Info: sig.png  used on input line 144.
 (pdftex.def)             Requested size: 113.81102pt x 37.74492pt.
  [5
 
  <./sig.png>]
-Package hyperref Info: Option `pageanchor' set `true' on input line 134.
-Package tocbasic Info: character protrusion at toc deactivated on input line 14
-1.
+Package hyperref Info: Option `pageanchor' set `true' on input line 146.
+Package tocbasic Info: character protrusion at toc deactivated on input line 15
+3.
  (thesis.toc [1
 
 
@@ -1678,7 +1635,7 @@ chapter 3.
 
 pdfTeX warning: pdflatex.exe (file ../figures/fig1_pipeline.pdf): PDF inclusion
 : found PDF version <1.7>, but at most version <1.5> allowed
-<../figures/fig1_pipeline.pdf, id=282, 896.38889pt x 636.45775pt>
+<../figures/fig1_pipeline.pdf, id=283, 896.38889pt x 636.45775pt>
 File: ../figures/fig1_pipeline.pdf Graphic file (type pdf)
 <use ../figures/fig1_pipeline.pdf>
 Package pdftex.def Info: ../figures/fig1_pipeline.pdf  used on input line 34.
@@ -1704,18 +1661,18 @@ Overfull \hbox (70.89674pt too wide) in paragraph at lines 188--198
 
 pdfTeX warning: pdflatex.exe (file ../figures/fig2_langgraph.pdf): PDF inclusio
 n: found PDF version <1.7>, but at most version <1.5> allowed
-<../figures/fig2_langgraph.pdf, id=330, 722.7pt x 462.76888pt>
+<../figures/fig2_langgraph.pdf, id=331, 722.7pt x 462.76888pt>
 File: ../figures/fig2_langgraph.pdf Graphic file (type pdf)
 <use ../figures/fig2_langgraph.pdf>
 Package pdftex.def Info: ../figures/fig2_langgraph.pdf  used on input line 224.
 
 (pdftex.def)             Requested size: 342.9773pt x 219.61977pt.
 [15]
-<../figures/fig10_demo_search.png, id=335, 1445.4pt x 1505.625pt>
+<../figures/fig10_demo_search.png, id=336, 1445.4pt x 1505.625pt>
 File: ../figures/fig10_demo_search.png Graphic file (type png)
 <use ../figures/fig10_demo_search.png>
 Package pdftex.def Info: ../figures/fig10_demo_search.png  used on input line 2
-62.
+63.
 (pdftex.def)             Requested size: 397.34288pt x 413.89883pt.
 ) (ch/04_implementation.tex [16
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3.2}) 
@@ -1754,20 +1711,20 @@ chapter 5.
 
 
 ] [26] [27]
-<../figures/fig4_alpha_sweep.pdf, id=406, 455.30101pt x 245.718pt>
+<../figures/fig4_alpha_sweep.pdf, id=407, 455.30101pt x 245.718pt>
 File: ../figures/fig4_alpha_sweep.pdf Graphic file (type pdf)
 <use ../figures/fig4_alpha_sweep.pdf>
 Package pdftex.def Info: ../figures/fig4_alpha_sweep.pdf  used on input line 15
 5.
 (pdftex.def)             Requested size: 342.98248pt x 185.10164pt.
- [28] [29
+ [28
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.220 
-       <../figures/fig4_alpha_sweep.pdf>]
-<../figures/fig5_ablation_ladder.pdf, id=436, 455.30101pt x 195.129pt>
+l.168 
+       <../figures/fig4_alpha_sweep.pdf>] [29]
+<../figures/fig5_ablation_ladder.pdf, id=437, 455.30101pt x 195.129pt>
 File: ../figures/fig5_ablation_ladder.pdf Graphic file (type pdf)
 <use ../figures/fig5_ablation_ladder.pdf>
 Package pdftex.def Info: ../figures/fig5_ablation_ladder.pdf  used on input lin
@@ -1784,8 +1741,9 @@ has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.270 \end{longtable}
-                      <../figures/fig5_ablation_ladder.pdf>] [31] [32]
-<../figures/fig7_qa_by_type.pdf, id=469, 455.30101pt x 231.26399pt>
+                      <../figures/fig5_ablation_ladder.pdf>] [31]
+ignored error: Infinite glue shrinkage found in box being split [32]
+<../figures/fig7_qa_by_type.pdf, id=471, 455.30101pt x 231.26399pt>
 File: ../figures/fig7_qa_by_type.pdf Graphic file (type pdf)
 <use ../figures/fig7_qa_by_type.pdf>
 Package pdftex.def Info: ../figures/fig7_qa_by_type.pdf  used on input line 395
@@ -1821,15 +1779,15 @@ Overfull \hbox (11.87216pt too wide) in paragraph at lines 445--445
 []|\T1/mlmr/m/n/10.95 (-20) multimodal|  
  []
 
-[33]
-ignored error: Infinite glue shrinkage found in box being split [34
+ignored error: Infinite glue shrinkage found in box being split [33] [34]
+[35
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.447 \end{longtable}
-                      <../figures/fig7_qa_by_type.pdf>] [35]
-<../figures/fig8_whitedog_case.pdf, id=502, 455.30101pt x 310.761pt>
+l.497 
+       <../figures/fig7_qa_by_type.pdf>]
+<../figures/fig8_whitedog_case.pdf, id=503, 455.30101pt x 310.761pt>
 File: ../figures/fig8_whitedog_case.pdf Graphic file (type pdf)
 <use ../figures/fig8_whitedog_case.pdf>
 Package pdftex.def Info: ../figures/fig8_whitedog_case.pdf  used on input line 
@@ -1840,7 +1798,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5.4})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.563 
+l.573 
        <../figures/fig8_whitedog_case.pdf>] [38] [39] [40] [41] [42])
 (ch/06_discussion.tex [43]
 chapter 6.
@@ -1894,7 +1852,21 @@ chapter without number
 
 
 
-] [60] [61] [62] (thesis.aux)
+] [60]
+Overfull \hbox (35.96121pt too wide) in paragraph at lines 182--182
+[]\T1/mlmr/m/n/10.95 (-20) R. Nogueira and K. Cho, ``Pas-sage re-ranking with B
+ERT,'' \T1/mlmr/m/it/10.95 (-20) arXiv preprint arXiv:1901.04085\T1/mlmr/m/n/10
+.95 (-20) ,
+ []
+
+[61]
+Overfull \hbox (29.92079pt too wide) in paragraph at lines 182--182
+\T1/mlmr/m/n/10.95 (-20) augmented gen-er-a-tion with ex-treme long-context vid
+eos,'' \T1/mlmr/m/it/10.95 (-20) arXiv preprint arXiv:2502.01549\T1/mlmr/m/n/10
+.95 (-20) ,
+ []
+
+[62] (thesis.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
@@ -1904,13 +1876,13 @@ Package logreq Info: Writing requests to 'thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 37149 strings out of 467871
- 738744 string characters out of 5418377
- 1772517 words of memory out of 5000000
- 65046 multiletter control sequences out of 15000+600000
- 700618 words of font info for 228 fonts, out of 8000000 for 9000
+ 36917 strings out of 467871
+ 732737 string characters out of 5418377
+ 1734933 words of memory out of 5000000
+ 64831 multiletter control sequences out of 15000+600000
+ 700654 words of font info for 228 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 122i,20n,134p,11245b,2674s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 122i,20n,134p,11245b,2675s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/type1/public/mlmodern/mlm
 bx10.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/type1/public/mlmod
 ern/mlmbx12.pfb><C:/Users/20821/AppData/Local/Programs/MiKTeX/fonts/type1/publi
@@ -1922,9 +1894,9 @@ MiKTeX/fonts/type1/public/mlmodern/mlmri10.pfb><C:/Users/20821/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/mlmodern/mlmro10.pfb><C:/Users/20821/AppData/L
 ocal/Programs/MiKTeX/fonts/type1/public/mlmodern/mlmsy10.pfb><C:/Users/20821/Ap
 pData/Local/Programs/MiKTeX/fonts/type1/public/mlmodern/mlmtt10.pfb>
-Output written on thesis.pdf (70 pages, 1974479 bytes).
+Output written on thesis.pdf (70 pages, 1973003 bytes).
 PDF statistics:
- 963 PDF objects out of 1000 (max. 8388607)
- 198 named destinations out of 1000 (max. 500000)
+ 965 PDF objects out of 1000 (max. 8388607)
+ 199 named destinations out of 1000 (max. 500000)
  35902 words of extra memory for PDF output out of 42996 (max. 10000000)
 

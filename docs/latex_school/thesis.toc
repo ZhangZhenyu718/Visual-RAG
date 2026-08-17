@@ -32,18 +32,18 @@
 \contentsline {section}{\numberline {5.2}RQ1 --- Multi-modal retrieval against a text-only baseline}{27}{section.5.2}%
 \contentsline {section}{\numberline {5.3}RQ2 --- Embedding and retrieval strategy ablations}{28}{section.5.3}%
 \contentsline {subsection}{\numberline {5.3.1}Negative result: naive late fusion never beats visual-only}{28}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Query decomposition recalls more, but no more precisely}{28}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.2}Query decomposition recalls more, but no more precisely}{29}{subsection.5.3.2}%
 \contentsline {subsection}{\numberline {5.3.3}Second-stage re-ranking: a negative and a positive result}{29}{subsection.5.3.3}%
 \contentsline {subsection}{\numberline {5.3.4}Backbone: SigLIP dominates, and two-stage retrieval matches one-stage}{31}{subsection.5.3.4}%
 \contentsline {subsection}{\numberline {5.3.5}Threshold sensitivity}{32}{subsection.5.3.5}%
 \contentsline {section}{\numberline {5.4}RQ3 --- Agentic question answering}{33}{section.5.4}%
 \contentsline {subsection}{\numberline {5.4.1}Agent comparison}{33}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Controlled experiment: visual evidence at the answering stage}{36}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.4.3}Prior-only baselines: what the .341 floor actually was}{37}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.2}Controlled experiment: visual evidence at the answering stage}{35}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Prior-only baselines: what the .341 floor actually was}{36}{subsection.5.4.3}%
 \contentsline {subsection}{\numberline {5.4.4}Best-configuration run and contextualisation with published systems}{38}{subsection.5.4.4}%
-\contentsline {section}{\numberline {5.5}Cross-domain replication: speech-dense video}{41}{section.5.5}%
+\contentsline {section}{\numberline {5.5}Cross-domain replication: speech-dense video}{40}{section.5.5}%
 \contentsline {section}{\numberline {5.6}System-level measurements}{42}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Summary}{43}{section.5.7}%
+\contentsline {section}{\numberline {5.7}Summary}{42}{section.5.7}%
 \contentsline {chapter}{\numberline {6}Discussion}{44}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Synthesis: three separable problems}{44}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Limitations}{45}{section.6.2}%
